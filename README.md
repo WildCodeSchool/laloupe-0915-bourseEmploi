@@ -11,5 +11,5 @@ Javascript: Angular et Node.js.
 MongoDb, Express, Passport.
 
 Contributions:
-
+Le projet est privé, il est donc fermé aux contributeurs hors Wild COde School.
 
