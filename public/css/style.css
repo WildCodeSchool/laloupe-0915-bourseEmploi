@@ -1,7 +1,65 @@
+/* $ GENERAL */
 body{
     padding-top: 70px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
+h1 {
+    font-family: 'Raleway', sans-serif;
+    color:#009587;
+}
+
+.wild {
+    font-family: 'Raleway', sans-serif;
+    color:#009587;
+    font-size: 25px;
+}      
+
+.finder {
+    font-family: 'Raleway', sans-serif;
+    color:#696969;
+    font-size: 25px;
+    line-height: 50px;
+}
+
+.btnW {
+    height: 40px;
+    padding: 0px 20px 0px 20px;
+    border: 2px solid;
+    border-radius:10px;
+    border-color: #009587;
+    color:#009587;
+    background-size: 100% 200%;
+    background-image: linear-gradient(to top, #009587 50%, white 50%);
+    -webkit-transition: background-position 1s;
+    -moz-transition: background-position 1s;
+    transition: background-position 1s;
+}
+
+.btnW:hover {
+    background-position: 0 100% ;
+    color:white; 
+}
+
+.flexContainer input[type="text"] {
+    width: 200px;
+    height: 20px;
+    padding-right: 50px;
+}
+
+.inputField input[type="submit"] {
+    margin-left: -50px;
+    height: 20px;
+    width: 50px;
+}
+.btn-side {
+    background-color:#009587;
+    color: white;
+}
+.btn-side:hover {
+    background-color: white;
+    color: #009587;
+}
 /* ----------------- *\
 	  BS CALLOUT 
 \* ----------------- */
@@ -19,7 +77,7 @@ body{
     margin-bottom: 5px;
 }
 
-/* SUCCESS */
+/* $SUCCESS */
 .bs-callout-success {
     border-left-color: #5cb85c;
 }

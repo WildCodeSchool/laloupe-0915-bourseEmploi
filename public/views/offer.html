@@ -1,73 +1,107 @@
-<h2>Déposer une annonce</h2>
-
+<h2>Déposer une annonce.</h2>
 
 <div class="">
 
 	<form class="form-horizontal">
         <div class="checkbox disabled">
           <label>
-            <input type="checkbox" ng-model="noReferent" value="">
-            Prendre mes coordonnées ( nom, email, téléphone ) comme référent de cette annonce
+            <input type="checkbox" ng-model="noReferent" value="referent" checked>
+            Prendre mes coordonnées ( nom, email, téléphone ) comme référent de cette annonce.
           </label>
         </div>
         
 		<div class="form-group spacer" ng-show="referentBox">
-		    <label  class="col-sm-2 control-label">Nom</label>
+		    <label  class="col-sm-2 control-label">Nom :</label>
 		   <div class="col-sm-2">
                 <div>
                     <input type="text" class="form-control" id="" placeholder="Nom du référent">
                 </div>
             </div>
-            <label  class="col-sm-1 control-label">eMail</label>
+            <label  class="col-sm-1 control-label">eMail :</label>
             <div class="col-sm-3">
                 <div>
                     <input type="email" class="form-control" id="" placeholder="Email du référent">
                 </div>
             </div>
             <div>
-                <label class="col-sm-1 control-label">Téléphone</label>
+                <label class="col-sm-1 control-label">Téléphone :</label>
                 <div class="col-sm-3">
-		            <input type="text" class="form-control" id="" placeholder="Tel du référent">
+		            <input type="text" class="form-control" id="" placeholder="Numéro de téléphone du référent">
                 </div>
             </div>
         </div>
 		
 		<div class="form-group spacer">
-		    <label class="col-sm-2 control-label">Titre de l'offre</label>
-		  <div class="col-sm-10">
-		    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Titre">
+
+		  <div class="col-sm-offset-1 col-sm-10">
+            <label class="control-label">Titre de l'offre :</label>
+		    <input type="text" class="form-control" id="" placeholder="Définissez un intitulé de l'offre">
 		  </div>
 		</div>
 		
 		<div class="form-group">
-		    <label  class="col-sm-2 control-label">Type de contrat</label>
-		   <div class="col-sm-4">
+            <div class="col-sm-offset-1 col-sm-3">
+		    <label class="control-label">Type de contrat :</label>
                 <select class="form-control">
-                  <option type="text" class="form-control">Choisissez un contrat</option>
+                  <option type="text" class="form-control">Choisissez un contrat...</option>
                   <option type="text" class="form-control">Stage</option>
                   <option type="text" class="form-control">CDD</option>
                   <option type="text" class="form-control">CDI</option>
                 </select>
             </div>
-            <div>
-                <label class="col-sm-1 control-label">Salaire</label>
-                <div class="col-sm-5">
-		            <input type="text" class="form-control" id="" placeholder="Salaire">
+            <div class="col-sm-offset-1 col-sm-3">
+                <label class="control-label">Expérience :</label>
+                    <select class="form-control">
+                      <option type="text" class="form-control">...et un niveau d'expérience</option>
+                      <option type="text" class="form-control">Junior</option>
+                      <option type="text" class="form-control">Expérimenté</option>
+                      <option type="text" class="form-control">Sénior</option>
+                    </select>
+            </div>           
+            <div class="col-sm-offset-1 col-sm-2">
+                <label class="control-label">Salaire :</label>
+		            <input type="text" class="form-control" id="" placeholder="K € /an">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-4">
+                <label class="control-label">Compétences recherchées :</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Ajoutez un tag de langage, de compétence">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default btn-side" type="button">OK</button>
+                  </span>
                 </div>
+            </div>    
+        </div>
+       
+        <div class="form-group spacer">
+            <div class="col-sm-offset-1 col-sm-10">
+                <label>Description du poste :</label>            
+                <textarea class="form-control" rows="5"></textarea>
             </div>
         </div>
         
         <div class="form-group spacer">
-            <div class="col-sm-offset-2 col-sm-10">
-                <label>Description de l'annonce</label>            
+            <div class="col-sm-offset-1 col-sm-10">
+                <label>Responsabilités du candidat :</label>            
+                <textarea class="form-control" rows="4"></textarea>
+            </div>
+        </div>
+        
+                
+        <div class="form-group spacer">
+            <div class="col-sm-offset-1 col-sm-10">
+                <label>( Optionnel )&nbsp;Pourquoi choisir "NotrE EntrEprisE" ? :</label>            
                 <textarea class="form-control" rows="3"></textarea>
             </div>
         </div>
 	</form>
 
     <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-success">Poster mon annonce</button>
+        <div class="col-sm-offset-1 col-sm-10">
+            <button type="submit" class="btnW"><strong>Poster mon annonce</strong></button>
         </div>
     </div>
     
