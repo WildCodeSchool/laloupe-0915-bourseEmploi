@@ -3,11 +3,11 @@
 <div class="">
 
 	<form class="form-horizontal">
-        <div class="checkbox disabled">
-          <label>
-            <input type="checkbox" ng-model="noReferent" value="referent" checked>
+        <div>
+          <p>
+            <input type="checkbox"  value="referent" checked />
             Prendre mes coordonnées ( nom, email, téléphone ) comme référent de cette annonce.
-          </label>
+          </p>
         </div>
         
 		<div class="form-group spacer" ng-show="referentBox">
@@ -79,13 +79,13 @@
         <div class="form-group spacer">
             <div class="col-sm-offset-1 col-sm-10">
                 <label>Description du poste :</label>            
-                <textarea class="form-control" rows="5"></textarea>
+                <textarea class="form-control" rows="6"></textarea>
             </div>
         </div>
         
         <div class="form-group spacer">
             <div class="col-sm-offset-1 col-sm-10">
-                <label>Responsabilités du candidat :</label>            
+                <label>Responsabilités du candidat :</label> 
                 <textarea class="form-control" rows="4"></textarea>
             </div>
         </div>
@@ -97,13 +97,15 @@
                 <textarea class="form-control" rows="3"></textarea>
             </div>
         </div>
-	</form>
-
-    <div class="form-group">
-        <div class="col-sm-offset-1 col-sm-10">
-            <button type="submit" class="btnW"><strong>Poster mon annonce</strong></button>
+        
+            <div class="form-group">
+        <div class="col-sm-offset-9 col-sm-3">
+            <button type="submit" class="btnW"><strong>Poster cette annonce</strong></button>
         </div>
     </div>
+	</form>
+
+
     
    
 </div>
