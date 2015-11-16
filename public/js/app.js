@@ -98,6 +98,7 @@ angular.module('app', ['ngRoute'])
     .controller('connectRecruiterController', connectRecruiterController)
     .controller('formOfferController', formOfferController)
     .service('connectService', connectService)
+    .service('offerService', offerService)
     .service('todoService', todoService)
     /*.factory('', )*/
     .run(run);
