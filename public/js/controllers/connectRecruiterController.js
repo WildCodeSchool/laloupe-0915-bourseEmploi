@@ -1,4 +1,4 @@
-function connect_recruiterController($scope){
+function connectRecruiterController($scope){
 
 
 }
