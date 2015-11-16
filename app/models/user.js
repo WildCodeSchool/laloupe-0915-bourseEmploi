@@ -3,12 +3,12 @@ var mongoose = require('mongoose');
 var userSchema = new mongoose.Schema({
  name: { type: String, required: true, unique: true },
  first_name: String,
- photo: Text,
+ photo: String,
  age: Number,
  description: String,
- wild side: String,
+ wild_side: String,
  training: String,
- previous work: String,
+ previous_work: String,
  skill: String, 
  email: String,
  tel: Number

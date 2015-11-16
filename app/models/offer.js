@@ -4,7 +4,7 @@ var offerSchema = new mongoose.Schema({
   title: String, 
   address: String,
   city: String,
-  logo: Text,
+  logo: String,
   name_referent: { type: String, required: true, unique: true },
   contact_referent: Number,
   description: String,
@@ -17,7 +17,7 @@ var offerSchema = new mongoose.Schema({
 });
 
 var Offer = {
-    model: mongoose.model('Offer', userSchema),
+    model: mongoose.model('Offer', offerSchema),
     
     find: function(name, password, callback) {
         Offer.model.findOne({
@@ -97,4 +97,4 @@ var Offer = {
 }
 
 
-module.exports = User;
+module.exports = Offer;
