@@ -9,12 +9,12 @@
 		<div class="form-group">
             <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Nom de l'entreprise :</label>
-		      <input type="text" class="form-control" id="" placeholder="">
+		      <input type="text" class="form-control" id="" placeholder="" ng-model="companyName">
 		  </div>
         
 		    <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Taille de l'entreprise :</label>
-                <select class="form-control">
+                <select class="form-control" ng-model="companySize">
                   <option type="text" class="form-control"></option>
                   <option type="text" class="form-control"></option>
                   <option type="text" class="form-control"></option>
@@ -26,21 +26,21 @@
 		<div class="form-group">
 		    <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Secteur d'activité :</label>
-		    <input type="text" class="form-control" id="" placeholder="">
+		    <input type="text" class="form-control" id="" placeholder="" ng-model="businessSector">
 		  </div>
         </div>
 		
 		<div class="form-group">
             <div class="col-sm-offset-1 col-sm-9">
                 <label>Description entreprise :</label>            
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3" ng-model="companyDescription"></textarea>
             </div>
         </div>
 		
         <div class="form-group">
 		    <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Fonction :</label>
-		    <input type="text" class="form-control" id="" placeholder="">
+		    <input type="text" class="form-control" id="" placeholder="" ng-model="function">
 		  </div>
         </div>
         
@@ -48,7 +48,7 @@
            <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Pays :</label>
                <div class="input-group">
-                 <input type="text" class="form-control" placeholder="" ng-model="offerSkill">
+                 <input type="text" class="form-control" placeholder="" ng-model="country">
                  <span class="input-group-btn">
                    <button class="btn btn-default btn-side" type="button">OK</button>
                  </span>
@@ -57,7 +57,7 @@
            <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Région :</label>
                <div class="input-group">
-                 <input type="text" class="form-control" placeholder="" ng-model="offerSkill">
+                 <input type="text" class="form-control" placeholder="" ng-model="region">
                  <span class="input-group-btn">
                    <button class="btn btn-default btn-side" type="button">OK</button>
                  </span>
@@ -69,7 +69,7 @@
            <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Ville :</label>
                <div class="input-group">
-                 <input type="text" class="form-control" placeholder="" ng-model="offerSkill">
+                 <input type="text" class="form-control" placeholder="" ng-model="city">
                  <span class="input-group-btn">
                    <button class="btn btn-default btn-side" type="button">OK</button>
                  </span>
@@ -78,7 +78,7 @@
            <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Adresse :</label>
                <div class="input-group">
-                 <input type="text" class="form-control" placeholder="" ng-model="offerSkill">
+                 <input type="text" class="form-control" placeholder="" ng-model="adress">
                  <span class="input-group-btn">
                    <button class="btn btn-default btn-side" type="button">OK</button>
                  </span>
@@ -90,7 +90,7 @@
            <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Site internet :</label>
                <div class="input-group">
-                 <input type="text" class="form-control" placeholder="" ng-model="offerSkill">
+                 <input type="text" class="form-control" placeholder="" ng-model="website">
                  <span class="input-group-btn">
                    <button class="btn btn-default btn-side" type="button">OK</button>
                  </span>
@@ -99,7 +99,7 @@
            <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Réseaux sociaux :</label>
                <div class="input-group">
-                 <input type="text" class="form-control" placeholder="" ng-model="offerSkill">
+                 <input type="text" class="form-control" placeholder="" ng-model="socialNetwork">
                  <span class="input-group-btn">
                    <button class="btn btn-default btn-side" type="button">OK</button>
                  </span>
@@ -110,18 +110,18 @@
 		<div class="form-group">
 		    <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Email :</label>
-		    <input type="text" class="form-control" id="" placeholder="">
+		    <input type="text" class="form-control" id="" placeholder=""ng-model="email">
 		  </div>
 		  <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Téléphone :</label>
-		    <input type="text" class="form-control" id="" placeholder="">
+		    <input type="text" class="form-control" id="" placeholder="" ng-model="phoneNumber">
 		  </div>
 		</div>
     </form>
     
     <div class="form-group">
         <div class="col-sm-offset-4">
-            <button type="submit" class="btnW"><strong>Valider l'inscription</strong></button>
+            <button type="submit" class="btnW" ng-click="send()"><strong>Valider l'inscription</strong></button>
         </div>
     </div>
     
