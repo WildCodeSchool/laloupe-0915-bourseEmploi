@@ -11,9 +11,9 @@ function config($routeProvider) {
 			templateUrl: 'views/connect.html',
 			controller: 'connectController'
 		})
-		.when('/offer', {
-			templateUrl: 'views/offer.html',
-			controller: 'offerController'
+		.when('/formOffer', {
+			templateUrl: 'views/formOffer.html',
+			controller: 'formOfferController'
 		})
         .when('/connectRecruiter', {
 			templateUrl: 'views/connectRecruiter.html',
@@ -95,8 +95,8 @@ angular.module('app', ['ngRoute'])
     .controller('connectController', connectController)
     .controller('mainController', mainController)
     .controller('adminController', adminController)
-    .controller('offerController', offerController)
     .controller('connectRecruiterController', connectRecruiterController)
+    .controller('formOfferController', formOfferController)
     .service('connectService', connectService)
     .service('todoService', todoService)
     /*.factory('', )*/
