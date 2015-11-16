@@ -2,23 +2,6 @@ body{
     padding-top: 70px;
 }
 
-.navbar-border{
-	border-bottom: 3px solid #F0DB4F;
-}
-
-.navbar-header img{
-	transition: 0.4s;
-}
-
-.navbar-header img:hover{
-	transform: rotate(360deg);
-}  
-
-.sub-login-form{
-	text-align: center;
-}
-
-
 /* ----------------- *\
 	  BS CALLOUT 
 \* ----------------- */
@@ -70,4 +53,9 @@ body{
 
 .bs-callout-danger h4 {
     color: #ce4844;
+}
+
+/*   $OFFER   */
+.spacer {
+    margin-top: 30px;
 }
