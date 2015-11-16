@@ -2,11 +2,46 @@
 body{
     padding-top: 70px;
     font-family: 'Source Sans Pro', sans-serif;
+    background-color: #F5FAF9;
+    color: #202020;
+}
+
+.bg { 
+    background: url('../img/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: black;
+    padding-top: 20px;
 }
 
 h1 {
     font-family: 'Raleway', sans-serif;
     color:#009587;
+    font-size: 65px;
+}
+
+.titlepost {
+    color: #696969;
+}
+
+.case1 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: white;
+    border-color: #b6b6b6;
+    margin-top: 200px;
+    position: absolute;
+    z-index: 2;
+}
+
+.caseAccueil {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: rgba(255, 255, 255, .6);
+    border-color: #b6b6b6;
+    margin-top: 230px;
 }
 
 .wild {
@@ -22,6 +57,24 @@ h1 {
     line-height: 50px;
 }
 
+.btnClassic {
+    height: 40px;
+    padding: 0px 20px 0px 20px;
+    border: 2px solid;
+    border-radius:10px;
+    border-color: #009587;
+    color: white;
+    background-color: #009587;
+}
+
+.btnClassic:hover {
+    border-color: white;
+}
+
+.btnClassic:focus {
+    outline: none;
+}
+
 .btnW {
     height: 40px;
     padding: 0px 20px 0px 20px;
@@ -30,15 +83,51 @@ h1 {
     border-color: #009587;
     color:#009587;
     background-size: 100% 200%;
-    background-image: linear-gradient(to top, #009587 50%, white 50%);
+    background-color: transparent;
+    background-image: linear-gradient(to top, #009587 50%, transparent 50%);
     -webkit-transition: background-position 1s;
     -moz-transition: background-position 1s;
     transition: background-position 1s;
+    
 }
 
 .btnW:hover {
     background-position: 0 100% ;
-    color:white; 
+    background-color: transparent;
+    color: white;
+
+}
+
+.btnW:focus {
+    outline: none;
+}
+
+.btnWA {
+    height: 40px;
+    padding: 0px 20px 0px 20px;
+    border: 2px solid;
+    border-radius:10px;
+    border-color: white;
+    color:white;
+    background-size: 100% 200%;
+    background-color: transparent;
+    background-image: linear-gradient(to top, #009587 50%, transparent 50%);
+    -webkit-transition: background-position 1s;
+    -moz-transition: background-position 1s;
+    transition: background-position 1s;
+    margin-right: 15px;
+}
+
+.btnWA:hover {
+    background-position: 0 100% ;
+    background-color: transparent;
+    color: white;
+    border-color: #009587;
+
+}
+
+.btnWA:focus {
+    outline: none;
 }
 
 .flexContainer input[type="text"] {
