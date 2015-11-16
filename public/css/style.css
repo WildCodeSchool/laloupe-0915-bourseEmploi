@@ -41,17 +41,6 @@ h1 {
     color:white; 
 }
 
-.flexContainer input[type="text"] {
-    width: 200px;
-    height: 20px;
-    padding-right: 50px;
-}
-
-.inputField input[type="submit"] {
-    margin-left: -50px;
-    height: 20px;
-    width: 50px;
-}
 .btn-side {
     background-color:#009587;
     color: white;

@@ -26,8 +26,8 @@
     <script src="js/controllers/connectController.js"></script>
     <script src="js/controllers/mainController.js"></script>
     <script src="js/controllers/adminController.js"></script>
-    <script src="js/controllers/offerController.js"></script>
     <script src="js/controllers/connect_recruiterController.js"></script>
+    <script src="js/controllers/formOfferController.js"></script>
     <script src="js/services/connectService.js"></script>
     <script src="js/services/todoService.js"></script>
     
@@ -53,7 +53,7 @@
                     <li ng-class="{active: activetab=='/'}" ng-if="user"><a href="#/">Todos</a></li>
                     <li ng-class="{active: activetab=='/admin'}" ng-if="user.admin"><a href="#/admin">Administration</a></li>
                     <li ng-class="{active: activetab=='/about'}"><a href="#/about">About</a></li>
-                    <li ng-if="user"><a href="#/" ng-click="logout()">Logout</a></li>
+                    <li ng-if="user"><a href="#/" ng-click="logout()">Déconnexion</a></li>
                 </ul>
             </nav>
         </div>
