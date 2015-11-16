@@ -11,7 +11,8 @@ var userSchema = new mongoose.Schema({
  previous_work: String,
  skill: String, 
  email: String,
- tel: Number
+ tel: Number,
+ password: password
 });
 
 var User = {
@@ -19,8 +20,18 @@ var User = {
    
    find: function(name, password, callback) {
        User.model.findOne({
-           name: name,
-           password: password
+            name: name,
+            first_name: ,
+            photo: ,
+            age: ,
+            description: ,
+            wild_side: ,
+            training: ,
+            previous_work: ,
+            skill: , 
+            email: ,
+            tel: ,
+            password: password
         }, callback);
     },
    
