@@ -11,6 +11,10 @@ function connectController($scope, $rootScope, $location, connectService){
         $scope.loginR = false;
     }
     
+    $scope.connectSignUpRecruiter = function(){
+        $location.path('/connectRecruiter');
+    }
+    
 	$scope.connect = function(){
 		connectService.connect($scope.user).then(function(res){
 			$rootScope.user = res.data;

@@ -10,12 +10,15 @@
 
     <div class="col-md-12 text-center caseAccueil panel panel-default">
         <h1>Wild<span class="titlepost">finder</span></h1>
-        <p>Description de l'application en quelques lignes. Bla bla blablabla bla blabla bla, bla bla blablabla bla blabla bla. Pour en savoir plus sur nos écoles visitez le site de la <a>Wild Code School</a></p>
+        <p>Description de l'application en quelques lignes. Bla bla blablabla bla blabla bla, bla bla blablabla bla blabla bla. Pour en savoir plus sur nos écoles visitez le site de la <a href="http://wildcodeschool.fr"target="_blank">Wild Code School</a></p>
     </div>
-    <button class="col-md-12 btnClassic ">Creer un espace recruteur</button>
+    <button class="col-md-12 btnClassic ng-click="connectSignUpRecruiter()" ">Creer un espace recruteur</button>
 </div>
 
 <div class="col-md-4 col-md-offset-4 case1 panel panel-default animated fadeIn" ng-show="loginR">
+    <div class="text-right">
+        <i class="fa fa-times fa-2x" ng-click="checkedR()"></i>
+    </div>
     <div class="col-md-12">
         <div class="text-center">
           <h2>Rectruteur authentification</h2>
@@ -48,6 +51,9 @@
 
 
 <div class="col-md-4 col-md-offset-4 case1 panel panel-default animated fadeIn" ng-show="loginE">
+   <div class="text-right">
+        <i class="fa fa-times fa-2x" ng-click="checkedE()"></i>
+    </div>
     <div class="col-md-12">
         <div class="text-center">
           <h2>Élève authentification</h2>
