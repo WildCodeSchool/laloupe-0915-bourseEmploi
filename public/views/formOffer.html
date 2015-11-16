@@ -5,44 +5,42 @@
 	<form class="form-horizontal">
         <div>
           <p>
-            <input type="checkbox"  value="referent" checked />
+            <input type="checkbox" ng-model="referent" checked/>
             Prendre mes coordonnées ( nom, email, téléphone ) comme référent de cette annonce.
           </p>
         </div>
         
-		<div class="form-group spacer" ng-show="referentBox">
-		    <label  class="col-sm-2 control-label">Nom :</label>
-		   <div class="col-sm-2">
+		<div class="form-group spacer" ng-hide="referent">
+            <div class="col-sm-offset-1 col-sm-3">
+		    <label class="control-label">Nom :</label>		   
                 <div>
-                    <input type="text" class="form-control" id="" placeholder="Nom du référent">
+                    <input type="text" class="form-control" id="" placeholder="Nom du référent" ng-model="referentName">
                 </div>
             </div>
-            <label  class="col-sm-1 control-label">eMail :</label>
             <div class="col-sm-3">
+            <label  class="control-label">Email :</label>            
                 <div>
-                    <input type="email" class="form-control" id="" placeholder="Email du référent">
+                    <input type="email" class="form-control" id="" placeholder="Email du référent" ng-model="referentMail">
                 </div>
             </div>
-            <div>
-                <label class="col-sm-1 control-label">Téléphone :</label>
-                <div class="col-sm-3">
-		            <input type="text" class="form-control" id="" placeholder="Numéro de téléphone du référent">
-                </div>
+            <div class="col-sm-3">
+            <label class="control-label">Téléphone :</label>
+
+                <input type="text" class="form-control" id="" placeholder="Numéro de téléphone du référent" ng-model="referentPhone">
             </div>
         </div>
 		
 		<div class="form-group spacer">
-
 		  <div class="col-sm-offset-1 col-sm-10">
             <label class="control-label">Titre de l'offre :</label>
-		    <input type="text" class="form-control" id="" placeholder="Définissez un intitulé de l'offre">
+		    <input type="text" class="form-control" id="" placeholder="Définissez un intitulé de l'offre" ng-model="offerTitle">
 		  </div>
 		</div>
 		
 		<div class="form-group">
             <div class="col-sm-offset-1 col-sm-3">
 		    <label class="control-label">Type de contrat :</label>
-                <select class="form-control">
+                <select class="form-control" ng-model="contractTitle">
                   <option type="text" class="form-control">Choisissez un contrat...</option>
                   <option type="text" class="form-control">Stage</option>
                   <option type="text" class="form-control">CDD</option>
@@ -52,15 +50,15 @@
             <div class="col-sm-offset-1 col-sm-3">
                 <label class="control-label">Expérience :</label>
                     <select class="form-control">
-                      <option type="text" class="form-control">...et un niveau d'expérience</option>
-                      <option type="text" class="form-control">Junior</option>
-                      <option type="text" class="form-control">Expérimenté</option>
-                      <option type="text" class="form-control">Sénior</option>
+                        <option type="text" class="form-control">...et un niveau d'expérience</option>
+                        <option type="text" class="form-control">Junior</option>
+                        <option type="text" class="form-control">Expérimenté</option>
+                        <option type="text" class="form-control">Sénior</option>
                     </select>
             </div>           
             <div class="col-sm-offset-1 col-sm-2">
                 <label class="control-label">Salaire :</label>
-		            <input type="text" class="form-control" id="" placeholder="K € /an">
+		            <input type="text" class="form-control" id="" placeholder="K € /an" ng-model="offerSalary">
             </div>
         </div>
         
@@ -68,7 +66,7 @@
             <div class="col-sm-offset-1 col-sm-4">
                 <label class="control-label">Compétences recherchées :</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Ajoutez un tag de langage, de compétence">
+                  <input type="text" class="form-control" placeholder="Ajoutez un tag de langage, de compétence" ng-model="offerSkill">
                   <span class="input-group-btn">
                     <button class="btn btn-default btn-side" type="button">OK</button>
                   </span>
@@ -79,14 +77,14 @@
         <div class="form-group spacer">
             <div class="col-sm-offset-1 col-sm-10">
                 <label>Description du poste :</label>            
-                <textarea class="form-control" rows="6"></textarea>
+                <textarea class="form-control" rows="6" ng-model="offerDescription"></textarea>
             </div>
         </div>
         
         <div class="form-group spacer">
             <div class="col-sm-offset-1 col-sm-10">
                 <label>Responsabilités du candidat :</label> 
-                <textarea class="form-control" rows="4"></textarea>
+                <textarea class="form-control" rows="4" ng-model="offerResp"></textarea>
             </div>
         </div>
         
@@ -94,18 +92,15 @@
         <div class="form-group spacer">
             <div class="col-sm-offset-1 col-sm-10">
                 <label>( Optionnel )&nbsp;Pourquoi choisir "NotrE EntrEprisE" ? :</label>            
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3" ng-model="offerWhy"></textarea>
             </div>
         </div>
         
             <div class="form-group">
         <div class="col-sm-offset-9 col-sm-3">
-            <button type="submit" class="btnW"><strong>Poster cette annonce</strong></button>
+            <button type="submit" class="btnW" ng-click="send()"><strong>Poster cette annonce</strong></button>
         </div>
     </div>
 	</form>
-
-
-    
-   
+	
 </div>
