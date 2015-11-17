@@ -16,10 +16,28 @@ body{
     padding-top: 20px;
 }
 
+.book-bg {
+    background-image: url('../img/book.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 175px; 
+}
+
+p {
+    color: #202020;
+    font-size: 16px;
+}
+
 h1 {
     font-family: 'Raleway', sans-serif;
     color:#009587;
     font-size: 65px;
+}
+
+h5 {
+    color: #009587;
+    font-size: 13px;
 }
 
 a {
@@ -33,6 +51,11 @@ a:hover {
 
 a:visited {
     color: #009587;
+}
+
+ul {
+    margin: 0 auto;
+    padding: 0;
 }
 
 .titlepost {
@@ -123,6 +146,33 @@ a:visited {
 }
 
 .btnW:focus {
+    outline: none;
+}
+
+.btnW-sm {
+    height: 30px;
+    padding: 0px 20px 0px 20px;
+    border: 2px solid;
+    border-radius:10px;
+    border-color: #009587;
+    color:#009587;
+    background-size: 100% 200%;
+    background-color: transparent;
+    background-image: linear-gradient(to top, #009587 50%, transparent 50%);
+    -webkit-transition: background-position 1s;
+    -moz-transition: background-position 1s;
+    transition: background-position 1s;
+    
+}
+
+.btnW-sm:hover {
+    background-position: 0 100% ;
+    background-color: transparent;
+    color: white;
+
+}
+
+.btnW-sm:focus {
     outline: none;
 }
 
@@ -218,4 +268,213 @@ a:visited {
 /*   $OFFER   */
 .spacer {
     margin-top: 30px;
+}
+
+/*WILD PANEL*/
+
+.wildpanel {
+    margin: 15px 0px 15px 0px;
+    padding: 0 auto;
+    border-color: #b6b6b6
+}
+
+.wildpanelheader {
+    margin: 0 auto;
+    background-color: #009587;
+    color: white;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-color: #B6B6B6;
+    height: 41px;
+    
+}
+
+.wildpanelbody {
+    margin: 0 auto;
+    padding: 5px 10px 5px 10px;
+    border-radius: 0px;
+}
+
+.wildpanelbodys {
+    margin: 0 auto;
+    padding: 5px 10px 5px 10px;
+    border-top-color: #B6B6B6;
+    border-radius: 0px;
+}
+
+.wildpanelfooter {
+    margin: 0 auto;
+    background-color: #F5FAF9;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    padding: 5px 10px 5px 10px;
+    border-top-color: #B6B6B6;
+    text-align: center;
+}
+
+.wildpanelfooterinput {
+    margin: 0 auto;
+    background-color: #F5FAF9;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    padding: 5px 10px 5px 10px;
+    border-top-color: #B6B6B6;
+}
+
+.paragraphWPF {
+    font-size: 13px;
+    margin: 0 auto;
+    padding: 0 auto;
+    color: #696969;
+}
+
+.studentname {
+    color: #202020;
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.studentteaser {
+    margin-top: 2px;
+    font-size: 18px;
+    color: #696969;
+}
+
+.imgprofilstudent {
+    float: left;
+    height: 130px;
+    width: 130px;
+    border: 5px solid white;
+    border-radius: 15px;
+    margin-top: -30px;
+    margin-right: 3px;
+    margin-bottom: 10px;
+}
+
+
+#studentCVmin {
+    min-height: 100px;
+}
+
+.headeradvert {
+    display: inline;
+}
+
+.smalltexadvert {
+    font-size: 16px;
+    color: #696969;
+    margin: 0 1px 0 1px;
+}
+
+.smalltexadvert1 {
+    font-size: 16px;
+    color: #696969;
+    margin: 0 10px 0 1px;
+}
+
+.smalltexadvert-sm {
+    font-size: 12px;
+    color: #696969;
+    margin: 0 1px 0 1px;
+}
+
+.smalltexadvert1-sm {
+    font-size: 12px;
+    color: #696969;
+    margin: 0 10px 0 1px;
+}
+
+.titleadvert {
+    font-size: 25px;
+    color: #202020;
+    font-family: 'Raleway', sans-serif;
+}
+
+.titleadvert-sm {
+    font-size: 18px;
+    color: #202020;
+    font-family: 'Raleway', sans-serif;
+}
+
+.heartnotactive {
+    color: #B6B6B6;
+    margin: 0 2px 0 10px;
+}
+
+.heartnotactive:hover {
+    color: #202020;
+    cursor: #202020
+}
+
+.heartactive {
+    color: #DAA520;
+    margin: 0 2px 0 10px;
+}
+
+.heartactive:hover {
+    color: #202020;
+    cursor: #202020
+}
+
+.fa-share-alt {
+    color: #B6B6B6;
+    margin: 0 2px 0 2px;
+}
+
+.fa-share-alt:hover {
+    color: #202020;
+    cursor: #202020
+}
+
+
+
+.companytexadvert {
+    color: #009587;
+    font-size: 16px;
+    margin: 0 1px 0 1px;
+}
+
+.companytexadvert-sm {
+    color: #009587;
+    font-size: 12px;
+    margin: 0 1px 0 1px;
+}
+
+.fa-file-text-o {
+    color: #B6B6B6;
+}
+
+.fa-eur {
+    color: #B6B6B6;
+}
+
+.fa-map-marker {
+    color: #B6B6B6;
+}
+
+.offerdelete {
+    float: right;
+    z-index: 1;
+}
+
+.imgbook {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.bookstatnumber {
+    font-size: 25px;
+    color: #009587;
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+}
+
+.bookstattitle {
+    font-size: 12px;
+    color: #009587;
+    margin: 0;   
 }
