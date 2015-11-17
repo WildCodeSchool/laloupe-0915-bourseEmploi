@@ -345,3 +345,11 @@ a:visited {
 #studentCVmin {
     min-height: 100px;
 }
+
+.wildpanelbodyteaserrctr {
+    margin: 0 auto;
+}
+
+.wildpanelbodybuttonrctr {
+    padding-top: 30px;
+}
