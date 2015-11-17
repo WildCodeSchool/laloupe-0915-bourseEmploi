@@ -30,13 +30,15 @@
     <script src="js/controllers/adminController.js"></script>
     <script src="js/controllers/connectRecruiterController.js"></script>
     <script src="js/controllers/formOfferController.js"></script>
+    <script src="js/controllers/homeRctrController.js"></script>    
+    <script src="js/controllers/homeStudentController.js"></script>
     <script src="js/services/connectService.js"></script>
     <script src="js/services/todoService.js"></script>
     
     <script src="js/app.js"></script>
 
     </head>
-    <body ng-class="{bg: activetab=='/login'}">
+    <body ng-class="{'bg': activetab==='/login'}">
     <header ng-hide="activetab === '/login'" class="navbar navbar-inverse navbar-fixed-top navbar-border" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -51,12 +53,14 @@
                   </button>
             </div>
             <nav id="bs-navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+<!--
                 <ul class="nav navbar-nav pull-right">
                     <li ng-class="{active: activetab=='/'}" ng-if="user"><a href="#/">Todos</a></li>
                     <li ng-class="{active: activetab=='/admin'}" ng-if="user.admin"><a href="#/admin">Administration</a></li>
                     <li ng-class="{active: activetab=='/about'}"><a href="#/about">About</a></li>
                     <li ng-if="user"><a href="#/" ng-click="logout()">Déconnexion</a></li>
                 </ul>
+-->
             </nav>
         </div>
     </header>
