@@ -1,71 +1,98 @@
 <div class="row">
 
 <!--LEFT COLUMN   -->     
-    <div class="col-md-4">
-       
-<!--INFO CV       -->
-        <div class="row wildpanel panel paneldefault">
-            <div class="wildpanelheader panel paneldefault">
-            </div>
-            <div class="wildpanelbody panel paneldefault" id="studentCVmin">
-                <img class="imgprofilstudent" src="../img/darkvador.jpg">
-                <h1 class="studentname">Student name</h1>
-                <h3 class="studentteaser">Sudent teaser</h3>
-            </div>
-            <div class="wildpanelbody panel paneldefault">
-                <h5>Ma derniere expérience</h5>
-                <h5>Mes compétences</h5>
-            </div>
-            <div class="wildpanelfooterinput panel paneldefault form-inline row">
-                <div class="inputwildpanelfooter input-group input-group-sm col-md-8 col-sm-10 col-xs-12">
-                    <input type="text" class="form-control" uib-typeahead="for skill in offerSkills | filter:$viewValue | limitTo:8" placeholder="Ajoutez une compétence" ng-model="skill">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default btn-side" type="button">OK</button>
+    <div class="col-xs-12 col-ms-4 col-md-4 col-lg-4">
+        <div class="row">
+            
+<!--INFO CV-->
+            <div class="col-xs12 col-sm-12 col-md-12 col-lg-12">
+                <div class="wildpanel panel paneldefault">
+                    <div class="wildpanelheader panel paneldefault">
+                    </div>
+                    <div class="wildpanelbody panel paneldefault" id="studentCVmin">
+                        <img class="imgprofilstudent" src="../img/darkvador.jpg">
+                        <h1 class="studentname">Student name</h1>
+                        <h3 class="studentteaser">Sudent teaser</h3>
+                    </div>
+                    <div class="wildpanelbody panel paneldefault">
+                        <h5>Ma derniere expérience</h5>
+                        <h5>Mes compétences</h5>
+                    </div>
+                    <div class="wildpanelfooterinput panel paneldefault form-inline row">
+                        <div class="inputwildpanelfooter input-group input-group-sm col-md-8 col-sm-10 col-xs-12">
+                            <input type="text" class="form-control" uib-typeahead="for skill in offerSkills | filter:$viewValue | limitTo:8" placeholder="Ajoutez une compétence" ng-model="skill">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default btn-side" type="button">OK</button>
+                            </div>
+                        </div>
+                        <a class="text-right">Editer mon CV</a>
                     </div>
                 </div>
-                <a class="text-right">Editer mon CV</a>
             </div>
-        </div>
-        
+
 <!--INFO STATUT-->
-        <div class="row wildpanel panel paneldefault">
-            <div class="wildpanelbody panel paneldefault">
-                <h5>Mon statut</h5>
-                <h5>Ma Mobilité</h5>
+            <div class="col-xs12 col-sm-6 col-md-12 col-lg-12">
+                <div class=" wildpanel panel paneldefault">
+                    <div class="wildpanelbody panel paneldefault">
+                        <h5>Mon statut</h5>
+                        <h5>Ma Mobilité</h5>
+                    </div>
+                    <div class="wildpanelfooter panel paneldefault">
+                        <a>Editer vos statuts</a>
+                    </div>
+                </div>
             </div>
-            <div class="wildpanelfooter panel paneldefault">
-                <a>Editer vos statuts</a>
-            </div>
-        </div>
-        
+
 <!--MAP-->
-        <div class="row wildpanel panel paneldefault">
-           <div class="wildpanelheader panel paneldefault">
-                <h4></h4>
+            <div class="col-xs12 col-sm-6 col-md-12 col-lg-12">   
+                <div class="wildpanel panel paneldefault">
+                   <div class="wildpanelheader panel paneldefault">
+                        <h4></h4>
+                    </div>
+                    <div class="wildpanelfooter panel paneldefault">
+                        <a>clic ici</a>
+                    </div> 
+                </div>
             </div>
-            <div class="wildpanelbody panel paneldefault">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rerum obcaecati vitae, voluptatum dolores dolorem quaerat commodi natus est vero voluptas culpa itaque ipsam expedita, eveniet cupiditate nihil tenetur repudiandae.</p>
-            </div>
-            <div class="wildpanelfooter panel paneldefault">
-                <a>clic ici</a>
-            </div> 
-        </div>
+        </div>   
     </div>
 
 
 <!--TOP-RIGHT COLUMN-->
-    <div class="col-md-8">  
+    <div class="col-xs-12 col-ms-8 col-md-8 col-lg-8">  
 
 <!--MATCHING OFFERS-->
         <div class="row wildpanel panel paneldefault">
             <div class="wildpanelheader panel paneldefault">
                 <h4>Annonces qui pourraient m'interresser</h4>
             </div>
-            <div class="wildpanelbody panel paneldefault">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rerum obcaecati vitae, voluptatum dolores dolorem quaerat commodi natus est vero voluptas culpa itaque ipsam expedita, eveniet cupiditate nihil tenetur repudiandae.</p>
-            </div>
+            
+    <!--OFFER-->
             <div class="wildpanelbodys panel paneldefault">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rerum obcaecati vitae, voluptatum dolores dolorem quaerat commodi natus est vero voluptas culpa itaque ipsam expedita, eveniet cupiditate nihil tenetur repudiandae.</p>
+                <div class="offerdelete">
+                    <i class="fa fa-times fa-lg" ng-click=""></i>
+                </div>
+                <ul>
+                   <li class="headeradvert"><h2 class="headeradvert titleadvert">Nom de l'offre</h2></li>
+                   <li class="headeradvert"><p class="headeradvert smalltexadvert">depuis n jours</p></li>
+                   <li class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive"></i></li>
+                   <li class="headeradvert"><i class="fa fa-share-alt fa-lg"></i></li> 
+                </ul>
+                <ul>
+                   <li class="headeradvert"><p class="headeradvert smalltexadvert">chez</p></li>
+                   <li class="headeradvert"><p class="headeradvert companytexadvert">Nom de l'entreprise</p></li>
+                </ul>
+                <ul>
+                    <li class="headeradvert"><span class="wildSkill">Compétence</span>
+                </ul>
+                <ul>
+                   <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i></li>
+                   <li class="headeradvert"><p class="headeradvert smalltexadvert1">Contrat</p></li>
+                   <li class="headeradvert"><i class="fa fa-eur fa-lg"></i></li>
+                   <li class="headeradvert"><p class="headeradvert smalltexadvert1">Salaire</p></li>
+                   <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i></li>
+                   <li class="headeradvert"><p class="headeradvert smalltexadvert1">Adresse</p></li>
+                </ul>
             </div>
             <div class="wildpanelfooter panel paneldefault">
                 <button class="btnW-sm">Voir plus d'annonces</button>
@@ -76,14 +103,38 @@
         <div class="row">
            
 <!--FAVOURITES OFFERS-->
-            <div class="col-md-6">
+            <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="wildpanel panel paneldefault">
                     <div class="wildpanelheader panel paneldefault">
                         <h4>Mes annonces favorites</h4>
                     </div>
-                    <div class="wildpanelbody panel paneldefault">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rerum obcaecati vitae, voluptatum dolores dolorem quaerat commodi natus est vero voluptas culpa itaque ipsam expedita, eveniet cupiditate nihil tenetur repudiandae.</p>
-                    </div>
+    <!--OFFER-->
+            <div class="wildpanelbodys panel paneldefault">
+                <div class="offerdelete">
+                    <i class="fa fa-times fa-lg" ng-click=""></i>
+                </div>
+                
+                <ul>
+                   <li class="headeradvert"><h2 class="headeradvert titleadvert-sm">Nom de l'offre</h2></li>
+                   <li class="headeradvert"><i class="fa fa-share-alt fa-lg"></i></li> 
+                </ul>
+                <ul>
+                   <li class="headeradvert"><p class="headeradvert smalltexadvert-sm">chez</p></li>
+                   <li class="headeradvert"><p class="headeradvert companytexadvert-sm">Nom de l'entreprise</p></li>
+                   <li class="headeradvert"><p class="headeradvert smalltexadvert-sm">Expire dans ...</p></li>
+                </ul>
+                <ul>
+                    <li class="headeradvert"><span class="wildSkill">Compétence</span>
+                </ul>
+                <ul>
+                   <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i></li>
+                   <li class="headeradvert"><p class="headeradvert smalltexadvert1-sm">Contrat</p></li>
+                   <li class="headeradvert"><i class="fa fa-eur fa-lg"></i></li>
+                   <li class="headeradvert"><p class="headeradvert smalltexadvert1-sm">Salaire</p></li>
+                   <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i></li>
+                   <li class="headeradvert"><p class="headeradvert smalltexadvert1-sm">Adresse</p></li>
+                </ul>
+            </div>
                     <div class="wildpanelfooter panel paneldefault">
                         <p class="paragraphWPF">0 annonces au total</p>
                     </div>
@@ -91,13 +142,27 @@
             </div> 
             
 <!--STUDENT'S BOOK-->
-            <div class="col-md-6">
+            <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="wildpanel panel paneldefault">
                     <div class="wildpanelheader panel paneldefault">
                         <h4>Le Book des élèves</h4>
                     </div>
-                    <div class="wildpanelbody panel paneldefault">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rerum obcaecati vitae, voluptatum dolores dolorem quaerat commodi natus est vero voluptas culpa itaque ipsam expedita, eveniet cupiditate nihil tenetur repudiandae.</p>
+                    
+                    <div class=" book-bg wildpanelbody panel paneldefault">
+                    </div>
+                    <div class="wildpanelbody panel paneldefault row">
+                            <div class="col-xs-4 col-sm-4 col-md-4 text-center">
+                                <h2 class="bookstatnumber">41</h2>
+                                <p class="bookstattitle">Wilders</p>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 text-center">
+                                <h2 class="bookstatnumber">41</h2>
+                                <p class="bookstattitle">en recherche d'emploi</p>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 text-center">
+                                <h2 class="bookstatnumber">41</h2> 
+                                <p class="bookstattitle">en recherche de stage</p>   
+                            </div>
                     </div>
                 </div>
             </div>

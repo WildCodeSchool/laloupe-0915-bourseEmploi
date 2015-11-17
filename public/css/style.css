@@ -16,6 +16,14 @@ body{
     padding-top: 20px;
 }
 
+.book-bg {
+    background-image: url('../img/book.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 175px; 
+}
+
 p {
     color: #202020;
     font-size: 16px;
@@ -43,6 +51,11 @@ a:hover {
 
 a:visited {
     color: #009587;
+}
+
+ul {
+    margin: 0 auto;
+    padding: 0;
 }
 
 .titlepost {
@@ -281,7 +294,7 @@ a:visited {
 .wildpanelbody {
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
-    border-radius: -1px;
+    border-radius: 0px;
 }
 
 .wildpanelbodys {
@@ -344,4 +357,124 @@ a:visited {
 
 #studentCVmin {
     min-height: 100px;
+}
+
+.headeradvert {
+    display: inline;
+}
+
+.smalltexadvert {
+    font-size: 16px;
+    color: #696969;
+    margin: 0 1px 0 1px;
+}
+
+.smalltexadvert1 {
+    font-size: 16px;
+    color: #696969;
+    margin: 0 10px 0 1px;
+}
+
+.smalltexadvert-sm {
+    font-size: 12px;
+    color: #696969;
+    margin: 0 1px 0 1px;
+}
+
+.smalltexadvert1-sm {
+    font-size: 12px;
+    color: #696969;
+    margin: 0 10px 0 1px;
+}
+
+.titleadvert {
+    font-size: 25px;
+    color: #202020;
+    font-family: 'Raleway', sans-serif;
+}
+
+.titleadvert-sm {
+    font-size: 18px;
+    color: #202020;
+    font-family: 'Raleway', sans-serif;
+}
+
+.heartnotactive {
+    color: #B6B6B6;
+    margin: 0 2px 0 10px;
+}
+
+.heartnotactive:hover {
+    color: #202020;
+    cursor: #202020
+}
+
+.heartactive {
+    color: #DAA520;
+    margin: 0 2px 0 10px;
+}
+
+.heartactive:hover {
+    color: #202020;
+    cursor: #202020
+}
+
+.fa-share-alt {
+    color: #B6B6B6;
+    margin: 0 2px 0 2px;
+}
+
+.fa-share-alt:hover {
+    color: #202020;
+    cursor: #202020
+}
+
+
+
+.companytexadvert {
+    color: #009587;
+    font-size: 16px;
+    margin: 0 1px 0 1px;
+}
+
+.companytexadvert-sm {
+    color: #009587;
+    font-size: 12px;
+    margin: 0 1px 0 1px;
+}
+
+.fa-file-text-o {
+    color: #B6B6B6;
+}
+
+.fa-eur {
+    color: #B6B6B6;
+}
+
+.fa-map-marker {
+    color: #B6B6B6;
+}
+
+.offerdelete {
+    float: right;
+    z-index: 1;
+}
+
+.imgbook {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.bookstatnumber {
+    font-size: 25px;
+    color: #009587;
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+}
+
+.bookstattitle {
+    font-size: 12px;
+    color: #009587;
+    margin: 0;   
 }
