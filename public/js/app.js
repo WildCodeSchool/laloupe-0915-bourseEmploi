@@ -8,7 +8,7 @@ function config($routeProvider) {
 			templateUrl: 'views/formOffer.html',
 			controller: 'formOfferController'
 		})
-        .when('/offer/:id', {
+        .when('/offer', {
             templateUrl: 'views/offer.html',
             controller: 'offerController'
         })
