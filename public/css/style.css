@@ -2,11 +2,86 @@
 body{
     padding-top: 70px;
     font-family: 'Source Sans Pro', sans-serif;
+    background-color: #F5FAF9;
+    color: #202020;
+}
+
+.bg { 
+    background: url('../img/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: black;
+    padding-top: 20px;
+}
+
+
+
+p {
+    color: #202020;
+    font-size: 16px;
 }
 
 h1 {
     font-family: 'Raleway', sans-serif;
     color:#009587;
+    font-size: 65px;
+}
+
+h5 {
+    color: #009587;
+    font-size: 13px;
+}
+
+a {
+    color: #009587;
+}
+
+a:hover {
+    color: #008080;
+    cursor: pointer;
+}
+
+a:visited {
+    color: #009587;
+}
+
+ul {
+    margin: 0 auto;
+    padding: 0;
+}
+
+.titlepost {
+    color: #696969;
+}
+
+.case1 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: white;
+    border-color: #b6b6b6;
+    margin-top: 200px;
+    position: absolute;
+    z-index: 2;
+}
+
+.fa-times {
+    color: #b6b6b6;
+}
+
+.fa-times:hover {
+    color: #202020;
+    cursor: pointer;
+}
+
+.caseAccueil {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: rgba(255, 255, 255, .6);
+    border-color: #b6b6b6;
+    margin-top: 230px;
+    padding: 10px;
 }
 
 .wild {
@@ -22,6 +97,25 @@ h1 {
     line-height: 50px;
 }
 
+.btnClassic {
+    height: 40px;
+    padding: 0px 20px 0px 20px;
+    border: 2px solid;
+    border-radius:10px;
+    border-color: #009587;
+    color: white;
+    background-color: #009587;
+}
+
+.btnClassic:hover {
+    border-color: #008080;
+    background-color: #008080;
+}
+
+.btnClassic:focus {
+    outline: none;
+}
+
 .btnW {
     height: 40px;
     padding: 0px 20px 0px 20px;
@@ -30,15 +124,78 @@ h1 {
     border-color: #009587;
     color:#009587;
     background-size: 100% 200%;
-    background-image: linear-gradient(to top, #009587 50%, white 50%);
+    background-color: transparent;
+    background-image: linear-gradient(to top, #009587 50%, transparent 50%);
     -webkit-transition: background-position 1s;
     -moz-transition: background-position 1s;
     transition: background-position 1s;
+    
 }
 
 .btnW:hover {
     background-position: 0 100% ;
-    color:white; 
+    background-color: transparent;
+    color: white;
+
+}
+
+.btnW:focus {
+    outline: none;
+}
+
+.btnW-sm {
+    height: 30px;
+    padding: 0px 20px 0px 20px;
+    border: 2px solid;
+    border-radius:10px;
+    border-color: #009587;
+    color:#009587;
+    background-size: 100% 200%;
+    background-color: transparent;
+    background-image: linear-gradient(to top, #009587 50%, transparent 50%);
+    -webkit-transition: background-position 1s;
+    -moz-transition: background-position 1s;
+    transition: background-position 1s;
+    
+}
+
+.btnW-sm:hover {
+    background-position: 0 100% ;
+    background-color: transparent;
+    color: white;
+
+}
+
+.btnW-sm:focus {
+    outline: none;
+}
+
+.btnWA {
+    height: 40px;
+    padding: 0px 20px 0px 20px;
+    border: 2px solid;
+    border-radius:10px;
+    border-color: white;
+    color:white;
+    background-size: 100% 200%;
+    background-color: transparent;
+    background-image: linear-gradient(to top, #009587 50%, transparent 50%);
+    -webkit-transition: background-position 1s;
+    -moz-transition: background-position 1s;
+    transition: background-position 1s;
+    margin-right: 15px;
+}
+
+.btnWA:hover {
+    background-position: 0 100% ;
+    background-color: transparent;
+    color: white;
+    border-color: #009587;
+
+}
+
+.btnWA:focus {
+    outline: none;
 }
 
 .btn-side {
@@ -123,6 +280,7 @@ ul {
 .spacer {
     margin-top: 30px;
 }
+
 .fa-question-circle {
     color: #B6B6B6;
 }
@@ -141,3 +299,338 @@ ul {
 .cross {
     margin-left: 8px;
 }
+
+/*WILD PANEL*/
+
+.wildpanel {
+    margin: 15px 0px 15px 0px;
+    padding: 0 auto;
+    border-color: #b6b6b6
+}
+
+.wildpanelheader {
+    margin: 0 auto;
+    background-color: #009587;
+    color: white;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-color: #B6B6B6;
+    height: 41px;
+    
+}
+
+.wildpanelnavbar {
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 0;
+    border-bottom: 2px solid;
+    border-bottom-color: #009587;
+    background-color: #F5FAF9;
+}
+
+.wildpanelmenu {
+    margin: 0 auto;
+    text-align: center;
+    border: 0;
+    background-color: #F5FAF9;
+}
+
+.wildpanelmenu:hover {
+    border-bottom: 6px solid;
+    border-color: #009587;
+}
+
+.wildpanelmenuactive {
+    border-bottom: 6px solid;
+    border-color: #009587;
+    background-color: white;
+}
+
+.wildpanelbody {
+    margin: 0 auto;
+    padding: 5px 10px 5px 10px;
+    border-radius: 0px;
+    border: 0;
+}
+
+.wildpanelbodybook-bg {
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 0px;
+}
+
+.wildpanelbodys {
+    margin: 0 auto;
+    padding: 5px 10px 5px 10px;
+    border-top-color: #B6B6B6;
+    border-radius: 0px;
+}
+
+.wildpanelheart {
+    margin: 0 auto;
+    padding: 5px 10px 5px 10px;
+    border-top-color: #B6B6B6;
+    border-radius: 0px;
+    min-height: 90px;
+}
+
+.wildpanelfooter {
+    margin: 0 auto;
+    background-color: #F5FAF9;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    padding: 5px 10px 5px 10px;
+    border-top-color: #B6B6B6;
+    text-align: center;
+}
+
+.wildpanelfooterinput {
+    margin: 0 auto;
+    background-color: #F5FAF9;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    padding: 5px 10px 5px 10px;
+    border-top-color: #B6B6B6;
+}
+
+.paragraphWPF {
+    font-size: 13px;
+    margin: 0 auto;
+    padding: 0 auto;
+    color: #696969;
+}
+
+.studentname {
+    color: #202020;
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 2px;
+}
+
+.studentname:hover {
+    cursor: pointer;
+    color: #009587;
+}
+
+.studentteaser {
+    margin-top: 2px;
+    font-size: 18px;
+    color: #696969;
+}
+
+.imgprofilstudent {
+    float: left;
+    height: 130px;
+    width: 130px;
+    border: 5px solid white;
+    border-radius: 15px;
+    margin-top: -30px;
+    margin-right: 3px;
+    margin-bottom: 10px;
+}
+
+
+#studentCVmin {
+    min-height: 100px;
+}
+
+.headeradvert {
+    display: inline;
+}
+
+.smalltexadvert {
+    font-size: 16px;
+    color: #696969;
+    margin: 0 1px 0 1px;
+}
+
+.smalltexadvert1 {
+    font-size: 16px;
+    color: #696969;
+    margin: 0 10px 0 1px;
+}
+
+.smalltexadvert-sm {
+    font-size: 12px;
+    color: #696969;
+    margin: 0 1px 0 1px;
+}
+
+.smalltexadvert1-sm {
+    font-size: 12px;
+    color: #696969;
+    margin: 0 10px 0 1px;
+}
+
+.titleadvert {
+    font-size: 25px;
+    color: #202020;
+    font-family: 'Raleway', sans-serif;
+}
+
+.titleadvert:hover {
+    cursor: pointer;
+    color : #009587;
+}
+
+
+
+.titleadvert-sm {
+    font-size: 18px;
+    color: #202020;
+    font-family: 'Raleway', sans-serif;
+}
+
+.titleadvert-sm:hover {
+    cursor: pointer;
+    color: #009587;
+}
+
+.heartnotactive {
+    color: #B6B6B6;
+    margin: 0 2px 0 10px;
+}
+
+.heartnotactive:hover {
+    color: #202020;
+    cursor: pointer;
+}
+
+.heartactive {
+    color: #DAA520;
+    margin: 0 2px 0 10px;
+}
+
+.heartactive:hover {
+    color: #202020;
+    cursor: pointer;
+}
+
+.fa-share-alt {
+    color: #B6B6B6;
+    margin: 0 2px 0 2px;
+}
+
+.fa-share-alt:hover {
+    color: #202020;
+    cursor: pointer;
+}
+
+.fa-pencil {
+    color: #B6B6B6;
+    margin: 0 2px 0 2px;
+}
+
+.fa-pencil:hover {
+    color: #202020;
+    cursor: pointer;
+}
+
+.fa-repeat {
+    color: #B6B6B6;
+    margin: 0 2px 0 2px;
+}
+
+.fa-repeat:hover {
+    color: #202020;
+    cursor: pointer;
+}
+
+.companytexadvert {
+    color: #009587;
+    font-size: 16px;
+    margin: 0 1px 0 1px;
+}
+
+.companytexadvert-sm {
+    color: #009587;
+    font-size: 12px;
+    margin: 0 1px 0 1px;
+}
+
+.fa-file-text-o {
+    color: #B6B6B6;
+}
+
+.fa-eur {
+    color: #B6B6B6;
+}
+
+.fa-map-marker {
+    color: #B6B6B6;
+}
+
+.offerdelete {
+    float: right;
+    z-index: 1;
+}
+
+.imgbook {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.bookstatnumber {
+    font-size: 25px;
+    color: #009587;
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+}
+
+.bookstatnumber:hover {
+    color: #008080;
+}
+
+.bookstattitle {
+    font-size: 12px;
+    color: #009587;
+    margin: 0;   
+}
+
+.bookstattitle:hover {
+    color: #008080;
+}
+
+.wildpanelbodyteaserrctr {
+    margin: 0 auto;
+    padding: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.wildpanelbodybuttonrctr {
+    margin: 0 auto;
+    padding: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.title-link {
+    color: white;
+    text-decoration: none;
+}
+
+.title-link:hover {
+    color: #DAA520;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.profilimg-sm {
+    height: 90px;
+    margin-top: -5px;
+    margin-left: -10px;
+    margin-right: 10px;
+    float: left;
+}
+
+.no-marge {
+    margin: 0 auto;
+    padding: 0;
+}
+

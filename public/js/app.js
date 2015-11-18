@@ -1,12 +1,5 @@
 function config($routeProvider) {
 	$routeProvider
-		.when('/', {
-			templateUrl: 'views/main.html',
-			controller: 'mainController',
-			resolve: {
-				connected: checkIsConnected
-			}
-		})
 		.when('/login', {
 			templateUrl: 'views/connect.html',
 			controller: 'connectController'
@@ -15,6 +8,14 @@ function config($routeProvider) {
 			templateUrl: 'views/formOffer.html',
 			controller: 'formOfferController'
 		})
+        .when('/homeRecruiter', {
+            templateUrl: 'views/homeRctr.html',
+            controller: 'homeRctrController'
+        })
+         .when('/homeStudent', {
+            templateUrl: 'views/homeStudent.html',
+            controller: 'homeStudentController'
+        })
         .when('/connectRecruiter', {
 			templateUrl: 'views/connectRecruiter.html',
             controller: 'connectRecruiterController'
@@ -31,7 +32,7 @@ function config($routeProvider) {
 			templateUrl: 'views/about.html'
 		})
 		.otherwise({
-			redirectTo: '/'
+			redirectTo: '/login'
 		});
 }
 
@@ -97,6 +98,8 @@ angular.module('app', ['ngRoute'])
     .controller('adminController', adminController)
     .controller('connectRecruiterController', connectRecruiterController)
     .controller('formOfferController', formOfferController)
+    .controller('homeRctrController', homeRctrController)
+    .controller('homeStudentController', homeStudentController)
     .service('connectService', connectService)
     .service('offerService', offerService)
     .service('todoService', todoService)
