@@ -49,6 +49,23 @@ h1 {
     background-color: white;
     color: #009587;
 }
+li {
+    display: inline;
+}
+ul {
+    padding: 0px;
+}
+.bg-warning {
+    height: 35px;
+    line-height: 35px;
+    border-radius: 3px;
+    color: red;
+    font-weight: bolt;
+    font-weight : 400;
+}
+.clickable {
+    cursor: pointer;
+}
 /* ----------------- *\
 	  BS CALLOUT 
 \* ----------------- */
@@ -107,5 +124,20 @@ h1 {
     margin-top: 30px;
 }
 .fa-question-circle {
-    color: #009587;
+    color: #B6B6B6;
+}
+/*      $SKILL      */
+.wildSkill {
+    height: 40px;
+    font-weight: bolt;
+    font-weight : 800;
+    padding: 5px 15px 5px 20px;
+    border: 2px solid;
+    border-radius:30px;
+    border-color: #daa520;
+    color:#daa520;
+    margin-right: 10px;
+}
+.cross {
+    margin-left: 8px;
 }

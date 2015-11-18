@@ -100,6 +100,7 @@ angular.module('app', ['ngRoute'])
     .service('connectService', connectService)
     .service('offerService', offerService)
     .service('todoService', todoService)
+    .service('skillService', skillService)
     /*.factory('', )*/
     .run(run);
 
