@@ -87,8 +87,8 @@
  
         <div class="col-sm-offset-1 col-sm-10">
             <div class="form-group">
-                <ul ng-show="showSkill">
-                  <li ng-repeat="popo in listSkills"><span class="wildSkill clickable">{{ popo }}<i class="fa fa-times cross" ng-click="deleteSkill($index)"></i></span></li>
+                <ul class="skill-ul" ng-show="showSkill">
+                  <li class="skill-li" ng-repeat="popo in listSkills"><span class="wildSkill clickable">{{ popo }}<i class="fa fa-times cross" ng-click="deleteSkill($index)"></i></span></li>
                 </ul>
             </div>
         </div>

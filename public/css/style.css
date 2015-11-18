@@ -207,7 +207,7 @@ ul {
     color: #009587;
 }
 li {
-    display: inline;
+    display: inline-block;
 }
 ul {
     padding: 0px;
@@ -286,16 +286,27 @@ ul {
 }
 /*      $SKILL      */
 .wildSkill {
-    height: 40px;
-    font-weight: bolt;
+    height: 30px;
+    text-transform: uppercase;
+    font-size: 12px;
     font-weight : 800;
-    padding: 5px 15px 5px 20px;
+    padding: 2px 10px 2px 10px;
     border: 2px solid;
-    border-radius:30px;
+    border-radius:10px;
     border-color: #daa520;
     color:#daa520;
-    margin-right: 10px;
+    margin: 0 10px 0 0;
 }
+
+.skill-ul {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.skill-li {
+    margin-bottom: 10px;
+}
+
 .cross {
     margin-left: 8px;
 }
