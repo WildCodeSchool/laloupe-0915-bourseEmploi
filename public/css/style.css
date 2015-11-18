@@ -16,13 +16,7 @@ body{
     padding-top: 20px;
 }
 
-.book-bg {
-    background-image: url('../img/book.jpg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    height: 175px; 
-}
+
 
 p {
     color: #202020;
@@ -291,9 +285,43 @@ ul {
     
 }
 
+.wildpanelnavbar {
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 0;
+    border-bottom: 2px solid;
+    border-bottom-color: #009587;
+    background-color: #F5FAF9;
+}
+
+.wildpanelmenu {
+    margin: 0 auto;
+    text-align: center;
+    border: 0;
+    background-color: #F5FAF9;
+}
+
+.wildpanelmenu:hover {
+    border-bottom: 6px solid;
+    border-color: #009587;
+}
+
+.wildpanelmenuactive {
+    border-bottom: 6px solid;
+    border-color: #009587;
+    background-color: white;
+}
+
 .wildpanelbody {
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
+    border-radius: 0px;
+    border: 0;
+}
+
+.wildpanelbodybook-bg {
+    margin: 0 auto;
+    padding: 0;
     border-radius: 0px;
 }
 
@@ -302,6 +330,14 @@ ul {
     padding: 5px 10px 5px 10px;
     border-top-color: #B6B6B6;
     border-radius: 0px;
+}
+
+.wildpanelheart {
+    margin: 0 auto;
+    padding: 5px 10px 5px 10px;
+    border-top-color: #B6B6B6;
+    border-radius: 0px;
+    min-height: 90px;
 }
 
 .wildpanelfooter {
@@ -335,6 +371,11 @@ ul {
     font-size: 25px;
     margin-top: 10px;
     margin-bottom: 2px;
+}
+
+.studentname:hover {
+    cursor: pointer;
+    color: #009587;
 }
 
 .studentteaser {
@@ -393,10 +434,22 @@ ul {
     font-family: 'Raleway', sans-serif;
 }
 
+.titleadvert:hover {
+    cursor: pointer;
+    color : #009587;
+}
+
+
+
 .titleadvert-sm {
     font-size: 18px;
     color: #202020;
     font-family: 'Raleway', sans-serif;
+}
+
+.titleadvert-sm:hover {
+    cursor: pointer;
+    color: #009587;
 }
 
 .heartnotactive {
@@ -406,7 +459,7 @@ ul {
 
 .heartnotactive:hover {
     color: #202020;
-    cursor: #202020
+    cursor: pointer;
 }
 
 .heartactive {
@@ -416,7 +469,7 @@ ul {
 
 .heartactive:hover {
     color: #202020;
-    cursor: #202020
+    cursor: pointer;
 }
 
 .fa-share-alt {
@@ -426,10 +479,28 @@ ul {
 
 .fa-share-alt:hover {
     color: #202020;
-    cursor: #202020
+    cursor: pointer;
 }
 
+.fa-pencil {
+    color: #B6B6B6;
+    margin: 0 2px 0 2px;
+}
 
+.fa-pencil:hover {
+    color: #202020;
+    cursor: pointer;
+}
+
+.fa-repeat {
+    color: #B6B6B6;
+    margin: 0 2px 0 2px;
+}
+
+.fa-repeat:hover {
+    color: #202020;
+    cursor: pointer;
+}
 
 .companytexadvert {
     color: #009587;
@@ -473,17 +544,56 @@ ul {
     margin: 0;
 }
 
+.bookstatnumber:hover {
+    color: #008080;
+}
+
 .bookstattitle {
     font-size: 12px;
     color: #009587;
     margin: 0;   
 }
 
+.bookstattitle:hover {
+    color: #008080;
+}
+
 .wildpanelbodyteaserrctr {
     margin: 0 auto;
+    padding: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }
 
 .wildpanelbodybuttonrctr {
-    padding-top: 30px;
+    margin: 0 auto;
+    padding: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }
 
+.title-link {
+    color: white;
+    text-decoration: none;
+}
+
+.title-link:hover {
+    color: #DAA520;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.profilimg-sm {
+    height: 90px;
+    margin-top: -5px;
+    margin-left: -10px;
+    margin-right: 10px;
+    float: left;
+}
+
+.no-marge {
+    margin: 0 auto;
+    padding: 0;
+}
