@@ -597,3 +597,38 @@ ul {
     margin: 0 auto;
     padding: 0;
 }
+
+.img-company {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.company-name {
+    text-transform: capitalize;
+    color: #009587;
+    font-size: 20px;
+}
+
+.contact-link {
+    color: #009587;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.contact-link:hover {
+    color: #202020;
+    cursor: pointer;
+} 
+
+.fa-briefcase {
+    color: #B6B6B6;
+}
+
+.fa-paper-plane-o {
+    color: #009587;
+}
+
+.fa-phone {
+    color: #009587;
+}

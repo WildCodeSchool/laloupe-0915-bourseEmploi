@@ -8,6 +8,10 @@ function config($routeProvider) {
 			templateUrl: 'views/formOffer.html',
 			controller: 'formOfferController'
 		})
+        .when('/offer/:id', {
+            templateUrl: 'views/offer.html',
+            controller: 'offerController'
+        })
         .when('/homeRecruiter', {
             templateUrl: 'views/homeRctr.html',
             controller: 'homeRctrController'
@@ -100,6 +104,7 @@ angular.module('app', ['ngRoute'])
     .controller('formOfferController', formOfferController)
     .controller('homeRctrController', homeRctrController)
     .controller('homeStudentController', homeStudentController)
+    .controller('offerController', offerController)
     .service('connectService', connectService)
     .service('todoService', todoService)
     /*.factory('', )*/
