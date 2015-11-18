@@ -101,7 +101,9 @@ angular.module('app', ['ngRoute'])
     .controller('homeRctrController', homeRctrController)
     .controller('homeStudentController', homeStudentController)
     .service('connectService', connectService)
+    .service('offerService', offerService)
     .service('todoService', todoService)
+    .service('skillService', skillService)
     /*.factory('', )*/
     .run(run);
 
