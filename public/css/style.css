@@ -55,13 +55,13 @@ li {
 ul {
     padding: 0px;
 }
-.bg-warning {
-    height: 35px;
-    line-height: 35px;
+.wildWarning {
+    height: 70px;
+    line-height: 70px;
     border-radius: 3px;
     color: red;
-    font-weight: bolt;
-    font-weight : 400;
+    font-weight : 600;
+    padding: 12px 0px 12px 0px;
 }
 .clickable {
     cursor: pointer;

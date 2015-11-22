@@ -68,10 +68,10 @@
             <div class="col-sm-offset-1 col-sm-4">
                 <label class="control-label">Compétences recherchées :</label>
                 <a tabindex="0"  role="button" data-toggle="popover" data-trigger="focus" data-content="Ajoutez des compétences les unes à la suite des autres grâce au moteur de recherche."><i class="fa fa-question-circle"></i></a>	
-                <div class="input-group typeahead-demo">
-                  <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage, de compétence" class="form-control" list="Languages"/>
+                <div class="input-group">
+                  <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage, de compétence" class="form-control" list="Languages" uppercase/>
                         <datalist id="Languages">  
-                            <option ng-repeat="offerSkill in offerSkills" value={{offerSkill}}>   
+                            <option ng-repeat="offerSkill in offerSkills" value="{{offerSkill}}">   
                         </datalist>  
                    <span class="input-group-btn">
                     <button class="btn btn-default btn-side" ng-click="add()" type="button">OK</button>
@@ -80,7 +80,8 @@
             </div>
             <div class="col-sm-5">
                <div>
-                <label class="bg-warning text-center control-label" ng-show="error">{{ error }}</label>
+                <label class="wildWarning control-label" ng-show="errorChoice">Vous avez déjà choisi cette compétence !</label>
+                             <label class="wildWarning control-label" ng-show="errorTaping">Cette compétence n'éxiste pas !</label>
                 </div>
             </div>  
         </div>
@@ -88,7 +89,7 @@
         <div class="col-sm-offset-1 col-sm-10">
             <div class="form-group">
                 <ul ng-show="showSkill">
-                  <li ng-repeat="popo in listSkills"><span class="wildSkill clickable">{{ popo }}<i class="fa fa-times cross" ng-click="deleteSkill($index)"></i></span></li>
+                  <li ng-repeat="skilled in listSkills"><span class="wildSkill clickable">{{ skilled }}<i class="fa fa-times cross" ng-click="deleteSkill()"></i></span></li>
                 </ul>
             </div>
         </div>
@@ -112,7 +113,7 @@
                 
         <div class="form-group spacer">
             <div class="col-sm-offset-1 col-sm-10">
-                <label>( Optionnel )&nbsp;Pourquoi choisir "NotrE EntrEprisE" ? :</label>
+                <label>( Optionnel )&nbsp;Pourquoi choisir {{ compagny }} ? :</label>
                 <a tabindex="0"  role="button" data-toggle="popover" data-trigger="focus" data-content="Donnez envie à votre futur candidat de travailler chez vous !"><i class="fa fa-question-circle"></i></a>	            
                 <textarea class="form-control" rows="3" ng-model="offerWhy"></textarea>
             </div>
