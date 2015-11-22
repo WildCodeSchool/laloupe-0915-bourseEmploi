@@ -448,7 +448,7 @@ ul {
 }
 
 .headeradvert {
-    display: inline;
+    display: inline-block;
 }
 
 .smalltexadvert {
@@ -479,6 +479,7 @@ ul {
     font-size: 25px;
     color: #202020;
     font-family: 'Raleway', sans-serif;
+    margin: 2px 0 2px 0;
 }
 
 .titleadvert:hover {
@@ -492,6 +493,7 @@ ul {
     font-size: 18px;
     color: #202020;
     font-family: 'Raleway', sans-serif;
+    margin-top: 5px;
 }
 
 .titleadvert-sm:hover {
@@ -645,3 +647,45 @@ ul {
     padding: 0;
 }
 
+.img-company {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+}
+
+.company-name {
+    text-transform: capitalize;
+    color: #009587;
+    font-size: 20px;
+}
+
+.contact-link {
+    color: #009587;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.contact-link:hover {
+    color: #202020;
+    cursor: pointer;
+} 
+
+.fa-briefcase {
+    color: #B6B6B6;
+}
+
+.fa-paper-plane-o {
+    color: #009587;
+}
+
+.fa-phone {
+    color: #009587;
+}
+
+.green-map-marker {
+    color: #009587;
+}
+
+i {
+    margin-right: 3px;
+}
