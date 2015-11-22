@@ -64,8 +64,8 @@ var Offer = {
   			start_date: req.body.start,
   			end_date: req.body.end,
   			website: req.body.website
-		}, function(err, user) {
-			res.json(user);
+		}, function(err) {
+			res.json();
 	    });
 	},
 
