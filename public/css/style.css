@@ -401,7 +401,7 @@ ul {
 }
 
 .headeradvert {
-    display: inline;
+    display: inline-block;
 }
 
 .smalltexadvert {
@@ -432,6 +432,7 @@ ul {
     font-size: 25px;
     color: #202020;
     font-family: 'Raleway', sans-serif;
+    margin: 2px 0 2px 0;
 }
 
 .titleadvert:hover {
@@ -445,6 +446,7 @@ ul {
     font-size: 18px;
     color: #202020;
     font-family: 'Raleway', sans-serif;
+    margin-top: 5px;
 }
 
 .titleadvert-sm:hover {
@@ -633,3 +635,10 @@ ul {
     color: #009587;
 }
 
+.green-map-marker {
+    color: #009587;
+}
+
+i {
+    margin-right: 3px;
+}
