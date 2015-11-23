@@ -71,7 +71,7 @@
                 <div class="input-group">
                   <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage, de compétence" class="form-control" list="Languages" uppercase/>
                         <datalist id="Languages">  
-                            <option ng-repeat="offerSkill in offerSkills" value="{{offerSkill}}">   
+                            <option ng-repeat="offerSkill in offerSkills" value="{{offerSkill.title}}">   
                         </datalist>  
                    <span class="input-group-btn">
                     <button class="btn btn-default btn-side" ng-click="add()" type="button">OK</button>

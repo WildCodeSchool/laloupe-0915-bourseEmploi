@@ -6,8 +6,10 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
     
     $scope.referent = true;
     
-    $scope.offerSkills  = ["JAVASCRIPT", "PHP", "RUBY", "JQUERY", "JAVA"];
-    
+    $scope.offerSkills  = [{"id":1, "title":"JAVASCRIPT"}, {"id":2, "title":"RUBY"}, {"id":3, "title":"PHP"}];
+    console.log();
+    console.log();
+
     //Init de la fonctionnalitée: ajout des Tags compétences
     $scope.showSkill = false;
     var dataSkill = [];
@@ -15,11 +17,14 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
     
     //Vérification et ajout de la valeur de l'input
     function updateSkill(array, up) {
-        if ($scope.offerSkills.indexOf(up) === -1){
-            console.log(up);
-            $scope.errorTaping = true;
-            return false;
-        } else if (dataSkill.indexOf(up) === -1) {
+    $scope.errorTyping = true;
+    $scope.offerSkills.forEach(function(skill){
+        console.log(skill.title);
+        if (up == skill.title){
+            $scope.errorTyping = false;
+        } 
+    });
+         if (!$scope.errorTyping && dataSkill.indexOf(up) === -1) {
             dataSkill.push(up);
             console.log('Le nouveau tableau est : ' + dataSkill);
         } else if (dataSkill.indexOf(up) > -1) {
@@ -30,7 +35,7 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
     //Lancement fonction de vérif au clic
     $scope.add = function(){
         $scope.errorChoice = false;
-        $scope.errorTaping = false;
+        $scope.errorTyping = false;
         var up = $scope.chooseSkill.toUpperCase();
         updateSkill(dataSkill, up);
     //Affichage du skill et champ vide
