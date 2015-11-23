@@ -6,20 +6,20 @@
 <div class="">
 
 	<form class="form-horizontal">
-       
-        <!--<div class="form-group">
+      
+        <div class="form-group">
             <div class="col-sm-offset-1 col-sm-4">
-              <label class="control-label">Ajouter un logo :</label>
-               <input type="file" nv-file-select uploader="uploader" ng-model="" onchange="angular.element(this).scope().previewFile(this)">
+            <label class="control-label">Ajouter un logo :</label>
+                <input type="file" nv-file-select uploader="uploader" ng-model="logo" onchange="angular.element(this).scope().previewFile(this)">
                    <ul>
-                       <li ng-repeat="">
-                           name : <span ng-bind=""></span><br/>
-                           <button ng-click="">upload</button>
+                       <li ng-repeat="item in uploader.queue">
+                           name : <span ng-bind="item.file.name"></span><br/>
+                           <button ng-click="item.upload()">upload</button>
                        </li>
                    </ul>
-               <img id="preview" height="200" alt="Image preview...">
+                <img id="preview" height="200" width="200" alt="Image preview...">
             </div>
-        </div>-->
+        </div>
         
 		<div class="form-group">
             <div class="col-sm-offset-1 col-sm-4">
@@ -31,10 +31,11 @@
                <label class="control-label">Taille de l'entreprise :</label>
                 <select class="form-control" ng-model="companySize">
                  <option value="" disabled>En nombre de salariés</option>
-                  <option type="text" class="form-control"></option>
-                  <option type="text" class="form-control"></option>
-                  <option type="text" class="form-control"></option>
-                  <option type="text" class="form-control"></option>
+                  <option type="text" class="form-control">de 1 a 9 salariés</option>
+                  <option type="text" class="form-control">de 10 a 49 salariés</option>
+                  <option type="text" class="form-control">de 50 a 499 salariés</option>
+                  <option type="text" class="form-control">de 500 a 999 salariés</option>
+                  <option type="text" class="form-control">plus de 1000 salariés</option>
                 </select>
             </div>
 		</div>
