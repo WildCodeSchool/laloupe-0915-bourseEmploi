@@ -1,109 +1,105 @@
 var mongoose = require('mongoose');
 
 var recruiterSchema = new mongoose.Schema({
-  companyName: String, 
-  companySize: String,
-  businessSector: String,
-  companyDescription: String,
-  functionReferent: String,
-  country: String,
-  region: String,
-  city: String,
-  adress: String,
-  website: String,
-  facebook: String,
-  twitter: String,
-  instagram: String,
-  linkedin: String,
-  email: String,
-  phoneNumber: Number
+  
+    name_company: String,
+    size_company: Number,
+    logo: String,
+    business_sector: String,
+    description: String,
+    function_post: String,
+    country: String,
+    region: String,
+    city: String, 
+    address: String,
+    email: String,
+    tel: Number,
+    website: String,
+    twitter: String,
+    facebook: String,
+    linkedin: String,
+    instagram: String,
+    tilder: String
 });
 
 var Recruiter = {
-    model: mongoose.model('Recruiter', recruiterSchema),
-    
-        find: function(name, password, callback) {
-            Recruiter.model.findOne({
-              companyName: companyName, 
-              companySize: companySize,
-              businessSector: businessSector,
-              companyDescription: companyDescription,
-              functionReferent: functionReferent,
-              country: country,
-              region: region,
-              city: city,
-              adress: adress,
-              website: website,
-              facebook: facebook,
-              twitter: twitter,
-              instagram: instagram,
-              linkedin: linkedin,
-              email: email,
-              phoneNumber: phoneNumber
-                }, callback);
-	},
-    
+   model: mongoose.model('Recruiter', recruiterSchema),
+   
+     find: function(req, res) {
+        Offer.model.findOne({
+          _id: req.body.id
+        }, function(err, recruiter){
+      res.json(recruiter);
+    });
+},
+   
    findAll: function(req, res) {
-		Reruiter.model.find({}, function (err, users) {
-			res.json(users);
-		});
-	},
-    
+        Recruiter.model.find({}, function (err, recruiters) {
+            res.json(recruiters);
+        });
+    },
+
     findById: function(req, res) {
-		Recruiter.model.findById(req.headers.id, function (err, user) {
-			 res.json(user);
-		});
-	},
-    
+        Recruiter.model.findById(req.headers.id, function (err, recruiter) {
+             res.json(recruiter);
+        });
+    },
+
     create: function(req, res) {
-        Offer.model.create({
-              companySize: req.body.companySize,
-              businessSector: req.body.businessSector,
-              companyDescription: req.body.companyDescription,
-              functionReferent: req.body.functionReferent,
-              country: req.body.country,
-              region: req.body.region,
-              city: req.body.city,
-              adress: req.body.adress,
-              website: req.body.website,
-              facebook: req.body.facebook,
-              twitter: req.body.twitter,
-              instagram: req.body.instagram,
-              linkedin: req.body.linkedin,
-              email: req.body.email,
-              phoneNumber: req.body.phoneNumber
-                }, function(err, user) {
-			res.json(user);
-	    });
-	},
-    
+        Recruiter.model.create({
+            name_company: String,
+            size_company: Number,
+            logo: String,
+            business_sector: String,
+            description: String,
+            function_post: String,
+            country: String,
+            region: String,
+            city: String, 
+            address: String,
+            email: String,
+            tel: Number,
+            website: String,
+            twitter: String,
+            facebook: String,
+            linkedin: String,
+            instagram: String
+        }, function(err, user) {
+            res.json(user);
+        });
+    },
+
     update: function(req, res) {
-		Recruiter.model.findByIdAndUpdate(req.params.id, {
-            companySize: req.body.companySize,
-              businessSector: req.body.businessSector,
-              companyDescription: req.body.companyDescription,
-              functionReferent: req.body.functionReferent,
-              country: req.body.country,
-              region: req.body.region,
-              city: req.body.city,
-              adress: req.body.adress,
-              website: req.body.website,
-              facebook: req.body.facebook,
-              twitter: req.body.twitter,
-              instagram: req.body.instagram,
-              linkedin: req.body.linkedin,
-              email: req.body.email,
-              phoneNumber: req.body.phoneNumber
-                }, function(err, user) {
-			res.json(user);
-	    });
-	},
-    
+        Recruiter.model.findByIdAndUpdate(req.params.id, {
+            name_company: String,
+            size_company: Number,
+            logo: String,
+            business_sector: String,
+            description: String,
+            function_post: String,
+            country: String,
+            region: String,
+            city: String, 
+            address: String,
+            email: String,
+            tel: Number,
+            website: String,
+            twitter: String,
+            facebook: String,
+            linkedin: String,
+            instagram: String
+        }, function(err, recruiter) {
+            res.json(recruiter);
+        });
+    },
+
     delete: function(req, res){
-		Recruiter.model.findByIdAndRemove(req.params.id, function(){
-			res.sendStatus(200);
-		})
-	}
+        Recruiter.model.findByIdAndRemove(req.params.id, function(){
+            res.sendStatus(200);
+        })
+    }
 }
 
+
 module.exports = Recruiter;
+

@@ -9,20 +9,21 @@ var userSchema = new mongoose.Schema({
  wild_side: String,
  training: String,
  previous_work: String,
- skill: String, 
  email: String,
- tel: Number
+ tel: Number,
+ password: String
 });
 
 var User = {
    model: mongoose.model('User', userSchema),
    
-   find: function(name, password, callback) {
-       User.model.findOne({
-           name: name,
-           password: password
-        }, callback);
-    },
+  find: function(req, res) {
+        Offer.model.findOne({
+          _id: req.body.id
+        }, function(err, user){
+      res.json(user);
+    });
+},
    
    findAll: function(req, res) {
         User.model.find({}, function (err, users) {
@@ -39,8 +40,16 @@ var User = {
     create: function(req, res) {
         User.model.create({
             name: req.body.name,
-            password: req.body.password,
-            admin: req.body.admin
+            first_name: req.body.first_name,
+            photo: req.body.photo,
+            age: req.body.age,
+            description: req.body.description,
+            wild_side: req.body.wild_side,
+            training: req.body.training,
+            previous_work: req.body.previous_work,
+            email: req.body.email,
+            tel: req.body.tel,
+            password: req.body.password
         }, function(err, user) {
             res.json(user);
         });
@@ -49,8 +58,16 @@ var User = {
     update: function(req, res) {
         User.model.findByIdAndUpdate(req.params.id, {
             name: req.body.name,
-            password: req.body.password,
-            admin: req.body.admin
+            first_name: req.body.first_name,
+            photo: req.body.photo,
+            age: req.body.age,
+            description: req.body.description,
+            wild_side: req.body.wild_side,
+            training: req.body.training,
+            previous_work: req.body.previous_work,
+            email: req.body.email,
+            tel: req.body.tel,
+            password: req.body.password
         }, function(err, user) {
             res.json(user);
         });

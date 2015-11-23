@@ -2,90 +2,72 @@ var mongoose = require('mongoose');
 
 var offerSchema = new mongoose.Schema({
   title: String, 
-  address: String,
-  city: String,
-  logo: String,
+  email: String,
   name_referent: { type: String, required: true, unique: true },
-  contact_referent: Number,
+  tel: Number,
   description: String,
   type_of_contract: String,
   salary: Number,
-  skill: String,
-  start_date: Date,
-  end_date: Date,
-  website: String
+  experience: String,
+  responsability: String,
+  why_choose_our_company: String
 });
 
 var Offer = {
     model: mongoose.model('Offer', offerSchema),
     
-    find: function(name, password, callback) {
+    find: function(req, res) {
         Offer.model.findOne({
-          title: title, 
-          address: address,
-          city: city,
-          logo: logo,
-          name_referent: name,
-          contact_referent: contact,
-          description: description,
-          type_of_contract: contract,
-          salary: salary,
-          skill: skill,
-          start_date: start,
-          end_date: end,
-          website: website
-		}, callback);
+          _id: req.body.id
+		}, function(err, offer){
+      res.json(offer);
+    });
 	},
     
     findAll: function(req, res) {
-		Offer.model.find({}, function (err, users) {
-			res.json(users);
+		Offer.model.find({}, function (err, offers) {
+			res.json(offers);
 		});
 	},
 
 	findById: function(req, res) {
-		Offer.model.findById(req.headers.id, function (err, user) {
-			 res.json(user);
+		Offer.model.findById(req.headers.id, function (err, offer) {
+			 res.json(offer);
 		});
 	},
 
 	create: function(req, res) {
 		Offer.model.create({
-			title: req.body.title,
-  			address: req.body.address,
-  			city: req.body.city,
-  			logo: req.body.logo,
-  			name_referent: req.body.name,
-  			contact_referent: req.body.contact,
-  			description: req.body.description,
-  			type_of_contract: req.body.contract,
-  			salary: req.body.salary,
-  			skill: req.body.skill,
-  			start_date: req.body.start,
-  			end_date: req.body.end,
-  			website: req.body.website
-		}, function(err) {
-			res.json();
+		  title: req.body.title, 
+      email: req.body.email,
+      name_referent: req.body.name,
+      tel: req.body.tel,
+      description: req.body.description,
+      type_of_contract: req.body.type,
+      salary: req.body.salary,
+      experience: req.body.experience,
+      responsability: req.body.responsability,
+      why_choose_our_company: req.body.why
+		}, function(err, offer) {
+			res.json(offer);
+
 	    });
 	},
 
 	update: function(req, res) {
 		Offer.model.findByIdAndUpdate(req.params.id, {
-			title: req.body.title,
-  			address: req.body.address,
-  			city: req.body.city,
-  			logo: req.body.logo,
-  			name_referent: req.body.name,
-  			contact_referent: req.body.contact,
-  			description: req.body.description,
-  			type_of_contract: req.body.contract,
-  			salary: req.body.salary,
-  			skill: req.body.skill,
-  			start_date: req.body.start,
-  			end_date: req.body.end,
-  			website: req.body.website
-		}, function(err, user) {
-			res.json(user);
+		  title: req.body.title, 
+      email: req.body.email,
+      name_referent: req.body.name,
+      tel: req.body.tel,
+      description: req.body.description,
+      type_of_contract: req.body.type,
+      salary: req.body.salary,
+      experience: req.body.experience,
+      responsability: req.body.responsability,
+      why_choose_our_company: req.body.why
+		}, function(err, offer) {
+			res.json(offer);
 	    });
 	},
 

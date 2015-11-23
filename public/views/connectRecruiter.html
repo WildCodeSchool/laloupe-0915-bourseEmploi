@@ -1,6 +1,8 @@
+
 <br>
 <h2>Inscription</h2>
 <br>
+
 
 
 <div class="">
@@ -31,6 +33,17 @@
                <label class="control-label">Taille de l'entreprise :</label>
                 <select class="form-control" ng-model="companySize">
                  <option value="" disabled>En nombre de salariés</option>
+        
+		
+		<div class="form-group">
+            <div class="col-sm-offset-1 col-sm-4">
+               <label class="control-label">Nom de l'entreprise :</label>
+		      <input type="text" class="form-control" id="" placeholder="">
+		  </div>
+        
+		    <div class="col-sm-offset-1 col-sm-4">
+               <label class="control-label">Taille de l'entreprise :</label>
+                <select class="form-control">
                   <option type="text" class="form-control"></option>
                   <option type="text" class="form-control"></option>
                   <option type="text" class="form-control"></option>
@@ -40,6 +53,7 @@
 		</div>
 		
 		<div class="form-group">
+
             <div class="col-sm-offset-1 col-sm-4">
                    <label class="control-label">Secteur d'activité :</label>
                     <select class="form-control" ng-model="businessSector">
@@ -63,12 +77,17 @@
                       <option type="text" class="form-control">Transports / Logistique</option>
                     </select>
             </div>
+		    <div class="col-sm-offset-1 col-sm-4">
+               <label class="control-label">Secteur d'activité :</label>
+		    <input type="text" class="form-control" id="" placeholder="">
+		  </div>
         </div>
 		
 		<div class="form-group">
             <div class="col-sm-offset-1 col-sm-9">
                 <label>Description entreprise :</label>            
                 <textarea class="form-control" rows="3" placeholder="décrivez votre entreprise en quelques lignes" ng-model="companyDescription"></textarea>
+                <textarea class="form-control" rows="3"></textarea>
             </div>
         </div>
 		
@@ -91,6 +110,28 @@
            <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Région :</label>
                  <input type="text" class="form-control" placeholder="" ng-model="region">
+		    <input type="text" class="form-control" id="" placeholder="">
+		  </div>
+        </div>
+        
+        <div class="form-group">
+           <div class="col-sm-offset-1 col-sm-4">
+               <label class="control-label">Pays :</label>
+               <div class="input-group">
+                 <input type="text" class="form-control" placeholder="" ng-model="offerSkill">
+                 <span class="input-group-btn">
+                   <button class="btn btn-default btn-side" type="button">OK</button>
+                 </span>
+               </div>
+           </div>
+           <div class="col-sm-offset-1 col-sm-4">
+               <label class="control-label">Région :</label>
+               <div class="input-group">
+                 <input type="text" class="form-control" placeholder="" ng-model="offerSkill">
+                 <span class="input-group-btn">
+                   <button class="btn btn-default btn-side" type="button">OK</button>
+                 </span>
+               </div>
            </div>        
        </div>
         
@@ -103,6 +144,21 @@
            <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Adresse :</label>
                  <input type="text" class="form-control" placeholder="" ng-model="adress">
+               <div class="input-group">
+                 <input type="text" class="form-control" placeholder="" ng-model="offerSkill">
+                 <span class="input-group-btn">
+                   <button class="btn btn-default btn-side" type="button">OK</button>
+                 </span>
+               </div>
+           </div>
+           <div class="col-sm-offset-1 col-sm-4">
+               <label class="control-label">Adresse :</label>
+               <div class="input-group">
+                 <input type="text" class="form-control" placeholder="" ng-model="offerSkill">
+                 <span class="input-group-btn">
+                   <button class="btn btn-default btn-side" type="button">OK</button>
+                 </span>
+               </div>
            </div>        
        </div>
        
@@ -110,6 +166,21 @@
            <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Site internet :</label>
                  <input type="text" class="form-control" placeholder="Site internet de l'entreprise" ng-model="website">
+               <div class="input-group">
+                 <input type="text" class="form-control" placeholder="" ng-model="offerSkill">
+                 <span class="input-group-btn">
+                   <button class="btn btn-default btn-side" type="button">OK</button>
+                 </span>
+               </div>
+           </div>
+           <div class="col-sm-offset-1 col-sm-4">
+               <label class="control-label">Réseaux sociaux :</label>
+               <div class="input-group">
+                 <input type="text" class="form-control" placeholder="" ng-model="offerSkill">
+                 <span class="input-group-btn">
+                   <button class="btn btn-default btn-side" type="button">OK</button>
+                 </span>
+               </div>
            </div>        
        </div>     
 		
@@ -153,6 +224,18 @@
     <div class="form-group">
         <div class="col-sm-offset-5">
             <br><button type="submit" class="btnW" ng-click="send()"><strong>Valider l'inscription</strong></button>
+		    <input type="text" class="form-control" id="" placeholder="">
+		  </div>
+		  <div class="col-sm-offset-1 col-sm-4">
+               <label class="control-label">Téléphone :</label>
+		    <input type="text" class="form-control" id="" placeholder="">
+		  </div>
+		</div>
+    </form>
+    
+    <div class="form-group">
+        <div class="col-sm-offset-4">
+            <button type="submit" class="btnW"><strong>Valider l'inscription</strong></button>
         </div>
     </div>
     

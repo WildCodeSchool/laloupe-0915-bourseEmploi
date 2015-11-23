@@ -8,6 +8,7 @@ function config($routeProvider) {
 			templateUrl: 'views/formOffer.html',
 			controller: 'formOfferController'
 		})
+
         .when('/offer', {
             templateUrl: 'views/offer.html',
             controller: 'offerController'
@@ -20,6 +21,7 @@ function config($routeProvider) {
             templateUrl: 'views/homeStudent.html',
             controller: 'homeStudentController'
         })
+
         .when('/connectRecruiter', {
 			templateUrl: 'views/connectRecruiter.html',
             controller: 'connectRecruiterController'
