@@ -9,6 +9,8 @@ module.exports 	= function(app, passport) {
 
 	app.get('/offers', Auth.user.hasAuthorization, Offer.findAll);
 
+	app.get('/offers/:id', Auth.user.isAdministrator, Offer.findById);
+
 	app.post('/offers', Auth.user.hasAuthorization, Offer.create);
 
 	app.put('/offers/:id', Auth.user.hasAuthorization, Offer.update);
