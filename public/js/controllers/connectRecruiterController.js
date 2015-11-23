@@ -1,6 +1,8 @@
 
 function connectRecruiterController($scope, connectRecruiterService){
     
+    $scope.logo = {};
+    
     $scope.send = function(){
 		var data = {};
         data.companyName = $scope.companyName;
@@ -29,9 +31,23 @@ function connectRecruiterController($scope, connectRecruiterService){
     }
 
 
-}
+$scope.previewFile = function() {
+     var preview    = document.querySelector('#preview');
+     var file    = document.querySelector('input[type=file]').files[0];
+     $scope.logo = file;
+     var reader  = new FileReader();
+     reader.onloadend = function () {
+       preview.src = reader.result;
+       $scope.logo = reader.result; } 
+      if (file) {
+       reader.readAsDataURL(file);
+    } else {
+       preview.src = "";
+    }
+  }
 
-function initialize() {
+}
+/*function initialize() {
         var mapOptions = {
           center: new google.maps.LatLng(-33.8688, 151.2195),
           zoom: 13,
@@ -75,4 +91,4 @@ function initialize() {
           marker.setPosition(place.geometry.location);
         });
       }
-      google.maps.event.addDomListener(window, 'load', initialize)
+      google.maps.event.addDomListener(window, 'load', initialize)*/
