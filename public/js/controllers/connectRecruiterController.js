@@ -5,20 +5,22 @@ function connectRecruiterController($scope, connectRecruiterService){
 		var data = {};
         data.companyName = $scope.companyName;
         data.companySize = $scope.companySize;
+        data.logo = $scope.logo;
         data.businessSector = $scope.businessSector;
         data.companyDescription = $scope.companyDescription;
         data.functionReferent = $scope.functionReferent;
         data.country = $scope.country;
         data.region = $scope.region;
         data.city = $scope.city;
-        data.adress = $scope.adress;
+        data.address = $scope.address;
         data.website = $scope.website;
         data.facebook = $scope.facebook;
         data.twitter = $scope.twitter;
         data.instagram = $scope.instagram;
         data.linkedin = $scope.linkedin;
+        data.tilder = $scope.tilder;
         data.email = $scope.email;
-        data.phoneNumber = $scope.phoneNumber;
+        data.tel = $scope.tel;
         
         connectRecruiterService.create(data).then(function(res){
             
