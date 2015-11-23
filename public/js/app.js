@@ -109,6 +109,7 @@ angular.module('app', ['ngRoute'])
     .service('offerService', offerService)
     .service('todoService', todoService)
     .service('skillService', skillService)
+    .service('connectRecruiterService', connectRecruiterService)
     /*.factory('', )*/
     .run(run);
 
