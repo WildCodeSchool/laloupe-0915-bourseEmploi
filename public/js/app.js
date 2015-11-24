@@ -8,7 +8,10 @@ function config($routeProvider) {
 			templateUrl: 'views/formOffer.html',
 			controller: 'formOfferController'
 		})
-
+        .when('/searchOffer', {
+			templateUrl: 'views/searchOffer.html',
+			controller: 'searchOfferController'
+		})
         .when('/offer', {
             templateUrl: 'views/offer.html',
             controller: 'offerController'
@@ -107,6 +110,7 @@ angular.module('app', ['ngRoute'])
     .controller('homeRctrController', homeRctrController)
     .controller('homeStudentController', homeStudentController)
     .controller('offerController', offerController)
+    .controller('searchOfferController', searchOfferController)
     .service('connectService', connectService)
     .service('offerService', offerService)
     .service('todoService', todoService)
