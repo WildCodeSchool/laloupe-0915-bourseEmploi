@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 
 var offerSchema = new mongoose.Schema({
+
   title: String, 
   email: String,
-  name_referent: { type: String, required: true, unique: true },
+  name_referent: String,
   tel: Number,
   description: String,
   type_of_contract: String,

@@ -12,7 +12,7 @@ var recruiterSchema = new mongoose.Schema({
     region: String,
     city: String, 
     address: String,
-    email: String,
+    email: { type: String, required: true, unique: true },
     tel: Number,
     website: String,
     twitter: String,
@@ -25,7 +25,7 @@ var Recruiter = {
    model: mongoose.model('Recruiter', recruiterSchema),
    
      find: function(req, res) {
-        Offer.model.findOne({
+        Recruiter.model.findOne({
           _id: req.body.id
         }, function(err, recruiter){
       res.json(recruiter);

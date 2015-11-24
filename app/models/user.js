@@ -1,24 +1,26 @@
 var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
- name: { type: String, required: true, unique: true },
- first_name: String,
- photo: String,
- age: Number,
- description: String,
- wild_side: String,
- training: String,
- previous_work: String,
- email: String,
- tel: Number,
- password: String
+    name: String,
+    first_name: String,
+    photo: String,
+    age: Number,
+    description: String,
+    wild_side: String,
+    training: String,
+    previous_work: String,
+    email: String,
+    tel: Number,
+    classes: String,
+    school: String,
+    password: String
 });
 
 var User = {
    model: mongoose.model('User', userSchema),
    
   find: function(req, res) {
-        Offer.model.findOne({
+        User.model.findOne({
           _id: req.body.id
         }, function(err, user){
       res.json(user);

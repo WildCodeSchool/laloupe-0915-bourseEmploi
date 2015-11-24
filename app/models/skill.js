@@ -7,13 +7,20 @@ var mongoose = require('mongoose');
 
 
 var skillSchema = new mongoose.Schema({
-  title: String,
-  user_id: String
+  title: String
 });
 
 var Skill = {
     
-    model: mongoose.model('Todo', todoSchema),
+    model: mongoose.model('Skill', skillSchema),
+
+    find: function(req, res) {
+        Skill.model.findOne({
+          _id: req.body.id
+        }, function(err, skill){
+      res.json(skill);
+    });
+},
     
     create: function(req, res) {
 		Skill.model.create({
@@ -24,10 +31,14 @@ var Skill = {
 	},
 
 	findAll: function(req, res) {
-		Skill.model.find({
-            user_id: req.headers.userid
-		}, function (err, data) {
-			res.json(data);
+		Skill.model.find({}, function (err, skills) {
+			res.json(skills);
+		});
+	},
+
+	findById: function(req, res) {
+		Skill.model.findById(req.headers.id, function (err, skill) {
+			 res.json(skill);
 		});
 	},
 
