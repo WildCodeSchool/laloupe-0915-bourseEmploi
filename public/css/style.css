@@ -6,6 +6,10 @@ body{
     color: #202020;
 }
 
+.container {
+    position: relative;
+}
+
 .bg { 
     background: url('../img/background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -689,3 +693,9 @@ ul {
 i {
     margin-right: 3px;
 }
+
+.offer-list {
+    max-height: 600px;
+    overflow: auto;
+}
+
