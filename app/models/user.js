@@ -17,29 +17,29 @@ var userSchema = new mongoose.Schema({
 });
 
 var User = {
-   model: mongoose.model('User', userSchema),
-   
-  find: function(req, res) {
+    model: mongoose.model('User', userSchema),
+
+    find: function (req, res) {
         User.model.findOne({
-          _id: req.body.id
-        }, function(err, user){
-      res.json(user);
-    });
-},
-   
-   findAll: function(req, res) {
+            _id: req.headers.id
+        }, function (err, user) {
+            res.json(user);
+        });
+    },
+
+    findAll: function (req, res) {
         User.model.find({}, function (err, users) {
             res.json(users);
         });
     },
 
-    findById: function(req, res) {
-        User.model.findById(req.headers.id, function (err, user) {
-             res.json(user);
+    findById: function (req, res) {
+        User.model.findById(req.params.id, function (err, user) {
+            res.json(user);
         });
     },
 
-    create: function(req, res) {
+    create: function (req, res) {
         User.model.create({
             name: req.body.name,
             first_name: req.body.first_name,
@@ -52,31 +52,32 @@ var User = {
             email: req.body.email,
             tel: req.body.tel,
             password: req.body.password
-        }, function(err, user) {
+        }, function (err, user) {
             res.json(user);
         });
     },
 
-    update: function(req, res) {
+    update: function (req, res) {
         User.model.findByIdAndUpdate(req.params.id, {
             name: req.body.name,
             first_name: req.body.first_name,
             photo: req.body.photo,
-            age: req.body.age,
+            age: req.body.age || 0,
             description: req.body.description,
             wild_side: req.body.wild_side,
             training: req.body.training,
             previous_work: req.body.previous_work,
             email: req.body.email,
-            tel: req.body.tel,
+            tel: req.body.tel || 0,
             password: req.body.password
-        }, function(err, user) {
+        }, function (err, user) {
             res.json(user);
+            console.log(err);
         });
     },
 
-    delete: function(req, res){
-        User.model.findByIdAndRemove(req.params.id, function(){
+    delete: function (req, res) {
+        User.model.findByIdAndRemove(req.params.id, function () {
             res.sendStatus(200);
         })
     }
