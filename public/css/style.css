@@ -6,6 +6,10 @@ body{
     color: #202020;
 }
 
+.container {
+    position: relative;
+}
+
 .bg { 
     background: url('../img/background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -15,8 +19,6 @@ body{
     background-color: black;
     padding-top: 20px;
 }
-
-
 
 p {
     color: #202020;
@@ -212,13 +214,14 @@ li {
 ul {
     padding: 0px;
 }
-.bg-warning {
-    height: 35px;
-    line-height: 35px;
+.wildWarning {
+    height: 70px;
+    line-height: 70px;
     border-radius: 3px;
     color: red;
-    font-weight: bolt;
-    font-weight : 400;
+    font-weight : 600;
+    padding: 12px 0px 12px 0px;
+    
 }
 .clickable {
     cursor: pointer;
@@ -608,7 +611,7 @@ ul {
 }
 
 .wildpanelbodyteaserrctr {
-    margin: 0 auto;
+    margin: 10px 0 0 15px;
     padding: 5px;
     display: inline-block;
     vertical-align: middle;
@@ -702,5 +705,9 @@ i {
 }
 .fa-instagram {
     color: #009587;
+
+.offer-list {
+    max-height: 600px;
+    overflow: auto;
 }
 

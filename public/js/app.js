@@ -8,7 +8,10 @@ function config($routeProvider) {
 			templateUrl: 'views/formOffer.html',
 			controller: 'formOfferController'
 		})
-
+        .when('/searchOffer', {
+			templateUrl: 'views/searchOffer.html',
+			controller: 'searchOfferController'
+		})
         .when('/offer', {
             templateUrl: 'views/offer.html',
             controller: 'offerController'
@@ -100,16 +103,15 @@ function run($rootScope, $location, connectService){
 angular.module('app', ['ngRoute'])
     .config(config)
     .controller('connectController', connectController)
-    .controller('mainController', mainController)
     .controller('adminController', adminController)
     .controller('connectRecruiterController', connectRecruiterController)
     .controller('formOfferController', formOfferController)
     .controller('homeRctrController', homeRctrController)
     .controller('homeStudentController', homeStudentController)
     .controller('offerController', offerController)
+    .controller('searchOfferController', searchOfferController)
     .service('connectService', connectService)
     .service('offerService', offerService)
-    .service('todoService', todoService)
     .service('skillService', skillService)
     .service('connectRecruiterService', connectRecruiterService)
     /*.factory('', )*/

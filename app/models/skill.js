@@ -7,20 +7,20 @@ var mongoose = require('mongoose');
 
 
 var skillSchema = new mongoose.Schema({
-  title: String
+    title: String
 });
 
 var Skill = {
-    
+
     model: mongoose.model('Skill', skillSchema),
 
-    find: function(req, res) {
+    find: function (req, res) {
         Skill.model.findOne({
           _id: req.headers.id
-        }, function(err, skill){
-      res.json(skill);
-    });
-},
+        }, function (err, skill){
+            res.json(skill);
+        });
+    },
     
     create: function(req, res) {
 		Skill.model.create({
@@ -58,6 +58,7 @@ var Skill = {
 
     
     
+
 }
 
 module.exports = Skill;

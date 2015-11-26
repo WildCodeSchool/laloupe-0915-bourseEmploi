@@ -17,9 +17,9 @@ var userSchema = new mongoose.Schema({
 });
 
 var User = {
-   model: mongoose.model('User', userSchema),
-   
-  find: function(req, res) {
+    model: mongoose.model('User', userSchema),
+
+    find: function (req, res) {
         User.model.findOne({
           _id: req.headers.id
         }, function(err, user){
@@ -27,7 +27,8 @@ var User = {
     });
 },
    
-   findAll: function(req, res) {
+
+    findAll: function (req, res) {
         User.model.find({}, function (err, users) {
             res.json(users);
         });
@@ -39,7 +40,7 @@ var User = {
         });
     },
 
-    create: function(req, res) {
+    create: function (req, res) {
         User.model.create({
             name: req.body.name,
             first_name: req.body.first_name,
@@ -52,12 +53,12 @@ var User = {
             email: req.body.email,
             tel: req.body.tel,
             password: req.body.password
-        }, function(err, user) {
+        }, function (err, user) {
             res.json(user);
         });
     },
 
-    update: function(req, res) {
+    update: function (req, res) {
         User.model.findByIdAndUpdate(req.params.id, {
             name: req.body.name,
             first_name: req.body.first_name,
@@ -70,13 +71,14 @@ var User = {
             email: req.body.email,
             tel: req.body.tel || 0,
             password: req.body.password
-        }, function(err, user) {
+        }, function (err, user) {
             res.json(user);
+            console.log(err);
         });
     },
 
-    delete: function(req, res){
-        User.model.findByIdAndRemove(req.params.id, function(){
+    delete: function (req, res) {
+        User.model.findByIdAndRemove(req.params.id, function () {
             res.sendStatus(200);
         })
     }

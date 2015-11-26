@@ -1,72 +1,75 @@
-function formOfferController($scope, $location, offerService, skillService){
+function formOfferController($scope, $location, $filter, offerService, skillService) {
     //JS pour les popups d'aides
     $(function () {
-    $('[data-toggle="popover"]').popover()
+        $('[data-toggle="popover"]').popover()
     });
-    
+
     $scope.referent = true;
-    
-    $scope.offerSkills  = ["Javascript", "PHP", "Ruby", "Jquery", "Java"];
+
+    /****   CREATION TAGS ******/
+
+    //Import des compétences de shéma "skills"
+    skillService.get().then(function (res) {
+        $scope.offerSkills = res.data;
+    });
+
+    //Init de la fonctionnalitée
     $scope.showSkill = false;
-    
-    //Ajout des Tags compétences
-    $scope.error = false;
     var dataSkill = [];
     $scope.listSkills = dataSkill;
-    $scope.add = function(){ 
-        $scope.error = false;
-        var verif = false;
-        if (dataSkill.length == 0) {
-            dataSkill.push($scope.chooseSkill);
-        } else {
-        for (var i = 0, l = dataSkill.length; i < l; i++) {
-            console.log(i);
-            if ($scope.chooseSkill != dataSkill[i]) {
-                verif = true;
-                console.log(dataSkill[i]);
-            } else { 
-                $scope.error = "Vous avez déjà choisi ce Tag !";
-                $scope.chooseSkill = "";
-            return false;                
+
+    //Vérification et ajout de la valeur de l'input
+    function updateSkill(array, up) {
+        $scope.errorTyping = true;
+        $scope.offerSkills.forEach(function (skill) {
+            console.log(skill.title);
+            if (up == skill.title) {
+                $scope.errorTyping = false;
             }
+        });
+        if (!$scope.errorTyping && dataSkill.indexOf(up) === -1) {
+            dataSkill.push(up);
+            console.log('Le nouveau tableau est : ' + dataSkill);
+        } else if (dataSkill.indexOf(up) > -1) {
+            $scope.errorChoice = true;
         }
-            if (verif = true){
-                dataSkill.push($scope.chooseSkill);
-            }
-        }
-    //Affichage du skill et champ vide
+    }
+
+    //Lancement fonction de vérif au clic
+    $scope.add = function () {
+        $scope.errorChoice = false;
+        $scope.errorTyping = false;
+        var up = $scope.chooseSkill.toUpperCase();
+        updateSkill(dataSkill, up);
+        //Affichage du skill et champ vide
         $scope.showSkill = true;
         $scope.chooseSkill = "";
     }
+
     //Suppression des Tags
     $scope.deleteSkill = function deleteASkill(id) {
-    return dataSkill.splice(id, 1); 
+        return dataSkill.splice(id, 1);
     }
 
-
-        
     //Envoi des données du formulaire
-    $scope.send = function(){
-    var popo = dataSkill;
-    var data = {};
+    $scope.send = function () {
+        var data = {};
         data.name = $scope.referentName;
         data.email = $scope.referentMail;
         data.tel = $scope.referentPhone;
-        data.title = $scope.offerTitle; 
+        data.title = $scope.offerTitle;
         data.type = $scope.offerContract;
-        data.experience = $scope.offerXP; 
+        data.experience = $scope.offerXP;
         data.salary = $scope.offerSalary;
-        data.skill = popo;
+        data.skill = dataSkill;
         data.description = $scope.offerDescription;
         data.responsability = $scope.offerResp;
         data.why = $scope.offerWhy;
-        
-        console.log(data);
-        
-        offerService.create(data).then(function(res){ 
-        console.log(res.data);
-            
-        $location.path('/homeRecruiter');
+
+        offerService.create(data).then(function (res) {
+            console.log(data);
+
+            $location.path('/homeRecruiter');
         });
     }
 }

@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 
 var recruiterSchema = new mongoose.Schema({
-  
     companyName: String,
     companySize: Number,
     logo: String,
@@ -10,9 +9,13 @@ var recruiterSchema = new mongoose.Schema({
     functionReferent: String,
     country: String,
     region: String,
-    city: String, 
+    city: String,
     address: String,
-    email: { type: String, required: true, unique: true },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
     tel: Number,
     website: String,
     twitter: String,
@@ -22,29 +25,29 @@ var recruiterSchema = new mongoose.Schema({
 });
 
 var Recruiter = {
-   model: mongoose.model('Recruiter', recruiterSchema),
-   
-     find: function(req, res) {
+    model: mongoose.model('Recruiter', recruiterSchema),
+
+    find: function (req, res) {
         Recruiter.model.findOne({
           _id: req.headers.id
         }, function(err, recruiter){
       res.json(recruiter);
     });
 },
-   
-   findAll: function(req, res) {
+
+    findAll: function (req, res) {
         Recruiter.model.find({}, function (err, recruiters) {
             res.json(recruiters);
         });
     },
 
-    findById: function(req, res) {
+    findById: function (req, res) {
         Recruiter.model.findById(req.params.id, function (err, recruiter) {
-             res.json(recruiter);
+            res.json(recruiter);
         });
     },
 
-    create: function(req, res) {
+    create: function (req, res) {
         Recruiter.model.create({
             companyName: req.body.companyName,
             companySize: req.body.companySize,
@@ -63,12 +66,12 @@ var Recruiter = {
             facebook: req.body.facebook,
             linkedin: req.body.linkedin,
             instagram: req.body.instagram
-        }, function(err, user) {
+        }, function (err, user) {
             res.json(user);
         });
     },
 
-    update: function(req, res) {
+    update: function (req, res) {
         Recruiter.model.findByIdAndUpdate(req.params.id, {
             companyName: req.body.companyName,
             companySize: req.body.companySize || 0,
@@ -86,14 +89,14 @@ var Recruiter = {
             twitter: req.body.twitter,
             facebook: req.body.facebook,
             linkedin: req.body.linkedin,
-            instagram: req.body.instagram 
-        }, function(err, recruiter) {
+            instagram: req.body.instagram
+        }, function (err, recruiter) {
             res.json(recruiter);
         });
     },
 
-    delete: function(req, res){
-        Recruiter.model.findByIdAndRemove(req.params.id, function(){
+    delete: function (req, res) {
+        Recruiter.model.findByIdAndRemove(req.params.id, function () {
             res.sendStatus(200);
         })
     }
@@ -101,4 +104,3 @@ var Recruiter = {
 
 
 module.exports = Recruiter;
-

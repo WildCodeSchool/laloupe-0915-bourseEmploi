@@ -2,127 +2,128 @@
 
 <div class="">
 
-	<form class="form-horizontal">
+    <form class="form-horizontal" name="offerForm">
         <div>
-            <input type="checkbox" ng-model="referent" checked/>
-            Prendre mes coordonnées ( nom, email, téléphone ) comme référent de cette annonce.
-            <a tabindex="0"  role="button" data-toggle="popover" data-trigger="focus" data-content="Décocher si vos coordonnées sont différentes de celles enregistrées lors de votre inscription."><i class="fa fa-question-circle"></i></a>
+            <input type="checkbox" ng-model="referent" checked/> Prendre mes coordonnées ( nom, email, téléphone ) comme référent de cette annonce.
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Décocher si vos coordonnées sont différentes de celles enregistrées lors de votre inscription."><i class="fa fa-question-circle"></i></a>
         </div>
-        
-		<div class="form-group spacer" ng-hide="referent">
+
+        <div class="form-group spacer" ng-hide="referent">
             <div class="col-sm-offset-1 col-sm-3">
-		    <label class="control-label">Nom :</label>
-               <a tabindex="0"  role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>		   
+                <label class="control-label">Nom :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
                 <div>
                     <input type="text" class="form-control" id="" placeholder="Nom du référent" ng-model="referentName">
                 </div>
             </div>
             <div class="col-sm-3">
-            <label  class="control-label">Email :</label>            
+                <label class="control-label">Email :</label>
                 <div>
                     <input type="email" class="form-control" id="" placeholder="Email du référent" ng-model="referentMail">
                 </div>
             </div>
             <div class="col-sm-3">
-            <label class="control-label">Téléphone :</label>
+                <label class="control-label">Téléphone :</label>
 
                 <input type="text" class="form-control" id="" placeholder="Numéro de téléphone du référent" ng-model="referentPhone">
             </div>
         </div>
-		
-		<div class="form-group spacer">
-		  <div class="col-sm-offset-1 col-sm-10">
-            <label class="control-label">Titre de l'offre :</label>
-            <a tabindex="0"  role="button" data-toggle="popover" data-trigger="focus" data-content="Description succincte et précise du futur poste."><i class="fa fa-question-circle"></i></a>	
-		    <input type="text" class="form-control" id="" placeholder="Définissez un intitulé de l'offre" ng-model="offerTitle">
-		  </div>
-		</div>
-		
-		<div class="form-group">
+
+        <div class="form-group spacer">
+            <div class="col-sm-offset-1 col-sm-10">
+                <label class="control-label">Titre de l'offre :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Description succincte et précise du futur poste."><i class="fa fa-question-circle"></i></a>
+                <input type="text" class="form-control" id="" placeholder="Définissez un intitulé de l'offre" ng-model="offerTitle" required>
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-sm-offset-1 col-sm-3">
-		    <label class="control-label">Type de contrat :</label>
+                <label class="control-label">Type de contrat :</label>
                 <select class="form-control" ng-model="offerContract">
-                  <option type="text" class="form-control" value="" disabled>Choisissez un contrat...</option>
-                  <option type="text" class="form-control">Stage</option>
-                  <option type="text" class="form-control">CDD</option>
-                  <option type="text" class="form-control">CDI</option>
+                    <option type="text" class="form-control" value="" disabled>Choisissez un contrat...</option>
+                    <option type="text" class="form-control">Stage</option>
+                    <option type="text" class="form-control">Apprentissage</option>
+                    <option type="text" class="form-control">CDD</option>
+                    <option type="text" class="form-control">CDI</option>
                 </select>
             </div>
             <div class="col-sm-offset-1 col-sm-3">
                 <label class="control-label">Expérience :</label>
-                    <select class="form-control" ng-model="offerXP">
-                        <option type="text" class="form-control" value="" disabled>...et un niveau d'expérience</option>
-                        <option type="text" class="form-control">Junior</option>
-                        <option type="text" class="form-control">Expérimenté</option>
-                        <option type="text" class="form-control">Sénior</option>
-                    </select>
-            </div>           
+                <select class="form-control" ng-model="offerXP">
+                    <option type="text" class="form-control" value="" disabled>...et un niveau d'expérience</option>
+                    <option type="text" class="form-control">Junior</option>
+                    <option type="text" class="form-control">Expérimenté</option>
+                    <option type="text" class="form-control">Sénior</option>
+                </select>
+            </div>
             <div class="col-sm-offset-1 col-sm-2">
                 <label class="control-label">Salaire :</label>
-                <a tabindex="0"  role="button" data-toggle="popover" data-trigger="focus" data-content="Salaire en millier d'euros par année. Ex: 30 K€/an." data-placement="top"><i class="fa fa-question-circle"></i></a>	
-		            <input type="text" class="form-control" id="" placeholder="K € /an" ng-pattern="salaryRegex" ng-model="offerSalary">
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Salaire en millier d'euros par année. Ex: 30 K€/an." data-placement="top"><i class="fa fa-question-circle"></i></a>
+                <input type="text" class="form-control" id="" placeholder="K € /an" ng-pattern="salaryRegex" ng-model="offerSalary">
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-4">
                 <label class="control-label">Compétences recherchées :</label>
-                <a tabindex="0"  role="button" data-toggle="popover" data-trigger="focus" data-content="Ajoutez des compétences les unes à la suite des autres grâce au moteur de recherche."><i class="fa fa-question-circle"></i></a>	
-                <div class="input-group typeahead-demo">
-                  <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage, de compétence" class="form-control" list="Languages"/>
-                        <datalist id="Languages">  
-                            <option ng-repeat="offerSkill in offerSkills" value={{offerSkill}}>   
-                        </datalist>  
-                   <span class="input-group-btn">
-                    <button class="btn btn-default btn-side" ng-click="add()" type="button">OK</button>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Ajoutez des compétences les unes à la suite des autres grâce au moteur de recherche."><i class="fa fa-question-circle"></i></a>
+                <div class="input-group">
+                    <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage, de compétence" class="form-control" list="Languages" required/>
+                    <datalist id="Languages">
+                        <option ng-repeat="offerSkill in offerSkills" value="{{offerSkill.title}}">
+                    </datalist>
+                    <span class="input-group-btn">
+                    <button class="btn btn-default btn-side" ng-click="add()" type="button" >OK</button>
                   </span>
                 </div>
             </div>
             <div class="col-sm-5">
-               <div>
-                <label class="bg-warning text-center control-label" ng-show="error">{{ error }}</label>
+                <div>
+                    <label class="wildWarning control-label" ng-show="errorChoice">Vous avez déjà choisi cette compétence !</label>
+                    <label class="wildWarning control-label" ng-show="errorTyping">Cette compétence n'éxiste pas !</label>
                 </div>
-            </div>  
+            </div>
         </div>
- 
+
         <div class="col-sm-offset-1 col-sm-10">
             <div class="form-group">
-                <ul class="skill-ul" ng-show="showSkill">
-                  <li class="skill-li" ng-repeat="popo in listSkills"><span class="wildSkill clickable">{{ popo }}<i class="fa fa-times cross" ng-click="deleteSkill($index)"></i></span></li>
+                <ul ng-show="showSkill">
+                    <li class="skill-li" ng-repeat="skilled in listSkills"><span class="wildSkill clickable">{{ skilled }}<i class="fa fa-times cross" ng-click="deleteSkill()"></i></span></li>
                 </ul>
             </div>
         </div>
-       
+
         <div class="form-group spacer">
             <div class="col-sm-offset-1 col-sm-10">
                 <label>Description du poste :</label>
-                <a tabindex="0"  role="button" data-toggle="popover" data-trigger="focus" data-content="Description du poste, des conditions et du projet."><i class="fa fa-question-circle"></i></a>	            
-                <textarea class="form-control" rows="6" ng-model="offerDescription"></textarea>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Description du poste, des conditions et du projet."><i class="fa fa-question-circle"></i></a>
+                <textarea class="form-control" rows="6" ng-model="offerDescription" required></textarea>
             </div>
         </div>
-        
+
         <div class="form-group spacer">
             <div class="col-sm-offset-1 col-sm-10">
-                <label>Responsabilités du candidat :</label> 
-                <a tabindex="0"  role="button" data-toggle="popover" data-trigger="focus" data-content="Quels seront les responsabilités ou missions que le candidats aura à effectuer ?"><i class="fa fa-question-circle"></i></a>	
-                <textarea class="form-control" rows="4" ng-model="offerResp"></textarea>
+                <label>Responsabilités du candidat :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Quels seront les responsabilités ou missions que le candidats aura à effectuer ?"><i class="fa fa-question-circle"></i></a>
+                <textarea class="form-control" rows="4" ng-model="offerResp" required></textarea>
             </div>
         </div>
-        
-                
+
+
         <div class="form-group spacer">
             <div class="col-sm-offset-1 col-sm-10">
-                <label>( Optionnel )&nbsp;Pourquoi choisir "NotrE EntrEprisE" ? :</label>
-                <a tabindex="0"  role="button" data-toggle="popover" data-trigger="focus" data-content="Donnez envie à votre futur candidat de travailler chez vous !"><i class="fa fa-question-circle"></i></a>	            
+                <label>( Optionnel )&nbsp;Pourquoi choisir {{ compagnyName }} ? :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Donnez envie à votre futur candidat de travailler chez vous !"><i class="fa fa-question-circle"></i></a>
                 <textarea class="form-control" rows="3" ng-model="offerWhy"></textarea>
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="col-sm-offset-9 col-sm-3">
-                <button type="submit" class="btnW" ng-click="send()"><strong>Poster cette annonce</strong></button>
+                <button class="btnW" ng-click="send()"><strong>Poster cette annonce</strong></button>
             </div>
         </div>
-	</form>
-	
+    </form>
+
 </div>
