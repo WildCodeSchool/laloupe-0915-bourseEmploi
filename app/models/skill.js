@@ -16,7 +16,7 @@ var Skill = {
 
     find: function(req, res) {
         Skill.model.findOne({
-          _id: req.body.id
+          _id: req.headers.id
         }, function(err, skill){
       res.json(skill);
     });

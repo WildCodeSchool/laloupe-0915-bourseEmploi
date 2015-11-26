@@ -21,7 +21,7 @@ var User = {
    
   find: function(req, res) {
         User.model.findOne({
-          _id: req.body.id
+          _id: req.headers.id
         }, function(err, user){
       res.json(user);
     });
@@ -34,7 +34,7 @@ var User = {
     },
 
     findById: function(req, res) {
-        User.model.findById(req.headers.id, function (err, user) {
+        User.model.findById(req.params.id, function (err, user) {
              res.json(user);
         });
     },
@@ -62,13 +62,13 @@ var User = {
             name: req.body.name,
             first_name: req.body.first_name,
             photo: req.body.photo,
-            age: req.body.age,
+            age: req.body.age || 0,
             description: req.body.description,
             wild_side: req.body.wild_side,
             training: req.body.training,
             previous_work: req.body.previous_work,
             email: req.body.email,
-            tel: req.body.tel,
+            tel: req.body.tel || 0,
             password: req.body.password
         }, function(err, user) {
             res.json(user);

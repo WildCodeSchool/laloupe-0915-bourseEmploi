@@ -26,7 +26,7 @@ var Recruiter = {
    
      find: function(req, res) {
         Recruiter.model.findOne({
-          _id: req.body.id
+          _id: req.headers.id
         }, function(err, recruiter){
       res.json(recruiter);
     });
@@ -39,7 +39,7 @@ var Recruiter = {
     },
 
     findById: function(req, res) {
-        Recruiter.model.findById(req.headers.id, function (err, recruiter) {
+        Recruiter.model.findById(req.params.id, function (err, recruiter) {
              res.json(recruiter);
         });
     },
@@ -71,7 +71,7 @@ var Recruiter = {
     update: function(req, res) {
         Recruiter.model.findByIdAndUpdate(req.params.id, {
             companyName: req.body.companyName,
-            companySize: req.body.companySize,
+            companySize: req.body.companySize || 0,
             logo: req.body.logo,
             business_sector: req.body.businessSector,
             companyDescription: req.body.companyDescription,
@@ -81,7 +81,7 @@ var Recruiter = {
             city: req.body.city,
             address: req.body.address,
             email: req.body.email,
-            tel: req.body.tel,
+            tel: req.body.tel || 0,
             website: req.body.website,
             twitter: req.body.twitter,
             facebook: req.body.facebook,

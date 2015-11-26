@@ -19,7 +19,7 @@ var Offer = {
     
     find: function(req, res) {
         Offer.model.findOne({
-          _id: req.body.id
+          _id: req.headers.id
 		}, function(err, offer){
       res.json(offer);
     });
@@ -32,7 +32,7 @@ var Offer = {
 	},
 
 	findById: function(req, res) {
-		Offer.model.findById(req.headers.id, function (err, offer) {
+		Offer.model.findById(req.params.id, function (err, offer) {
 			 res.json(offer);
 		});
 	},
@@ -51,6 +51,7 @@ var Offer = {
       why_choose_our_company: req.body.why
 		}, function(err, offer) {
 			res.json(offer);
+      console.log(err);
 
 	    });
 	},
@@ -60,10 +61,10 @@ var Offer = {
 		  title: req.body.title, 
       email: req.body.email,
       name_referent: req.body.name,
-      tel: req.body.tel,
+      tel: req.body.tel || 0,
       description: req.body.description,
       type_of_contract: req.body.type,
-      salary: req.body.salary,
+      salary: req.body.salary || 0,
       experience: req.body.experience,
       responsability: req.body.responsability,
       why_choose_our_company: req.body.why
