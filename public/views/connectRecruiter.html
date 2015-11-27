@@ -1,6 +1,6 @@
 <br>
 <h2>Inscription</h2>
-<br>
+<h6>Les champs avec étoiles * sont requis.</h6>
 
 
 <div class="">
@@ -10,6 +10,7 @@
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-4">
             <label class="control-label">Ajouter un logo :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
                 <input type="file" nv-file-select uploader="uploader" ng-model="logo" onchange="angular.element(this).scope().previewFile(this)">
                    <ul>
                        <li ng-repeat="item in uploader.queue">
@@ -17,18 +18,20 @@
                            <button ng-click="item.upload()">upload</button>
                        </li>
                    </ul>
-                <img id="preview" height="200" width="200" alt="Image preview...">
+                <img id="preview" height="200" alt="Image preview...">
             </div>
         </div>
         
 		<div class="form-group">
             <div class="col-sm-offset-1 col-sm-4">
-               <label class="control-label">Nom de l'entreprise :</label>
+               <label class="control-label">Nom de l'entreprise* :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
 		      <input type="text" class="form-control" id="" placeholder="" ng-model="companyName">
 		    </div>
         
 		    <div class="col-sm-offset-1 col-sm-4">
-               <label class="control-label">Taille de l'entreprise :</label>
+               <label class="control-label">Taille de l'entreprise* :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
                 <select class="form-control" ng-model="companySize">
                  <option value="" disabled>En nombre de salariés</option>
                   <option type="text" class="form-control">de 1 a 9 salariés</option>
@@ -42,7 +45,8 @@
 		
 		<div class="form-group">
             <div class="col-sm-offset-1 col-sm-4">
-                   <label class="control-label">Secteur d'activité :</label>
+                   <label class="control-label">Secteur d'activité* :</label>
+                    <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
                     <select class="form-control" ng-model="businessSector">
                      
                       <option type="text" class="form-control">Agroalimentaire</option>
@@ -68,41 +72,43 @@
 		
 		<div class="form-group">
             <div class="col-sm-offset-1 col-sm-9">
-                <label>Description entreprise :</label>            
+                <label>Description entreprise* :</label>
+                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>           
                 <textarea class="form-control" rows="3" placeholder="décrivez votre entreprise en quelques lignes" ng-model="companyDescription"></textarea>
             </div>
         </div>
 		
         <div class="form-group">
 		    <div class="col-sm-offset-1 col-sm-4">
-               <label class="control-label">Fonction :</label>
+               <label class="control-label">Fonction* :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
 		    <input type="text" class="form-control" id="" placeholder="Poste occupé dans l'entreprise" ng-model="functionReferent">
 		  </div>
         </div>
         
-        <br>
-         <h2>Coordonnées</h2>
-        <br>
-        
-        <div class="form-group">
+        <div class="form-group spacer">
+          <h4>Coordonnées :</h4>
            <div class="col-sm-offset-1 col-sm-4">
-               <label class="control-label">Pays :</label>
+               <label class="control-label">Pays* :</label>
+                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
                  <input type="text" class="form-control" placeholder="" ng-model="country">
            </div>
            <div class="col-sm-offset-1 col-sm-4">
-               <label class="control-label">Région :</label>
+               <label class="control-label">Région* :</label>
+                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
                  <input type="text" class="form-control" placeholder="" ng-model="region">
            </div>        
        </div>
         
        <div class="form-group">
            <div class="col-sm-offset-1 col-sm-4">
-               <label class="control-label">Ville :</label>
-                 <input type="text" class="form-control" name="city" id="city_form_affinage" placeholder="" />
+               <label class="control-label">Ville* :</label>
+                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                 <input type="text" class="form-control" placeholder="" ng-model="city" />
            </div>
-           <div id="map_canvas"></div>
            <div class="col-sm-offset-1 col-sm-4">
-               <label class="control-label">Adresse :</label>
+               <label class="control-label">Adresse* :</label>
+                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
                  <input type="text" class="form-control" placeholder="" ng-model="adress">
            </div>        
        </div>
@@ -110,31 +116,36 @@
         <div class="form-group">
            <div class="col-sm-offset-1 col-sm-4">
                <label class="control-label">Site internet :</label>
+                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
                  <input type="text" class="form-control" placeholder="Site internet de l'entreprise" ng-model="website">
            </div>        
        </div>     
 		
 		<div class="form-group">
 		    <div class="col-sm-offset-1 col-sm-4">
-               <label class="control-label">Email :</label>
-		    <input type="text" class="form-control" id="" placeholder=""ng-model="email">
+               <label class="control-label">Email* :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+		    <input type="email" class="form-control" id="" placeholder=""ng-model="email">
 		  </div>
 		  <div class="col-sm-offset-1 col-sm-4">
-               <label class="control-label">Téléphone :</label>
-		    <input type="text" class="form-control" id="" placeholder="" ng-model="phoneNumber">
+               <label class="control-label">Téléphone* :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+		    <input type="text" class="form-control" id="" placeholder="" ng-model="tel">
 		  </div>
 		</div>
-    <br>
-        <h2>Ajouter des réseaux sociaux</h2>
-    <br>
+    
+        
       
-          <div class="form-group">
+          <div class="form-group spacer">
+          <h4>Ajouter des réseaux sociaux :</h4>
            <div class="col-sm-offset-1 col-sm-4">
                 <i class="fa fa-facebook-official"></i>&nbsp;<label class="control-label">Facebook :</label>
+                    <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
                     <input type="text" class="form-control" placeholder="" ng-model="facebook">
                 </div>
             <div class="col-sm-offset-1 col-sm-4">
                 <i class="fa fa-twitter"></i>&nbsp;<label class="control-label">Twitter :</label>
+                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
                 <input type="text" class="form-control" placeholder="" ng-model="Twitter">
             </div>
         </div>
@@ -142,10 +153,12 @@
         <div class="form-group">
            <div class="col-sm-offset-1 col-sm-4">
                 <i class="fa fa-instagram"></i>&nbsp;<label class="control-label">Instagram :</label>
+                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
                 <input type="text" class="form-control" placeholder="" ng-model="instagram">
             </div>
             <div class="col-sm-offset-1 col-sm-4">
                 <i class="fa fa-linkedin"></i>&nbsp;<label class="control-label">Linkedin :</label>
+                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
                 <input type="text" class="form-control" placeholder="" ng-model="linkedin">
             </div>
         </div>
