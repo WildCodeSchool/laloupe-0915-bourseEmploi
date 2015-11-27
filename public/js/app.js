@@ -1,18 +1,18 @@
 function config($routeProvider) {
-	$routeProvider
-		.when('/login', {
-			templateUrl: 'views/connect.html',
-			controller: 'connectController'
-		})
-		.when('/formOffer', {
-			templateUrl: 'views/formOffer.html',
-			controller: 'formOfferController'
-		})
+    $routeProvider
+        .when('/login', {
+            templateUrl: 'views/connect.html',
+            controller: 'connectController'
+        })
+        .when('/formOffer', {
+            templateUrl: 'views/formOffer.html',
+            controller: 'formOfferController'
+        })
         .when('/searchOffer', {
-			templateUrl: 'views/searchOffer.html',
-			controller: 'searchOfferController'
-		})
-        .when('/offer', {
+            templateUrl: 'views/searchOffer.html',
+            controller: 'searchOfferController'
+        })
+        .when('/offer/:id', {
             templateUrl: 'views/offer.html',
             controller: 'offerController'
         })
@@ -20,46 +20,45 @@ function config($routeProvider) {
             templateUrl: 'views/homeRctr.html',
             controller: 'homeRctrController'
         })
-         .when('/homeStudent', {
+        .when('/homeStudent', {
             templateUrl: 'views/homeStudent.html',
             controller: 'homeStudentController'
         })
 
-        .when('/connectRecruiter', {
-			templateUrl: 'views/connectRecruiter.html',
+    .when('/connectRecruiter', {
+            templateUrl: 'views/connectRecruiter.html',
             controller: 'connectRecruiterController'
-		})
-		.when('/admin', {
-			templateUrl: 'views/admin.html',
-			controller: 'adminController',
-			resolve: {
+        })
+        .when('/admin', {
+            templateUrl: 'views/admin.html',
+            controller: 'adminController',
+            resolve: {
                 administrator: checkIsAdmin,
-				connected: checkIsConnected
-			}
-		})
-		.when('/about', {
-			templateUrl: 'views/about.html'
-		})
-		.otherwise({
-			redirectTo: '/login'
-		});
+                connected: checkIsConnected
+            }
+        })
+        .when('/about', {
+            templateUrl: 'views/about.html'
+        })
+        .otherwise({
+            redirectTo: '/login'
+        });
 }
 
 function checkIsConnected($q, $http, $rootScope, $location) {
     var deferred = $q.defer();
- 
- 	$http.get('/loggedin').success(function(user){
- 		// Authenticated 
- 		if (user !== '0'){
- 			$rootScope.user = user;
- 			deferred.resolve();
- 		}
- 		else { 
- 			// Not Authenticated 
- 			deferred.reject(); 
- 			$location.url('/login'); 
- 		}
- 	});
+
+    $http.get('/loggedin').success(function (user) {
+        // Authenticated 
+        if (user !== '0') {
+            $rootScope.user = user;
+            deferred.resolve();
+        } else {
+            // Not Authenticated 
+            deferred.reject();
+            $location.url('/login');
+        }
+    });
 
     return deferred.promise;
 };
@@ -67,10 +66,10 @@ function checkIsConnected($q, $http, $rootScope, $location) {
 
 function checkIsAdmin($q, $rootScope, $location) {
     var deferred = $q.defer();
-    
+
     if ($rootScope.user && $rootScope.user.admin)
         deferred.resolve();
-    else{
+    else {
         deferred.reject();
         $location.url('/');
     }
@@ -78,25 +77,27 @@ function checkIsAdmin($q, $rootScope, $location) {
     return deferred.promise;
 }
 
-function run($rootScope, $location, connectService){
-	$rootScope.loginMessage = {};
-	 $rootScope.loginMessage.title = ''; 
-	 $rootScope.loginMessage.message = ''; 
-	// Watch path
-	var path = function() { return $location.path(); };
-	$rootScope.$watch(path, function(newVal, oldVal){
-		$rootScope.activetab = newVal;
-	});
+function run($rootScope, $location, connectService) {
+    $rootScope.loginMessage = {};
+    $rootScope.loginMessage.title = '';
+    $rootScope.loginMessage.message = '';
+    // Watch path
+    var path = function () {
+        return $location.path();
+    };
+    $rootScope.$watch(path, function (newVal, oldVal) {
+        $rootScope.activetab = newVal;
+    });
 
-	// Logout
-	$rootScope.logout = function(){
-		$rootScope.user = null;
-		$rootScope.loginMessage.title = ''; 
-		$rootScope.loginMessage.message = ''; 
-		connectService.disconnect().then(function(){
-			$location.url('/login');
-		})
-	}
+    // Logout
+    $rootScope.logout = function () {
+        $rootScope.user = null;
+        $rootScope.loginMessage.title = '';
+        $rootScope.loginMessage.message = '';
+        connectService.disconnect().then(function () {
+            $location.url('/login');
+        })
+    }
 }
 
 
@@ -116,4 +117,3 @@ angular.module('app', ['ngRoute'])
     .service('connectRecruiterService', connectRecruiterService)
     /*.factory('', )*/
     .run(run);
-
