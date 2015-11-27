@@ -1,5 +1,9 @@
 
-function connectRecruiterController($scope, connectRecruiterService){
+function connectRecruiterController($scope, $location, connectRecruiterService){
+    
+     $(function () {
+       $('[data-toggle="popover"]').popover()
+   });
     
     $scope.logo = {};
     
@@ -7,14 +11,14 @@ function connectRecruiterController($scope, connectRecruiterService){
 		var data = {};
         data.companyName = $scope.companyName;
         data.companySize = $scope.companySize;
-        data.logo = $scope.logo;
+        data.logo = typeof $scope.logo == 'object' ? "" :$scope.logo ;
         data.businessSector = $scope.businessSector;
         data.companyDescription = $scope.companyDescription;
         data.functionReferent = $scope.functionReferent;
         data.country = $scope.country;
         data.region = $scope.region;
         data.city = $scope.city;
-        data.address = $scope.address;
+        data.address = $scope.adress;
         data.website = $scope.website;
         data.facebook = $scope.facebook;
         data.twitter = $scope.twitter;
@@ -26,6 +30,16 @@ function connectRecruiterController($scope, connectRecruiterService){
         
         connectRecruiterService.create(data).then(function(res){
             
+            if (!res.data){
+                console.log(data);
+				$scope.incompleteError = true;
+			}
+			//ERREUR
+			else{
+				alert("compte crée");
+                $location.path('/homeRecruiter');
+			}
+            
         });
 
     }
@@ -34,7 +48,6 @@ function connectRecruiterController($scope, connectRecruiterService){
 $scope.previewFile = function() {
      var preview    = document.querySelector('#preview');
      var file    = document.querySelector('input[type=file]').files[0];
-     $scope.logo = file;
      var reader  = new FileReader();
      reader.onloadend = function () {
        preview.src = reader.result;
@@ -47,48 +60,3 @@ $scope.previewFile = function() {
   }
 
 }
-/*function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(-33.8688, 151.2195),
-          zoom: 13,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById('map_canvas'),
-          mapOptions);
-
-        var input = document.getElementById('city_form_affinage');
-        var autocomplete = new google.maps.places.Autocomplete(input);
-
-        autocomplete.bindTo('bounds', map);
-
-        var infowindow = new google.maps.InfoWindow();
-        var marker = new google.maps.Marker({
-          map: map
-        });
-
-        google.maps.event.addListener(autocomplete, 'place_changed', function() {
-          var place = autocomplete.getPlace();
-          if (!place.geometry) {
-            // Inform the user that the place was not found and return.
-            input.className = 'notfound';
-            return;
-          }
-
-          // If the place has a geometry, then present it on a map.
-          if (place.geometry.viewport) {
-            map.fitBounds(place.geometry.viewport);
-          } else {
-            map.setCenter(place.geometry.location);
-            map.setZoom(17);  // Why 17? Because it looks good.
-          }
-          var image = new google.maps.MarkerImage(
-              place.icon,
-              new google.maps.Size(71, 71),
-              new google.maps.Point(0, 0),
-              new google.maps.Point(17, 34),
-              new google.maps.Size(35, 35));
-          marker.setIcon(image);
-          marker.setPosition(place.geometry.location);
-        });
-      }
-      google.maps.event.addDomListener(window, 'load', initialize)*/
