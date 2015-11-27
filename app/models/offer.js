@@ -1,17 +1,39 @@
 var mongoose = require('mongoose');
 
 var offerSchema = new mongoose.Schema({
-    skill: String,
-    title: String,
+    skill: {
+        type: String,
+        required: true
+    },
+    title: {
+        type: String,
+        required: true
+    },
     email: String,
     name_referent: String,
     tel: Number,
-    description: String,
-    type_of_contract: String,
-    salary: Number,
-    experience: String,
-    responsability: String,
-    why_choose_our_company: String
+    description: {
+        type: String,
+        required: true
+    },
+    type_of_contract: {
+        type: String,
+        required: true
+    },
+    salary: {
+        type: Number,
+        required: true
+    },
+    experience: {
+        type: String,
+        required: true
+    },
+    responsability: {
+        type: String,
+        required: true
+    },
+    why_choose_our_company: String,
+    offerDate: Date
 });
 
 var Offer = {
@@ -49,7 +71,8 @@ var Offer = {
             salary: req.body.salary,
             experience: req.body.experience,
             responsability: req.body.responsability,
-            why_choose_our_company: req.body.why
+            why_choose_our_company: req.body.why,
+            offerDate: req.body.offerDate
         }, function (err, offer) {
             res.json(offer);
 
@@ -68,7 +91,8 @@ var Offer = {
             salary: req.body.salary || 0,
             experience: req.body.experience,
             responsability: req.body.responsability,
-            why_choose_our_company: req.body.why
+            why_choose_our_company: req.body.why,
+            offerDate: req.body.offerDate
         }, function (err, offer) {
             res.json(offer);
         });
