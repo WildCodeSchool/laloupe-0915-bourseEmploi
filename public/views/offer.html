@@ -15,11 +15,11 @@
                 <p>{{recruiter.companyDescription}}</p>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a href="{{recruiter.website}}"><i class="fa fa-desktop fa-lg contact-link"></i></a>
-                <a href="{{recruiter.facebook}}"><i class="fa fa-facebook-official fa-lg contact-link"></i></a>
-                <a href="{{recruiter.twitter}}"><i class="fa fa-twitter fa-lg contact-link"></i></a>
-                <a href="{{recruiter.instagram}}"><i class="fa fa-instagram fa-lg contact-link"></i></a>
-                <a href="{{recruiter.linkedin}}"><i class="fa fa-linkedin fa-lg contact-link"></i></a>
+                <a ng-show="websiteIf" href="{{recruiter.website}}"><i class="fa fa-desktop fa-lg contact-link"></i></a>
+                <a ng-show="facebookIf" href="{{recruiter.facebook}}"><i class="fa fa-facebook-official fa-lg contact-link"></i></a>
+                <a ng-show="twitterIf" href="{{recruiter.twitter}}"><i class="fa fa-twitter fa-lg contact-link"></i></a>
+                <a ng-show="instagramIf" href="{{recruiter.instagram}}"><i class="fa fa-instagram fa-lg contact-link"></i></a>
+                <a ng-show="linkedinIf" href="{{recruiter.linkedin}}"><i class="fa fa-linkedin fa-lg contact-link"></i></a>
             </div>
         </div>
     </div>
@@ -47,14 +47,14 @@
                     </li>
                 </ul>
                 <ul class="skill-ul">
-                    <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
+                    <li class="headeradvert skill-li"><span class="wildSkill">{{offer.skill}}</span>
                 </ul>
                 <ul>
                     <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
                         <p class="headeradvert smalltexadvert1">{{offer.type_of_contract}}</p>
                     </li>
                     <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
-                        <p class="headeradvert smalltexadvert1">{{offer.salary}}</p>
+                        <p class="headeradvert smalltexadvert1">{{offer.salary}}k€/ans</p>
                     </li>
                     <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
                         <p class="headeradvert smalltexadvert1">{{offer.experience}}</p>
@@ -89,7 +89,7 @@
                     </ul>
                 </div>
 
-                <div id="googleMap" style="width:100%;height:380px;margin-top:15px;"></div>
+                <div id="map" style="height:300px;margin-top:15px;"></div>
 
             </div>
             <div class="wildpanelfooter panel panel-default">
