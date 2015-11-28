@@ -1,14 +1,7 @@
-function homeStudentController($scope){
-    
-    function initialize() {
-      var mapProp = {
-        center:new google.maps.LatLng(46.8429639,2.1696329),
-        zoom:5,
-        mapTypeId:google.maps.MapTypeId.ROADMAP
-      };
-      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
+function homeStudentController($scope) {
 
-
+    //MAP
+    L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
+    var map = L.mapbox.map('map', 'mapbox.streets')
+        .setView([40, -74.50], 9);
 }
