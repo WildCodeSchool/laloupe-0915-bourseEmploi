@@ -1,17 +1,26 @@
 var mongoose = require('mongoose');
 
 var offerSchema = new mongoose.Schema({
-    skill: {
+    skill: [{
         type: String,
         required: true
-    },
+    }],
     title: {
         type: String,
         required: true
     },
-    email: String,
-    name_referent: String,
-    tel: Number,
+    email: {
+        type: String,
+        required: true
+    },
+    name_referent: {
+        type: String,
+        required: true
+    },
+    tel: {
+        type: Number,
+        required: true
+    },
     description: {
         type: String,
         required: true
@@ -33,7 +42,18 @@ var offerSchema = new mongoose.Schema({
         required: true
     },
     why_choose_our_company: String,
-    offerDate: Date
+    offerDate: {
+        type: Date,
+        required: true
+    },
+    adress: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    }
 });
 
 var Offer = {
@@ -72,7 +92,9 @@ var Offer = {
             experience: req.body.experience,
             responsability: req.body.responsability,
             why_choose_our_company: req.body.why,
-            offerDate: req.body.offerDate
+            offerDate: req.body.offerDate,
+            adress: req.body.adress,
+            city: req.body.city
         }, function (err, offer) {
             res.json(offer);
 
