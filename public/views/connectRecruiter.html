@@ -13,8 +13,8 @@
                 <input type="file" nv-file-select uploader="uploader" ng-model="logo" onchange="angular.element(this).scope().previewFile(this)">
                    <ul>
                        <li ng-repeat="item in uploader.queue">
-                           name : <span ng-bind="item.file.name"></span><br/>
-                           <button ng-click="item.upload()">upload</button>
+                          <span ng-bind="item.file.name"></span><br/>
+                          <button ng-click="item.upload()">upload</button>
                        </li>
                    </ul>
                 <img id="preview" height="200" width="200" alt="Image preview...">
@@ -53,6 +53,7 @@
                       <option type="text" class="form-control">Commerce / Négoce / Distribution</option>
                       <option type="text" class="form-control">Édition / Communication / Multimédia</option>
                       <option type="text" class="form-control">Électronique / Électricité</option>
+                      <option type="text" class="form-control">Enseignement</option>
                       <option type="text" class="form-control">Études et conseils</option>
                       <option type="text" class="form-control">Industrie pharmaceutique</option>
                       <option type="text" class="form-control">Informatique / Télécoms</option>
@@ -62,6 +63,7 @@
                       <option type="text" class="form-control">Services aux entreprises</option>
                       <option type="text" class="form-control">Textile / Habillement / Chaussure</option>
                       <option type="text" class="form-control">Transports / Logistique</option>
+                      <option type="text" class="form-control">Autres</option>
                     </select>
             </div>
         </div>

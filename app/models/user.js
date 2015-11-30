@@ -9,7 +9,11 @@ var userSchema = new mongoose.Schema({
     wild_side: String,
     training: String,
     previous_work: String,
-    email: String,
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
     tel: Number,
     classes: String,
     school: String,

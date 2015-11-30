@@ -21,7 +21,8 @@ var recruiterSchema = new mongoose.Schema({
     twitter: String,
     facebook: String,
     linkedin: String,
-    instagram: String
+    instagram: String,
+    password: String
 });
 
 var Recruiter = {
@@ -65,7 +66,8 @@ var Recruiter = {
             twitter: req.body.twitter,
             facebook: req.body.facebook,
             linkedin: req.body.linkedin,
-            instagram: req.body.instagram
+            instagram: req.body.instagram,
+            password: req.body.password
         }, function (err, user) {
             res.json(user);
         });
@@ -89,7 +91,8 @@ var Recruiter = {
             twitter: req.body.twitter,
             facebook: req.body.facebook,
             linkedin: req.body.linkedin,
-            instagram: req.body.instagram
+            instagram: req.body.instagram,
+            password: req.body.password
         }, function (err, recruiter) {
             res.json(recruiter);
         });
