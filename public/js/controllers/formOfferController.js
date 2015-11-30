@@ -48,7 +48,9 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
 
     //Suppression des Tags
     $scope.deleteSkill = function deleteASkill(id) {
-        return dataSkill.splice(id, 1);
+        var idDeletedSkill = dataSkill.indexOf(id);
+        console.log(idDeletedSkill);
+        return dataSkill.splice(idDeletedSkill, 1);
     }
 
     //Envoi des données du formulaire
@@ -78,7 +80,7 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
             }
             //ERREUR
             else {
-                alert("compte crée");
+                alert("offre crée");
                 $location.path('/homeRecruiter');
             }
 

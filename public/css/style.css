@@ -232,6 +232,15 @@ ul {
     color: red;
 }
 
+i:focus,
+a:focus {
+    outline: none;
+}
+
+.fa:hover {
+    color: #009587;
+}
+
 
 /* ----------------- *\
 	  BS CALLOUT 

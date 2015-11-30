@@ -29,10 +29,7 @@ var offerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    salary: {
-        type: Number,
-        required: true
-    },
+    salary: Number,
     experience: {
         type: String,
         required: true
