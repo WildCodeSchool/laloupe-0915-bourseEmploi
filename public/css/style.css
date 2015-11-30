@@ -1,5 +1,6 @@
 /* $ GENERAL */
-body{
+
+body {
     padding-top: 70px;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: #F5FAF9;
@@ -10,7 +11,7 @@ body{
     position: relative;
 }
 
-.bg { 
+.bg {
     background: url('../img/background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -27,7 +28,7 @@ p {
 
 h1 {
     font-family: 'Raleway', sans-serif;
-    color:#009587;
+    color: #009587;
     font-size: 65px;
 }
 
@@ -88,13 +89,13 @@ ul {
 
 .wild {
     font-family: 'Raleway', sans-serif;
-    color:#009587;
+    color: #009587;
     font-size: 25px;
-}      
+}
 
 .finder {
     font-family: 'Raleway', sans-serif;
-    color:#696969;
+    color: #696969;
     font-size: 25px;
     line-height: 50px;
 }
@@ -103,7 +104,7 @@ ul {
     height: 40px;
     padding: 0px 20px 0px 20px;
     border: 2px solid;
-    border-radius:10px;
+    border-radius: 10px;
     border-color: #009587;
     color: white;
     background-color: #009587;
@@ -122,23 +123,21 @@ ul {
     height: 40px;
     padding: 0px 20px 0px 20px;
     border: 2px solid;
-    border-radius:10px;
+    border-radius: 10px;
     border-color: #009587;
-    color:#009587;
+    color: #009587;
     background-size: 100% 200%;
     background-color: transparent;
     background-image: linear-gradient(to top, #009587 50%, transparent 50%);
     -webkit-transition: background-position 1s;
     -moz-transition: background-position 1s;
     transition: background-position 1s;
-    
 }
 
 .btnW:hover {
-    background-position: 0 100% ;
+    background-position: 0 100%;
     background-color: transparent;
     color: white;
-
 }
 
 .btnW:focus {
@@ -149,23 +148,21 @@ ul {
     height: 30px;
     padding: 0px 20px 0px 20px;
     border: 2px solid;
-    border-radius:10px;
+    border-radius: 10px;
     border-color: #009587;
-    color:#009587;
+    color: #009587;
     background-size: 100% 200%;
     background-color: transparent;
     background-image: linear-gradient(to top, #009587 50%, transparent 50%);
     -webkit-transition: background-position 1s;
     -moz-transition: background-position 1s;
     transition: background-position 1s;
-    
 }
 
 .btnW-sm:hover {
-    background-position: 0 100% ;
+    background-position: 0 100%;
     background-color: transparent;
     color: white;
-
 }
 
 .btnW-sm:focus {
@@ -176,9 +173,9 @@ ul {
     height: 40px;
     padding: 0px 20px 0px 20px;
     border: 2px solid;
-    border-radius:10px;
+    border-radius: 10px;
     border-color: white;
-    color:white;
+    color: white;
     background-size: 100% 200%;
     background-color: transparent;
     background-image: linear-gradient(to top, #009587 50%, transparent 50%);
@@ -189,11 +186,10 @@ ul {
 }
 
 .btnWA:hover {
-    background-position: 0 100% ;
+    background-position: 0 100%;
     background-color: transparent;
     color: white;
     border-color: #009587;
-
 }
 
 .btnWA:focus {
@@ -201,31 +197,42 @@ ul {
 }
 
 .btn-side {
-    background-color:#009587;
+    background-color: #009587;
     color: white;
 }
+
 .btn-side:hover {
     background-color: white;
     color: #009587;
 }
+
 li {
     display: inline-block;
 }
+
 ul {
     padding: 0px;
 }
+
 .wildWarning {
     height: 70px;
     line-height: 70px;
     border-radius: 3px;
     color: red;
-    font-weight : 600;
+    font-weight: 600;
     padding: 12px 0px 12px 0px;
-    
 }
+
 .clickable {
     cursor: pointer;
 }
+
+.align {
+    line-height: 40px;
+    color: red;
+}
+
+
 /* ----------------- *\
 	  BS CALLOUT 
 \* ----------------- */
@@ -243,7 +250,9 @@ ul {
     margin-bottom: 5px;
 }
 
+
 /* $SUCCESS */
+
 .bs-callout-success {
     border-left-color: #5cb85c;
 }
@@ -252,7 +261,9 @@ ul {
     color: #5cb85c;
 }
 
+
 /* INFO */
+
 .bs-callout-info {
     border-left-color: #5bc0de;
 }
@@ -261,7 +272,9 @@ ul {
     color: #5bc0de;
 }
 
+
 /* WARNING */
+
 .bs-callout-warning {
     border-left-color: #f0ad4e;
 }
@@ -270,7 +283,9 @@ ul {
     color: #f0ad4e;
 }
 
+
 /* DANGER */
+
 .bs-callout-danger {
     border-left-color: #ce4844;
 }
@@ -279,7 +294,9 @@ ul {
     color: #ce4844;
 }
 
+
 /*   $OFFER   */
+
 .spacer {
     margin-top: 30px;
 }
@@ -287,17 +304,20 @@ ul {
 .fa-question-circle {
     color: #B6B6B6;
 }
+
+
 /*      $SKILL      */
+
 .wildSkill {
     height: 30px;
     text-transform: uppercase;
     font-size: 12px;
-    font-weight : 800;
+    font-weight: 800;
     padding: 2px 10px 2px 10px;
     border: 2px solid;
-    border-radius:10px;
+    border-radius: 10px;
     border-color: #daa520;
-    color:#daa520;
+    color: #daa520;
     margin: 0 10px 0 0;
 }
 
@@ -313,6 +333,7 @@ ul {
 .cross {
     margin-left: 8px;
 }
+
 
 /*WILD PANEL*/
 
@@ -332,7 +353,6 @@ ul {
     border-bottom-right-radius: 0px;
     border-bottom-color: #B6B6B6;
     height: 41px;
-    
 }
 
 .wildpanelnavbar {
@@ -445,7 +465,6 @@ ul {
     margin-bottom: 10px;
 }
 
-
 #studentCVmin {
     min-height: 100px;
 }
@@ -487,10 +506,8 @@ ul {
 
 .titleadvert:hover {
     cursor: pointer;
-    color : #009587;
+    color: #009587;
 }
-
-
 
 .titleadvert-sm {
     font-size: 18px;
@@ -603,7 +620,7 @@ ul {
 .bookstattitle {
     font-size: 12px;
     color: #009587;
-    margin: 0;   
+    margin: 0;
 }
 
 .bookstattitle:hover {
@@ -671,7 +688,7 @@ ul {
 .contact-link:hover {
     color: #202020;
     cursor: pointer;
-} 
+}
 
 .fa-briefcase {
     color: #B6B6B6;
@@ -693,21 +710,26 @@ i {
     margin-right: 3px;
 }
 
+
 /*   CONNECTRECRUITER   */
+
 .fa-linkedin {
     color: #009587;
 }
+
 .fa-facebook-official {
     color: #009587;
 }
+
 .fa-twitter {
     color: #009587;
 }
+
 .fa-instagram {
     color: #009587;
+}
 
 .offer-list {
     max-height: 600px;
     overflow: auto;
 }
-

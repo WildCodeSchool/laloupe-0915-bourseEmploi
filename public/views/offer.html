@@ -2,24 +2,24 @@
     <div class="col-md-4">
         <div class="wildpanel panel panel-default">
             <div class="wildpanelheader panel panel-default">
-                <h4>Quelques info sur {Nom de l'entreprise}</h4>
+                <h4>Quelques info sur {{recruiter.companyName}}</h4>
             </div>
             <div class="wildpanelbody panel panel-default">
-                <p><span class="company-name">{Nom de l'entreprise}</span> est un/une <b>{type de l'entreprise}</b> de <b>{nombre d'employés} employé(s)</b> dans le secteur <b>{secteur d'activité de l'entreprise}</b> situé(e) {adresse de l'entreprise}</p>
+                <p><span class="company-name">{{recruiter.companyName}}</span> est un/une <b>{type de l'entreprise}</b> <b>{{recruiter.companySize}}</b> dans le secteur <b>{{recruiter.business_sector}}</b> situé(e) {{recruiter.address}} {{recruiter.city}} {{recruiter.region}} {{recruiter.country}}</p>
             </div>
             <div class="wildpanelbody panel panel-default">
                 <img class="img-company" src="../img/empireCompany.jpg" alt="image illustrant {nom de l'entreprise}">
             </div>
             <div class="wildpanelbody panel panel-default">
                 <h3>Notre Metier</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod vitae, officiis nesciunt placeat minus tempora, illo ex qui magnam reprehenderit quas dolores saepe tempore! Distinctio sequi, dolorem laboriosam non praesentium.</p>
+                <p>{{recruiter.companyDescription}}</p>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a href=""><i class="fa fa-desktop fa-lg contact-link"></i></a>
-                <a href=""><i class="fa fa-facebook-official fa-lg contact-link"></i></a>
-                <a href=""><i class="fa fa-twitter fa-lg contact-link"></i></a>
-                <a href=""><i class="fa fa-instagram fa-lg contact-link"></i></a>
-                <a href=""><i class="fa fa-linkedin fa-lg contact-link"></i></a>
+                <a ng-show="websiteIf" href="{{recruiter.website}}"><i class="fa fa-desktop fa-lg contact-link"></i></a>
+                <a ng-show="facebookIf" href="{{recruiter.facebook}}"><i class="fa fa-facebook-official fa-lg contact-link"></i></a>
+                <a ng-show="twitterIf" href="{{recruiter.twitter}}"><i class="fa fa-twitter fa-lg contact-link"></i></a>
+                <a ng-show="instagramIf" href="{{recruiter.instagram}}"><i class="fa fa-instagram fa-lg contact-link"></i></a>
+                <a ng-show="linkedinIf" href="{{recruiter.linkedin}}"><i class="fa fa-linkedin fa-lg contact-link"></i></a>
             </div>
         </div>
     </div>
@@ -30,51 +30,70 @@
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <ul>
-                    <li class="headeradvert"><h2 class="headeradvert titleadvert">Nom de l'offre</h2></li>
-                    <li class="headeradvert"><p class="headeradvert smalltexadvert">depuis n jours</p></li>
+                    <li class="headeradvert">
+                        <h2 class="headeradvert titleadvert">{{offer.title}}</h2></li>
+                    <li class="headeradvert">
+                        <p class="headeradvert smalltexadvert">depuis n jours</p>
+                    </li>
                     <li class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive"></i></li>
-                    <li class="headeradvert"><i class="fa fa-share-alt fa-lg"></i></li> 
+                    <li class="headeradvert"><i class="fa fa-share-alt fa-lg"></i></li>
                 </ul>
                 <ul>
-                    <li class="headeradvert"><p class="headeradvert smalltexadvert">chez</p></li>
-                    <li class="headeradvert"><p class="headeradvert companytexadvert">Nom de l'entreprise</p></li>
+                    <li class="headeradvert">
+                        <p class="headeradvert smalltexadvert">chez</p>
+                    </li>
+                    <li class="headeradvert">
+                        <p class="headeradvert companytexadvert">{{recruiter.companyName}}</p>
+                    </li>
                 </ul>
                 <ul class="skill-ul">
-                    <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
+                    <li ng-repeat="skill in offer.skill" class="headeradvert skill-li"><span class="wildSkill">{{skill}}</span>
                 </ul>
                 <ul>
-                    <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i><p class="headeradvert smalltexadvert1">Contrat</p></li>
-                    <li class="headeradvert"><i class="fa fa-eur fa-lg"></i><p class="headeradvert smalltexadvert1">Salaire</p></li>
-                    <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i><p class="headeradvert smalltexadvert1">Expérience</p></li>
+                    <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
+                        <p class="headeradvert smalltexadvert1">{{offer.type_of_contract}}</p>
+                    </li>
+                    <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
+                        <p class="headeradvert smalltexadvert1">{{offer.salary}}k€/ans</p>
+                    </li>
+                    <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
+                        <p class="headeradvert smalltexadvert1">{{offer.experience}}</p>
+                    </li>
                 </ul>
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <h3>Description du poste</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur aliquid natus ipsa doloribus debitis minima nam obcaecati, ea alias aut eius, nisi tempora vel. Numquam blanditiis similique, officiis velit quo!</p>
+                <p>{{offer.description}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <h3>Responsabilités</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque magni aliquam facere dolore aspernatur architecto voluptatibus repellendus fugiat voluptate cumque omnis nisi, et asperiores cupiditate, similique voluptatum. Magni, enim amet.</p>
+                <p>{{offer.responsability}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault">
-                <h3>Pourquoi venir chez <span class="company-name">{Nom de l'entreprise}</span> ?</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque magni aliquam facere dolore aspernatur architecto voluptatibus repellendus fugiat voluptate cumque omnis nisi, et asperiores cupiditate, similique voluptatum. Magni, enim amet.</p>
+                <h3>Pourquoi venir chez <span class="company-name">{{recruiter.companyName}}</span> ?</h3>
+                <p>{{offer.why_choose_our_company}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <h3>Contact</h3>
                 <div class="text-center">
                     <ul>
-                        <li class="headeradvert"><i class="fa fa-paper-plane-o fa-lg"></i><p class="headeradvert smalltexadvert1">mail</p></li>
-                        <li class="headeradvert"><i class="fa fa-phone fa-lg"></i><p class="headeradvert smalltexadvert1">telephone</p></li>
-                        <li class="headeradvert"><i class="fa fa-map-marker fa-lg green-map-marker"></i><p class="headeradvert smalltexadvert1">Adresse</p></li>
+                        <li class="headeradvert"><i class="fa fa-paper-plane-o fa-lg"></i>
+                            <p class="headeradvert smalltexadvert1">{{offer.email}}</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-phone fa-lg"></i>
+                            <p class="headeradvert smalltexadvert1">{{offer.tel}}</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-map-marker fa-lg green-map-marker"></i>
+                            <p class="headeradvert smalltexadvert1">{{offer.adress}}</p>
+                        </li>
                     </ul>
                 </div>
-                
-                <div id="googleMap" style="width:100%;height:380px;margin-top:15px;"></div>
-                
+
+                <div id="map" style="height:300px;margin-top:15px;"></div>
+
             </div>
             <div class="wildpanelfooter panel panel-default">
-            
+
             </div>
         </div>
     </div>

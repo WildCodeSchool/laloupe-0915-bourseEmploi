@@ -1,7 +1,11 @@
 function offerService($http) {
     return {
-        get: function (data) {
-            return $http.get('/offers', data);
+        getAll: function () {
+            return $http.get('/offers');
+        },
+
+        getOfferbyId: function (id) {
+            return $http.get('/offers/' + id);
         },
 
         update: function (id, data, user) {

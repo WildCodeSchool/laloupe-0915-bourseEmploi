@@ -1,22 +1,54 @@
 var mongoose = require('mongoose');
 
 var recruiterSchema = new mongoose.Schema({
-    companyName: String,
-    companySize: Number,
+    companyName: {
+        type: String,
+        required: true,
+    },
+    companySize: {
+        type: String,
+        required: true,
+    },
+    
     logo: String,
-    business_sector: String,
-    companyDescription: String,
-    functionReferent: String,
-    country: String,
-    region: String,
-    city: String,
-    address: String,
+    
+    businessSector: {
+        type: String,
+        required: true,
+    },
+    companyDescription: {
+        type: String,
+        required: true,
+    },
+    functionReferent: {
+        type: String,
+        required: true,
+    },
+    country: {
+        type: String,
+        required: true,
+    },
+    region: {
+        type: String,
+        required: true,
+    },
+    city: {
+        type: String,
+        required: true,
+    },
+    address: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
         required: true,
         unique: true
     },
-    tel: Number,
+    tel: {
+        type: Number,
+        required: true,
+    },
     website: String,
     twitter: String,
     facebook: String,
@@ -53,7 +85,7 @@ var Recruiter = {
             companyName: req.body.companyName,
             companySize: req.body.companySize,
             logo: req.body.logo,
-            business_sector: req.body.businessSector,
+            businessSector: req.body.businessSector,
             companyDescription: req.body.companyDescription,
             functionReferent: req.body.functionReferent,
             country: req.body.country,
@@ -61,7 +93,7 @@ var Recruiter = {
             city: req.body.city,
             address: req.body.address,
             email: req.body.email,
-            tel: req.body.tel,
+            tel: req.body.tel || 0,
             website: req.body.website,
             twitter: req.body.twitter,
             facebook: req.body.facebook,
@@ -70,15 +102,16 @@ var Recruiter = {
             password: req.body.password
         }, function (err, user) {
             res.json(user);
+            console.log(err);
         });
     },
 
     update: function (req, res) {
         Recruiter.model.findByIdAndUpdate(req.params.id, {
             companyName: req.body.companyName,
-            companySize: req.body.companySize || 0,
+            companySize: req.body.companySize,
             logo: req.body.logo,
-            business_sector: req.body.businessSector,
+            businessSector: req.body.businessSector,
             companyDescription: req.body.companyDescription,
             functionReferent: req.body.functionReferent,
             country: req.body.country,

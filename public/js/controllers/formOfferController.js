@@ -65,11 +65,26 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
         data.description = $scope.offerDescription;
         data.responsability = $scope.offerResp;
         data.why = $scope.offerWhy;
+        data.adress = $scope.offerAdress;
+        data.city = $scope.offerCity;
+        //data.idRecruiter = $rootScope.id;
+        data.offerDate = $scope.offerDate;
 
         offerService.create(data).then(function (res) {
             console.log(data);
+            if (!res.data) {
+                console.log(data);
+                $scope.incompleteError = true;
+            }
+            //ERREUR
+            else {
+                alert("compte crée");
+                $location.path('/homeRecruiter');
+            }
 
-            $location.path('/homeRecruiter');
         });
     }
+
+    //Date du jour
+    $scope.date = $filter("date")(Date.now(), 'yyyy-MM-dd');
 }
