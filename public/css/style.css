@@ -742,3 +742,7 @@ i {
     max-height: 600px;
     overflow: auto;
 }
+
+div.white-space-pre-line {
+    white-space: pre-line;
+}

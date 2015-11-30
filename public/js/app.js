@@ -101,7 +101,7 @@ function run($rootScope, $location, connectService) {
 }
 
 
-angular.module('app', ['ngRoute'])
+angular.module('app', ['ngRoute', 'ngSanitize'])
     .config(config)
     .controller('connectController', connectController)
     .controller('adminController', adminController)

@@ -54,6 +54,7 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
     }
 
     //Envoi des données du formulaire
+    $scope.offerDate = new Date();
     $scope.send = function () {
         var data = {};
         data.name = $scope.referentName;
@@ -70,7 +71,8 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
         data.adress = $scope.offerAdress;
         data.city = $scope.offerCity;
         //data.idRecruiter = $rootScope.id;
-        data.offerDate = $scope.offerDate;
+        data.startDate = $scope.offerDate;
+        data.endDate = $scope.offerDate;
 
         offerService.create(data).then(function (res) {
             console.log(data);
@@ -87,6 +89,6 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
         });
     }
 
-    //Date du jour
-    $scope.date = $filter("date")(Date.now(), 'yyyy-MM-dd');
+    // Date du jour
+    $scope.Dday = moment().format('YYYY-MM-DD');
 }
