@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var moment = require('moment');
 
 var offerSchema = new mongoose.Schema({
     skill: [{
@@ -39,7 +40,11 @@ var offerSchema = new mongoose.Schema({
         required: true
     },
     why_choose_our_company: String,
-    offerDate: {
+    startDate: {
+        type: Date,
+        required: true
+    },
+    endDate: {
         type: Date,
         required: true
     },
@@ -89,7 +94,8 @@ var Offer = {
             experience: req.body.experience,
             responsability: req.body.responsability,
             why_choose_our_company: req.body.why,
-            offerDate: req.body.offerDate,
+            startDate: req.body.startDate,
+            endDate: moment(req.body.enDate).add(3, 'months'),
             adress: req.body.adress,
             city: req.body.city
         }, function (err, offer) {
@@ -111,7 +117,10 @@ var Offer = {
             experience: req.body.experience,
             responsability: req.body.responsability,
             why_choose_our_company: req.body.why,
-            offerDate: req.body.offerDate
+            startDate: req.body.startDate,
+            endDate: moment(req.body.enDate).add(3, 'months'),
+            adress: req.body.adress,
+            city: req.body.city
         }, function (err, offer) {
             res.json(offer);
         });

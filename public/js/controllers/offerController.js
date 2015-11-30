@@ -6,11 +6,15 @@ function offerController($scope, $http, $routeParams, offerService) {
     function loadOffer() {
         offerService.getOfferbyId(selectOffer).then(function (res) {
             $scope.offer = res.data;
-
             console.log(res.data)
+
+            moment.locale('fr')
+            var a = moment($scope.offer.startDate);
+            var b = moment($scope.offer.endDate);
+            var c = moment();
+            $scope.startOffer = c.from(a);
+            $scope.endOffer = c.to(b);
         });
-
-
     }
     loadOffer();
 
