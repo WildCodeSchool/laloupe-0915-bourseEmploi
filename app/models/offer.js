@@ -128,15 +128,11 @@ var Offer = {
             responsability: req.body.responsability,
             why_choose_our_company: req.body.why,
             startDate: req.body.startDate,
-            << << << < HEAD
             endDate: moment(req.body.enDate).add(3, 'months'),
             address: req.body.address,
             city: req.body.city,
             country: req.body.country,
-            zipCode: req.body.zipCode === === =
-                endDate: moment(req.body.endDate).add(3, 'months'),
-            adress: req.body.adress,
-            city: req.body.city >>> >>> > geocoding
+            zipCode: req.body.zipCode
         }, function (err, offer) {
             res.json(offer);
         });
