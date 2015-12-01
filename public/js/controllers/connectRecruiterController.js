@@ -31,6 +31,7 @@ function connectRecruiterController($scope, $location, connectRecruiterService){
         data.email = $scope.email;
         data.tel = $scope.tel;
         data.password = $scope.password;
+        data.zipCode = $scope.zipCode;
         
         connectRecruiterService.create(data).then(function(res){
         if (!res.data) {
