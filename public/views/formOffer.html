@@ -7,7 +7,7 @@
         <!-- $COORDONNEES REFERENT -->
         <div>
             <input type="checkbox" ng-model="referent" checked/> Prendre mes coordonnées ( nom, email, téléphone ) comme référent de cette annonce.
-            <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Décocher si vos coordonnées sont différentes de celles enregistrées lors de votre inscription."><i class="fa fa-question-circle"></i></a>
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Cocher si vos coordonnées sont identiques de celles enregistrées lors de votre inscription."><i class="fa fa-question-circle"></i></a>
         </div>
 
         <div ng-hide="referent" class="spacer">
@@ -71,7 +71,7 @@
             <h4 class="spacer">Votre annonce :</h4>
             <div class="col-sm-offset-1 col-sm-10">
                 <label class="control-label">Titre de l'offre* :</label>
-                <input type="text" name="title" class="form-control" id="" placeholder="Définissez un intitulé de l'offre" ng-model="offerTitle" required>
+                <input type="text" name="title" class="form-control" id="" placeholder="Définissez un intitulé de l'offre" ng-model="offerTitle">
             </div>
         </div>
         <!-- $FORMULAIRE SELECTEURS -->
@@ -150,7 +150,7 @@
             <div class="col-sm-offset-1 col-sm-10">
                 <label>Description du poste* :</label>
                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Description du poste, des conditions et du projet."><i class="fa fa-question-circle"></i></a>
-                <textarea class="form-control" rows="6" ng-model="offerDescription" name="desc" required></textarea>
+                <textarea class="form-control" rows="6" ng-model="offerDescription" name="desc"></textarea>
                 <span ng-show='offerForm.desc.$dirty && offerForm.desc.$error.required'>A login is required</span>
             </div>
         </div>
@@ -159,7 +159,7 @@
             <div class="col-sm-offset-1 col-sm-10">
                 <label>Responsabilités du candidat* :</label>
                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Quels seront les responsabilités ou missions que le candidats aura à effectuer ?"><i class="fa fa-question-circle"></i></a>
-                <textarea class="form-control" rows="4" ng-model="offerResp" required></textarea>
+                <textarea class="form-control" rows="4" ng-model="offerResp"></textarea>
             </div>
         </div>
 

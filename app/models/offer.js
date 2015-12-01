@@ -30,10 +30,7 @@ var offerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    salary: {
-        type: Number,
-        required: true
-    },
+    salary: Number,
     experience: {
         type: String,
         required: true
@@ -51,12 +48,20 @@ var offerSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    adress: {
+    address: {
         type: String,
         required: true
     },
     city: {
         type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    zipCode: {
+        type: Number,
         required: true
     }
 });
@@ -99,10 +104,13 @@ var Offer = {
             why_choose_our_company: req.body.why,
             startDate: req.body.startDate,
             endDate: moment(req.body.enDate).add(3, 'months'),
-            adress: req.body.adress,
-            city: req.body.city
+            address: req.body.address,
+            city: req.body.city,
+            country: req.body.country,
+            zipCode: req.body.zipCode
         }, function (err, offer) {
             res.json(offer);
+            console.log(err);
 
         });
     },
@@ -122,8 +130,10 @@ var Offer = {
             why_choose_our_company: req.body.why,
             startDate: req.body.startDate,
             endDate: moment(req.body.enDate).add(3, 'months'),
-            adress: req.body.adress,
-            city: req.body.city
+            address: req.body.address,
+            city: req.body.city,
+            country: req.body.country,
+            zipCode: req.body.zipCode
         }, function (err, offer) {
             res.json(offer);
         });

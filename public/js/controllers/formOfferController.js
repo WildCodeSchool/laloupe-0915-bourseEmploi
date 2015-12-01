@@ -79,11 +79,12 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
 
         offerService.create(data).then(function (res) {
             console.log(data);
+            //ERREUR
             if (!res.data) {
                 console.log(data);
                 $scope.incompleteError = true;
             }
-            //ERREUR
+            //SUCCES
             else {
                 alert("offre crée");
                 $location.path('/homeRecruiter');
