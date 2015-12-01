@@ -97,7 +97,7 @@ var Recruiter = {
             twitter: req.body.twitter,
             facebook: req.body.facebook,
             linkedin: req.body.linkedin,
-            instagram: req.body.instagram
+            instagram: req.body.instagram,
         }, function (err, user) {
             res.json(user);
             console.log(err);
@@ -122,7 +122,7 @@ var Recruiter = {
             twitter: req.body.twitter,
             facebook: req.body.facebook,
             linkedin: req.body.linkedin,
-            instagram: req.body.instagram
+            instagram: req.body.instagram,
         }, function (err, recruiter) {
             res.json(recruiter);
         });

@@ -1,11 +1,14 @@
 
 function connectRecruiterController($scope, $location, connectRecruiterService){
     
-     $(function () {
+    $scope.logo = {};
+    $scope.EMAIL_REGEXP = /^[a-zA-Z0-9._]+@[a-z]+\.[a-z.]{2,3}$/;
+    
+    $(function () {
        $('[data-toggle="popover"]').popover()
    });
     
-    $scope.logo = {};
+    //envoie des données recruteur
     
     $scope.send = function(){
 		var data = {};
@@ -27,24 +30,20 @@ function connectRecruiterController($scope, $location, connectRecruiterService){
         data.tilder = $scope.tilder;
         data.email = $scope.email;
         data.tel = $scope.tel;
+        data.password = $scope.password;
         
         connectRecruiterService.create(data).then(function(res){
-            
-            if (!res.data){
+        if (!res.data) {
                 console.log(data);
 				$scope.incompleteError = true;
-			}
-			//ERREUR
-			else{
-				alert("compte crée");
-                $location.path('/homeRecruiter');
-			}
-            
-        });
+		} 
+		else if ($scope.password === $scope.password2 && $scope.password != undefined ) {                                     $location.path('/homeRecruiter');
+		}                                             
+    })
+}
 
-    }
-
-
+    //Upload photo
+    
 $scope.previewFile = function() {
      var preview    = document.querySelector('#preview');
      var file    = document.querySelector('input[type=file]').files[0];
