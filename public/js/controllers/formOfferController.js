@@ -4,7 +4,7 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
         $('[data-toggle="popover"]').popover()
     });
 
-    $scope.referent = true;
+    $scope.referent = false;
 
     /****   CREATION TAGS ******/
 
@@ -67,10 +67,13 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
         data.description = $scope.offerDescription;
         data.responsability = $scope.offerResp;
         data.why = $scope.offerWhy;
-        data.adress = $scope.offerAdress;
-        data.city = $scope.offerCity;
+        data.address = $scope.referentAddress;
+        data.city = $scope.referentCity;
+        data.country = $scope.referentCountry;
+        data.zipCode = $scope.referentZipCode;
         //data.idRecruiter = $rootScope.id;
         data.offerDate = $scope.offerDate;
+        console.log(data);
 
         offerService.create(data).then(function (res) {
             console.log(data);
@@ -83,7 +86,6 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
                 alert("offre crée");
                 $location.path('/homeRecruiter');
             }
-
         });
     }
 

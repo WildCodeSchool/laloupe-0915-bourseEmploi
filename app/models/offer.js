@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var offerSchema = new mongoose.Schema({
-    skill: [{
+    skills: [{
         type: String,
         required: true
     }],
@@ -29,7 +29,10 @@ var offerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    salary: Number,
+    salary: {
+        type: Number,
+        required: true
+    },
     experience: {
         type: String,
         required: true
