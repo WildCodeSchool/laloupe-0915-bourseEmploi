@@ -95,12 +95,12 @@ var Offer = {
             responsability: req.body.responsability,
             why_choose_our_company: req.body.why,
             startDate: req.body.startDate,
-            endDate: moment(req.body.enDate).add(3, 'months'),
+            endDate: moment(req.body.endDate).add(3, 'months'),
             adress: req.body.adress,
             city: req.body.city
         }, function (err, offer) {
             res.json(offer);
-
+            console.log(err);
         });
     },
 
@@ -118,7 +118,7 @@ var Offer = {
             responsability: req.body.responsability,
             why_choose_our_company: req.body.why,
             startDate: req.body.startDate,
-            endDate: moment(req.body.enDate).add(3, 'months'),
+            endDate: moment(req.body.endDate).add(3, 'months'),
             adress: req.body.adress,
             city: req.body.city
         }, function (err, offer) {
