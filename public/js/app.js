@@ -115,5 +115,7 @@ angular.module('app', ['ngRoute', 'ngSanitize'])
     .service('offerService', offerService)
     .service('skillService', skillService)
     .service('connectRecruiterService', connectRecruiterService)
-    /*.factory('', )*/
-    .run(run);
+    .service('geocoderService', geocoderService)
+
+/*.factory('', )*/
+.run(run);
