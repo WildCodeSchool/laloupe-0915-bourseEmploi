@@ -36,6 +36,14 @@ function config($routeProvider) {
                 connected: checkIsConnected
             }
         })
+        .when('/book', {
+            templateUrl: 'views/book.html',
+            controller: 'bookController'
+        })
+        .when('/book/:id', {
+            templateUrl: 'views/bookStudent.html',
+            controller: 'bookStudentController'
+        })
         .when('/connectRecruiter', {
             templateUrl: 'views/connectRecruiter.html',
             controller: 'connectRecruiterController'
@@ -119,6 +127,8 @@ angular.module('app', ['ngRoute', 'ngSanitize'])
     .controller('homeStudentController', homeStudentController)
     .controller('offerController', offerController)
     .controller('searchOfferController', searchOfferController)
+    .controller('bookController', bookController)
+    .controller('bookStudentController', bookStudentController)
     .service('connectService', connectService)
     .service('offerService', offerService)
     .service('skillService', skillService)

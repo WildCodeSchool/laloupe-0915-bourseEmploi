@@ -61,4 +61,9 @@ function offerController($scope, $http, $routeParams, offerService, geocoderServ
             $scope.linkedinIf = true;
         };
     }
+
+    //TOOLTIP    
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 }

@@ -7,33 +7,42 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 wildpanelbodybuttonrctr text-center">
                 <button type="submit" class="btnW"><strong>Créer une annonce</strong></button>
-            </div> 
+            </div>
         </div>
     </div>
 </div>
 <div class="row">
-<!--OFFERS DASHBOARD-->
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-            <div class="wildpanel panel paneldefault">
-                <div class="wildpanelheader panel paneldefault">
-                    <a class="title-link" ng-click=""><h4>Vos annonces</h4></a>
-                </div>
-                
-    <!--MENU-->
-                <div class="wildpanelnavbar row">
-                    <a ng-click="show1()"><div class="wildpanelmenu col-xs-4 col-sm-4 col-md-4 col-lg-4" ng-class="{'wildpanelmenuactive': currentoffers==true}"><h4>En cours</h4></div></a>
-                    <a ng-click="show2()"><div class="wildpanelmenu  col-xs-4 col-sm-4 col-md-4col-lg-4" ng-class="{'wildpanelmenuactive': comingoffers==true}"><h4>A venir</h4></div></a>
-                    <a ng-click="show3()"><div class="wildpanelmenu  col-xs-4 col-sm-4 col-md-4col-lg-4" ng-class="{'wildpanelmenuactive': expiredoffers==true}"><h4>Expirées</h4></div></a>
-                </div>    
-                
-    <!--CURRENT OFFERS-->
-                <span ng-show="currentoffers">
+    <!--OFFERS DASHBOARD-->
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="wildpanel panel paneldefault">
+            <div class="wildpanelheader panel paneldefault">
+                <a class="title-link" ng-click=""><h4>Vos annonces</h4></a>
+            </div>
+
+            <!--MENU-->
+            <div class="wildpanelnavbar row">
+                <a ng-click="show1()">
+                    <div class="wildpanelmenu col-xs-4 col-sm-4 col-md-4 col-lg-4" ng-class="{'wildpanelmenuactive': currentoffers==true}">
+                        <h4>En cours</h4></div>
+                </a>
+                <a ng-click="show2()">
+                    <div class="wildpanelmenu  col-xs-4 col-sm-4 col-md-4col-lg-4" ng-class="{'wildpanelmenuactive': comingoffers==true}">
+                        <h4>A venir</h4></div>
+                </a>
+                <a ng-click="show3()">
+                    <div class="wildpanelmenu  col-xs-4 col-sm-4 col-md-4col-lg-4" ng-class="{'wildpanelmenuactive': expiredoffers==true}">
+                        <h4>Expirées</h4></div>
+                </a>
+            </div>
+
+            <!--CURRENT OFFERS-->
+            <span ng-show="currentoffers">
                    
         <!--OFFER-->
                     <div class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
-                            <i class="fa fa-pencil fa-lg" ng-click=""></i>
-                            <i class="fa fa-times fa-lg" ng-click=""></i>
+                            <i class="fa fa-pencil fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Editer"></i>
+                            <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Supprimer"></i>
                         </div>
                         <ul>
                             <li class="headeradvert"><h2 class="headeradvert titleadvert">Nom de l'offre</h2></li>
@@ -45,25 +54,33 @@
                         </ul>
                         <ul class="skill-ul">
                             <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
-                        </ul>
-                        <ul>
-                            <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i><p class="headeradvert smalltexadvert1">Contrat</p></li>
-                            <li class="headeradvert"><i class="fa fa-eur fa-lg"></i><p class="headeradvert smalltexadvert1">Salaire</p></li>
-                            <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i><p class="headeradvert smalltexadvert1">Expérience</p></li>
-                            <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i><p class="headeradvert smalltexadvert1">Adresse</p></li>
-                        </ul>
-                    </div>
-                </span>
-        
-        
-    <!--COMING OFFER-->
-                <span ng-show="comingoffers">
+            </ul>
+            <ul>
+                <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
+                    <p class="headeradvert smalltexadvert1">Contrat</p>
+                </li>
+                <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
+                    <p class="headeradvert smalltexadvert1">Salaire</p>
+                </li>
+                <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
+                    <p class="headeradvert smalltexadvert1">Expérience</p>
+                </li>
+                <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
+                    <p class="headeradvert smalltexadvert1">Adresse</p>
+                </li>
+            </ul>
+        </div>
+        </span>
+
+
+        <!--COMING OFFER-->
+        <span ng-show="comingoffers">
         
         <!--OFFER-->
                     <div class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
-                            <i class="fa fa-pencil fa-lg" ng-click=""></i>
-                            <i class="fa fa-times fa-lg" ng-click=""></i>
+                            <i class="fa fa-pencil fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Editer"></i>
+                            <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Supprimer"></i>
                         </div>
                         <ul>
                             <li class="headeradvert"><h2 class="headeradvert titleadvert">Nom de l'offre</h2></li>
@@ -75,23 +92,32 @@
                         </ul>
                         <ul class="skill-ul">
                             <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
-                        </ul>
-                        <ul>
-                            <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i><p class="headeradvert smalltexadvert1">Contrat</p></li>
-                            <li class="headeradvert"><i class="fa fa-eur fa-lg"></i><p class="headeradvert smalltexadvert1">Salaire</p></li>
-                            <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i><p class="headeradvert smalltexadvert1">Expérience</p></li>
-                            <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i><p class="headeradvert smalltexadvert1">Adresse</p></li>
-                        </ul>
-                    </div>
-                </span>            
-        
+        </ul>
+        <ul>
+            <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
+                <p class="headeradvert smalltexadvert1">Contrat</p>
+            </li>
+            <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
+                <p class="headeradvert smalltexadvert1">Salaire</p>
+            </li>
+            <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
+                <p class="headeradvert smalltexadvert1">Expérience</p>
+            </li>
+            <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
+                <p class="headeradvert smalltexadvert1">Adresse</p>
+            </li>
+        </ul>
+    </div>
+    </span>
+
     <!--EXPIRED OFFER-->
-                <span ng-show="expiredoffers">
+    <span ng-show="expiredoffers">
                    
         <!--OFFER-->
                     <div class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
-                            <i class="fa fa-repeat fa-lg" ng-click=""></i>
+                            <i class="fa fa-repeat fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Reposter à partir de cette annonce"></i>
+                            <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Supprimer définitivement"></i>
                         </div>
                         <ul>
                             <li class="headeradvert"><h2 class="headeradvert titleadvert">Nom de l'offre</h2></li>
@@ -103,76 +129,92 @@
                         </ul>
                         <ul class="skill-ul">
                             <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
-                        </ul>
-                        <ul>
-                            <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i><p class="headeradvert smalltexadvert1">Contrat</p></li>
-                            <li class="headeradvert"><i class="fa fa-eur fa-lg"></i><p class="headeradvert smalltexadvert1">Salaire</p></li>
-                            <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i><p class="headeradvert smalltexadvert1">Expérience</p></li>
-                            <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i><p class="headeradvert smalltexadvert1">Adresse</p></li>
-                        </ul>
-                    </div>
-                </span>
-                <div class="wildpanelfooter panel paneldefault">
-                    <p class="paragraphWPF">3 annonces en cours</p>
-                </div>
-            </div>
-        </div>
-        
+    </ul>
+    <ul>
+        <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
+            <p class="headeradvert smalltexadvert1">Contrat</p>
+        </li>
+        <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
+            <p class="headeradvert smalltexadvert1">Salaire</p>
+        </li>
+        <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
+            <p class="headeradvert smalltexadvert1">Expérience</p>
+        </li>
+        <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
+            <p class="headeradvert smalltexadvert1">Adresse</p>
+        </li>
+    </ul>
+</div>
+</span>
+<div class="wildpanelfooter panel paneldefault">
+    <p class="paragraphWPF">3 annonces en cours</p>
+</div>
+</div>
+</div>
+
 <!--STUDENTS BOOK-->
-    <div class="col-sm-12 col-sm-12 col-md-6 col-lg-6 no-marge">
-        <div class="col-xs-12 col-sm-6 col-md-12 col-md-12">
-            <div class="wildpanel panel paneldefault">
-                <div class="wildpanelheader panel paneldefault">
-                    <a class="title-link" ng-click=""><h4>Le Book des élèves</h4></a>
-                </div>    
-                <div class=" wildpanelbodybook-bg panel paneldefault">
-                    <img class="img-responsive center-block" src="../img/book.jpg">
+<div class="col-sm-12 col-sm-12 col-md-6 col-lg-6 no-marge">
+    <div class="col-xs-12 col-sm-6 col-md-12 col-md-12">
+        <div class="wildpanel panel paneldefault">
+            <div class="wildpanelheader panel paneldefault">
+                <a class="title-link" ng-click=""><h4>Le Book des élèves</h4></a>
+            </div>
+            <div class=" wildpanelbodybook-bg panel paneldefault">
+                <img class="img-responsive center-block" src="../img/book.jpg">
+            </div>
+            <div class="wildpanelbody panel paneldefault row">
+                <div class="col-xs-4 col-sm-4 col-md-4 text-center">
+                    <a class="title-link" ng-click=""><h2 class="bookstatnumber">41</h2></a>
+                    <a class="title-link" ng-click="">
+                        <p class="bookstattitle">Wilders</p>
+                    </a>
                 </div>
-                <div class="wildpanelbody panel paneldefault row">
-                    <div class="col-xs-4 col-sm-4 col-md-4 text-center">
-                        <a class="title-link" ng-click=""><h2 class="bookstatnumber">41</h2></a>
-                        <a class="title-link" ng-click=""><p class="bookstattitle">Wilders</p></a>
-                    </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4 text-center">
-                        <a class="title-link" ng-click=""><h2 class="bookstatnumber">41</h2></a>
-                        <a class="title-link" ng-click=""><p class="bookstattitle">en recherche d'emploi</p></a>
-                    </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4 text-center">
-                        <a class="title-link" ng-click=""><h2 class="bookstatnumber">41</h2></a>
-                        <a class="title-link" ng-click=""><p class="bookstattitle">en recherche de stage</p></a>
-                    </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 text-center">
+                    <a class="title-link" ng-click=""><h2 class="bookstatnumber">41</h2></a>
+                    <a class="title-link" ng-click="">
+                        <p class="bookstattitle">en recherche d'emploi</p>
+                    </a>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 text-center">
+                    <a class="title-link" ng-click=""><h2 class="bookstatnumber">41</h2></a>
+                    <a class="title-link" ng-click="">
+                        <p class="bookstattitle">en recherche de stage</p>
+                    </a>
                 </div>
             </div>
-        </div>
-    
-       
-<!--FAVOURITES STUDENTS-->
-        <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
-            <div class="wildpanel panel paneldefault">
-                <div class="wildpanelheader panel paneldefault">
-                    <h4>Vos coup de coeur</h4>
-                </div>
-                
-    <!--STUDENT-->
-                <div class="wildpanelheart panel paneldefault">
-                    <img class="profilimg-sm"src="../img/darkvador.jpg" alt="photo de profil de ...">
-                    <div class="offerdelete">
-                        <i class="fa fa-times fa-lg" ng-click=""></i>
-                    </div>
-                    <ul>
-                        <li class="headeradvert" ng-click=""><h2 class="headeradvert studentname">Nom de l'élève</h2></li>
-                    </ul>
-                    <ul>
-                       <li class="headeradvert"><h3 class="headeradvert studentteaser">Teaser de l'élève</h3></li>
-                    </ul>
-                    <ul>
-                        <li class="headeradvert"><span class="wildSkill">Compétence</span>
-                    </ul>
-                </div>       
-                <div class="wildpanelfooter panel paneldefault">
-                    <p class="paragraphWPF">n pofil(s) dans vos coups de coeur</p>
-                </div>
-            </div>    
         </div>
     </div>
+
+
+    <!--FAVOURITES STUDENTS-->
+    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+        <div class="wildpanel panel paneldefault">
+            <div class="wildpanelheader panel paneldefault">
+                <h4>Vos coup de coeur</h4>
+            </div>
+
+            <!--STUDENT-->
+            <div class="wildpanelheart panel paneldefault">
+                <img class="profilimg-sm" src="../img/darkvador.jpg" alt="photo de profil de ...">
+                <div class="offerdelete">
+                    <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Ne plus suivre"></i>
+                </div>
+                <ul>
+                    <li class="headeradvert" ng-click="">
+                        <h2 class="headeradvert studentname">Nom de l'élève</h2></li>
+                </ul>
+                <ul>
+                    <li class="headeradvert">
+                        <h3 class="headeradvert studentteaser">Teaser de l'élève</h3></li>
+                </ul>
+                <ul>
+                    <li class="headeradvert"><span class="wildSkill">Compétence</span>
+                </ul>
+            </div>
+            <div class="wildpanelfooter panel paneldefault">
+                <p class="paragraphWPF">n pofil(s) dans vos coups de coeur</p>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
