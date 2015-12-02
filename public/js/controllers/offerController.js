@@ -1,4 +1,4 @@
-function offerController($scope, $http, $routeParams, offerService) {
+function offerController($scope, $http, $routeParams, offerService, geocoderService) {
 
     //LOAD OFFER
     var selectOffer = $routeParams.id;
@@ -6,11 +6,35 @@ function offerController($scope, $http, $routeParams, offerService) {
     function loadOffer() {
         offerService.getOfferbyId(selectOffer).then(function (res) {
             $scope.offer = res.data;
-
             console.log(res.data)
+
+            moment.locale('fr')
+            var a = moment($scope.offer.startDate);
+            var b = moment($scope.offer.endDate);
+            var c = moment();
+            $scope.startOffer = c.from(a);
+            $scope.endOffer = c.to(b);
+
+            //MAP
+            var adress = $scope.offer.adress + ", " + $scope.offer.zipCode + " " + $scope.offer.city + ", " + $scope.offer.country;
+            $scope.fullAdress = adress;
+            console.log(adress)
+            geocoderService.CoordinateByAdress(adress).then(function (res) {
+                console.log(res.data);
+                var lng = res.data.features[0].geometry.coordinates[0];
+                var lat = res.data.features[0].geometry.coordinates[1];
+                console.log(lng);
+                console.log(lat);
+                L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
+                var map = L.mapbox.map('map', 'mapbox.streets')
+                    .setView([lat, lng], 15);
+
+                var marker = L.marker([lat, lng]).addTo(map);
+
+            });
+
+
         });
-
-
     }
     loadOffer();
 
@@ -37,9 +61,4 @@ function offerController($scope, $http, $routeParams, offerService) {
             $scope.linkedinIf = true;
         };
     }
-
-    //MAP
-    L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
-    var map = L.mapbox.map('map', 'mapbox.streets')
-        .setView([46.84, 2.00], 5);
 }

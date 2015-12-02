@@ -1,11 +1,17 @@
 var mongoose = require('mongoose');
+var moment = require('moment');
 
 var offerSchema = new mongoose.Schema({
     skills: [{
+<<<<<<< HEAD
         skill :{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Skill'
         }
+=======
+        type: String,
+        required: true
+>>>>>>> d6ebaa449ad9632b842ff4fd56de96b1b8672d6b
     }],
     title: {
         type: String,
@@ -38,10 +44,17 @@ var offerSchema = new mongoose.Schema({
         required: true
     },
     why_choose_our_company: String,
-    offerDate: {
+    startDate: {
         type: Date,
         required: true
     },
+<<<<<<< HEAD
+=======
+    endDate: {
+        type: Date,
+        required: true
+    },
+>>>>>>> d6ebaa449ad9632b842ff4fd56de96b1b8672d6b
     address: {
         type: String,
         required: true
@@ -54,7 +67,11 @@ var offerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+<<<<<<< HEAD
     zipCode:{
+=======
+    zipCode: {
+>>>>>>> d6ebaa449ad9632b842ff4fd56de96b1b8672d6b
         type: Number,
         required: true
     }
@@ -95,12 +112,14 @@ var Offer = {
             experience: req.body.experience,
             responsability: req.body.responsability,
             why_choose_our_company: req.body.why,
-            offerDate: req.body.offerDate,
+            startDate: req.body.startDate,
+            endDate: moment(req.body.enDate).add(3, 'months'),
             address: req.body.address,
             city: req.body.city,
             country: req.body.country,
             zipCode: req.body.zipCode
         }, function (err, offer) {
+
             if (!err){
                 for (var i = 0; i < req.body.skills.length ; i++){
                     Offer.model.findByIdAndUpdate(offer.id,{ $push: {
@@ -132,7 +151,8 @@ var Offer = {
             experience: req.body.experience,
             responsability: req.body.responsability,
             why_choose_our_company: req.body.why,
-            offerDate: req.body.offerDate,
+            startDate: req.body.startDate,
+            endDate: moment(req.body.enDate).add(3, 'months'),
             address: req.body.address,
             city: req.body.city,
             country: req.body.country,

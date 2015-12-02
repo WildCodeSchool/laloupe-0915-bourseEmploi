@@ -4,7 +4,7 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
         $('[data-toggle="popover"]').popover()
     });
 
-    $scope.referent = true;
+    $scope.referent = false;
 
     /****   CREATION TAGS ******/
 
@@ -48,10 +48,13 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
 
     //Suppression des Tags
     $scope.deleteSkill = function deleteASkill(id) {
-        return dataSkill.splice(id, 1);
+        var idDeletedSkill = dataSkill.indexOf(id);
+        console.log(idDeletedSkill);
+        return dataSkill.splice(idDeletedSkill, 1);
     }
 
     //Envoi des données du formulaire
+    $scope.offerDate = new Date();
     $scope.send = function () {
         var data = {};
         data.name = $scope.referentName;
@@ -65,26 +68,30 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
         data.description = $scope.offerDescription;
         data.responsability = $scope.offerResp;
         data.why = $scope.offerWhy;
-        data.address = $scope.offerAdress;
-        data.city = $scope.offerCity;
+        data.address = $scope.referentAddress;
+        data.city = $scope.referentCity;
+        data.country = $scope.referentCountry;
+        data.zipCode = $scope.referentZipCode;
         //data.idRecruiter = $rootScope.id;
-        data.offerDate = $scope.offerDate;
+        data.startDate = $scope.offerDate;
+        data.endDate = $scope.offerDate;
+        console.log(data);
 
         offerService.create(data).then(function (res) {
             console.log(data);
+            //ERREUR
             if (!res.data) {
                 console.log(data);
                 $scope.incompleteError = true;
             }
-            //ERREUR
+            //SUCCES
             else {
-                alert("compte crée");
+                alert("offre crée");
                 $location.path('/homeRecruiter');
             }
-
         });
     }
 
-    //Date du jour
-    $scope.date = $filter("date")(Date.now(), 'yyyy-MM-dd');
+    // Date du jour
+    $scope.Dday = moment().format('YYYY-MM-DD');
 }

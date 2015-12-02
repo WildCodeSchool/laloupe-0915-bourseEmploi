@@ -109,7 +109,7 @@ function run($rootScope, $location, connectService) {
 }
 
 
-angular.module('app', ['ngRoute'])
+angular.module('app', ['ngRoute', 'ngSanitize'])
     .config(config)
     .controller('connectController', connectController)
     .controller('adminController', adminController)
@@ -123,5 +123,7 @@ angular.module('app', ['ngRoute'])
     .service('offerService', offerService)
     .service('skillService', skillService)
     .service('connectRecruiterService', connectRecruiterService)
-    /*.factory('', )*/
-    .run(run);
+    .service('geocoderService', geocoderService)
+
+/*.factory('', )*/
+.run(run);

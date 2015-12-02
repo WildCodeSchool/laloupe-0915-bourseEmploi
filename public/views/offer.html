@@ -33,7 +33,7 @@
                     <li class="headeradvert">
                         <h2 class="headeradvert titleadvert">{{offer.title}}</h2></li>
                     <li class="headeradvert">
-                        <p class="headeradvert smalltexadvert">depuis n jours</p>
+                        <p class="headeradvert smalltexadvert">Postée {{startOffer}}. Expire {{endOffer}}</p>
                     </li>
                     <li class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive"></i></li>
                     <li class="headeradvert"><i class="fa fa-share-alt fa-lg"></i></li>
@@ -63,15 +63,15 @@
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <h3>Description du poste</h3>
-                <p>{{offer.description}}</p>
+                <p class="white-space-pre-line">{{offer.description}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <h3>Responsabilités</h3>
-                <p>{{offer.responsability}}</p>
+                <p class="white-space-pre-line">{{offer.responsability}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <h3>Pourquoi venir chez <span class="company-name">{{recruiter.companyName}}</span> ?</h3>
-                <p>{{offer.why_choose_our_company}}</p>
+                <p class="white-space-pre-line">{{offer.why_choose_our_company}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <h3>Contact</h3>
@@ -84,7 +84,7 @@
                             <p class="headeradvert smalltexadvert1">{{offer.tel}}</p>
                         </li>
                         <li class="headeradvert"><i class="fa fa-map-marker fa-lg green-map-marker"></i>
-                            <p class="headeradvert smalltexadvert1">{{offer.adress}}</p>
+                            <p class="headeradvert smalltexadvert1">{{fullAdress}}</p>
                         </li>
                     </ul>
                 </div>

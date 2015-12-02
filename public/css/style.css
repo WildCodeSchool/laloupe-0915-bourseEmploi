@@ -232,6 +232,15 @@ ul {
     color: red;
 }
 
+i:focus,
+a:focus {
+    outline: none;
+}
+
+.fa:hover {
+    color: #009587;
+}
+
 
 /* ----------------- *\
 	  BS CALLOUT 
@@ -655,7 +664,7 @@ ul {
 }
 
 .profilimg-sm {
-    height: 90px;
+    height: 101px;
     margin-top: -5px;
     margin-left: -10px;
     margin-right: 10px;
@@ -732,4 +741,8 @@ i {
 .offer-list {
     max-height: 600px;
     overflow: auto;
+}
+
+p.white-space-pre-line {
+    white-space: pre-line;
 }
