@@ -77,7 +77,6 @@ var User = {
             password: req.body.password
         }, function (err, user) {
             res.json(user);
-            console.log(err);
         });
     },
 

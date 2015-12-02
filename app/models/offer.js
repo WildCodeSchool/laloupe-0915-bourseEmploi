@@ -1,9 +1,11 @@
 var mongoose = require('mongoose');
 
 var offerSchema = new mongoose.Schema({
-    skill: [{
-        type: String,
-        required: true
+    skills: [{
+        skill :{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
+        }
     }],
     title: {
         type: String,
@@ -17,10 +19,7 @@ var offerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    tel: {
-        type: Number,
-        required: true
-    },
+    tel: Number,
     description: {
         type: String,
         required: true
@@ -29,10 +28,7 @@ var offerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    salary: {
-        type: Number,
-        required: true
-    },
+    salary: Number,
     experience: {
         type: String,
         required: true
@@ -46,12 +42,20 @@ var offerSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    adress: {
+    address: {
         type: String,
         required: true
     },
     city: {
         type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    zipCode:{
+        type: Number,
         required: true
     }
 });
@@ -81,7 +85,6 @@ var Offer = {
 
     create: function (req, res) {
         Offer.model.create({
-            skill: req.body.skill,
             title: req.body.title,
             email: req.body.email,
             name_referent: req.body.name,
@@ -93,17 +96,32 @@ var Offer = {
             responsability: req.body.responsability,
             why_choose_our_company: req.body.why,
             offerDate: req.body.offerDate,
-            adress: req.body.adress,
-            city: req.body.city
+            address: req.body.address,
+            city: req.body.city,
+            country: req.body.country,
+            zipCode: req.body.zipCode
         }, function (err, offer) {
-            res.json(offer);
-
+            if (!err){
+                for (var i = 0; i < req.body.skills.length ; i++){
+                    Offer.model.findByIdAndUpdate(offer.id,{ $push: {
+                        skills: {
+                            skill: req.body.skills[i]
+                        }
+                    }}, function (err, offer) {
+                        //nothing
+                        console.log(err);
+                    });
+                }
+                res.json(offer);
+            } else {
+                res.sendStatus(500);
+            }
+            
         });
     },
 
     update: function (req, res) {
         Offer.model.findByIdAndUpdate(req.params.id, {
-            skill: req.body.skill,
             title: req.body.title,
             email: req.body.email,
             name_referent: req.body.name,
@@ -114,10 +132,21 @@ var Offer = {
             experience: req.body.experience,
             responsability: req.body.responsability,
             why_choose_our_company: req.body.why,
-            offerDate: req.body.offerDate
+            offerDate: req.body.offerDate,
+            address: req.body.address,
+            city: req.body.city,
+            country: req.body.country,
+            zipCode: req.body.zipCode
+
         }, function (err, offer) {
-            res.json(offer);
-        });
+            Offer.model.findByIdAndUpdate(offer.id,{ $push: {
+                skills: {
+                    skill: req.body.skill
+                }
+            }}, function (err, offer) {
+                res.json(offer);
+            });
+        });    
     },
 
     delete: function (req, res) {

@@ -65,7 +65,7 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
         data.description = $scope.offerDescription;
         data.responsability = $scope.offerResp;
         data.why = $scope.offerWhy;
-        data.adress = $scope.offerAdress;
+        data.address = $scope.offerAdress;
         data.city = $scope.offerCity;
         //data.idRecruiter = $rootScope.id;
         data.offerDate = $scope.offerDate;

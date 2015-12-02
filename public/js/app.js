@@ -10,22 +10,33 @@ function config($routeProvider) {
         })
         .when('/searchOffer', {
             templateUrl: 'views/searchOffer.html',
-            controller: 'searchOfferController'
+            controller: 'searchOfferController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/offer/:id', {
             templateUrl: 'views/offer.html',
-            controller: 'offerController'
+            controller: 'offerController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/homeRecruiter', {
             templateUrl: 'views/homeRctr.html',
-            controller: 'homeRctrController'
+            controller: 'homeRctrController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/homeStudent', {
             templateUrl: 'views/homeStudent.html',
-            controller: 'homeStudentController'
+            controller: 'homeStudentController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
-
-    .when('/connectRecruiter', {
+        .when('/connectRecruiter', {
             templateUrl: 'views/connectRecruiter.html',
             controller: 'connectRecruiterController'
         })
@@ -36,9 +47,6 @@ function config($routeProvider) {
                 administrator: checkIsAdmin,
                 connected: checkIsConnected
             }
-        })
-        .when('/about', {
-            templateUrl: 'views/about.html'
         })
         .otherwise({
             redirectTo: '/login'

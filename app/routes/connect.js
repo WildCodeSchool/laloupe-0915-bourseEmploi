@@ -3,6 +3,7 @@
 \* ------------------------------------------------------------------------- */
 
 var User = require('../models/user.js');
+var Recruiter = require('../models/recruiter.js');
 
 module.exports 	= function(app, passport) {
 

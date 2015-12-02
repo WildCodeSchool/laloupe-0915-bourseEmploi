@@ -13,7 +13,7 @@
             <h1>Wild<span class="titlepost">finder</span></h1>
             <p>Description de l'application en quelques lignes. Bla bla blablabla bla blabla bla, bla bla blablabla bla blabla bla. Pour en savoir plus sur nos écoles visitez le site de la <a href="http://wildcodeschool.fr"target="_blank">Wild Code School</a></p>
         </div>
-        <button class="col-xs-12 col-md-12 btnClassic" ng-click="connectSignUpRecruiter()">Creer un espace recruteur</button>
+        <button class="col-xs-12 col-md-12 btnClassic" ng-click="connectSignUpRecruiter()">Créer un espace recruteur</button>
     </div>
 </div>
 
@@ -25,7 +25,7 @@
         </div>
         <div class="col-md-12">
             <div class="text-center">
-              <h2>Rectruteur authentification</h2>
+              <h2>Connexion du recruteur</h2>
             </div>
             <div class="bs-callout bs-callout-danger" ng-show="(loginMessage.title != '')">
                 <h4>{{loginMessage.title}}</h4>
@@ -33,22 +33,22 @@
             </div>
             <form name="formConnect">
                 <div class="form-group">
-                    <label for="inputName">Login</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Your name" ng-model="user.name" ng-required="true">
+                    <label for="inputName">S'identifier</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="Votre e-mail" ng-model="user.name" ng-required="true">
                 </div>
                 <div class="form-group">
-                    <label for="inputName">Password</label>
-                    <input type="password" class="form-control" id="inputPass" placeholder="Your password" ng-model="user.password" ng-required="true">
+                    <label for="inputName">Mot de passe</label>
+                    <input type="password" class="form-control" id="inputPass" placeholder="Votre mot de passe" ng-model="user.password" ng-required="true">
                 </div>
-                <button class="col-xs-12 col-md-12 btnW" ng-disabled="formConnect.$invalid" ng-click="connect()">Connect</button>
+                <button class="col-xs-12 col-md-12 btnW" ng-disabled="formConnect.$invalid" ng-click="connect()">Se connecter</button>
             </form>
         </div>
         <div class="row sub-login-form">
-            <div class="col-md-offset-2 col-md-4">
+            <div class="col-md-6">
                 <a href="">Créer un compte</a>
             </div>
-            <div class="col-md-4 text-right">
-                <a href="">mot de passe oublié ?</a>
+            <div class="col-md-6 text-right">
+                <a href="">Mot de passe oublié ?</a>
             </div>
         </div>
     </div>
@@ -62,7 +62,7 @@
         </div>
         <div class="col-md-12">
             <div class="text-center">
-              <h2>Élève authentification</h2>
+              <h2>Connexion de l'élève</h2>
             </div>
             <div class="bs-callout bs-callout-danger" ng-show="(loginMessage.title != '')">
                 <h4>{{loginMessage.title}}</h4>
@@ -70,19 +70,19 @@
             </div>
             <form name="formConnect">
                 <div class="form-group">
-                    <label for="inputName">Login</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Your name" ng-model="user.name" ng-required="true">
+                    <label for="inputName">S'identifier</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="Votre e-mail" ng-model="user.name" ng-required="true">
                 </div>
                 <div class="form-group">
-                    <label for="inputName">Password</label>
-                    <input type="password" class="form-control" id="inputPass" placeholder="Your password" ng-model="user.password" ng-required="true">
+                    <label for="inputName">Mot de passe</label>
+                    <input type="password" class="form-control" id="inputPass" placeholder="Votre mot de passe" ng-model="user.password" ng-required="true">
                 </div>
-                <button class=" col-xs-12 col-md-12 btnW " ng-disabled="formConnect.$invalid" ng-click="connect()">Connect</button>
+                <button class=" col-xs-12 col-md-12 btnW " ng-disabled="formConnect.$invalid" ng-click="connect()">Se connecter</button>
             </form>
         </div>
         <div class="row sub-login-form">
             <div class="col-md-12 text-right">
-                <a href="">mot de passe oublié ?</a>
+                <a href="">Mot de passe oublié ?</a>
             </div>
         </div>
     </div>

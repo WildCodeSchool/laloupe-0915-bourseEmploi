@@ -40,6 +40,10 @@ var recruiterSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    zipCode: {
+        type: Number,
+        required: true,
+    },
     email: {
         type: String,
         required: true,
@@ -92,6 +96,7 @@ var Recruiter = {
             region: req.body.region,
             city: req.body.city,
             address: req.body.address,
+            zipCode: req.body.zipCode,
             email: req.body.email,
             tel: req.body.tel || 0,
             website: req.body.website,
@@ -100,9 +105,8 @@ var Recruiter = {
             linkedin: req.body.linkedin,
             instagram: req.body.instagram,
             password: req.body.password
-        }, function (err, user) {
+        }, function (err, recruiter) {
             res.json(user);
-            console.log(err);
         });
     },
 
@@ -118,6 +122,7 @@ var Recruiter = {
             region: req.body.region,
             city: req.body.city,
             address: req.body.address,
+            zipCode: req.body.zipCode,
             email: req.body.email,
             tel: req.body.tel || 0,
             website: req.body.website,
