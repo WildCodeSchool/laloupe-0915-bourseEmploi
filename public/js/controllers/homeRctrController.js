@@ -23,4 +23,8 @@ function homeRctrController($scope) {
         $scope.expiredoffers = true;
     }
 
+    //TOOLTIP    
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 }
