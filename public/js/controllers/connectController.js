@@ -20,12 +20,6 @@ function connectController($scope, $rootScope, $location, connectService){
         }
     }
     
-    $scope.connectSignUpRecruiter = function(){
-        $location.path('/connectRecruiter');
-    }
-        
-    
-    
     
 	$scope.connect = function(){
 		connectService.connect($scope.user).then(function(res){
@@ -36,4 +30,10 @@ function connectController($scope, $rootScope, $location, connectService){
 			$rootScope.loginMessage.message = 'E-mail et/ou mot de passe incorrecte';
 		});
 	}
+
+
+     $scope.connectSignUpRecruiter = function(){
+        $location.path('/connectRecruiter');
+    }
+        
 }

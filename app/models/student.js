@@ -1,0 +1,117 @@
+var mongoose = require('mongoose'),
+    extend = require('mongoose-schema-extend');
+
+var User = require('./user.js');
+
+var StudentSchema = User.model.schema.extend({
+    name: {
+        type: String,
+        required: true,
+    },
+    firstName: {
+        type: String,
+        required: true,
+    },
+    picture: String,
+    birthDate: Date,
+    wildSide: String,
+    status: String,
+    situation: String,
+    mobility: String,
+    hobbies: [{type: String}],
+    experiences: [{
+        experience :{
+            job: String,
+            company: String,
+            companyDescription: String,
+            contract: String,
+            startDate: String,
+            endDate: String,
+            country: String,
+            city: String,
+            missions: String,
+            website: String,
+            detailsExp: String
+        }
+    }],
+    formations: [{
+        formation :{
+            title: String,
+            school: String,
+            description: String,
+            startDate: String,
+            endDate: String,
+            country: String,
+            city: String,
+            website: String,
+            graduate: String
+        }
+    }],
+    likes: [{
+        like: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Offer'
+        }
+    }],
+    skills: [{
+        skill :{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Skill'
+        }
+    }]
+});
+
+var Student = {
+    model: mongoose.model('Student', StudentSchema),
+
+    find: function (req, res) {
+        Student.model.findOne({
+          _id: req.headers.id
+        }, function(err, student){
+            res.json(student);
+        });
+    },
+
+    findByType: function (req, res) {
+        Student.model.find({
+          _type: req.params.type
+        }, function(err, student){
+            res.json(student);
+        });
+    },
+    
+    findAll: function (req, res) {
+        Student.model.find({}, function (err, students) {
+            res.json(students);
+        });
+    },
+
+    findById: function (req, res) {
+        Student.model.findById(req.params.id, function (err, student) {
+            res.json(student);
+        });
+    },
+
+    create: function (req, res) {
+        Student.model.create(req.body, function (err, student) {
+            console.log(err);
+            res.json(student);
+        });
+    },
+
+    update: function (req, res) {
+        Student.model.findByIdAndUpdate(req.params.id, req.body, function (err, student) {
+            res.json(student);
+            console.log(err);
+        });
+    },
+
+    delete: function (req, res) {
+        Student.model.findByIdAndRemove(req.params.id, function () {
+            res.sendStatus(200);
+        })
+    }
+}
+
+
+module.exports = Student;

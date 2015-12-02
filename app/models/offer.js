@@ -3,15 +3,10 @@ var moment = require('moment');
 
 var offerSchema = new mongoose.Schema({
     skills: [{
-<<<<<<< HEAD
         skill :{
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Skill'
         }
-=======
-        type: String,
-        required: true
->>>>>>> d6ebaa449ad9632b842ff4fd56de96b1b8672d6b
     }],
     title: {
         type: String,
@@ -21,16 +16,16 @@ var offerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    name_referent: {
+    referentName: {
         type: String,
         required: true
     },
-    tel: Number,
+    referentPhone: String,
     description: {
         type: String,
         required: true
     },
-    type_of_contract: {
+    contract: {
         type: String,
         required: true
     },
@@ -43,18 +38,15 @@ var offerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    why_choose_our_company: String,
+    wildSide: String,
     startDate: {
         type: Date,
         required: true
     },
-<<<<<<< HEAD
-=======
     endDate: {
         type: Date,
         required: true
     },
->>>>>>> d6ebaa449ad9632b842ff4fd56de96b1b8672d6b
     address: {
         type: String,
         required: true
@@ -67,11 +59,7 @@ var offerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-<<<<<<< HEAD
-    zipCode:{
-=======
     zipCode: {
->>>>>>> d6ebaa449ad9632b842ff4fd56de96b1b8672d6b
         type: Number,
         required: true
     }
@@ -104,14 +92,14 @@ var Offer = {
         Offer.model.create({
             title: req.body.title,
             email: req.body.email,
-            name_referent: req.body.name,
-            tel: req.body.tel,
+            referentName: req.body.referentName,
+            referentPhone: req.body.referentPhone,
             description: req.body.description,
-            type_of_contract: req.body.type,
+            contract: req.body.contract,
             salary: req.body.salary,
             experience: req.body.experience,
             responsability: req.body.responsability,
-            why_choose_our_company: req.body.why,
+            wildSide: req.body.wildSide,
             startDate: req.body.startDate,
             endDate: moment(req.body.enDate).add(3, 'months'),
             address: req.body.address,
@@ -143,14 +131,14 @@ var Offer = {
         Offer.model.findByIdAndUpdate(req.params.id, {
             title: req.body.title,
             email: req.body.email,
-            name_referent: req.body.name,
-            tel: req.body.tel || 0,
+            referentName: req.body.referentName,
+            referentPhone: req.body.referentPhone || 0,
             description: req.body.description,
-            type_of_contract: req.body.type,
+            contract: req.body.contract,
             salary: req.body.salary || 0,
             experience: req.body.experience,
             responsability: req.body.responsability,
-            why_choose_our_company: req.body.why,
+            wildSide: req.body.wildSide,
             startDate: req.body.startDate,
             endDate: moment(req.body.enDate).add(3, 'months'),
             address: req.body.address,

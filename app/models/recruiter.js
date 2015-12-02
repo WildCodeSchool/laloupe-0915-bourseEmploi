@@ -1,26 +1,20 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    extend = require('mongoose-schema-extend');
 
-var recruiterSchema = new mongoose.Schema({
-    companyName: {
+var User = require('./user.js');
+
+var RecruiterSchema = User.model.schema.extend({
+    name: {
         type: String,
         required: true,
     },
-    companySize: {
+    size: {
         type: String,
         required: true,
     },
-    
     logo: String,
-    
+    picture: String,
     businessSector: {
-        type: String,
-        required: true,
-    },
-    companyDescription: {
-        type: String,
-        required: true,
-    },
-    functionReferent: {
         type: String,
         required: true,
     },
@@ -44,33 +38,33 @@ var recruiterSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    tel: {
-        type: Number,
-        required: true,
-    },
-    website: String,
-    twitter: String,
-    facebook: String,
-    linkedin: String,
-    instagram: String,
-    password: String
+    likes: [{
+        like :{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    }]
+
 });
 
 var Recruiter = {
-    model: mongoose.model('Recruiter', recruiterSchema),
+    model: mongoose.model('Recruiter', RecruiterSchema),
 
     find: function (req, res) {
         Recruiter.model.findOne({
           _id: req.headers.id
         }, function(err, recruiter){
       res.json(recruiter);
-    });
-},
+        });
+    },
+
+    findByType: function (req, res) {
+        Recruiter.model.find({
+          _type: req.params.type
+        }, function(err, recruiter){
+            res.json(recruiter);
+        });
+    },
 
     findAll: function (req, res) {
         Recruiter.model.find({}, function (err, recruiters) {
@@ -85,53 +79,14 @@ var Recruiter = {
     },
 
     create: function (req, res) {
-        Recruiter.model.create({
-            companyName: req.body.companyName,
-            companySize: req.body.companySize,
-            logo: req.body.logo,
-            businessSector: req.body.businessSector,
-            companyDescription: req.body.companyDescription,
-            functionReferent: req.body.functionReferent,
-            country: req.body.country,
-            region: req.body.region,
-            city: req.body.city,
-            address: req.body.address,
-            zipCode: req.body.zipCode,
-            email: req.body.email,
-            tel: req.body.tel || 0,
-            website: req.body.website,
-            twitter: req.body.twitter,
-            facebook: req.body.facebook,
-            linkedin: req.body.linkedin,
-            instagram: req.body.instagram,
-            password: req.body.password
-        }, function (err, recruiter) {
-            res.json(user);
+        Recruiter.model.create(req.body, function (err, recruiter) {
+            console.log(err);
+            res.json(recruiter);
         });
     },
 
     update: function (req, res) {
-        Recruiter.model.findByIdAndUpdate(req.params.id, {
-            companyName: req.body.companyName,
-            companySize: req.body.companySize,
-            logo: req.body.logo,
-            businessSector: req.body.businessSector,
-            companyDescription: req.body.companyDescription,
-            functionReferent: req.body.functionReferent,
-            country: req.body.country,
-            region: req.body.region,
-            city: req.body.city,
-            address: req.body.address,
-            zipCode: req.body.zipCode,
-            email: req.body.email,
-            tel: req.body.tel || 0,
-            website: req.body.website,
-            twitter: req.body.twitter,
-            facebook: req.body.facebook,
-            linkedin: req.body.linkedin,
-            instagram: req.body.instagram,
-            password: req.body.password
-        }, function (err, recruiter) {
+        Recruiter.model.findByIdAndUpdate(req.params.id, req.body, function (err, recruiter) {
             res.json(recruiter);
         });
     },
