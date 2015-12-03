@@ -13,10 +13,10 @@
             <div class="col-sm-offset-1 col-sm-4">
                 <label class="control-label">Ajouter un logo :</label>
                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
-                <input type="file" nv-file-select uploader="uploader" ng-model="recruiter.logo" onchange="angular.element(this).scope().previewFile(this)">
+                <input type="file" nv-file-select uploader="uploader" ng-model="logo" onchange="angular.element(this).scope().previewFile(this)">
                 <ul>
                     <li ng-repeat="item in uploader.queue">
-                        name : <span ng-bind="item.file.name"></span>
+                        <span ng-bind="item.file.name"></span>
                         <br/>
                         <button ng-click="item.upload()">upload</button>
                     </li>
@@ -50,7 +50,9 @@
         <div class="form-group">
             <div class="col-sm-offset-1 col-sm-4">
                 <label class="control-label">Secteur d'activité* :</label>
-                <select class="form-control" ng-model="recruiter.businessSector">
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <select class="form-control" ng-model="businessSector">
+
                     <option type="text" class="form-control">Agroalimentaire</option>
                     <option type="text" class="form-control">Banque / Assurance</option>
                     <option type="text" class="form-control">Bois / Papier / Carton / Imprimerie</option>
@@ -59,6 +61,7 @@
                     <option type="text" class="form-control">Commerce / Négoce / Distribution</option>
                     <option type="text" class="form-control">Édition / Communication / Multimédia</option>
                     <option type="text" class="form-control">Électronique / Électricité</option>
+                    <option type="text" class="form-control">Enseignement</option>
                     <option type="text" class="form-control">Études et conseils</option>
                     <option type="text" class="form-control">Industrie pharmaceutique</option>
                     <option type="text" class="form-control">Informatique / Télécoms</option>
@@ -68,6 +71,7 @@
                     <option type="text" class="form-control">Services aux entreprises</option>
                     <option type="text" class="form-control">Textile / Habillement / Chaussure</option>
                     <option type="text" class="form-control">Transports / Logistique</option>
+                    <option type="text" class="form-control">Autres</option>
                 </select>
             </div>
         </div>

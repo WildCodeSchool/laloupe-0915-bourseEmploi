@@ -7,6 +7,10 @@ var Auth = require('../middlewares/authorization.js');
 
 module.exports 	= function(app, passport) {
 
+	app.get('/recruiters/one/:id', Recruiter.find);
+
+	app.get('/recruiters/:type', Recruiter.findByType);
+
 	app.get('/recruiters', Recruiter.findAll);
 
 	app.get('/recruiters/:id', Recruiter.findById);

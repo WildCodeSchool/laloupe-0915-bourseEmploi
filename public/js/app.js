@@ -10,21 +10,40 @@ function config($routeProvider) {
         })
         .when('/searchOffer', {
             templateUrl: 'views/searchOffer.html',
-            controller: 'searchOfferController'
+            controller: 'searchOfferController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/offer/:id', {
             templateUrl: 'views/offer.html',
-            controller: 'offerController'
+            controller: 'offerController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/homeRecruiter', {
             templateUrl: 'views/homeRctr.html',
-            controller: 'homeRctrController'
+            controller: 'homeRctrController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/homeStudent', {
             templateUrl: 'views/homeStudent.html',
-            controller: 'homeStudentController'
+            controller: 'homeStudentController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
-
+        .when('/book', {
+            templateUrl: 'views/book.html',
+            controller: 'bookController'
+        })
+        .when('/book/:id', {
+            templateUrl: 'views/bookStudent.html',
+            controller: 'bookStudentController'
+        })
         .when('/connectRecruiter', {
             templateUrl: 'views/connectRecruiter.html',
             controller: 'connectRecruiterController'
@@ -40,9 +59,6 @@ function config($routeProvider) {
         .when('/editOffer', {
             templateUrl: 'views/editOffer.html',
             controller: 'editOfferController'
-        })
-        .when('/about', {
-            templateUrl: 'views/about.html'
         })
         .otherwise({
             redirectTo: '/login'
@@ -116,6 +132,8 @@ angular.module('app', ['ngRoute', 'ngSanitize'])
     .controller('offerController', offerController)
     .controller('searchOfferController', searchOfferController)
     .controller('editOfferController', editOfferController)
+    .controller('bookController', bookController)
+    .controller('bookStudentController', bookStudentController)
     .service('connectService', connectService)
     .service('offerService', offerService)
     .service('skillService', skillService)

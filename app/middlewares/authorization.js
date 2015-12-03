@@ -6,7 +6,7 @@ exports.user = {
     
 	hasAuthorization: function (req, res, next) {
 	    if (!req.user || req.user._id != req.headers.userid) {
-	      return res.sendStatus(403);
+	     	return res.sendStatus(403);
 	    }
 	    next();
  	},

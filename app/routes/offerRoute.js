@@ -7,14 +7,14 @@ var Auth = require('../middlewares/authorization.js');
 
 module.exports 	= function(app, passport) {
 
-	app.get('/offers', Offer.findAll);
+	app.get('/offers', Auth.user.hasAuthorization, Offer.findAll);
 
-	app.get('/offers/:id', Offer.findById);
+	app.get('/offers/:id', Auth.user.hasAuthorization, Offer.findById);
 
 	app.post('/offers', Offer.create);
 
-	app.put('/offers/:id', Offer.update);
+	app.put('/offers/:id', Auth.user.hasAuthorization, Offer.update);
 
-	app.delete('/offers/:id', Offer.delete);
+	app.delete('/offers/:id', Auth.user.hasAuthorization, Offer.delete);
 
 }
