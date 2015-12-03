@@ -25,7 +25,7 @@ function config($routeProvider) {
             controller: 'homeStudentController'
         })
 
-    .when('/connectRecruiter', {
+        .when('/connectRecruiter', {
             templateUrl: 'views/connectRecruiter.html',
             controller: 'connectRecruiterController'
         })
@@ -36,6 +36,10 @@ function config($routeProvider) {
                 administrator: checkIsAdmin,
                 connected: checkIsConnected
             }
+        })
+        .when('/editOffer', {
+            templateUrl: 'views/editOffer.html',
+            controller: 'editOfferController'
         })
         .when('/about', {
             templateUrl: 'views/about.html'
@@ -111,11 +115,13 @@ angular.module('app', ['ngRoute', 'ngSanitize'])
     .controller('homeStudentController', homeStudentController)
     .controller('offerController', offerController)
     .controller('searchOfferController', searchOfferController)
+    .controller('editOfferController', editOfferController)
     .service('connectService', connectService)
     .service('offerService', offerService)
     .service('skillService', skillService)
     .service('connectRecruiterService', connectRecruiterService)
     .service('geocoderService', geocoderService)
+    .service('editOfferService', editOfferService)
 
 /*.factory('', )*/
 .run(run);
