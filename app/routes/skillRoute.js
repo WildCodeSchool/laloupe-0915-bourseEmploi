@@ -7,9 +7,9 @@ var Auth = require('../middlewares/authorization.js');
 
 module.exports 	= function(app, passport) {
 
-	app.get('/skills', Auth.user.hasAuthorization, Skill.findAll);
+	app.get('/skills', Skill.findAll);
 
-	app.get('/skills/:id', Auth.user.hasAuthorization, Skill.findById);
+	app.get('/skills/:id', Skill.findById);
 
 	app.post('/skills', Skill.create);
 

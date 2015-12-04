@@ -6,37 +6,41 @@ var User = require('./user.js');
 var RecruiterSchema = User.model.schema.extend({
     name: {
         type: String,
-        required: true,
+        required: true
     },
     size: {
         type: String,
-        required: true,
+        required: true
     },
     logo: String,
     picture: String,
+    description: {
+        type: String,
+        required: true
+    },
     businessSector: {
         type: String,
-        required: true,
+        required: true
     },
     country: {
         type: String,
-        required: true,
+        required: true
     },
     region: {
         type: String,
-        required: true,
+        required: true
     },
     city: {
         type: String,
-        required: true,
+        required: true
     },
     address: {
         type: String,
-        required: true,
+        required: true
     },
     zipCode: {
-        type: Number,
-        required: true,
+        type: String,
+        required: true
     },
     likes: [{
         like :{
@@ -82,6 +86,7 @@ var Recruiter = {
         Recruiter.model.create(req.body, function (err, recruiter) {
             console.log(err);
             res.json(recruiter);
+            console.log(err);
         });
     },
 

@@ -2,17 +2,16 @@
 	 							MODEL SKILL
 \* ------------------------------------------------------------------------- */
 
-
 var mongoose = require('mongoose');
 
 
-var skillSchema = new mongoose.Schema({
+var SkillSchema = new mongoose.Schema({
     title: String
 });
 
 var Skill = {
 
-    model: mongoose.model('Skill', skillSchema),
+    model: mongoose.model('Skill', SkillSchema),
 
     find: function (req, res) {
         Skill.model.findOne({
@@ -21,14 +20,6 @@ var Skill = {
             res.json(skill);
         });
     },
-    
-    create: function(req, res) {
-		Skill.model.create({
-			title: req.body.title
-		}, function(){
-			res.sendStatus(200);
-		})
-	},
 
 	findAll: function(req, res) {
 		Skill.model.find({}, function (err, skills) {
@@ -40,6 +31,14 @@ var Skill = {
 		Skill.model.findById(req.headers.id, function (err, skill) {
 			 res.json(skill);
 		});
+	},
+
+	create: function(req, res) {
+		Skill.model.create({
+			title: req.body.title
+		}, function(){
+			res.sendStatus(200);
+		})
 	},
 
 	update: function(req, res){

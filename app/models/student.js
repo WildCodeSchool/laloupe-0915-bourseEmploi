@@ -1,3 +1,8 @@
+/* ------------------------------------------------------------------------- *\
+                                MODEL STUDENT
+\* ------------------------------------------------------------------------- */
+
+
 var mongoose = require('mongoose'),
     extend = require('mongoose-schema-extend');
 
@@ -6,47 +11,30 @@ var User = require('./user.js');
 var StudentSchema = User.model.schema.extend({
     name: {
         type: String,
-        required: true,
+        required: true
     },
     firstName: {
         type: String,
-        required: true,
+        required: true
     },
+    gender: String,
     picture: String,
     birthDate: Date,
+    studentPhone: String,
+    description: String,
     wildSide: String,
     status: String,
     situation: String,
+    classe: {
+        type: String,
+        required: true
+    },
+    school: {
+        type: String,
+        required: true
+    },
     mobility: String,
-    hobbies: [{type: String}],
-    experiences: [{
-        experience :{
-            job: String,
-            company: String,
-            companyDescription: String,
-            contract: String,
-            startDate: String,
-            endDate: String,
-            country: String,
-            city: String,
-            missions: String,
-            website: String,
-            detailsExp: String
-        }
-    }],
-    formations: [{
-        formation :{
-            title: String,
-            school: String,
-            description: String,
-            startDate: String,
-            endDate: String,
-            country: String,
-            city: String,
-            website: String,
-            graduate: String
-        }
-    }],
+    hobbies: { type : Array , "default" : [] },
     likes: [{
         like: {
             type: mongoose.Schema.Types.ObjectId,
@@ -79,7 +67,7 @@ var Student = {
             res.json(student);
         });
     },
-    
+
     findAll: function (req, res) {
         Student.model.find({}, function (err, students) {
             res.json(students);
@@ -94,8 +82,8 @@ var Student = {
 
     create: function (req, res) {
         Student.model.create(req.body, function (err, student) {
-            console.log(err);
             res.json(student);
+            console.log(err);
         });
     },
 
