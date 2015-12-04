@@ -210,6 +210,10 @@ li {
     display: inline-block;
 }
 
+.li-block {
+    display: block;
+}
+
 ul {
     padding: 0px;
 }
@@ -471,11 +475,11 @@ a:focus {
     border-radius: 15px;
     margin-top: -30px;
     margin-right: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 #studentCVmin {
-    min-height: 100px;
+    min-height: 105px;
 }
 
 .headeradvert {
@@ -510,7 +514,14 @@ a:focus {
     font-size: 25px;
     color: #202020;
     font-family: 'Raleway', sans-serif;
-    margin: 2px 0 2px 0;
+    margin: 0;
+}
+
+.titlemodal {
+    font-size: 25px;
+    color: #009587;
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
 }
 
 .titleadvert:hover {
@@ -606,7 +617,13 @@ a:focus {
 
 .offerdelete {
     float: right;
-    z-index: 1;
+    z-index: 9999;
+}
+
+.plus {
+    float: right;
+    z-index: 9999;
+    padding: 10px;
 }
 
 .imgbook {
@@ -745,4 +762,43 @@ i {
 
 p.white-space-pre-line {
     white-space: pre-line;
+}
+
+.li-block {
+    display: block;
+    margin: 5px;
+}
+
+.student-teaser {
+    margin-top: 0;
+    margin-bottom: 3px;
+    font-size: 24px;
+    color: #696969;
+}
+
+.student-title {
+    font-size: 40px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.i-header {
+    color: white;
+}
+
+.i-header:hover {
+    color: white;
+}
+
+.times-skill:hover {
+    color: #daa520;
+}
+
+.float-right {
+    float: right;
+    margin: 10px;
 }
