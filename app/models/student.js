@@ -34,7 +34,10 @@ var StudentSchema = User.model.schema.extend({
         required: true
     },
     mobility: String,
-    hobbies: { type : Array , "default" : [] },
+    hobbies: {
+        type: Array,
+        "default": []
+    },
     likes: [{
         like: {
             type: mongoose.Schema.Types.ObjectId,
@@ -42,7 +45,7 @@ var StudentSchema = User.model.schema.extend({
         }
     }],
     skills: [{
-        skill :{
+        skill: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Skill'
         }
@@ -52,18 +55,10 @@ var StudentSchema = User.model.schema.extend({
 var Student = {
     model: mongoose.model('Student', StudentSchema),
 
-    find: function (req, res) {
-        Student.model.findOne({
-          _id: req.headers.id
-        }, function(err, student){
-            res.json(student);
-        });
-    },
-
     findByType: function (req, res) {
         Student.model.find({
-          _type: req.params.type
-        }, function(err, student){
+            _type: req.params.type
+        }, function (err, student) {
             res.json(student);
         });
     },
