@@ -747,8 +747,17 @@ i {
     color: #009587;
 }
 
-.fa-twitter {
+.fa-form {
     color: #009587;
+}
+
+.fa-check {
+    color: #009587;
+}
+
+.fa-check:hover {
+    color: #008080;
+    cursor: pointer;
 }
 
 .fa-instagram {
@@ -801,4 +810,21 @@ p.white-space-pre-line {
 .float-right {
     float: right;
     margin: 10px;
+}
+
+.form-recruiter {
+    margin-bottom: 25px;
+}
+
+.required {
+    font-weight: 600;
+    color: #b12f2f;
+}
+
+.stepbystep {
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+.titleforme {
+    color: #202020;
 }
