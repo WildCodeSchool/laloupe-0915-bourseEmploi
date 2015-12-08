@@ -43,7 +43,7 @@ var RecruiterSchema = User.model.schema.extend({
         required: true
     },
     likes: [{
-        like :{
+        like: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         }
@@ -54,18 +54,10 @@ var RecruiterSchema = User.model.schema.extend({
 var Recruiter = {
     model: mongoose.model('Recruiter', RecruiterSchema),
 
-    find: function (req, res) {
-        Recruiter.model.findOne({
-          _id: req.headers.id
-        }, function(err, recruiter){
-      res.json(recruiter);
-        });
-    },
-
     findByType: function (req, res) {
         Recruiter.model.find({
-          _type: req.params.type
-        }, function(err, recruiter){
+            _type: req.params.type
+        }, function (err, recruiter) {
             res.json(recruiter);
         });
     },
@@ -77,15 +69,28 @@ var Recruiter = {
     },
 
     findById: function (req, res) {
+        console.log(req.params.id);
         Recruiter.model.findById(req.params.id, function (err, recruiter) {
+            console.log(err);
             res.json(recruiter);
+        });
+    },
+
+    findByEmail: function (req, res) {
+        Recruiter.model.findOne({
+            email: req.headers.email
+        }, function (err, data) {
+            if (data)
+                res.status(409).send("Un compte existe déjà avec l'adresse mail " + req.headers.email);
+            else
+                res.status(200).send();
         });
     },
 
     create: function (req, res) {
         Recruiter.model.create(req.body, function (err, recruiter) {
-            console.log(err);
             res.json(recruiter);
+            console.log(recruiter)
             console.log(err);
         });
     },

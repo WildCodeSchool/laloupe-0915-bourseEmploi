@@ -5,9 +5,11 @@
 var Recruiter = require('../models/recruiter.js');
 var Auth = require('../middlewares/authorization.js');
 
-module.exports 	= function(app, passport) {
+module.exports = function (app, passport) {
 
-	app.get('/recruiters/one/:id', Auth.user.hasAuthorization, Recruiter.find);
+	app.get('/recruiters/id/:id', Auth.user.hasAuthorization, Recruiter.findById);
+
+	app.get('/recruiters/email', Recruiter.findByEmail);
 
 	app.get('/recruiters/:type', Auth.user.isAdministrator, Recruiter.findByType);
 
@@ -22,8 +24,4 @@ module.exports 	= function(app, passport) {
 	app.delete('/recruiters/:id', Auth.user.hasAuthorization, Recruiter.delete);
 
 }
-
-
-
-
 

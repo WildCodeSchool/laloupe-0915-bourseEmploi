@@ -3,36 +3,37 @@
 \* ------------------------------------------------------------------------- */
 
 var mongoose = require('mongoose');
+extend = require('mongoose-schema-extend');
 
 var ExperienceSchema = new mongoose.Schema({
-		studentId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Student',
-            required: true
-    	},
-       	job: {
-       		type: String,
-       		required: true
-       	},
-        company: String,
-        companyDescription: String,
-        contract: String,
-        startDate: String,
-        endDate: String,
-		country: String,
-		city: String,
-		missions: String,
-		website: String,
-   		detailsExp: String
+    studentId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Student',
+        required: true
+    },
+    job: {
+        type: String,
+        required: true
+    },
+    company: String,
+    companyDescription: String,
+    contract: String,
+    startDate: String,
+    endDate: String,
+    country: String,
+    city: String,
+    missions: String,
+    website: String,
+    detailsExp: String
 });
 
 var Experience = {
     model: mongoose.model('Experience', ExperienceSchema),
 
-   findByStudent: function (req, res) {
+    findByStudent: function (req, res) {
         Experience.model.find({
-          studentId: req.params.studentId
-        }, function(err, experience){
+            studentId: req.params.studentId
+        }, function (err, experience) {
             res.json(experience);
         });
     },
