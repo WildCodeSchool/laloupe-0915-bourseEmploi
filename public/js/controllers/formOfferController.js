@@ -7,10 +7,10 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
     $scope.referent = false;
 
     /****   CREATION TAGS ******/
-
     //Import des compétences de shéma "skills"
     skillService.get().then(function (res) {
         $scope.offerSkills = res.data;
+        console.log($scope.offerSkills);
     });
 
     //Init de la fonctionnalitée
@@ -22,7 +22,7 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
     function updateSkill(array, up) {
         $scope.errorTyping = true;
         $scope.offerSkills.forEach(function (skill) {
-            console.log(skill.title);
+            //console.log(skill.title);
             if (up == skill.title) {
                 $scope.errorTyping = false;
             }
@@ -35,11 +35,12 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
         }
     }
 
-    //Lancement fonction de vérif au clic
+    //Lancement de la fonction  precedente au clic
     $scope.add = function () {
         $scope.errorChoice = false;
         $scope.errorTyping = false;
         var up = $scope.chooseSkill.toUpperCase();
+        console.log($scope.chooseSkill);
         updateSkill(dataSkill, up);
         //Affichage du skill et champ vide
         $scope.showSkill = true;
@@ -49,39 +50,41 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
     //Suppression des Tags
     $scope.deleteSkill = function deleteASkill(id) {
         var idDeletedSkill = dataSkill.indexOf(id);
-        console.log(idDeletedSkill);
+        console.log($scope.listSkills);
         return dataSkill.splice(idDeletedSkill, 1);
     }
 
     //Envoi des données du formulaire
-    $scope.offerDate = new Date();
+    $scope.startDate = new Date();
+
     $scope.send = function () {
+        var idSkill = [];
         var data = {};
-        data.name = $scope.referentName;
-        data.email = $scope.referentMail;
-        data.tel = $scope.referentPhone;
-        data.title = $scope.offerTitle;
-        data.type = $scope.offerContract;
-        data.experience = $scope.offerXP;
-        data.salary = $scope.offerSalary;
-        data.skill = dataSkill;
-        data.description = $scope.offerDescription;
-        data.responsability = $scope.offerResp;
-        data.why = $scope.offerWhy;
-        data.address = $scope.referentAddress;
-        data.city = $scope.referentCity;
-        data.country = $scope.referentCountry;
-        data.zipCode = $scope.referentZipCode;
-        //data.idRecruiter = $rootScope.id;
-        data.startDate = $scope.offerDate;
-        data.endDate = $scope.offerDate;
-        console.log(data);
+        data = $scope.offer;
+        data.skills = idSkill;
+        console.log(data.skills);
+        data.endDate = moment($scope.startDate).add(90, 'days').format('YYYY-MM-DD');
+        data.startDate = moment($scope.startDate).format('YYYY-MM-DD');
+
+        //Comparaison des skills choisi et existant( pour envoi Ids)
+
+        for (var i = 0; i < $scope.offerSkills.length; i++) {
+            var objs = {
+                skill: ""
+            };
+            var current = $scope.offerSkills[i].title;
+            $scope.listSkills.forEach(function (skill) {
+                if (current === skill) {
+                    objs.skill = $scope.offerSkills[i]._id;
+                    idSkill.push(objs);
+                }
+            });
+        }
 
         offerService.create(data).then(function (res) {
             console.log(data);
             //ERREUR
             if (!res.data) {
-                console.log(data);
                 $scope.incompleteError = true;
             }
             //SUCCES
