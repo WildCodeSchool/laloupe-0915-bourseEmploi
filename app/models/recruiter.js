@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 var User = require('./user.js');
 
 var RecruiterSchema = User.model.schema.extend({
+    admin: Boolean,
     name: {
         type: String,
         required: true
@@ -88,6 +89,7 @@ var Recruiter = {
     },
 
     create: function (req, res) {
+        req.body.admin = false;
         Recruiter.model.create(req.body, function (err, recruiter) {
             res.json(recruiter);
             console.log(recruiter)
