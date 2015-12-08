@@ -9,6 +9,8 @@ module.exports = function (app, passport) {
 
     app.get('/recruiters/id/:id', Recruiter.findById);
 
+    app.get('/recruiters/email', Recruiter.findByEmail);
+
     app.get('/recruiters/:type', Recruiter.findByType);
 
     app.get('/recruiters', Recruiter.findAll);
