@@ -1,0 +1,132 @@
+<!--BIG MAP-->
+<div class="row wildpanel panel panel-default" ng-hide="showMap">
+    <div class="wildpanelheader panel panel-default"></div>
+    <div id="map" style="width:100%;height:500px;"></div>
+    <div class="wildpanelfooter panel panel-default">
+        <a class="text-right" ng-click="showMap=!showMap">Reduire la carte</a>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+
+    <!--FILTER-->
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
+        <div class=" row wildpanel panel paneldefault">
+            <div class="wildpanelbody panel paneldefault">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+                    <h5>Lieu</h5>
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" placeholder="Ville, Region, ect ...">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-side" type="button">OK</button>
+                        </div>
+                    </div>
+                    <h5>Rémunération minimum</h5>
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" placeholder="en K€ par ans">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-side" type="button">OK</button>
+                        </div>
+                    </div>
+                    <h5>Compétences</h5>
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" uib-typeahead="for skill in offerSkills | filter:$viewValue | limitTo:8" placeholder="ex: PHP" ng-model="skill">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-side" type="button">OK</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+                    <h5>Contrat</h5>
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" placeholder="CDI, CDD, ...">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-side" type="button">OK</button>
+                        </div>
+                    </div>
+                    <h5>Type de société</h5>
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" placeholder="">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-side" type="button">OK</button>
+                        </div>
+                    </div>
+                    <h5>Secteur d'activité</h5>
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" placeholder="">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default btn-side" type="button">OK</button>
+                        </div>
+                    </div>
+                    <h5>Expérience</h5>
+
+                    <select type="text" class="form-control" placeholder="">
+                        <option>Junior</option>
+                        <option>Expérimenté</option>
+                        <option>Senior</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+
+        <!--LITTLE MAP-->
+        <div class="row wildpanel panel panel-default" ng-show="showMap">
+            <div class="wildpanelheader panel panel-default"></div>
+            <div id="map2" style="width:100%;height:300px;"></div>
+            <div class="wildpanelfooter panel panel-default">
+                <a class="text-right" ng-click="showMap=!showMap">Agrandir la carte</a>
+            </div>
+        </div>
+    </div>
+
+    <!--OFFERS LIST-->
+    <div class="col-xs-12 col-sm-7 col-md-8 col-lg-8">
+
+        <div class="wildpanel panel panel-default ">
+            <div class="wildpanelheader panel panel-default"></div>
+            <!--OFFER-->
+            <div class="offer-list">
+                <div class="wildpanelbodys panel paneldefault">
+                    <ul>
+                        <li class="headeradvert">
+                            <h2 class="headeradvert titleadvert">Nom de l'offre</h2></li>
+                        <li class="headeradvert"><i class="fa fa-share-alt fa-lg" data-toggle="tooltip" data-placement="top" title="Partager"></i></li>
+                    </ul>
+                    <ul>
+                        <li class="headeradvert">
+                            <p class="headeradvert smalltexadvert">chez</p>
+                        </li>
+                        <li class="headeradvert">
+                            <p class="headeradvert companytexadvert">Nom de l'entreprise</p>
+                        </li>
+                        <li class="headeradvert">
+                            <p class="headeradvert smalltexadvert">Expire dans ...</p>
+                        </li>
+                    </ul>
+                    <ul class="skill-ul">
+                        <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
+                    </ul>
+                    <ul>
+                        <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
+                            <p class="headeradvert smalltexadvert1">Contrat</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
+                            <p class="headeradvert smalltexadvert1">Salaire</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
+                            <p class="headeradvert smalltexadvert1">Expérience</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
+                            <p class="headeradvert smalltexadvert1">Adresse</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wildpanelfooter panel panel-default"></div>
+        </div>
+    </div>
+</div>

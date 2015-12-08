@@ -1,75 +1,111 @@
-<h2>Déposer une annonce</h2>
+<div class="row">
 
+    <!--COMPANY DESCRIPTION-->
+    <div class="col-md-4">
+        <div class="wildpanel panel panel-default">
+            <div class="wildpanelheader panel panel-default">
+                <h4>Quelques info sur {{company.name}}</h4>
+            </div>
+            <div class="wildpanelbody panel panel-default">
+                <img ng-show="company.logo" class="img-company" ng-src="{{company.logo}}" alt="{{company.name}} logo">
+            </div>
+            <div class="wildpanelbody panel panel-default">
+                <p><span class="company-name">{{company.name}}</span> est une entreprise de <b>{{company.size}}</b> dans le secteur <b>{{company.businessSector}}</b> situé(e) {{company.address}}, {{company.zipCode}} {{company.city}}, {{company.region}}, {{company.country}}.</p>
+            </div>
+            <div class="wildpanelbody panel panel-default">
 
-<div class="">
-
-	<form class="form-horizontal">
-        <div class="checkbox disabled">
-          <label>
-            <input type="checkbox" ng-model="noReferent" value="">
-            Prendre mes coordonnées ( nom, email, téléphone ) comme référent de cette annonce
-          </label>
-        </div>
-        
-		<div class="form-group spacer" ng-show="referentBox">
-		    <label  class="col-sm-2 control-label">Nom</label>
-		   <div class="col-sm-2">
-                <div>
-                    <input type="text" class="form-control" id="" placeholder="Nom du référent">
-                </div>
+                <img ng-show="company.picture" class="img-company" ng-src="{{company.picture}}" alt="image illustrant {{company.name}}">
             </div>
-            <label  class="col-sm-1 control-label">eMail</label>
-            <div class="col-sm-3">
-                <div>
-                    <input type="email" class="form-control" id="" placeholder="Email du référent">
-                </div>
+            <div class="wildpanelbody panel panel-default">
+                <h3>Notre Metier</h3>
+                <p>{{company.description}}</p>
             </div>
-            <div>
-                <label class="col-sm-1 control-label">Téléphone</label>
-                <div class="col-sm-3">
-		            <input type="text" class="form-control" id="" placeholder="Tel du référent">
-                </div>
+            <div class="wildpanelfooter panel panel-default">
+                <a ng-show="company.website" href="{{company.website}}"><i class="fa fa-desktop fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Site web"></i></a>
+                <a ng-show="company.facebook" href="{{company.facebook}}"><i class="fa fa-facebook-official fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a>
+                <a ng-show="company.twitter" href="{{company.twitter}}"><i class="fa fa-twitter fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Twitter"></i></a>
+                <a ng-show="company.instagram" href="{{company.instagram}}"><i class="fa fa-instagram fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Instagram"></i></a>
+                <a ng-show="company.linkedin" href="{{company.linkedin}}"><i class="fa fa-linkedin fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Linkedin"></i></a>
             </div>
-        </div>
-		
-		<div class="form-group spacer">
-		    <label class="col-sm-2 control-label">Titre de l'offre</label>
-		  <div class="col-sm-10">
-		    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Titre">
-		  </div>
-		</div>
-		
-		<div class="form-group">
-		    <label  class="col-sm-2 control-label">Type de contrat</label>
-		   <div class="col-sm-4">
-                <select class="form-control">
-                  <option type="text" class="form-control">Choisissez un contrat</option>
-                  <option type="text" class="form-control">Stage</option>
-                  <option type="text" class="form-control">CDD</option>
-                  <option type="text" class="form-control">CDI</option>
-                </select>
-            </div>
-            <div>
-                <label class="col-sm-1 control-label">Salaire</label>
-                <div class="col-sm-5">
-		            <input type="text" class="form-control" id="" placeholder="Salaire">
-                </div>
-            </div>
-        </div>
-        
-        <div class="form-group spacer">
-            <div class="col-sm-offset-2 col-sm-10">
-                <label>Description de l'annonce</label>            
-                <textarea class="form-control" rows="3"></textarea>
-            </div>
-        </div>
-	</form>
-
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-success">Poster mon annonce</button>
         </div>
     </div>
-    
-   
+
+    <!--OFFER DESCRIPTION-->
+    <div class="col-md-8">
+        <div class="wildpanel panel panel-default">
+            <div class="wildpanelheader panel panel-default">
+                <h4>Description de l'offre</h4>
+            </div>
+            <div class="wildpanelbody panel paneldefault">
+                <ul>
+                    <li class="headeradvert">
+                        <h2 class="headeradvert titleadvert">{{offer.title}}</h2></li>
+                    <li class="headeradvert">
+                        <p class="headeradvert smalltexadvert">Postée {{startOffer}}. Expire {{endOffer}}</p>
+                    </li>
+                    <li class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive" data-toggle="tooltip" data-placement="top" title="Liker cette offre"></i></li>
+                    <li class="headeradvert"><i class="fa fa-share-alt fa-lg " data-toggle="tooltip" data-placement="top" title="Partager"></i></li>
+                </ul>
+                <ul>
+                    <li class="headeradvert">
+                        <p class="headeradvert smalltexadvert">chez</p>
+                    </li>
+                    <li class="headeradvert">
+                        <p class="headeradvert companytexadvert">{{company.name}}</p>
+                    </li>
+                </ul>
+
+                <!--SKILLS-->
+                <ul class="skill-ul">
+                    <li ng-repeat="skill in offer.skills" class="headeradvert skill-li"><span class="wildSkill">{{skill.title}}</span>
+                </ul>
+                <ul>
+                    <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
+                        <p class="headeradvert smalltexadvert1">{{offer.contract}}</p>
+                    </li>
+                    <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
+                        <p class="headeradvert smalltexadvert1">{{offer.salary}}k€/ans</p>
+                    </li>
+                    <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
+                        <p class="headeradvert smalltexadvert1">{{offer.experience}}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="wildpanelbody panel paneldefault">
+                <h3>Description du poste</h3>
+                <p class="white-space-pre-line">{{offer.description}}</p>
+            </div>
+            <div class="wildpanelbody panel paneldefault">
+                <h3>Responsabilités</h3>
+                <p class="white-space-pre-line">{{offer.responsability}}</p>
+            </div>
+            <div class="wildpanelbody panel paneldefault">
+                <h3 ng-show="offer.wildSide">Notre coté wild </h3>
+                <p ng-show="offer.wildSide" class="white-space-pre-line">{{offer.wildSide}}</p>
+            </div>
+            <div class="wildpanelbody panel paneldefault">
+                <h3>Contact</h3>
+                <div class="text-center">
+                    <ul>
+                        <li class="headeradvert"><i class="fa fa-paper-plane-o fa-lg"></i>
+                            <p class="headeradvert smalltexadvert1">{{offer.referentEmail}}</p>
+                        </li>
+                        <li ng-show="phoneIf" class="headeradvert"><i class="fa fa-phone fa-lg"></i>
+                            <p class="headeradvert smalltexadvert1">{{offer.referentPhone}}</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-map-marker fa-lg green-map-marker"></i>
+                            <p class="headeradvert smalltexadvert1">{{fullAdress}}</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--MAP-->
+                <div id="map" style="height:300px;margin-top:15px;"></div>
+
+            </div>
+            <div class="wildpanelfooter panel panel-default">
+
+            </div>
+        </div>
+    </div>
 </div>

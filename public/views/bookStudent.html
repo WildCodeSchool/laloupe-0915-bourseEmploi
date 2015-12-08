@@ -1,0 +1,234 @@
+<h1 class="student-title">Nom de l'élève <small>Teaser</small></h1>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
+
+        <!--TEASER -->
+        <div class="wildpanel panel panel-default row">
+            <div class="wildpanelheader panel panel-default"></div>
+            <div class="wildpanelbody panel paneldefault" id="studentCVmin">
+                <img class="imgprofilstudent" src="../img/darkvador.jpg">
+                <p>Age</p>
+                <p>Sexe</p>
+            </div>
+            <div class="wildpanelbody panel paneldefault" id="studentCVmin">
+                <p>Petit texte de présentation en quelques lignes.</p>
+                <h5>contact</h5>
+                <ul>
+                    <li class="li-block"><i ng-show="mailIf" class="fa fa-paper-plane-o fa-lg"></i>mail</li>
+                    <li class="li-block"><i ng-show="phoneIf" class="fa fa-phone fa-lg"></i>phone</li>
+                </ul>
+                <h5>réseaux sociaux</h5>
+                <div class="text-center">
+                    <a ng-show="linkedinIf" href=""><i class="fa fa-linkedin fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Linkedin"></i></a>
+                    <a ng-show="githubIf" href=""><i class="fa fa-github fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Github"></i></a>
+                    <a ng-show="twitterIf" href=""><i class="fa fa-twitter fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Twitter"></i></a>
+                    <a ng-show="instagramIf" href=""><i class="fa fa-instagram fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Instagram"></i></a>
+                    <a ng-show="facebookIf" href=""><i class="fa fa-facebook-official fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a>
+                    <a ng-show="websiteIf" href=""><i class="fa fa-desktop fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Website"></i></a></div>
+            </div>
+            <div class="wildpanelbody panel paneldefault"></div>
+            <div class="wildpanelfooter panel panel-default">
+                <a class="text-right">Modifier</a>
+            </div>
+        </div>
+
+        <!--SITUATION-->
+        <div class="wildpanel panel panel-default row">
+            <div class="wildpanelbody panel paneldefault">
+                <h5>Situation</h5>
+                <p>undifine</p>
+                <h5>Statut</h5>
+                <p>undifine</p>
+                <h5>Mobilité</h5>
+                <p>undifine</p>
+            </div>
+            <div class="wildpanelfooter panel panel-default">
+                <a class="text-right">Modifier</a>
+            </div>
+        </div>
+
+        <!--WILD SIDE-->
+        <div class="wildpanel panel panel-default row">
+            <div class="wildpanelheader panel panel-default">
+                <h4>Son coté Wild</h4>
+            </div>
+            <div class="wildpanelbody panel paneldefault">
+                <p>undifine</p>
+            </div>
+            <div class="wildpanelfooter panel panel-default">
+                <a class="text-right">Modifier</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xs-12 col-sm-7 col-md-6 col-lg-6">
+
+        <!--EXPERIENCES-->
+        <div class="wildpanel panel panel-default row">
+            <div class="wildpanelheader panel panel-default">
+                <h4><i class="fa fa-briefcase i-header"></i> Expérience</h4>
+            </div>
+
+            <!--EXPERIENCE-->
+
+            <div class="no-marge">
+                <!--Btn Modal-->
+                <div class="plus">
+                    <a data-toggle="modal" data-target="#myModal">En savoir plus</a>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h2 class="titlemodal" id="myModalLabel">Intitulé du poste</h2>
+                                <p class="smalltexadvert">Entreprise - Type de Contrat - Ville (pays)</p>
+                                <p class="smalltexadvert-sm">Date de début - Date de fin</p>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Missions</h5>
+                                <p class="white-space-pre-line">undifine</p>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Détail sur l'experience</h5>
+
+                                <p class="white-space-pre-line">undifine</p>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Déscription de l'entreprise</h5>
+                                <p class="white-space-pre-line">undifine</p>
+                            </div>
+                            <div class="modal-body">
+                                <a>Site web de l'entreprise</a>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btnW">Editer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Teaser-->
+                <div class="wildpanelbodys panel paneldefault">
+                    <h2 class="titleadvert" data-toggle="modal" data-target="#myModal">Intitulé du poste</h2>
+                    <p class="smalltexadvert">Entreprise - Type de Contrat - Ville (pays)</p>
+                    <p class="smalltexadvert-sm">Date de début - Date de fin</p>
+                </div>
+                <div class="wildpanelbody panel paneldefault">
+                    <p class="white-space-pre-line">undifine</p>
+                </div>
+            </div>
+
+
+            <div class="wildpanelfooter panel panel-default">
+                <a href="">ajouter ou modifier une expérience</a>
+            </div>
+        </div>
+
+        <!--EDUCATIONS-->
+        <div class=" wildpanel panel panel-default row ">
+            <div class="wildpanelheader panel panel-default">
+                <h4><i class="fa fa-graduation-cap i-header"></i> Formation</h4>
+            </div>
+
+            <!--EDUCATION-->
+            <div class="no-marge">
+                <!--Btn Modal-->
+                <div class="plus">
+                    <a data-toggle="modal" data-target="#myModal2">En savoir plus</a>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h2 class="titlemodal" id="myModalLabel">Intitulé de la formation</h2>
+                                <p class="smalltexadvert">Ecole - Ville (Pays)</p>
+                                <p class="smalltexadvert-sm">Date de début - Date de fin</p>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Déscriptions de la formation</h5>
+                                <p class="white-space-pre-line">undifine</p>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Diplome</h5>
+
+                                <p class="white-space-pre-line">undifine</p>
+                            </div>
+                            <div class="modal-body">
+                                <a>Site web de l'école</a>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btnW float-right">Editer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Teaser-->
+                <div class="wildpanelbodys panel paneldefault">
+                    <h2 class="titleadvert" data-toggle="modal" data-target="#myModal2">Intitulé de la formation</h2>
+                    <p class="smalltexadvert">Ecole - Ville (pays)</p>
+                    <p class="smalltexadvert-sm">Date de début - Date de fin</p>
+                </div>
+                <div class="wildpanelbody panel paneldefault">
+                    <p class="white-space-pre-line">undifine</p>
+                </div>
+            </div>
+
+            <div class="wildpanelfooter panel panel-default">
+                <a href="">ajouter ou modifier une formation</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 ">
+
+        <!--SKILLS-->
+        <div class="wildpanel panel panel-default col-xs-12 col-sm-6 col-md-12 col-lg-12 no-padding">
+            <div class="wildpanelheader panel panel-default">
+                <h4><i class="fa fa-cubes i-header"></i> Compétence</h4>
+            </div>
+            <div class="wildpanelbody panel paneldefault">
+                <ul class="skill-ul">
+                    <li class="headeradvert skill-li"><span class="wildSkill">skill<i class="fa fa-times cross times-skill" ng-click=""></i></span></li>
+                </ul>
+            </div>
+            <div class="wildpanelbody panel paneldefault text-center">
+                <p class="bg-warning">Vous avez déjà renseigner cette compétence</p>
+                <p class="bg-danger">Cette compétence n'existe pas</p>
+            </div>
+            <div class="wildpanelfooterinput panel paneldefault form-inline row">
+                <div class="inputwildpanelfooter input-group input-group-sm col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <input type="text" class="form-control" uib-typeahead="for skill in offerSkills | filter:$viewValue | limitTo:8" placeholder="Ajoutez une compétence" ng-model="skill">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default btn-side" type="button">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--HOBBIES-->
+        <div class="wildpanel panel panel-default col-xs-12 col-sm-6 col-md-12 col-lg-12 no-padding">
+            <div class="wildpanelheader panel panel-default">
+                <h4><i class="fa fa-futbol-o i-header"></i> Loisirs</h4>
+            </div>
+            <div class="wildpanelbody panel paneldefault">
+                <ul>
+                    <li class="li-block">
+                        <p> • undifine</p>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="wildpanelfooter panel panel-default">
+                <a href="">modifier</a>
+            </div>
+        </div>
+    </div>
+</div>
