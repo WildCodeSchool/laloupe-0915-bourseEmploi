@@ -7,25 +7,25 @@
                 <h4>Quelques info sur {{company.name}}</h4>
             </div>
             <div class="wildpanelbody panel panel-default">
-                <img class="img-company" ng-src="{{company.logo}}" alt="{{company.name}} logo">
+                <img ng-show="company.logo" class="img-company" ng-src="{{company.logo}}" alt="{{company.name}} logo">
             </div>
             <div class="wildpanelbody panel panel-default">
                 <p><span class="company-name">{{company.name}}</span> est une entreprise de <b>{{company.size}}</b> dans le secteur <b>{{company.businessSector}}</b> situé(e) {{company.address}}, {{company.zipCode}} {{company.city}}, {{company.region}}, {{company.country}}.</p>
             </div>
             <div class="wildpanelbody panel panel-default">
 
-                <img class="img-company" ng-src="{{company.picture}}" alt="image illustrant {{company.name}}">
+                <img ng-show="company.picture" class="img-company" ng-src="{{company.picture}}" alt="image illustrant {{company.name}}">
             </div>
             <div class="wildpanelbody panel panel-default">
                 <h3>Notre Metier</h3>
                 <p>{{company.description}}</p>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a ng-show="websiteIf" href="{{company.website}}"><i class="fa fa-desktop fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Site web"></i></a>
-                <a ng-show="facebookIf" href="{{company.facebook}}"><i class="fa fa-facebook-official fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a>
-                <a ng-show="twitterIf" href="{{company.twitter}}"><i class="fa fa-twitter fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Twitter"></i></a>
-                <a ng-show="instagramIf" href="{{company.instagram}}"><i class="fa fa-instagram fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Instagram"></i></a>
-                <a ng-show="linkedinIf" href="{{company.linkedin}}"><i class="fa fa-linkedin fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Linkedin"></i></a>
+                <a ng-show="company.website" href="{{company.website}}"><i class="fa fa-desktop fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Site web"></i></a>
+                <a ng-show="company.facebook" href="{{company.facebook}}"><i class="fa fa-facebook-official fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a>
+                <a ng-show="company.twitter" href="{{company.twitter}}"><i class="fa fa-twitter fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Twitter"></i></a>
+                <a ng-show="company.instagram" href="{{company.instagram}}"><i class="fa fa-instagram fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Instagram"></i></a>
+                <a ng-show="company.linkedin" href="{{company.linkedin}}"><i class="fa fa-linkedin fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Linkedin"></i></a>
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
                         <p class="headeradvert smalltexadvert">chez</p>
                     </li>
                     <li class="headeradvert">
-                        <p class="headeradvert companytexadvert">{{recruiter.companyName}}</p>
+                        <p class="headeradvert companytexadvert">{{company.name}}</p>
                     </li>
                 </ul>
 
@@ -80,15 +80,15 @@
                 <p class="white-space-pre-line">{{offer.responsability}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault">
-                <h3>Notre coté wild </h3>
-                <p class="white-space-pre-line">{{offer.wildSide}}</p>
+                <h3 ng-show="offer.wildSide">Notre coté wild </h3>
+                <p ng-show="offer.wildSide" class="white-space-pre-line">{{offer.wildSide}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <h3>Contact</h3>
                 <div class="text-center">
                     <ul>
                         <li class="headeradvert"><i class="fa fa-paper-plane-o fa-lg"></i>
-                            <p class="headeradvert smalltexadvert1">{{offer.email}}</p>
+                            <p class="headeradvert smalltexadvert1">{{offer.referentEmail}}</p>
                         </li>
                         <li ng-show="phoneIf" class="headeradvert"><i class="fa fa-phone fa-lg"></i>
                             <p class="headeradvert smalltexadvert1">{{offer.referentPhone}}</p>

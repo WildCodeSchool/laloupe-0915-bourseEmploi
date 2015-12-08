@@ -7,15 +7,15 @@ var moment = require('moment');
 
 var offerSchema = new mongoose.Schema({
     skills: [{
-        skill :{
+        skill: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Skill'
         }
     }],
     referentId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Recruiter',
-            required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Recruiter',
+        required: true
     },
     title: {
         type: String,
@@ -38,7 +38,7 @@ var offerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    salary: Number,
+    salary: String,
     experience: {
         type: String,
         required: true
@@ -79,11 +79,11 @@ var Offer = {
 
     find: function (req, res) {
         Offer.model.findOne({
-          _id: req.headers.id
-		}, function(err, offer){
-          res.json(offer);
+            _id: req.headers.id
+        }, function (err, offer) {
+            res.json(offer);
         });
-	  },
+    },
 
     findAll: function (req, res) {
         Offer.model.find({}, function (err, offers) {

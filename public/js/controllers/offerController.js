@@ -1,4 +1,4 @@
-function offerController($scope, $http, $routeParams, offerService, geocoderService) {
+function offerController($scope, $http, $routeParams, offerService, geocoderService, connectRecruiterService) {
 
     //LOAD OFFER
     var selectOffer = $routeParams.id;
@@ -6,7 +6,20 @@ function offerController($scope, $http, $routeParams, offerService, geocoderServ
     function loadOffer() {
         offerService.getOfferbyId(selectOffer).then(function (res) {
             $scope.offer = res.data;
-            console.log(res.data)
+
+
+            //LOAD RECRUITER 
+            function loadRecruiter() {
+
+                connectRecruiterService.getRecruiterbyId($scope.offer.referentId).then(function (res) {
+                    $scope.company = res.data;
+                    console.log(res.data);
+
+                });
+
+            }
+
+            loadRecruiter();
 
             moment.locale('fr')
             var a = moment($scope.offer.startDate);
