@@ -7,13 +7,13 @@ var Auth = require('../middlewares/authorization.js');
 
 module.exports 	= function(app, passport) {
 
-	app.get('/experiences/:studentId', Experience.findByStudent);
+	app.get('/experiences/:studentId', Auth.user.hasAuthorization, Experience.findByStudent);
 
-	app.get('/experiences/:id', Experience.findById);
+	app.get('/experiences/:id', Auth.user.hasAuthorization, Experience.findById);
 
-	app.post('/experiences', Experience.create);
+	app.post('/experiences', Auth.user.hasAuthorization, Experience.create);
 
-	app.put('/experiences/:id', Experience.update);
+	app.put('/experiences/:id', Auth.user.hasAuthorization, Experience.update);
 
-	app.delete('/experiences/:id', Experience.delete);
+	app.delete('/experiences/:id', Auth.user.hasAuthorization, Experience.delete);
 }

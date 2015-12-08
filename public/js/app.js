@@ -10,35 +10,31 @@ function config($routeProvider) {
         })
         .when('/searchOffer', {
             templateUrl: 'views/searchOffer.html',
-            controller: 'searchOfferController'
-                //        ,
-                //            resolve: {
-                //                connected: checkIsConnected
-                //            }
+            controller: 'searchOfferController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/offer/:id', {
             templateUrl: 'views/offer.html',
-            controller: 'offerController'
-                //        ,
-                //            resolve: {
-                //                connected: checkIsConnected
-                //            }
+            controller: 'offerController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/homeRecruiter', {
             templateUrl: 'views/homeRctr.html',
-            controller: 'homeRctrController'
-                //        ,
-                //            resolve: {
-                //                connected: checkIsConnected
-                //            }
+            controller: 'homeRctrController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/homeStudent', {
             templateUrl: 'views/homeStudent.html',
-            controller: 'homeStudentController'
-                //        ,
-                //            resolve: {
-                //                connected: checkIsConnected
-                //            }
+            controller: 'homeStudentController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/book', {
             templateUrl: 'views/book.html',
@@ -54,12 +50,11 @@ function config($routeProvider) {
         })
         .when('/admin', {
             templateUrl: 'views/admin.html',
-            controller: 'adminController'
-                //        ,
-                //            resolve: {
-                //                administrator: checkIsAdmin,
-                //                connected: checkIsConnected
-                //            }
+            controller: 'adminController',
+            resolve: {
+                administrator: checkIsAdmin,
+                connected: checkIsConnected
+            }
         })
         .when('/editOffer', {
             templateUrl: 'views/editOffer.html',
@@ -70,38 +65,38 @@ function config($routeProvider) {
         });
 }
 
-//function checkIsConnected($q, $http, $rootScope, $location) {
-//    var deferred = $q.defer();
-//
-//    $http.get('/loggedin').success(function (user) {
-//        // Authenticated 
-//        if (user !== '0') {
-//            $rootScope.user = user;
-//            deferred.resolve();
-//        } else {
-//            // Not Authenticated 
-//            deferred.reject();
-//            $location.url('/login');
-//        }
-//    });
-//
-//    return deferred.promise;
-//};
-//
-//
-//function checkIsAdmin($q, $rootScope, $location) {
-//    var deferred = $q.defer();
-//
-//    if ($rootScope.user && $rootScope.user.admin)
-//        deferred.resolve();
-//    else {
-//        deferred.reject();
-//        $location.url('/');
-//    }
-//
-//    return deferred.promise;
-//}
-//
+function checkIsConnected($q, $http, $rootScope, $location) {
+   var deferred = $q.defer();
+
+    $http.get('/loggedin').success(function (user) {
+        // Authenticated 
+        if (user !== '0') {
+            $rootScope.user = user;
+            deferred.resolve();
+       } else {
+           // Not Authenticated 
+           deferred.reject();
+           $location.url('/login');
+       }
+   });
+
+   return deferred.promise;
+};
+
+
+function checkIsAdmin($q, $rootScope, $location) {
+   var deferred = $q.defer();
+
+   if ($rootScope.user && $rootScope.user.admin)
+       deferred.resolve();
+   else {
+       deferred.reject();
+       $location.url('/');
+   }
+
+   return deferred.promise;
+}
+
 function run($rootScope, $location, connectService) {
     $rootScope.loginMessage = {};
     $rootScope.loginMessage.title = '';
@@ -115,14 +110,14 @@ function run($rootScope, $location, connectService) {
     });
 
     // Logout
-    //    $rootScope.logout = function () {
-    //        $rootScope.user = null;
-    //        $rootScope.loginMessage.title = '';
-    //        $rootScope.loginMessage.message = '';
-    //        connectService.disconnect().then(function () {
-    //            $location.url('/login');
-    //        })
-    //    }
+    $rootScope.logout = function(){
+        $rootScope.user = null;
+        $rootScope.loginMessage.title = ''; 
+        $rootScope.loginMessage.message = ''; 
+        loginService.disconnect().then(function(){
+            $location.url('/login');
+        })
+    }
 }
 
 angular.module('app', ['ngRoute', 'ngSanitize'])

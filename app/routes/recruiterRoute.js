@@ -7,18 +7,21 @@ var Auth = require('../middlewares/authorization.js');
 
 module.exports = function (app, passport) {
 
-    app.get('/recruiters/id/:id', Recruiter.findById);
+	app.get('/recruiters/id/:id', Auth.user.hasAuthorization, Recruiter.findById);
 
-    app.get('/recruiters/email', Recruiter.findByEmail);
+	app.get('/recruiters/email', Recruiter.findByEmail);
 
-    app.get('/recruiters/:type', Recruiter.findByType);
+	app.get('/recruiters/:type', Auth.user.isAdministrator, Recruiter.findByType);
 
-    app.get('/recruiters', Recruiter.findAll);
+	app.get('/recruiters', Auth.user.isAdministrator, Recruiter.findAll);
 
-    app.post('/recruiters', Recruiter.create);
+	app.get('/recruiters/:id', Auth.user.isAdministrator, Recruiter.findById);
 
-    app.put('/recruiters/:id', Recruiter.update);
+	app.post('/recruiters', Recruiter.create);
 
-    app.delete('/recruiters/:id', Recruiter.delete);
+	app.put('/recruiters/:id', Auth.user.hasAuthorization, Recruiter.update);
+
+	app.delete('/recruiters/:id', Auth.user.hasAuthorization, Recruiter.delete);
 
 }
+

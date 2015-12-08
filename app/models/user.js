@@ -22,6 +22,13 @@ var UserSchema = new mongoose.Schema({
 var User = {
     model: mongoose.model('User', UserSchema),
 
+    find: function(email, password, callback){
+        User.model.findOne({
+          email: email,
+          password: password
+        }, callback);
+    }
+
 }
 
 module.exports = User;

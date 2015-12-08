@@ -7,17 +7,16 @@ var Auth = require('../middlewares/authorization.js');
 
 module.exports = function (app, passport) {
 
+	app.get('/students/id/:id', Auth.user.hasAuthorization, Student.findById);
 
-    app.get('/students/id/:id', Student.findById);
+	app.get('/students/:type', Auth.user.isAdministrator, Student.findByType);
 
-    app.get('/students/:type', Student.findByType);
-
-    app.get('/students', Student.findAll);
+	app.get('/students', Auth.user.isAdministrator, Student.findAll);
 
     app.post('/students', Student.create);
 
-    app.put('/students/:id', Student.update);
+	app.put('/students/:id', Auth.user.hasAuthorization, Student.update);
 
-    app.delete('/students/:id', Student.delete);
+	app.delete('/students/:id', Auth.user.isAdministrator, Student.delete);
 
 }
