@@ -243,15 +243,6 @@ ul {
     color: red;
 }
 
-i:focus,
-a:focus {
-    outline: none;
-}
-
-.fa:hover {
-    color: #009587;
-}
-
 
 /* ----------------- *\
 	  BS CALLOUT 
@@ -676,12 +667,21 @@ a:focus {
     float: none;
 }
 
-.title-link {
+a.title-link {
     color: white;
     text-decoration: none;
 }
 
-.title-link:hover {
+a.title-link:visited {
+    color: white;
+    text-decoration: none;
+}
+
+a.title-link:focus {
+    outline: none;
+}
+
+a.title-link:hover {
     color: #DAA520;
     text-decoration: none;
     cursor: pointer;
@@ -849,4 +849,29 @@ a.a-white {
 
 .marge-top {
     margin-top: 40px;
+}
+
+.li-nav {
+    display: block;
+}
+
+li.active {
+    color: white;
+    background-color: crimson;
+}
+
+.navbarr-avatar {
+    height: 26px;
+    margin: -20px 5px -17px -5px;
+    border-image: 3px;
+    border-color: white;
+    border-radius: 3px;
+}
+
+.btn:focus {
+    outline: none;
+}
+.navbar-form {
+    padding-left: 60px;
+    padding-top: 2px;
 }
