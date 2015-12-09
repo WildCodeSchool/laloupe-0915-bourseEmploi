@@ -66,35 +66,35 @@ function config($routeProvider) {
 }
 
 function checkIsConnected($q, $http, $rootScope, $location) {
-   var deferred = $q.defer();
+    var deferred = $q.defer();
 
     $http.get('/loggedin').success(function (user) {
         // Authenticated 
         if (user !== '0') {
             $rootScope.user = user;
             deferred.resolve();
-       } else {
-           // Not Authenticated 
-           deferred.reject();
-           $location.url('/login');
-       }
-   });
+        } else {
+            // Not Authenticated 
+            deferred.reject();
+            $location.url('/login');
+        }
+    });
 
-   return deferred.promise;
+    return deferred.promise;
 };
 
 
 function checkIsAdmin($q, $rootScope, $location) {
-   var deferred = $q.defer();
+    var deferred = $q.defer();
 
-   if ($rootScope.user && $rootScope.user.admin)
-       deferred.resolve();
-   else {
-       deferred.reject();
-       $location.url('/');
-   }
+    if ($rootScope.user && $rootScope.user.admin)
+        deferred.resolve();
+    else {
+        deferred.reject();
+        $location.url('/');
+    }
 
-   return deferred.promise;
+    return deferred.promise;
 }
 
 function run($rootScope, $location, connectService) {
@@ -110,11 +110,11 @@ function run($rootScope, $location, connectService) {
     });
 
     // Logout
-    $rootScope.logout = function(){
+    $rootScope.logout = function () {
         $rootScope.user = null;
-        $rootScope.loginMessage.title = ''; 
-        $rootScope.loginMessage.message = ''; 
-        loginService.disconnect().then(function(){
+        $rootScope.loginMessage.title = '';
+        $rootScope.loginMessage.message = '';
+        loginService.disconnect().then(function () {
             $location.url('/login');
         })
     }
@@ -138,6 +138,7 @@ angular.module('app', ['ngRoute', 'ngSanitize'])
     .service('skillService', skillService)
     .service('formRecruiterService', formRecruiterService)
     .service('geocoderService', geocoderService)
+    .service('studentService', studentService)
 
 /*.factory('', )*/
 .run(run);
