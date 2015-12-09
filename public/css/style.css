@@ -838,11 +838,15 @@ p.white-space-pre-line {
 }
 
 a.a-white {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
-    color: #008080;
+    color: #202020;
 }
 
 .headerAcc {
     margin-bottom: 30px;
+}
+
+.marge-top {
+    margin-top: 40px;
 }
