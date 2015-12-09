@@ -24,8 +24,15 @@ function formRecruiterController($scope, $location, formRecruiterService) {
             if (!res.data) {
                 console.log(res.data);
                 $scope.incompleteError = true;
-            } else
-                $location.path('/homeRecruiter');
+            } else {
+                $scope.step1 = false;
+                $scope.step12 = false;
+                $scope.step23 = true;
+                $scope.step2 = false;
+                $scope.step3 = false;
+                $scope.step32 = true;
+                $scope.confirm = true;
+            }
         })
     }
 
@@ -109,5 +116,6 @@ function formRecruiterController($scope, $location, formRecruiterService) {
         $scope.step23 = true;
         $scope.step2 = false;
         $scope.step3 = true;
+        $scope.step32 = true;
     }
 }

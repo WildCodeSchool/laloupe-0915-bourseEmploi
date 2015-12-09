@@ -1,18 +1,22 @@
+<!--TITLE-->
 <div class="row text-center">
     <h1 class="no-marge"><span class="titleforme">Bienvenue sur </span>Wild<span class="titlepost">finder</span></h1>
     <h2 class="no-marge">Créez votre compte entreprise en 3 étapes</h2>
 </div>
+
+<!--STEP BY STEP-->
 <div class="row text-center stepbystep">
     <div class="col-sm-3">
-        <p class="no-marge">Les champs avec étoiles <span class="required">*</span> sont requis.</p>
+        <p ng-hide="confirm" class="no-marge">Les champs avec étoiles <span class="required">*</span> sont requis.</p>
     </div>
     <div class="col-sm-6">
         <i ng-show="step1" class="fa fa-circle fa-2x fa-check"></i><i ng-click="Step1()" ng-show="step23" class="fa fa-check-circle fa-2x fa-check"></i>
-        <i ng-show="step1" class="fa fa-circle-thin fa-2x fa-check"></i><i ng-show="step2" class="fa fa-circle fa-2x fa-check"></i><i ng-click="Step2()" ng-show="step3" class="fa fa-check-circle fa-check fa-2x"></i>
-        <i ng-show="step12" class="fa fa-circle-thin fa-2x fa-check"></i><i ng-show="step3" class="fa fa-circle fa-2x fa-check"></i><i ng-show="step4" class="fa fa-check-circle fa-check fa-2x"></i>
+        <i ng-show="step1" class="fa fa-circle-thin fa-2x fa-check"></i><i ng-show="step2" class="fa fa-circle fa-2x fa-check"></i><i ng-click="Step2()" ng-show="step32" class="fa fa-check-circle fa-check fa-2x"></i>
+        <i ng-show="step12" class="fa fa-circle-thin fa-2x fa-check"></i><i ng-show="step3" class="fa fa-circle fa-2x fa-check"></i><i ng-show="confirm" class="fa fa-check-circle fa-check fa-2x"></i>
     </div>
-
 </div>
+
+<!--STEP 1-->
 <div ng-show="step1" class="row wildpanel panel panel-default no-marge animated slideInUp">
     <form name="formstep1" class="no-marge form-horizontal">
         <div class="text-center">
@@ -44,6 +48,8 @@
         </div>
     </form>
 </div>
+
+<!--STEP 2-->
 <div ng-show="step2" class="row wildpanel panel panel-default no-marge animated slideInUp">
     <form name="formstep2" class="no-marge form-group">
         <div class="text-center">
@@ -100,6 +106,8 @@
         </div>
     </form>
 </div>
+
+<!--STEP 3-->
 <div ng-show="step3" class="row wildpanel panel panel-default no-marge animated slideInUp">
     <form name="formstep3" class="no-marge form-group">
         <div class="text-center">
@@ -223,4 +231,19 @@
             </div>
         </div>
     </form>
+</div>
+
+<!--CONFIRMATION-->
+<div ng-show="confirm" class="row animated slideInUp">
+    <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4 marge-top">
+        <div class="wildpanel panel panel-default">
+            <div class="wildpanelbody panel panel-default text-center">
+                <h3>Félicitation votre compte Recruteur vient d'être créé.</h3>
+                <a href="/#/login">
+                    <button class="btn btnW"><strong>Se connecter</strong></button>
+                </a>
+            </div>
+        </div>
+    </div>
+
 </div>
