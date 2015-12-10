@@ -1,4 +1,4 @@
-function formOfferController($scope, $location, $filter, offerService, skillService) {
+function formOfferController($scope, $location, $filter, $rootScope, offerService, skillService) {
     //JS pour les popups d'aides
     $(function () {
         $('[data-toggle="popover"]').popover()
@@ -56,13 +56,13 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
 
     //Envoi des données du formulaire
     $scope.startDate = new Date();
-
     $scope.send = function () {
         var idSkill = [];
         var data = {};
         data = $scope.offer;
         data.skills = idSkill;
-        console.log(data.skills);
+        data.referentId = $rootScope.id;
+        console.log(data.referentId);
         data.endDate = moment($scope.startDate).add(90, 'days').format('YYYY-MM-DD');
         data.startDate = moment($scope.startDate).format('YYYY-MM-DD');
 

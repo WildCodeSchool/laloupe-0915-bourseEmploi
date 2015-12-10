@@ -142,6 +142,7 @@ angular.module('app', ['ngRoute', 'ngSanitize'])
     .service('skillService', skillService)
     .service('formRecruiterService', formRecruiterService)
     .service('geocoderService', geocoderService)
+    .service('studentService', studentService)
 
 /*.factory('', )*/
 .run(run);
