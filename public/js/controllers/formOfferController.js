@@ -61,10 +61,10 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         var data = {};
         data = $scope.offer;
         data.skills = idSkill;
-        data.referentId = $rootScope.id;
+        data.referentId = $rootScope.user._id;
         console.log(data.referentId);
-        data.endDate = moment($scope.startDate).add(90, 'days').format('YYYY-MM-DD');
-        data.startDate = moment($scope.startDate).format('YYYY-MM-DD');
+        data.endDate = moment($scope.startDate).add(90, 'days');
+        data.startDate = moment($scope.startDate);
 
         //Comparaison des skills choisi et existant( pour envoi Ids)
 
@@ -96,5 +96,5 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
     }
 
     // Date du jour
-    $scope.Dday = moment().format('YYYY-MM-DD');
+    $scope.Dday = moment();
 }

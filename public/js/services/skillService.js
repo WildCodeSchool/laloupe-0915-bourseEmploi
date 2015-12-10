@@ -1,22 +1,32 @@
-function skillService($http) {
+function skillService($http, $rootScope) {
     return {
-        get: function (data) {
-            return $http.get('/skills', data);
-        },
-        update: function (id, data, user) {
-            return $http.put('/skills/' + id, data, {
+        get: function () {
+            return $http.get('/skills', {
                 headers: {
-                    userid: user._id
+                    authorization: $rootScope.token
                 }
             });
         },
-        create: function (data) {
-            return $http.post('/skills', data);
+        update: function (id, data) {
+            return $http.put('/skills/' + id, data, {
+                headers: {
+                    authorization: $rootScope.token
+                }
+            });
         },
-        delete: function (id, user) {
+
+        create: function (data) {
+            return $http.post('/skills', data, {
+                headers: {
+                    authorization: $rootScope.token
+                }
+            });
+        },
+
+        delete: function (id) {
             return $http.delete('/skills/' + id, {
                 headers: {
-                    userid: user._id
+                    authorization: $rootScope.token
                 }
             });
         }

@@ -1,33 +1,49 @@
-function offerService($http) {
+function offerService($http, $rootScope) {
     return {
         getAll: function () {
-            return $http.get('/offers');
+            return $http.get('/offers', {
+                headers: {
+                    authorization: $rootScope.token
+                }
+            });
         },
 
         getOfferbyId: function (id) {
-            return $http.get('/offers/' + id);
-        },
-
-        getOfferByUser: function (id, data) {
-            return $http.get('/offers/users/' + id, data);
-        },
-
-        update: function (id, data, user) {
-            return $http.put('/offers/' + id, data, {
+            return $http.get('/offers/' + id, {
                 headers: {
-                    userid: user._id
+                    authorization: $rootScope.token
+                }
+            });
+        },
+
+        getOfferByUser: function (id) {
+            return $http.get('/offers/users/' + id, {
+                headers: {
+                    authorization: $rootScope.token
                 }
             });
         },
 
         create: function (data) {
-            return $http.post('/offers', data);
+            return $http.post('/offers', data, {
+                headers: {
+                    authorization: $rootScope.token
+                }
+            });
         },
 
-        delete: function (id, user) {
+        update: function (id, data, user) {
+            return $http.put('/offers/' + id, data, {
+                headers: {
+                    authorization: $rootScope.token
+                }
+            });
+        },
+
+        delete: function (id) {
             return $http.delete('/offers/' + id, {
                 headers: {
-                    userid: user._id
+                    authorization: $rootScope.token
                 }
             });
         }

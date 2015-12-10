@@ -1,4 +1,4 @@
-function offerController($scope, $http, $routeParams, offerService, geocoderService, formRecruiterService) {
+function offerController($scope, $http, $routeParams, offerService, geocoderService, recruiterService) {
 
     //LOAD OFFER
     var selectOffer = $routeParams.id;
@@ -7,16 +7,13 @@ function offerController($scope, $http, $routeParams, offerService, geocoderServ
         offerService.getOfferbyId(selectOffer).then(function (res) {
             $scope.offer = res.data;
 
-
             //LOAD RECRUITER 
             function loadRecruiter() {
 
-                formRecruiterService.getRecruiterbyId($scope.offer.referentId).then(function (res) {
+                recruiterService.getRecruiterbyId($scope.offer.referentId).then(function (res) {
                     $scope.company = res.data;
                     console.log(res.data);
-
                 });
-
             }
 
             loadRecruiter();
@@ -43,7 +40,6 @@ function offerController($scope, $http, $routeParams, offerService, geocoderServ
                 var marker = L.marker([lat, lng]).addTo(map);
 
             });
-
 
         });
     }
