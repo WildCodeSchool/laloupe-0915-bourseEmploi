@@ -25,7 +25,7 @@ function connectController($scope, $rootScope, $location, connectService) {
         connectService.connect($scope.user).then(function (res) {
             $rootScope.user = res.data;
             console.log(res.data);
-            if (res.data._type != "Recruiter")
+            if (res.data.user._type != "Recruiter")
                 $location.path('/homeStudent');
             else
                 $location.path('/homeRecruiter');
