@@ -48,6 +48,10 @@ function config($routeProvider) {
             templateUrl: 'views/bookStudent.html',
             controller: 'bookStudentController'
         })
+        .when('/editBook/:id', {
+            templateUrl: 'views/editBookStudent.html',
+            controller: 'editBookStudentController'
+        })
         .when('/connectRecruiter', {
             templateUrl: 'views/connectRecruiter.html',
             controller: 'connectRecruiterController'
@@ -138,6 +142,7 @@ angular.module('app', ['ngRoute', 'ngSanitize'])
     .controller('editOfferController', editOfferController)
     .controller('bookController', bookController)
     .controller('bookStudentController', bookStudentController)
+    .controller('editBookStudentController', editBookStudentController)
     .service('connectService', connectService)
     .service('offerService', offerService)
     .service('skillService', skillService)

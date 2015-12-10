@@ -1,0 +1,3 @@
+function editBookStudentController($scope) {
+
+}
