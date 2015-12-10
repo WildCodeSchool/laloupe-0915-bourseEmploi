@@ -112,49 +112,6 @@ var Offer = {
         });
     },
 
-    /*create: function (req, res) {
-        Offer.model.create({
-            title: req.body.title,
-            referentEmail: req.body.referentEmail,
-            referentName: req.body.referentName,
-            referentPhone: req.body.referentPhone,
-            description: req.body.description,
-            contract: req.body.contract,
-            salary: req.body.salary,
-            experience: req.body.experience,
-            responsability: req.body.responsability,
-            wildSide: req.body.wildSide,
-            startDate: req.body.startDate,
-
-            endDate: moment(req.body.enDate).add(90, 'days'),
-            
-            address: req.body.address,
-            city: req.body.city,
-            country: req.body.country,
-            zipCode: req.body.zipCode,
-            referentId: req.body.referentId
-        }, function (err, offer) {
-console.log(err);
-            // if (!err){
-            //     for (var i = 0; i < req.bodls.y.skillength ; i++){
-            //         Offer.model.findByIdAndUpdate(offer.id,{ $push: {
-            //             skills: {
-            //                 skill: req.body.skills[i]
-            //             }
-            //         }}, function (err, oo) {
-            //             //nothing    
-            //         });
-                    
-            //     }
-            //     res.sendStatus(200);
-            // } 
-            // else {
-            //     res.sendStatus(500);
-            // }
-            res.sendStatus(offer);
-        });
-    },*/
-
 
     update: function (req, res) {
         Offer.model.findByIdAndUpdate(req.params.id, req.body, function (err, offer) {

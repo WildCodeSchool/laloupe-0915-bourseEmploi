@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var passport = require('passport');
 var moment = require('moment');
+var expressJwt = require('express-jwt');
 
 // Mongoose ====================================================================
 require('./config/database');
@@ -38,6 +39,15 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Cross Domain
+app.use(function(request, response, next) {
+    response.header('Access-Control-Allow-Credentials', true);
+    response.header('Access-Control-Allow-Origin', request.headers.origin);
+    response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    response.header('Access-Control-Allow-Headers', 'X-ACCESS_TOKEN, Access-Control-Allow-Origin, Authorization, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+    next();
+});
 
 // Serveur ====================================================================
 var server = http.Server(app);

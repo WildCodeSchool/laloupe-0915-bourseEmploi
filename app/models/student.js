@@ -55,20 +55,6 @@ var StudentSchema = User.model.schema.extend({
 var Student = {
     model: mongoose.model('Student', StudentSchema),
 
-    findByType: function (req, res) {
-        Student.model.find({
-            _type: req.params.type
-        }, function (err, student) {
-            res.json(student);
-        });
-    },
-
-    findAll: function (req, res) {
-        Student.model.find({}, function (err, students) {
-            res.json(students);
-        });
-    },
-
     findById: function (req, res) {
         Student.model.findById(req.params.id, function (err, student) {
             res.json(student);
@@ -78,7 +64,6 @@ var Student = {
     create: function (req, res) {
         Student.model.create(req.body, function (err, student) {
             res.json(student);
-            console.log(err);
         });
     },
 
