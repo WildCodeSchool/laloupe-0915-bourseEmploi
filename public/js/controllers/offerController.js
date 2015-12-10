@@ -1,4 +1,4 @@
-function offerController($scope, $http, $routeParams, offerService, geocoderService, connectRecruiterService) {
+function offerController($scope, $http, $routeParams, offerService, geocoderService, formRecruiterService) {
 
     //LOAD OFFER
     var selectOffer = $routeParams.id;
@@ -11,7 +11,7 @@ function offerController($scope, $http, $routeParams, offerService, geocoderServ
             //LOAD RECRUITER 
             function loadRecruiter() {
 
-                connectRecruiterService.getRecruiterbyId($scope.offer.referentId).then(function (res) {
+                formRecruiterService.getRecruiterbyId($scope.offer.referentId).then(function (res) {
                     $scope.company = res.data;
                     console.log(res.data);
 

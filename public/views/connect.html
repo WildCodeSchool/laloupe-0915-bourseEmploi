@@ -1,19 +1,28 @@
 <!--CONNECTIONS BUTTONS-->
 <div class="row">
-    <div class="col-md-12 text-right">
-        <button class="btnWA" ng-click="checkedR()">Espace recruteur</button>
+    <div class="col-xs-12 text-right">
+
         <button class="btnWA" ng-click="checkedE()">Espace élève</button>
     </div>
 </div>
 
 <!--WEBSITE PRESENTATION-->
 <div class="row" ng-hide="hideAccueil">
-    <div class= "col-md-4 col-md-offset-4" >
-        <div class="row text-center caseAccueil panel panel-default">
-            <h1>Wild<span class="titlepost">finder</span></h1>
-            <p>Description de l'application en quelques lignes. Bla bla blablabla bla blabla bla, bla bla blablabla bla blabla bla. Pour en savoir plus sur nos écoles visitez le site de la <a href="http://wildcodeschool.fr"target="_blank">Wild Code School</a></p>
+    <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <div class="row caseAccueil panel panel-default">
+                <div class="headerAcc col-xs-12 text-center">
+                    <h1>Wild<span class="titlepost">finder</span></h1>
+                    <p>Description de l'application en quelques lignes. Bla bla blablabla bla blabla bla, bla bla blablabla bla blabla bla. Pour en savoir plus sur nos écoles visitez le site de la <a href="http://wildcodeschool.fr" target="_blank">Wild Code School</a></p>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <button class="col-xs-12  btnClassic" ng-click="checkedR()">Connexion recruteur</button>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <a class="a-white" href="/#/formRecruiter">Créer un compte</a>
+                </div>
+            </div>
         </div>
-        <button class="col-xs-12 col-md-12 btnClassic" ng-click="connectSignUpRecruiter()">Créer un espace recruteur</button>
     </div>
 </div>
 
@@ -25,7 +34,7 @@
         </div>
         <div class="col-md-12">
             <div class="text-center">
-              <h2>Connexion du recruteur</h2>
+                <h2>Connexion du recruteur</h2>
             </div>
             <div class="bs-callout bs-callout-danger" ng-show="(loginMessage.title != '')">
                 <h4>{{loginMessage.title}}</h4>
@@ -34,7 +43,7 @@
             <form name="formConnect">
                 <div class="form-group">
                     <label for="inputName">S'identifier</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Votre e-mail" ng-model="user.name" ng-required="true">
+                    <input type="text" class="form-control" id="inputName" placeholder="Votre e-mail" ng-model="user.email" ng-required="true">
                 </div>
                 <div class="form-group">
                     <label for="inputName">Mot de passe</label>
@@ -45,7 +54,7 @@
         </div>
         <div class="row sub-login-form">
             <div class="col-md-6">
-                <a href="">Créer un compte</a>
+                <a href="/#/formRecruiter">Créer un compte</a>
             </div>
             <div class="col-md-6 text-right">
                 <a href="">Mot de passe oublié ?</a>
@@ -57,12 +66,12 @@
 <!--STUDENT CONNECTION-->
 <div class="row">
     <div class="col-md-4 col-md-offset-4 case1 panel panel-default animated fadeIn" ng-show="loginE">
-       <div class="text-right">
+        <div class="text-right">
             <i class="fa fa-times fa-2x" ng-click="checkedE()"></i>
         </div>
         <div class="col-md-12">
             <div class="text-center">
-              <h2>Connexion de l'élève</h2>
+                <h2>Connexion de l'élève</h2>
             </div>
             <div class="bs-callout bs-callout-danger" ng-show="(loginMessage.title != '')">
                 <h4>{{loginMessage.title}}</h4>
@@ -71,7 +80,7 @@
             <form name="formConnect">
                 <div class="form-group">
                     <label for="inputName">S'identifier</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Votre e-mail" ng-model="user.name" ng-required="true">
+                    <input type="text" class="form-control" id="inputName" placeholder="Votre e-mail" ng-model="user.email" ng-required="true">
                 </div>
                 <div class="form-group">
                     <label for="inputName">Mot de passe</label>

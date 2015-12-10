@@ -64,7 +64,7 @@ ul {
     padding-bottom: 15px;
     background-color: white;
     border-color: #b6b6b6;
-    margin-top: 200px;
+    margin-top: 130px;
     position: absolute;
     z-index: 2;
 }
@@ -83,7 +83,7 @@ ul {
     padding-bottom: 15px;
     background-color: rgba(255, 255, 255, .6);
     border-color: #b6b6b6;
-    margin-top: 230px;
+    margin-top: 130px;
     padding: 10px;
 }
 
@@ -107,12 +107,19 @@ ul {
     border-radius: 10px;
     border-color: #009587;
     color: white;
+    background-size: 100% 200%;
     background-color: #009587;
+    background-image: linear-gradient(to top, #008080 50%, #009587 50%);
+    font-size: 16px;
+    -webkit-transition: background-position 1s;
+    -moz-transition: background-position 1s;
+    transition: background-position 1s;
 }
 
 .btnClassic:hover {
     border-color: #008080;
     background-color: #008080;
+    background-position: 0 100%;
 }
 
 .btnClassic:focus {
@@ -234,15 +241,6 @@ ul {
 .align {
     line-height: 40px;
     color: red;
-}
-
-i:focus,
-a:focus {
-    outline: none;
-}
-
-.fa:hover {
-    color: #009587;
 }
 
 
@@ -669,12 +667,21 @@ a:focus {
     float: none;
 }
 
-.title-link {
+a.title-link {
     color: white;
     text-decoration: none;
 }
 
-.title-link:hover {
+a.title-link:visited {
+    color: white;
+    text-decoration: none;
+}
+
+a.title-link:focus {
+    outline: none;
+}
+
+a.title-link:hover {
     color: #DAA520;
     text-decoration: none;
     cursor: pointer;
@@ -747,8 +754,17 @@ i {
     color: #009587;
 }
 
-.fa-twitter {
+.fa-form {
     color: #009587;
+}
+
+.fa-check {
+    color: #009587;
+}
+
+.fa-check:hover {
+    color: #008080;
+    cursor: pointer;
 }
 
 .fa-instagram {
@@ -801,4 +817,61 @@ p.white-space-pre-line {
 .float-right {
     float: right;
     margin: 10px;
+}
+
+.form-recruiter {
+    margin-bottom: 25px;
+}
+
+.required {
+    font-weight: 600;
+    color: #b12f2f;
+}
+
+.stepbystep {
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+.titleforme {
+    color: #202020;
+}
+
+a.a-white {
+    font-size: 14px;
+    font-weight: 600;
+    color: #202020;
+}
+
+.headerAcc {
+    margin-bottom: 30px;
+}
+
+.marge-top {
+    margin-top: 40px;
+}
+
+.li-nav {
+    display: block;
+}
+
+li.active {
+    color: white;
+    background-color: crimson;
+}
+
+.navbarr-avatar {
+    height: 26px;
+    margin: -20px 5px -17px -5px;
+    border-image: 3px;
+    border-color: white;
+    border-radius: 3px;
+}
+
+.btn:focus {
+    outline: none;
+}
+.navbar-form {
+    padding-left: 60px;
+    padding-top: 2px;
 }

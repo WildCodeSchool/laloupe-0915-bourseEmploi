@@ -1,0 +1,249 @@
+<!--TITLE-->
+<div class="row text-center">
+    <h1 class="no-marge"><span class="titleforme">Bienvenue sur </span>Wild<span class="titlepost">finder</span></h1>
+    <h2 class="no-marge">Créez votre compte entreprise en 3 étapes</h2>
+</div>
+
+<!--STEP BY STEP-->
+<div class="row text-center stepbystep">
+    <div class="col-sm-3">
+        <p ng-hide="confirm" class="no-marge">Les champs avec étoiles <span class="required">*</span> sont requis.</p>
+    </div>
+    <div class="col-sm-6">
+        <i ng-show="step1" class="fa fa-circle fa-2x fa-check"></i><i ng-click="Step1()" ng-show="step23" class="fa fa-check-circle fa-2x fa-check"></i>
+        <i ng-show="step1" class="fa fa-circle-thin fa-2x fa-check"></i><i ng-show="step2" class="fa fa-circle fa-2x fa-check"></i><i ng-click="Step2()" ng-show="step32" class="fa fa-check-circle fa-check fa-2x"></i>
+        <i ng-show="step12" class="fa fa-circle-thin fa-2x fa-check"></i><i ng-show="step3" class="fa fa-circle fa-2x fa-check"></i><i ng-show="confirm" class="fa fa-check-circle fa-check fa-2x"></i>
+    </div>
+</div>
+
+<!--STEP 1-->
+<div ng-show="step1" class="row wildpanel panel panel-default no-marge animated slideInUp">
+    <form name="formstep1" class="no-marge form-horizontal">
+        <div class="text-center">
+            <h3 class="form-recruiter">Vos Identifiants</h3>
+        </div>
+        <div class="col-sm-offset-3 col-sm-6">
+            <label class="control-label"><i class="fa fa-user fa-form"></i> Nom de l'entreprise<span class="required">*</span> :</label>
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+            <input type="text" required class="form-control form-recruiter" id="" placeholder="" ng-model="recruiter.name">
+
+            <label class="control-label"><i class="fa fa-at fa-form"></i> Email<span class="required">*</span> :</label>
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+            <input type="email" required class="form-control form-recruiter" id="" placeholder="" ng-pattern="EMAIL_REGEXP" ng-model="recruiter.email">
+
+            <label class="control-label"><i class="fa fa-lock fa-form"></i> Mot de passe<span class="required">*</span> :</label>
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+            <input type="password" required class="form-control form-recruiter" placeholder="" ng-model="recruiter.password">
+
+            <label class="control-label"><i class="fa fa-unlock-alt fa-form"></i> Confirmer le mot de passe<span class="required">*</span> :</label>
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+            <input type="password" required class="form-control form-recruiter" placeholder="" ng-model="password2">
+        </div>
+        <div class="row wildpanelbody panel panel-default form-recruiter">
+            <div class="col-sm-9 text-right align">
+                <label class="control-label" ng-show="displayError">{{err}}.</label>
+                <label class="control-label" ng-show="errPassword">echec de la confirmation du mot de passe</label>
+                <button class="btn btnW" ng-disabled="formstep1.$invalid" ng-click="Step2()"><strong>Continuer</strong></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--STEP 2-->
+<div ng-show="step2" class="row wildpanel panel panel-default no-marge animated slideInUp">
+    <form name="formstep2" class="no-marge form-group">
+        <div class="text-center">
+            <h3 class="form-recruiter">Vos coordonnées</h3>
+        </div>
+        <div class="row wildpanelbody panel panel-default">
+            <div class="col-sm-offset-1 col-sm-5">
+                <i class="fa fa-globe fa-form"></i>
+                <label class="control-label">Pays<span class="required">*</span> :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <input type="text" required class="form-control form-recruiter" placeholder="" ng-model="recruiter.country">
+            </div>
+            <div class=" col-sm-5">
+                <i class="fa fa-globe fa-form"></i>
+                <label class="control-label">Région<span class="required">*</span> :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <input type="text" required class="form-control form-recruiter" placeholder="" ng-model="recruiter.region">
+            </div>
+
+            <div class="col-sm-offset-1 col-sm-5">
+                <i class="fa fa-map-o fa-form"></i>
+                <label class="control-label">Ville<span class="required">*</span> :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <input type="text" required class="form-control form-recruiter" placeholder="" ng-model="recruiter.city" />
+            </div>
+            <div class="col-sm-5">
+                <i class="fa fa-map-o fa-form"></i>
+                <label class="control-label">Code postal<span class="required">*</span> :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <input type="text" required class="form-control form-recruiter" placeholder="" ng-model="recruiter.zipCode">
+            </div>
+
+            <div class="col-sm-offset-1 col-sm-10">
+                <i class="fa fa-map-marker fa-form"></i>
+                <label class="control-label">Adresse<span class="required">*</span> :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <input type="text" required class="form-control form-recruiter" placeholder="" ng-model="recruiter.address" />
+            </div>
+            <div class="col-sm-offset-1 col-sm-5">
+                <i class="fa fa-phone fa-form"></i>
+                <label class="control-label">Téléphone :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <input type="text" class="form-control form-recruiter" id="" placeholder="" ng-model="recruiter.phone">
+            </div>
+        </div>
+        <div class="row wildpanelbody panel panel-default form-recruiter">
+            <div class="col-xs-6 col-sm-offset-1 col-sm-5">
+                <button class=" btnW " ng-click="Step1()"><strong>Retour</strong></button>
+            </div>
+            <div class="col-xs-6 col-sm-5 text-right align">
+                <label class="control-label" ng-show="incompleteError">Veuillez remplir tous les champs.</label>
+                <button class="btn btnW" ng-disabled="formstep2.$invalid" ng-click="Step3()"><strong>Continuer</strong></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--STEP 3-->
+<div ng-show="step3" class="row wildpanel panel panel-default no-marge animated slideInUp">
+    <form name="formstep3" class="no-marge form-group">
+        <div class="text-center">
+            <h3 class="form-recruiter">Votre visibilité</h3>
+        </div>
+        <div class="row wildpanelbody panel panel-default">
+            <div class="col-sm-offset-1 col-sm-5">
+                <i class="fa fa-building-o fa-form"></i>
+                <label class="control-label">Taille de l'entreprise<span class="required">*</span> :</label>
+                <select required class="form-control form-recruiter" ng-model="recruiter.size">
+                    <option type="text" class="form-control">de 1 a 9 salariés</option>
+                    <option type="text" class="form-control">de 10 a 49 salariés</option>
+                    <option type="text" class="form-control">de 50 a 499 salariés</option>
+                    <option type="text" class="form-control">de 500 a 999 salariés</option>
+                    <option type="text" class="form-control">plus de 1000 salariés</option>
+                </select>
+            </div>
+            <div class="col-sm-5">
+                <i class="fa fa fa-bar-chart fa-form"></i>
+                <label class="control-label">Secteur d'activité<span class="required">*</span> :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <select required class="form-control form-recruiter" ng-model="recruiter.businessSector">
+
+                    <option type="text" class="form-control">Agroalimentaire</option>
+                    <option type="text" class="form-control">Banque / Assurance</option>
+                    <option type="text" class="form-control">Bois / Papier / Carton / Imprimerie</option>
+                    <option type="text" class="form-control">BTP / Matériaux de construction</option>
+                    <option type="text" class="form-control">Chimie / Parachimie</option>
+                    <option type="text" class="form-control">Commerce / Négoce / Distribution</option>
+                    <option type="text" class="form-control">Édition / Communication / Multimédia</option>
+                    <option type="text" class="form-control">Électronique / Électricité</option>
+                    <option type="text" class="form-control">Enseignement</option>
+                    <option type="text" class="form-control">Études et conseils</option>
+                    <option type="text" class="form-control">Industrie pharmaceutique</option>
+                    <option type="text" class="form-control">Informatique / Télécoms</option>
+                    <option type="text" class="form-control">Machines et équipements / Automobile</option>
+                    <option type="text" class="form-control">Métallurgie / Travail du métal</option>
+                    <option type="text" class="form-control">Plastique / Caoutchouc</option>
+                    <option type="text" class="form-control">Services aux entreprises</option>
+                    <option type="text" class="form-control">Textile / Habillement / Chaussure</option>
+                    <option type="text" class="form-control">Transports / Logistique</option>
+                    <option type="text" class="form-control">Autres</option>
+                </select>
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <i class="fa fa-copyright fa-form"></i>
+                <label>Description entreprise<span class="required">*</span> :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <textarea class="form-control form-recruiter" rows="3" required placeholder="décrivez votre entreprise en quelques lignes" ng-model="recruiter.description"></textarea>
+            </div>
+            <div class="col-sm-offset-1 col-sm-4">
+                <i class="fa fa-desktop fa-form"></i>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <div class="input-group-addon">http://</div>
+                <input type="text" class="form-control form-recruiter" placeholder="Site internet de l'entreprise" ng-model="recruiter.website">
+            </div>
+        </div>
+        <div class="row wildpanelbody panel panel-default">
+            <div class="col-sm-offset-1 col-sm-5">
+                <i class="fa fa-facebook-official fa-form"></i>
+                <label class="control-label">Facebook :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <input type="text" class="form-control form-recruiter" placeholder="" ng-model="recruiter.facebook">
+            </div>
+            <div class="col-sm-5">
+                <i class="fa fa-twitter fa-form"></i>
+                <label class="control-label">Twitter :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <input type="text" class="form-control form-recruiter" placeholder="" ng-model="recruiter.twitter">
+            </div>
+            <div class="col-sm-offset-1 col-sm-5">
+                <i class="fa fa-instagram fa-form"></i>
+                <label class="control-label">Instagram :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <input type="text" class="form-control form-recruiter" placeholder="" ng-model="recruiter.instagram">
+            </div>
+            <div class="col-sm-5">
+                <i class="fa fa-linkedin fa-form"></i>
+                <label class="control-label">Linkedin :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <input type="text" class="form-control form-recruiter" placeholder="" ng-model="recruiter.linkedin">
+            </div>
+        </div>
+        <div class="row wildpanelbody panel panel-default">
+            <div class="col-sm-offset-1 col-sm-5 form-recruiter">
+                <i class="fa fa-picture-o fa-form"></i>
+                <label class="control-label">Ajouter un logo :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <input id="logo" type="file" nv-file-select uploader="uploader" ng-model="logo" onchange="angular.element(this).scope().previewFile(this)">
+                <ul>
+                    <li ng-repeat="item in uploader.queue">
+                        <span ng-bind="item.file.name"></span>
+                        <br/>
+                        <button ng-click="item.upload()">upload</button>
+                    </li>
+                </ul>
+                <img id="preview" height="200" alt="Image preview...">
+            </div>
+            <div class="col-sm-4 form-recruiter">
+                <i class="fa fa-picture-o fa-form"></i>
+                <label class="control-label">Ajouter une photo qui représente votre entreprise :</label>
+                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Aide"><i class="fa fa-question-circle"></i></a>
+                <input id="picture" type="file" nv-file-select uploader="uploader2" ng-model="picture" onchange="angular.element(this).scope().previewFile2(this)">
+                <ul>
+                    <li ng-repeat="item in uploader2.queue">
+                        <span ng-bind="item.file.name"></span>
+                        <br/>
+                        <button ng-click="item.upload()">upload</button>
+                    </li>
+                </ul>
+                <img id="preview2" height="200" alt="Image preview2...">
+            </div>
+        </div>
+        <div class="row wildpanelbody panel panel-default form-recruiter">
+            <div class="col-xs-6 col-sm-offset-1 col-sm-5">
+                <button class="btnW" ng-click="Step2()"><strong>Retour</strong></button>
+            </div>
+            <div class="col-xs-6 col-sm-5 text-right align">
+                <label class="control-label" ng-show="incompleteError">Veuillez remplir tous les champs.</label>
+                <button class="btn btnW" type="submit" ng-disabled="formstep3.$invalid" ng-click="send()"><strong>Valider</strong></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--CONFIRMATION-->
+<div ng-show="confirm" class="row animated slideInUp">
+    <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4 marge-top">
+        <div class="wildpanel panel panel-default">
+            <div class="wildpanelbody panel panel-default text-center">
+                <h3>Félicitation votre compte Recruteur vient d'être créé.</h3>
+                <a href="/#/login">
+                    <button class="btn btnW"><strong>Se connecter</strong></button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>

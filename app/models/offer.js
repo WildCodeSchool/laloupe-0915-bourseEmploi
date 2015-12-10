@@ -97,6 +97,14 @@ var Offer = {
         });
     },
 
+    findByUser: function (req, res) {
+        Offer.model.find({
+            referentId: req.params.id
+        }, function (err, offer) {
+            res.json(offer);
+        });
+    },
+
     create: function (req, res) {
         Offer.model.create(req.body, function (err, offer) {
             res.json(offer);

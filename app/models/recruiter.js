@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 var User = require('./user.js');
 
 var RecruiterSchema = User.model.schema.extend({
+    admin: Boolean,
     name: {
         type: String,
         required: true
@@ -76,10 +77,22 @@ var Recruiter = {
         });
     },
 
+    findByEmail: function (req, res) {
+        Recruiter.model.findOne({
+            email: req.headers.email
+        }, function (err, data) {
+            if (data)
+                res.status(409).send("Un compte existe déjà avec l'adresse mail " + req.headers.email);
+            else
+                res.status(200).send();
+        });
+    },
+
     create: function (req, res) {
+        req.body.admin = false;
         Recruiter.model.create(req.body, function (err, recruiter) {
-            console.log(err);
             res.json(recruiter);
+            console.log(recruiter)
             console.log(err);
         });
     },

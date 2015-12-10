@@ -8,6 +8,10 @@ function offerService($http) {
             return $http.get('/offers/' + id);
         },
 
+        getOfferByUser: function (id, data) {
+            return $http.get('/offers/users/' + id, data);
+        },
+
         update: function (id, data, user) {
             return $http.put('/offers/' + id, data, {
                 headers: {

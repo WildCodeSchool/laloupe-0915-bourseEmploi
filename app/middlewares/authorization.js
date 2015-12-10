@@ -3,18 +3,19 @@
  */
 
 exports.user = {
-    
-	hasAuthorization: function (req, res, next) {
-	    // if (!req.user || req.user._id != req.headers.userid) {
-	    //  	return res.sendStatus(403);
-	    // }
-	    next();
- 	},
-    
-	isAdministrator: function (req, res, next) {
-	    if (!req.user.admin) {
-	      return res.sendStatus(401);
-	    }
-	    next();
-  	}
+
+    hasAuthorization: function (req, res, next) {
+        if (!req.user || req.user._id != req.headers.userid) {
+            return res.sendStatus(403);
+        }
+        next();
+    },
+
+    isAdministrator: function (req, res, next) {
+        // if (req.user._type == "admin")
+        if (!req.user.admin) {
+            return res.sendStatus(401);
+        }
+        next();
+    }
 };
