@@ -1,0 +1,454 @@
+<h1>edition profil élève</h1>
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+
+        <div class="row" id=titre1>
+            <div class="page-header">
+                <h2>infos personnelles</h2>
+            </div>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Prénom :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Nom :</label>
+                    <div>
+                        <input type="email" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Age :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Sexe :</label>
+                    <div>
+                        <input type="email" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">email :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">telephone :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <fieldset class="form-group">
+            <div class="col-sm-offset-8 col-sm-3">
+                <form>
+                    <button class="btnW" ng-click="()">mettre a jour</button>
+                </form>
+            </div>
+        </fieldset>
+
+
+        <div class="row">
+            <div class="page-header">
+                <h2>Situation</h2>
+            </div>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Situation :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Status :</label>
+                    <div>
+                        <input type="email" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Mobilité :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <fieldset class="form-group">
+            <div class="col-sm-offset-8 col-sm-3">
+                <form>
+                    <button class="btnW" ng-click="()">mettre a jour</button>
+                </form>
+            </div>
+        </fieldset>
+
+
+        <div class="row">
+            <div class="page-header">
+                <h2>Coté wild</h2>
+            </div>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label>Son coté wild</label>
+                    <textarea class="form-control" rows="4" ng-model=""></textarea>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-offset-8 col-sm-3">
+                    <form>
+                        <button class="btnW" ng-click="()">mettre a jour</button>
+                    </form>
+                </div>
+            </fieldset>
+        </div>
+
+
+        <div class="row">
+            <div class="page-header">
+                <h2>Compétences</h2>
+            </div>
+            <fieldset class="form-group">
+                <div class=" col-sm-4">
+                    <label class="control-label">Compétences recherchées* :</label>
+                    <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Ajoutez des compétences les unes à la suite des autres grâce au moteur de recherche."><i class="fa fa-question-circle"></i></a>
+                    <div class="input-group">
+                        <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage, de compétence" class="form-control" list="Languages" />
+                        <datalist id="Languages">
+                            <option ng-repeat="offerSkill in offerSkills" value="{{offerSkill.title}}">
+                        </datalist>
+                        <span class="input-group-btn">
+                    <button class="btn btn-default btn-side" ng-click="add()" type="button" >OK</button>
+                  </span>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-offset-1 col-sm-10">
+                    <ul ng-show="showSkill">
+                        <li class="skill-li" ng-repeat="listSkill in listSkills"><span class="wildSkill clickable">{{ listSkill }}<i class="fa fa-times cross" ng-click="deleteSkill(listSkill)"></i></span></li>
+                    </ul>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-offset-8 col-sm-3">
+                    <form>
+                        <button class="btnW" ng-click="()">mettre a jour</button>
+                    </form>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="row">
+            <div class="page-header">
+                <h2>Expérience</h2>
+            </div>
+            <h4>modifier une experience</h4>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label class="control-label">Intitulé du poste :</label>
+                    <input type="text" name="title" class="form-control" id="" ng-model="">
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Entreprise :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Type de contrat :</label>
+                    <select class="form-control" ng-model="">
+                        <option type="text" class="form-control" value="" disabled>Choisissez un contrat...</option>
+                        <option type="text" class="form-control">Stage</option>
+                        <option type="text" class="formcontrol">Apprentissage</option>
+                        <option type="text" class="form-control">CDD</option>
+                        <option type="text" class="form-control">CDI</option>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Ville :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Pays :</label>
+                    <div>
+                        <input type="email" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Date de début :</label>
+                    <div>
+                        <input class="form-control" type="date" ng-model="" min="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Date de fin :</label>
+                    <div>
+                        <input class="form-control" type="date" ng-model="" min="">
+
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label>Description de l'expérience</label>
+                    <textarea class="form-control" rows="6" ng-model="" name="desc"></textarea>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-offset-8 col-sm-3">
+                    <form>
+                        <button class="btnW" ng-click="()">mettre a jour</button>
+                    </form>
+                </div>
+            </fieldset>
+            <h4>ajouter une experience</h4>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label class="control-label">Intitulé du poste :</label>
+                    <input type="text" name="title" class="form-control" id="" ng-model="">
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Entreprise :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Type de contrat :</label>
+                    <select class="form-control" ng-model="">
+                        <option type="text" class="form-control" value="" disabled>Choisissez un contrat...</option>
+                        <option type="text" class="form-control">Stage</option>
+                        <option type="text" class="formcontrol">Apprentissage</option>
+                        <option type="text" class="form-control">CDD</option>
+                        <option type="text" class="form-control">CDI</option>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Ville :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Pays :</label>
+                    <div>
+                        <input type="email" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Date de début :</label>
+                    <div>
+                        <input class="form-control" type="date" ng-model="" min="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Date de fin :</label>
+                    <div>
+                        <input class="form-control" type="date" ng-model="" min="">
+
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label>Description de l'expérience</label>
+                    <textarea class="form-control" rows="6" ng-model="" name="desc"></textarea>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-offset-8 col-sm-3">
+                    <form>
+                        <button class="btnW" ng-click="()">mettre a jour</button>
+                    </form>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="row">
+            <div class="page-header">
+                <h2>Formation</h2>
+            </div>
+            <h4>modifier une formation</h4>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label class="control-label">Intitulé de la formation :</label>
+                    <input type="text" name="title" class="form-control" id="" ng-model="">
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Ecole :</label>
+                    <input type="text" name="title" class="form-control" id="" ng-model="">
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">ville :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Pays :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Date de début :</label>
+                    <div>
+                        <input class="form-control" type="date" ng-model="" min="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Date de fin :</label>
+                    <div>
+                        <input class="form-control" type="date" ng-model="" min="">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label>Description de la formation</label>
+                    <textarea class="form-control" rows="6" ng-model="" name="desc"></textarea>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-offset-8 col-sm-3">
+                    <form>
+                        <button class="btnW" ng-click="()">mettre a jour</button>
+                    </form>
+                </div>
+            </fieldset>
+            <h4>ajouter une formation</h4>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label class="control-label">Intitulé de la formation :</label>
+                    <input type="text" name="title" class="form-control" id="" ng-model="">
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Ecole :</label>
+                    <input type="text" name="title" class="form-control" id="" ng-model="">
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">ville :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Pays :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Date de début :</label>
+                    <div>
+                        <input class="form-control" type="date" ng-model="" min="">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Date de fin :</label>
+                    <div>
+                        <input class="form-control" type="date" ng-model="" min="">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label>Description de la formation</label>
+                    <textarea class="form-control" rows="6" ng-model="" name="desc"></textarea>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-offset-8 col-sm-3">
+                    <form>
+                        <button class="btnW" ng-click="()">mettre a jour</button>
+                    </form>
+                </div>
+            </fieldset>
+
+            <div class="row">
+                <div class="page-header">
+                    <h2>Loisirs</h2>
+                </div>
+                <fieldset class="form-group">
+                    <div class="col-sm-5">
+                        <label class="control-label">Modifié loisir :</label>
+                        <div>
+                            <input type="text" class="form-control" id="" ng-model="">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="col-sm-5">
+                        <label class="control-label">Ajouter loisir :</label>
+                        <div>
+                            <input type="text" class="form-control" id="" ng-model="">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <fieldset class="form-group">
+                <div class="col-sm-offset-8 col-sm-3">
+                    <form>
+                        <button class="btnW" ng-click="()">mettre a jour</button>
+                    </form>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+
+
+
+    <div class="col-md-3 col-lg-3 col-sm-3">
+        <nav class="hidden-xs affix">
+            <ul class="nav nav-pills nav-stacked">
+                <li><a ng-href="#titre1" target="_self">Infos personnelles</a></li>
+                <li><a href="">Situation</a></li>
+                <li><a href="">Coté wild</a></li>
+                <li><a href="">Compétences</a></li>
+                <li><a href="">Expérience</a></li>
+                <li><a href="">Formation</a></li>
+                <li><a href="">Loisir</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
