@@ -21,10 +21,10 @@ function homeRctrController($http, $scope, $rootScope, $location, offerService, 
     $scope.today = new Date();
     console.log($scope.today);
     $scope.after = function (dates) {
-        return moment(dates).isAfter($scope.today);
+        return moment($scope.today).isAfter(dates);
     }
     $scope.before = function (dates) {
-        return moment(dates).isBefore($scope.today);
+        return moment($scope.today).isBefore(dates);
     }
 
     $scope.startOffer = function (date) {

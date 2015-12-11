@@ -14,19 +14,41 @@ function searchOfferController($scope, offerService, geocoderService) {
     function loadOffer() {
         offerService.getAll().then(function (res) {
             $scope.offers = res.data;
+            $scope.today = new Date();
+            console.log($scope.today);
+            $scope.after = function (dates) {
+                return moment($scope.today).isAfter(dates);
+            }
+            $scope.before = function (dates) {
+                return moment($scope.today).isBefore(dates);
+            }
+
+            $scope.startOffer = function (date) {
+                moment.locale('fr')
+                var d = moment(date);
+                return d.fromNow();
+            }
+            $scope.endOffer = function (date) {
+                moment.locale('fr')
+                var d = moment(date);
+                return d.fromNow();
+            }
 
             //MARKERS
             $scope.offers.forEach(function (offer) {
-                var address = offer.address + ", " + offer.zipCode + " " + offer.city + ", " + offer.country;
+                if ($scope.after(offer.startDate) && $scope.before(offer.enDate)) {
+                    var address = offer.address + ", " + offer.zipCode + " " + offer.city + ", " + offer.country;
 
-                geocoderService.CoordinateByAdress(address).then(function (res) {
-                    var lng = res.data.features[0].geometry.coordinates[0];
-                    var lat = res.data.features[0].geometry.coordinates[1];
+                    geocoderService.CoordinateByAdress(address).then(function (res) {
+                        var lng = res.data.features[0].geometry.coordinates[0];
+                        var lat = res.data.features[0].geometry.coordinates[1];
 
-                    var marker = new L.marker([lat, lng]).addTo(map);
-                    var marker2 = new L.marker([lat, lng]).addTo(map2);
-                });
-            });
+                        var marker = new L.marker([lat, lng]).addTo(map);
+                        var marker2 = new L.marker([lat, lng]).addTo(map2);
+                    });
+                }
+            }.bind($scope));
+
         });
     }
 
