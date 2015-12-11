@@ -875,3 +875,9 @@ li.active {
     padding-left: 60px;
     padding-top: 2px;
 }
+
+.logo-company {
+    margin: 0 auto;
+    position: relative;
+    width: 50%;
+}
