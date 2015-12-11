@@ -31,8 +31,7 @@ function offerController($scope, $http, $routeParams, offerService, geocoderServ
             geocoderService.CoordinateByAdress(address).then(function (res) {
                 var lng = res.data.features[0].geometry.coordinates[0];
                 var lat = res.data.features[0].geometry.coordinates[1];
-                console.log(lng);
-                console.log(lat);
+
                 L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
                 var map = L.mapbox.map('map', 'mapbox.streets')
                     .setView([lat, lng], 15);
