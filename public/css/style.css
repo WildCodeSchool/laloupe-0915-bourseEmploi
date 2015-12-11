@@ -871,6 +871,7 @@ li.active {
 .btn:focus {
     outline: none;
 }
+
 .navbar-form {
     padding-left: 60px;
     padding-top: 2px;
@@ -881,3 +882,4 @@ li.active {
     position: relative;
     width: 50%;
 }
+

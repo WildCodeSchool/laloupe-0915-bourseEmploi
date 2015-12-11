@@ -86,14 +86,18 @@ var Offer = {
     },
 
     findAll: function (req, res) {
-        Offer.model.find({}, function (err, offers) {
-            res.json(offers);
-        });
+        Offer.model.find({})
+            .populate("skills.skill")
+            .populate("referentId")
+            .exec(function (err, offers) {
+                res.json(offers);
+            });
     },
 
     findById: function (req, res) {
         Offer.model.findById(req.params.id)
             .populate("skills.skill")
+            .populate("referentId")
             .exec(function (err, offer) {
                 res.json(offer);
             });
@@ -102,6 +106,7 @@ var Offer = {
     findByUser: function (req, res) {
         Offer.model.find(req.params.id)
             .populate("skills.skill")
+            .populate("referentId")
             .exec(function (err, offer) {
                 res.json(offer);
             });
