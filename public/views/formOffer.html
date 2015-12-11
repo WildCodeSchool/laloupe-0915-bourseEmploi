@@ -5,17 +5,14 @@
     <form class="form-horizontal" name="offerForm" ng-submit="send()">
 
         <!-- $COORDONNEES REFERENT -->
-        <div>
-            <input type="checkbox" ng-model="referent" checked/> Prendre mes coordonnées ( nom, email, téléphone ) comme référent de cette annonce.
-            <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Cocher si vos coordonnées sont identiques de celles enregistrées lors de votre inscription."><i class="fa fa-question-circle"></i></a>
-        </div>
+        <div class="spacer">
 
-        <div ng-hide="referent" class="spacer">
             <div class="form-group">
                 <h4>Vos coordonnées pour cette annonce :</h4>
                 <h6>Les champs avec étoiles * sont requis.</h6>
-                <div class="col-sm-offset-1 col-sm-3">
+                <div class="col-sm-offset-1 col-sm-2">
                     <label class="control-label">Nom* :</label>
+                    <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Inscrivez ici le nom de la personne en charge de l'annonce concernée."><i class="fa fa-question-circle"></i></a>
                     <div>
                         <input type="text" class="form-control" id="" placeholder="Nom du référent" ng-model="offer.referentName">
                     </div>
@@ -23,52 +20,57 @@
                 <div class="col-sm-offset-1 col-sm-3">
                     <label class="control-label">Email* :</label>
                     <div>
-                        <input type="email" class="form-control" id="" placeholder="Email du référent" ng-model="offer.referentEmail">
+                        <input type="email" class="form-control" id="" placeholder="Email du référent" ng-model="referentEmail">
                     </div>
                 </div>
                 <div class="col-sm-offset-1 col-sm-2">
                     <label class="control-label">Téléphone :</label>
                     <div>
-                        <input type="text" class="form-control" id="" placeholder="Téléphone du référent" ng-model="offer.referentPhone">
+                        <input type="text" class="form-control" id="" placeholder="Téléphone du référent" ng-model="referentPhone">
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
-                <div class="col-sm-offset-1 col-sm-3">
+                <div class="col-sm-offset-1 col-sm-2">
                     <label class="control-label">Pays* :</label>
                     <div>
-                        <input type="text" class="form-control" id="" placeholder="Pays du référent" ng-model="offer.country">
+                        <input type="text" class="form-control" id="" placeholder="Pays du référent" ng-model="country">
                     </div>
                 </div>
-                <div class="col-sm-offset-1 col-sm-3">
-                    <label class="control-label">Ville* :</label>
-                    <div>
-                        <input type="text" class="form-control" id="" placeholder="Ville du référent" ng-model="offer.city">
-                    </div>
-                </div>
-                <div class="col-sm-offset-1 col-sm-2">
-                    <label class="control-label">Code postal* :</label>
-                    <div>
-                        <input type="text" class="form-control" id="" placeholder="Code postal du référent" ng-model="offer.zipCode">
-                    </div>
-                </div>
-            </div>
 
-            <div class="form-group">
-                <div class="col-sm-offset-1 col-sm-6">
+                <div class="col-sm-3">
                     <label class="control-label">Adresse* :</label>
                     <div>
-                        <input type="text" class="form-control" id="" placeholder="Numéro et rue du référent" ng-model="offer.address">
+                        <input type="text" class="form-control" id="" placeholder="Numéro et rue du référent" ng-model="address">
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <label class="control-label">Code postal* :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" placeholder="Code postal du référent" ng-model="zipCode">
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <label class="control-label">Ville* :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" placeholder="Ville du référent" ng-model="city">
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="col-sm-offset-1 col-sm-9">
+            <input type="checkbox" ng-click="lol()" ng-model="referent" ng-checked="hey()" /> Vider les champs au dessus, si ceux ci sont diférents des coordonnées de la personne en charge de l'annonce.
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Cocher si vos coordonnées sont identiques de celles enregistrées lors de votre inscription."><i class="fa fa-question-circle"></i></a>
         </div>
 
 
         <!-- $FORMULAIRE -->
         <div class="form-group" ng-class="{'errorForm': offerForm.title.$invalid && !offerForm.title.$pristine }">
             <h4 class="spacer">Votre annonce :</h4>
+
             <div class="col-sm-offset-1 col-sm-10">
                 <label class="control-label">Titre de l'offre* :</label>
                 <input type="text" name="title" class="form-control" id="" placeholder="Définissez un intitulé de l'offre" ng-model="offer.title">
