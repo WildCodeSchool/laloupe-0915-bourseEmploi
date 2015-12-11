@@ -1,7 +1,63 @@
-function editOfferController($scope, $location, offerService, skillService, $rootScope) {
+function editOfferController($scope, $location, offerService, skillService, $rootScope, $routeParams) {
 
-    var user = $rootScope.user.skills;
-    console.log(user);
+    function loadSkill() {
+        offerService.getOfferbyId($routeParams.id).then(function (res) {
+            $scope.skillOffer = res.data.skills;
+
+            /****   CREATION TAGS ******/
+            //Import des compétences de shéma "skills"
+            skillService.get().then(function (res) {
+                $scope.offerSkills = res.data;
+            });
+
+            //Init de la fonctionnalitée
+            $scope.showSkill = false;
+            var dataSkill = [];
+            $scope.listSkills = $scope.skillOffer;
+
+            $scope.listSkills.forEach(function (skill) {
+                dataSkill.push(skill.skill.title);
+            });
+
+
+            //Vérification et ajout de la valeur de l'input
+            function updateSkill(array, up) {
+                $scope.errorTyping = true;
+                $scope.offerSkills.forEach(function (skill) {
+                    //console.log(skill.title);
+                    if (up == skill.title) {
+                        $scope.errorTyping = false;
+                    }
+                });
+                if (!$scope.errorTyping && dataSkill.indexOf(up) === -1) {
+                    dataSkill.push(up);
+                    console.log('Le nouveau tableau est : ' + dataSkill);
+                } else if (dataSkill.indexOf(up) > -1) {
+                    $scope.errorChoice = true;
+                }
+            }
+
+            //Lancement de la fonction  precedente au clic
+            $scope.add = function () {
+                $scope.errorChoice = false;
+                $scope.errorTyping = false;
+                var up = $scope.chooseSkill.toUpperCase();
+                console.log($scope.chooseSkill);
+                updateSkill(dataSkill, up);
+                //Affichage du skill et champ vide
+                $scope.showSkill = true;
+                $scope.chooseSkill = "";
+            }
+
+            //Suppression des Tags
+            $scope.deleteSkill = function deleteASkill(id) {
+                var idDeletedSkill = dataSkill.indexOf(id);
+                console.log($scope.listSkills);
+                return dataSkill.splice(idDeletedSkill, 1);
+            }
+        });
+    }
+    loadSkill();
 
 
     //Mise a jour infos personnelles
@@ -43,54 +99,6 @@ function editOfferController($scope, $location, offerService, skillService, $roo
 
             }
         })
-    }
-
-
-    /****   CREATION TAGS ******/
-    //Import des compétences de shéma "skills"
-    skillService.get().then(function (res) {
-        $scope.offerSkills = res.data;
-    });
-
-    //Init de la fonctionnalitée
-    $scope.showSkill = false;
-    var dataSkill = [];
-    $scope.listSkills = dataSkill;
-
-    //Vérification et ajout de la valeur de l'input
-    function updateSkill(array, up) {
-        $scope.errorTyping = true;
-        $scope.offerSkills.forEach(function (skill) {
-            //console.log(skill.title);
-            if (up == skill.title) {
-                $scope.errorTyping = false;
-            }
-        });
-        if (!$scope.errorTyping && dataSkill.indexOf(up) === -1) {
-            dataSkill.push(up);
-            console.log('Le nouveau tableau est : ' + dataSkill);
-        } else if (dataSkill.indexOf(up) > -1) {
-            $scope.errorChoice = true;
-        }
-    }
-
-    //Lancement de la fonction  precedente au clic
-    $scope.add = function () {
-        $scope.errorChoice = false;
-        $scope.errorTyping = false;
-        var up = $scope.chooseSkill.toUpperCase();
-        console.log($scope.chooseSkill);
-        updateSkill(dataSkill, up);
-        //Affichage du skill et champ vide
-        $scope.showSkill = true;
-        $scope.chooseSkill = "";
-    }
-
-    //Suppression des Tags
-    $scope.deleteSkill = function deleteASkill(id) {
-        var idDeletedSkill = dataSkill.indexOf(id);
-        console.log($scope.listSkills);
-        return dataSkill.splice(idDeletedSkill, 1);
     }
 
     //Mise a jour...

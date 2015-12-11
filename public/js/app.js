@@ -63,9 +63,12 @@ function config($routeProvider) {
                 connected: checkIsConnected
             }
         })
-        .when('/editOffer', {
+        .when('/editOffer/:id', {
             templateUrl: 'views/editOffer.html',
-            controller: 'editOfferController'
+            controller: 'editOfferController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .otherwise({
             redirectTo: '/login'
