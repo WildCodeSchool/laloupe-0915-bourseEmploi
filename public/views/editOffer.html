@@ -1,4 +1,4 @@
-<h1>edition offre</h1>
+<h2>edition offre</h2>
 
 
 <div class="row">
@@ -6,26 +6,24 @@
 
         <div class="row" id=titre1>
             <div class="page-header">
-                <h2>infos personnelles</h2>
+                <h3>infos personnelles</h3>
             </div>
             <fieldset class="form-group">
-                <div class="col-sm-3">
+                <div class="col-sm-5">
                     <label class="control-label">Nom :</label>
                     <div>
                         <input type="text" class="form-control" id="" ng-model="referentName">
                     </div>
                 </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-3">
+                <div class="col-sm-5">
                     <label class="control-label">Email :</label>
                     <div>
-                        <input type="email" class="form-control" id="" ng-model="referentMail">
+                        <input type="email" class="form-control" id="" ng-model="referentEmail">
                     </div>
                 </div>
             </fieldset>
             <fieldset class="form-group">
-                <div class="col-sm-3">
+                <div class="col-sm-5">
                     <label class="control-label">Téléphone :</label>
                     <div>
                         <input type="text" class="form-control" id="" ng-model="referentPhone">
@@ -36,7 +34,7 @@
         <fieldset class="form-group">
             <div class="col-sm-offset-8 col-sm-3">
                 <form>
-                    <button class="btnW" ng-click="()">mettre a jour</button>
+                    <button class="btnW" ng-click="(update1)">mettre a jour</button>
                 </form>
             </div>
         </fieldset>
@@ -44,27 +42,25 @@
 
         <div class="row">
             <div class="page-header">
-                <h2>Coordonnées</h2>
+                <h3>Coordonnées</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-3">
                     <label class="control-label">Pays :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="referentName">
+                        <input type="text" class="form-control" id="" ng-model="country">
                     </div>
                 </div>
-            </fieldset>
-            <fieldset class="form-group">
                 <div class="col-sm-3">
                     <label class="control-label">ville :</label>
                     <div>
-                        <input type="email" class="form-control" id="" ng-model="referentMail">
+                        <input type="email" class="form-control" id="" ng-model="city">
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <label class="control-label">Code postal :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="referentPhone">
+                        <input type="text" class="form-control" id="" ng-model="zipCode">
                     </div>
                 </div>
             </fieldset>
@@ -72,7 +68,7 @@
                 <div class="col-sm-6">
                     <label class="control-label">Adresse :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="referentAddress">
+                        <input type="text" class="form-control" id="" ng-model="address">
                     </div>
                 </div>
             </fieldset>
@@ -80,7 +76,7 @@
         <fieldset class="form-group">
             <div class="col-sm-offset-8 col-sm-3">
                 <form>
-                    <button class="btnW" ng-click="()">mettre a jour</button>
+                    <button class="btnW" ng-click="(update2)">mettre a jour</button>
                 </form>
             </div>
         </fieldset>
@@ -88,18 +84,18 @@
 
         <div class="row">
             <div class="page-header">
-                <h2>Détails offre</h2>
+                <h3>Détails offre</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-10">
                     <label class="control-label">Titre de l'offre :</label>
-                    <input type="text" name="title" class="form-control" id="" ng-model="offerTitle">
+                    <input type="text" name="title" class="form-control" id="" ng-model="title">
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-3">
                     <label class="control-label">Type de contrat :</label>
-                    <select class="form-control" ng-model="offerContract">
+                    <select class="form-control" ng-model="contract">
                         <option type="text" class="form-control" value="" disabled>Choisissez un contrat...</option>
                         <option type="text" class="form-control">Stage</option>
                         <option type="text" class="form-control">Apprentissage</option>
@@ -107,31 +103,27 @@
                         <option type="text" class="form-control">CDI</option>
                     </select>
                 </div>
-            </fieldset>
-            <fieldset class="form-group">
                 <div class="col-sm-3">
                     <label class="control-label">Expérience :</label>
                     <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Junior: 0 - 2 ans. &#13; Expérimenté: 3 - 5 ans.&#13; Sénior: Plus de 6 ans."><i class="fa fa-question-circle"></i></a>
-                    <select class="form-control" ng-model="offerXP">
+                    <select class="form-control" ng-model="experience">
                         <option type="text" class="form-control" value="" disabled>...et un niveau d'expérience</option>
                         <option type="text" class="form-control">Junior</option>
                         <option type="text" class="form-control">Expérimenté</option>
                         <option type="text" class="form-control">Sénior</option>
                     </select>
                 </div>
-            </fieldset>
-            <fieldset class="form-group">
                 <div class="col-sm-3">
                     <label class="control-label">Salaire :</label>
                     <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Salaire en millier d'euros par année. Ex: 30 K€/an." data-placement="top"><i class="fa fa-question-circle"></i></a>
 
-                    <input type="text" name="salary" class="form-control" id="" ng-pattern="salaryRegex" ng-model="offerSalary">
+                    <input type="text" name="salary" class="form-control" id="" ng-pattern="salaryRegex" ng-model="salary">
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-offset-8 col-sm-3">
                     <form>
-                        <button class="btnW" ng-click="()">mettre a jour</button>
+                        <button class="btnW" ng-click="(update3)">mettre a jour</button>
                     </form>
                 </div>
             </fieldset>
@@ -140,7 +132,7 @@
 
         <div class="row">
             <div class="page-header">
-                <h2>Compétences</h2>
+                <h3>Compétences</h3>
             </div>
             <fieldset class="form-group">
                 <div class=" col-sm-4">
@@ -167,7 +159,7 @@
             <fieldset class="form-group">
                 <div class="col-sm-offset-8 col-sm-3">
                     <form>
-                        <button class="btnW" ng-click="()">mettre a jour</button>
+                        <button class="btnW" ng-click="(update4)">mettre a jour</button>
                     </form>
                 </div>
             </fieldset>
@@ -175,56 +167,30 @@
 
         <div class="row">
             <div class="page-header">
-                <h2>Description du poste</h2>
+                <h3>je ne sais pas</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-10">
-                    <label></label>
-                    <textarea class="form-control" rows="6" ng-model="offerDescription" name="desc"></textarea>
+                    <label>Description du poste</label>
+                    <textarea class="form-control" rows="6" ng-model="description" name="desc"></textarea>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label>Responsabilités du candidat</label>
+                    <textarea class="form-control" rows="4" ng-model="responsability"></textarea>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label>Quel est le côté Wild de votre entreprise ?</label>
+                    <textarea class="form-control" rows="3" ng-model="wildSide"></textarea>
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-offset-8 col-sm-3">
                     <form>
-                        <button class="btnW" ng-click="()">mettre a jour</button>
-                    </form>
-                </div>
-            </fieldset>
-        </div>
-
-        <div class="row">
-            <div class="page-header">
-                <h2>Responsabilités du candidat</h2>
-            </div>
-            <fieldset class="form-group">
-                <div class="col-sm-10">
-                    <label></label>
-                    <textarea class="form-control" rows="4" ng-model="offerResp"></textarea>
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-offset-8 col-sm-3">
-                    <form>
-                        <button class="btnW" ng-click="()">mettre a jour</button>
-                    </form>
-                </div>
-            </fieldset>
-        </div>
-
-        <div class="row">
-            <div class="page-header">
-                <h2>Côté Wild de votre entreprise</h2>
-            </div>
-            <fieldset class="form-group">
-                <div class="col-sm-10">
-                    <label></label>
-                    <textarea class="form-control" rows="3" ng-model="offerWhy"></textarea>
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-offset-8 col-sm-3">
-                    <form>
-                        <button class="btnW" ng-click="()">mettre a jour</button>
+                        <button class="btnW" ng-click="(update5)">mettre a jour</button>
                     </form>
                 </div>
             </fieldset>
@@ -238,9 +204,7 @@
                 <li><a href="">Coordonnées</a></li>
                 <li><a href="">Détails offre</a></li>
                 <li><a href="">Compétences</a></li>
-                <li><a href="">Description du poste</a></li>
-                <li><a href="">Responsabilités du candidat</a></li>
-                <li><a href="">Côté Wild de votre entreprise</a></li>
+                <li><a href="">je ne sais pas</a></li>
             </ul>
         </nav>
     </div>
