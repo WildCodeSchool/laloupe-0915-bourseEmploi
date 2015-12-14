@@ -7,7 +7,7 @@ var Auth = require('../middlewares/authorization.js');
 
 module.exports 	= function(app, passport) {
 
-	app.get('/experiences/:studentId', Auth.user.hasAuthorization, Experience.findByStudent);
+	app.get('/students/experiences/:studentId', Auth.user.hasAuthorization, Experience.findByStudent);
 
 	app.get('/experiences/:id', Auth.user.hasAuthorization, Experience.findById);
 

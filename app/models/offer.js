@@ -93,6 +93,7 @@ var Offer = {
 
     findById: function (req, res) {
         Offer.model.findById(req.params.id, function (err, offer) {
+            console.log(err);
             res.json(offer);
         });
     },
@@ -107,8 +108,9 @@ var Offer = {
 
     create: function (req, res) {
         Offer.model.create(req.body, function (err, offer) {
+            if (err)
+                console.log(err);
             res.json(offer);
-            console.log(err);
         });
     },
 

@@ -7,7 +7,7 @@ var Auth = require('../middlewares/authorization.js');
 
 module.exports 	= function(app, passport) {
 
-	app.get('/formations/:studentId', Auth.user.hasAuthorization, Formation.findByStudent);
+	app.get('/students/formations/:studentId', Auth.user.hasAuthorization, Formation.findByStudent);
 
 	app.get('/formations/:id', Auth.user.hasAuthorization, Formation.findById);
 
