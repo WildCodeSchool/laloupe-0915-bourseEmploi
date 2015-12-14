@@ -1,10 +1,10 @@
-function studentService($http, $rootScope) {
+function studentService($http, $cookies) {
     return {
         //STUDENT'S ROUTES   /!\ 
         getAll: function (type) {
             return $http.get('/api/users/' + type, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -12,7 +12,7 @@ function studentService($http, $rootScope) {
         getUserbyId: function (id) {
             return $http.get('/api/students' + id, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -20,7 +20,7 @@ function studentService($http, $rootScope) {
         create: function (data) {
             return $http.post('/api/students', data, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -28,7 +28,7 @@ function studentService($http, $rootScope) {
         update: function (id, data) {
             return $http.put('/api/students/' + id, data, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -36,7 +36,7 @@ function studentService($http, $rootScope) {
         delete: function (id) {
             return $http.delete('/api/students/' + id, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -45,7 +45,7 @@ function studentService($http, $rootScope) {
         newFormation: function (data) {
             return $http.post('/api/formations', data, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -53,7 +53,7 @@ function studentService($http, $rootScope) {
         updateFormation: function (id, data) {
             return $http.put('/api/formations/' + id, data, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -61,7 +61,7 @@ function studentService($http, $rootScope) {
         deleteFormation: function (id) {
             return $http.delete('/api/formations/' + id, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -70,7 +70,7 @@ function studentService($http, $rootScope) {
         newExperience: function (data) {
             return $http.post('/api/experiences', data, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -78,7 +78,7 @@ function studentService($http, $rootScope) {
         updateExperience: function (id, data) {
             return $http.put('/api/experiences/' + id, data, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -86,7 +86,7 @@ function studentService($http, $rootScope) {
         deleteExperience: function (id) {
             return $http.delete('/api/experiences/' + id, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         }

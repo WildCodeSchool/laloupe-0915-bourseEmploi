@@ -1,4 +1,4 @@
-function connectController($scope, $rootScope, $location, connectService) {
+function connectController($scope, $rootScope, $location, $cookies, connectService) {
     $scope.checkedR = function () {
         $scope.user = undefined;
         $scope.loginR = !$scope.loginR;
@@ -25,6 +25,9 @@ function connectController($scope, $rootScope, $location, connectService) {
         connectService.connect($scope.user).then(function (res) {
             $rootScope.token = res.data.token;
             $rootScope.user = res.data.user;
+
+            //cookies
+            $cookies.put('wildFinder_token', $rootScope.token);
             console.log(res.data);
             if (res.data.user._type != "Recruiter")
                 $location.path('/homeStudent');

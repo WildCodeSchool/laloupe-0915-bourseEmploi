@@ -284,7 +284,17 @@ ul {
 }
 
 
-/* WARNING */
+/* $WARNING */
+
+.wildDelete {
+    color: #008080;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.wildDelete:hover {
+    color: #ce4844;
+}
 
 .bs-callout-warning {
     border-left-color: #f0ad4e;
@@ -295,7 +305,7 @@ ul {
 }
 
 
-/* DANGER */
+/* $DANGER */
 
 .bs-callout-danger {
     border-left-color: #ce4844;

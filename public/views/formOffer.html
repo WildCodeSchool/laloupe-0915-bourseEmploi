@@ -68,42 +68,44 @@
 
 
         <!-- $FORMULAIRE -->
-        <div class="form-group" ng-class="{'errorForm': offerForm.title.$invalid && !offerForm.title.$pristine }">
-            <h4 class="spacer">Votre annonce :</h4>
+        <div class="spacer">
+            <div class="form-group">
+                <h4>Votre annonce :</h4>
 
-            <div class="col-sm-offset-1 col-sm-10">
-                <label class="control-label">Titre de l'offre* :</label>
-                <input type="text" name="title" class="form-control" id="" placeholder="Définissez un intitulé de l'offre" ng-model="offer.title">
+                <div class="col-sm-offset-1 col-sm-10">
+                    <label class="control-label">Titre de l'offre* :</label>
+                    <input type="text" name="title" class="form-control" id="" placeholder="Définissez un intitulé de l'offre" ng-model="offer.title">
+                </div>
             </div>
-        </div>
-        <!-- $FORMULAIRE SELECTEURS -->
-        <div class="form-group">
-            <div class="col-sm-offset-1 col-sm-3">
-                <label class="control-label">Type de contrat* :</label>
-                <select class="form-control" ng-model="offer.contract">
-                    <option type="text" class="form-control" value="" disabled>Choisissez un contrat...</option>
-                    <option type="text" class="form-control">Stage</option>
-                    <option type="text" class="form-control">Apprentissage</option>
-                    <option type="text" class="form-control">CDD</option>
-                    <option type="text" class="form-control">CDI</option>
-                </select>
-            </div>
-            <div class="col-sm-offset-1 col-sm-3">
-                <label class="control-label">Expérience* :</label>
-                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Junior: 0 - 2 ans. &#13; Expérimenté: 3 - 5 ans.&#13; Sénior: Plus de 6 ans."><i class="fa fa-question-circle"></i></a>
-                <select class="form-control" ng-model="offer.experience">
-                    <option type="text" class="form-control" value="" disabled>...et un niveau d'expérience</option>
-                    <option type="text" class="form-control">Junior</option>
-                    <option type="text" class="form-control">Expérimenté</option>
-                    <option type="text" class="form-control">Sénior</option>
-                </select>
-            </div>
-            <span ng-show='offerForm.salary.$invalid'>Your login should be a valid email</span>
-            <div class="col-sm-offset-1 col-sm-2">
-                <label class="control-label">Salaire :</label>
-                <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Salaire en millier d'euros par année. Ex: 30 K€/an." data-placement="top"><i class="fa fa-question-circle"></i></a>
+            <!-- $FORMULAIRE SELECTEURS -->
+            <div class="form-group">
+                <div class="col-sm-offset-1 col-sm-3">
+                    <label class="control-label">Type de contrat* :</label>
+                    <select class="form-control" ng-model="offer.contract">
+                        <option type="text" class="form-control" value="" disabled>Choisissez un contrat...</option>
+                        <option type="text" class="form-control">Stage</option>
+                        <option type="text" class="form-control">Apprentissage</option>
+                        <option type="text" class="form-control">CDD</option>
+                        <option type="text" class="form-control">CDI</option>
+                    </select>
+                </div>
+                <div class="col-sm-offset-1 col-sm-3">
+                    <label class="control-label">Expérience* :</label>
+                    <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Junior: 0 - 2 ans. &#13; Expérimenté: 3 - 5 ans.&#13; Sénior: Plus de 6 ans."><i class="fa fa-question-circle"></i></a>
+                    <select class="form-control" ng-model="offer.experience">
+                        <option type="text" class="form-control" value="" disabled>...et un niveau d'expérience</option>
+                        <option type="text" class="form-control">Junior</option>
+                        <option type="text" class="form-control">Expérimenté</option>
+                        <option type="text" class="form-control">Sénior</option>
+                    </select>
+                </div>
+                <span ng-show='offerForm.salary.$invalid'>Your login should be a valid email</span>
+                <div class="col-sm-offset-1 col-sm-2">
+                    <label class="control-label">Salaire :</label>
+                    <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Salaire en millier d'euros par année. Ex: 30 K€/an." data-placement="top"><i class="fa fa-question-circle"></i></a>
 
-                <input type="text" name="salary" class="form-control" id="" placeholder="K € /an" ng-pattern="salaryRegex" ng-model="offer.salary">
+                    <input type="text" name="salary" class="form-control" id="" placeholder="K € /an" ng-pattern="salaryRegex" ng-model="offer.salary">
+                </div>
             </div>
         </div>
 
@@ -154,7 +156,6 @@
                 <label>Description du poste* :</label>
                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Description du poste, des conditions et du projet."><i class="fa fa-question-circle"></i></a>
                 <textarea ng-class="{'errorForm' : offerForm.desc.$error.required }" class="form-control" rows="6" ng-model="offer.description" name="desc"></textarea>
-                <span ng-show='offerForm.desc.$dirty && offerForm.desc.$error.required'>A login is required</span>
             </div>
         </div>
 
@@ -174,11 +175,6 @@
             </div>
         </div>
 
-
-
-
-
-
         <!-- $BOUTON D'ENVOI -->
         <div class="form-group">
             <div class="col-sm-9 text-right align">
@@ -189,9 +185,6 @@
             </div>
         </div>
 
-
     </form>
-
-
 
 </div>
