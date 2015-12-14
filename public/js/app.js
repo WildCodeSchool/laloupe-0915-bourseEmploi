@@ -63,9 +63,12 @@ function config($routeProvider) {
                 connected: checkIsConnected
             }
         })
-        .when('/editOffer', {
+        .when('/editOffer/:id', {
             templateUrl: 'views/editOffer.html',
-            controller: 'editOfferController'
+            controller: 'editOfferController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .otherwise({
             redirectTo: '/login'
@@ -148,7 +151,7 @@ angular.module('app', ['ngRoute', 'ngSanitize'])
     .service('connectService', connectService)
     .service('offerService', offerService)
     .service('skillService', skillService)
-    .service('formRecruiterService', formRecruiterService)
+    .service('recruiterService', recruiterService)
     .service('geocoderService', geocoderService)
     .service('studentService', studentService)
 

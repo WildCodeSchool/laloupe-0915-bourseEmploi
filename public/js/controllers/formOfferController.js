@@ -4,7 +4,21 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         $('[data-toggle="popover"]').popover()
     });
 
-    $scope.referent = false;
+    $scope.country = $rootScope.user.country;
+    $scope.city = $rootScope.user.city;
+    $scope.address = $rootScope.user.address;
+    $scope.referentPhone = $rootScope.user.referentPhone;
+    $scope.referentEmail = $rootScope.user.email;
+    $scope.zipCode = $rootScope.user.zipCode;
+
+    $scope.empty = function () {
+        $scope.country = "";
+        $scope.city = "";
+        $scope.address = "";
+        $scope.referentPhone = "";
+        $scope.referentEmail = "";
+        $scope.zipCode = "";
+    }
 
     /****   CREATION TAGS ******/
     //Import des compétences de shéma "skills"
@@ -60,11 +74,16 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         var idSkill = [];
         var data = {};
         data = $scope.offer;
+        data.country = $scope.country;
+        data.city = $scope.city;
+        data.address = $scope.address;
         data.skills = idSkill;
-        data.referentId = $rootScope.id;
+        data.referentPhone = $scope.referentPhone;
+        data.referentEmail = $scope.referentEmail;
+        data.referentId = $rootScope.user._id;
         console.log(data.referentId);
-        data.endDate = moment($scope.startDate).add(90, 'days').format('YYYY-MM-DD');
-        data.startDate = moment($scope.startDate).format('YYYY-MM-DD');
+        data.endDate = moment($scope.startDate).add(90, 'days');
+        data.startDate = moment($scope.startDate);
 
         //Comparaison des skills choisi et existant( pour envoi Ids)
 
@@ -96,5 +115,5 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
     }
 
     // Date du jour
-    $scope.Dday = moment().format('YYYY-MM-DD');
+    $scope.Dday = moment();
 }

@@ -1,22 +1,29 @@
-function offerController($scope, $http, $routeParams, offerService, geocoderService, formRecruiterService) {
+function offerController($scope, $http, $location, $routeParams, offerService, geocoderService, recruiterService) {
 
-    //LOAD OFFER
     var selectOffer = $routeParams.id;
 
+    //EDIT
+    $scope.edit = function (id) {
+        $location.path('/editOffer/' + id)
+    }
+
+    //DELETE
+    $scope.delete = function (id) {
+        $location.path('/editOffer/' + id)
+    }
+
+    //LOAD OFFER
     function loadOffer() {
         offerService.getOfferbyId(selectOffer).then(function (res) {
             $scope.offer = res.data;
 
-
             //LOAD RECRUITER 
             function loadRecruiter() {
 
-                formRecruiterService.getRecruiterbyId($scope.offer.referentId).then(function (res) {
+                recruiterService.getRecruiterbyId($scope.offer.referentId).then(function (res) {
                     $scope.company = res.data;
                     console.log(res.data);
-
                 });
-
             }
 
             loadRecruiter();
@@ -34,8 +41,7 @@ function offerController($scope, $http, $routeParams, offerService, geocoderServ
             geocoderService.CoordinateByAdress(address).then(function (res) {
                 var lng = res.data.features[0].geometry.coordinates[0];
                 var lat = res.data.features[0].geometry.coordinates[1];
-                console.log(lng);
-                console.log(lat);
+
                 L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
                 var map = L.mapbox.map('map', 'mapbox.streets')
                     .setView([lat, lng], 15);
@@ -43,7 +49,6 @@ function offerController($scope, $http, $routeParams, offerService, geocoderServ
                 var marker = L.marker([lat, lng]).addTo(map);
 
             });
-
 
         });
     }

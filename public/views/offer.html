@@ -7,7 +7,7 @@
                 <h4>Quelques info sur {{company.name}}</h4>
             </div>
             <div class="wildpanelbody panel panel-default">
-                <img ng-show="company.logo" class="img-company" ng-src="{{company.logo}}" alt="{{company.name}} logo">
+                <img ng-show="company.logo" class="logo-company" ng-src="{{company.logo}}" alt="{{company.name}} logo">
             </div>
             <div class="wildpanelbody panel panel-default">
                 <p><span class="company-name">{{company.name}}</span> est une entreprise de <b>{{company.size}}</b> dans le secteur <b>{{company.businessSector}}</b> situé(e) {{company.address}}, {{company.zipCode}} {{company.city}}, {{company.region}}, {{company.country}}.</p>
@@ -34,6 +34,9 @@
     <div class="col-md-8">
         <div class="wildpanel panel panel-default">
             <div class="wildpanelheader panel panel-default">
+                <div class="offerEdit">
+                    <i class="fa fa-pencil fa-lg i-header" data-placement="bottom" data-toggle="tooltip" title="Editer cette offre" ng-click="edit()"></i>
+                </div>
                 <h4>Description de l'offre</h4>
             </div>
             <div class="wildpanelbody panel paneldefault">
@@ -57,7 +60,7 @@
 
                 <!--SKILLS-->
                 <ul class="skill-ul">
-                    <li ng-repeat="skill in offer.skills" class="headeradvert skill-li"><span class="wildSkill">{{skill.title}}</span>
+                    <li ng-repeat="skill in offer.skills" class="headeradvert skill-li"><span class="wildSkill">{{skill.skill.title}}</span>
                 </ul>
                 <ul>
                     <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
