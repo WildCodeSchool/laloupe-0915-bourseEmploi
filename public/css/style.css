@@ -893,3 +893,11 @@ li.active {
 .fa:hover {
     color: black;
 }
+
+.nav-pills>li.active>a {
+    background-color: #009587;
+}
+
+.nav-pills>li.active>a:hover {
+    background-color: #009587;
+}
