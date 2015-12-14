@@ -41,7 +41,7 @@
             <span ng-show="currentoffers">
                    
         <!--OFFER-->
-                    <div ng-repeat="offerList in offerLists" ng-show="before(offerList.startDate) && after(offerList.endDate)" class="wildpanelbodys panel paneldefault">
+                    <div ng-repeat="offerList in offerLists" ng-show="after(offerList.startDate) && before(offerList.endDate)" class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
                             <i class="fa fa-pencil fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Editer"></i>
                             <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Supprimer"></i>
@@ -82,7 +82,7 @@
         <span ng-show="comingoffers">
         
         <!--OFFER-->
-                    <div ng-repeat="offerList in offerLists" ng-show="after(offerList.startDate)" class="wildpanelbodys panel paneldefault">
+                    <div ng-repeat="offerList in offerLists" ng-show="before(offerList.startDate)" class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
                             <i class="fa fa-pencil fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Editer"></i>
                             <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Supprimer"></i>
@@ -121,7 +121,7 @@
     <span ng-show="expiredoffers">
     
         <!--OFFER-->
-                    <div ng-repeat="offerList in offerLists" ng-if="before(offerList.endDate)" class="wildpanelbodys panel paneldefault">
+                    <div ng-repeat="offerList in offerLists" ng-if="after(offerList.endDate)" class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
                             <i class="fa fa-repeat fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Reposter à partir de cette annonce"></i>
                             <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Supprimer définitivement"></i>

@@ -5,13 +5,13 @@
 var jwt = require('jsonwebtoken');
 var User = require('../models/user.js');
 
-module.exports 	= function(app, passport) {
+module.exports = function (app, passport) {
 
-	app.get('/loggedin', function(req, res) {
-	  res.send(req.isAuthenticated() ? req.user : '0');
-	});
+    app.get('/loggedin', function (req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+    });
 
-	app.post('/api/login', passport.authenticate('local'), function(req, res, next){
+    app.post('/api/login', passport.authenticate('local'), function (req, res, next) {
         //Generate token
         req.token = jwt.sign({
             id: req.user._id,
@@ -19,16 +19,16 @@ module.exports 	= function(app, passport) {
         }, 'tokenSecret', {
             expiresIn: 120
         });
-      next();
-    }, function(req, res) {
+        next();
+    }, function (req, res) {
         res.json({
             user: req.user,
             token: req.token
-          });
+        });
     });
 
-	app.post('/logout', function(req, res){
-	  req.logOut();
-	  res.sendStatus(200);
-	});
+    app.post('/api/logout', function (req, res) {
+        req.logOut();
+        res.sendStatus(200);
+    });
 }
