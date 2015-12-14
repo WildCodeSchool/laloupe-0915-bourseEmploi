@@ -871,6 +871,7 @@ li.active {
 .btn:focus {
     outline: none;
 }
+
 .navbar-form {
     padding-left: 60px;
     padding-top: 2px;
@@ -880,4 +881,15 @@ li.active {
     margin: 0 auto;
     position: relative;
     width: 50%;
+}
+
+.offerEdit {
+    float: right;
+    z-index: 9999;
+    padding: 10px 5px 0 0;
+    color: white;
+}
+
+.fa:hover {
+    color: black;
 }
