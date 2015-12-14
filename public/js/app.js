@@ -107,7 +107,7 @@ function checkIsAdmin($q, $rootScope, $location) {
     return deferred.promise;
 }
 
-function run($rootScope, $location, connectService) {
+function run($rootScope, $location, connectService, $cookies) {
     $rootScope.loginMessage = {};
     $rootScope.loginMessage.title = '';
     $rootScope.loginMessage.message = '';
@@ -121,6 +121,7 @@ function run($rootScope, $location, connectService) {
 
     // Logout
     $rootScope.logout = function () {
+        $cookies.remove('wildFInder_token');
         $rootScope.user = null;
         $rootScope.loginMessage.title = '';
         $rootScope.loginMessage.message = '';
@@ -134,7 +135,7 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 
-angular.module('app', ['ngRoute', 'ngSanitize'])
+angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies'])
     .config(config)
     .controller('connectController', connectController)
     .controller('adminController', adminController)

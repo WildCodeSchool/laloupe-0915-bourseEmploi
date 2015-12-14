@@ -1,16 +1,16 @@
-function skillService($http, $rootScope) {
+function skillService($http, $cookies) {
     return {
         get: function () {
             return $http.get('/skills', {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
         update: function (id, data) {
             return $http.put('/skills/' + id, data, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -18,7 +18,7 @@ function skillService($http, $rootScope) {
         create: function (data) {
             return $http.post('/skills', data, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -26,7 +26,7 @@ function skillService($http, $rootScope) {
         delete: function (id) {
             return $http.delete('/skills/' + id, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         }

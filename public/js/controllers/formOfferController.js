@@ -74,6 +74,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         var idSkill = [];
         var data = {};
         data = $scope.offer;
+        data.zipCode = $scope.zipCode;
         data.country = $scope.country;
         data.city = $scope.city;
         data.address = $scope.address;
@@ -101,7 +102,6 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         }
 
         offerService.create(data).then(function (res) {
-            console.log(data);
             //ERREUR
             if (!res.data) {
                 $scope.incompleteError = true;

@@ -3,13 +3,17 @@ function offerController($scope, $http, $location, $routeParams, offerService, g
     var selectOffer = $routeParams.id;
 
     //EDIT
-    $scope.edit = function (id) {
-        $location.path('/editOffer/' + id)
+    $scope.edit = function () {
+        $location.path('/editOffer/' + selectOffer)
     }
 
     //DELETE
-    $scope.delete = function (id) {
-        $location.path('/editOffer/' + id)
+    $scope.delete = function () {
+        offerService.delete(selectOffer).then(function (res) {
+            console.log(selectOffer);
+            alert("annonce supprimée");
+            $location.path('/homeRecruiter');
+        });
     }
 
     //LOAD OFFER
