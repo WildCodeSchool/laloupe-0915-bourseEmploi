@@ -1,8 +1,10 @@
-function editOfferController($scope, $location, offerService, skillService, $rootScope, $routeParams) {
+function editOfferController($scope, $location, offerService, $anchorScroll, skillService, $rootScope, $routeParams) {
 
     function loadSkill() {
         offerService.getOfferbyId($routeParams.id).then(function (res) {
             $scope.skillOffer = res.data.skills;
+            $scope.idOffer = res.data._id;
+            console.log(res.data.skills);
 
             /****   CREATION TAGS ******/
             //Import des compétences de shéma "skills"
@@ -12,13 +14,18 @@ function editOfferController($scope, $location, offerService, skillService, $roo
 
             //Init de la fonctionnalitée
             $scope.showSkill = false;
-            var dataSkill = [];
-            $scope.listSkills = $scope.skillOffer;
+            var dataSkilled = [];
+            $scope.listSkills = dataSkilled;
 
-            $scope.listSkills.forEach(function (skill) {
-                dataSkill.push(skill.skill.title);
+            //Ajout des skills deja présent dans l'offre
+            $scope.$watch('$viewContentLoaded', function () {
+                // traitement à effectuer au chargement de la page
+                $scope.skillOffer.forEach(function (skill) {
+                    dataSkilled.push(skill.skill.title);
+                    console.log(dataSkilled);
+                });
+                $scope.showSkill = true;
             });
-
 
             //Vérification et ajout de la valeur de l'input
             function updateSkill(array, up) {
@@ -29,10 +36,10 @@ function editOfferController($scope, $location, offerService, skillService, $roo
                         $scope.errorTyping = false;
                     }
                 });
-                if (!$scope.errorTyping && dataSkill.indexOf(up) === -1) {
-                    dataSkill.push(up);
-                    console.log('Le nouveau tableau est : ' + dataSkill);
-                } else if (dataSkill.indexOf(up) > -1) {
+                if (!$scope.errorTyping && dataSkilled.indexOf(up) === -1) {
+                    dataSkilled.push(up);
+                    console.log('Le nouveau tableau est : ' + dataSkilled);
+                } else if (dataSkilled.indexOf(up) > -1) {
                     $scope.errorChoice = true;
                 }
             }
@@ -42,18 +49,18 @@ function editOfferController($scope, $location, offerService, skillService, $roo
                 $scope.errorChoice = false;
                 $scope.errorTyping = false;
                 var up = $scope.chooseSkill.toUpperCase();
-                console.log($scope.chooseSkill);
-                updateSkill(dataSkill, up);
+                console.log("choix user: " + up);
+                updateSkill(dataSkilled, up);
                 //Affichage du skill et champ vide
-                $scope.showSkill = true;
+                //$scope.showSkill = true;
                 $scope.chooseSkill = "";
             }
 
             //Suppression des Tags
             $scope.deleteSkill = function deleteASkill(id) {
-                var idDeletedSkill = dataSkill.indexOf(id);
-                console.log($scope.listSkills);
-                return dataSkill.splice(idDeletedSkill, 1);
+                var idDeletedSkill = dataSkilled.indexOf(id);
+                console.log("le skill " + $scope.listSkills + " sera effacé");
+                return dataSkilled.splice(idDeletedSkill, 1);
             }
         });
     }
@@ -112,6 +119,12 @@ function editOfferController($scope, $location, offerService, skillService, $roo
 
             }
         })
+    }
+
+    $anchorScroll.yOffset = 20;
+    $scope.scrollTo = function (id) {
+        $scope.activesubmenu = "#" + id;
+        $anchorScroll(id);
     }
 
 }

@@ -1,10 +1,9 @@
 <h2>edition offre</h2>
 
-
 <div class="row">
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 
-        <div class="row" id=titre1>
+        <div class="row" id="anchor1">
             <div class="page-header">
                 <h3>infos personnelles</h3>
             </div>
@@ -40,7 +39,7 @@
         </fieldset>
 
 
-        <div class="row">
+        <div class="row" id="anchor2">
             <div class="page-header">
                 <h3>Coordonnées</h3>
             </div>
@@ -82,9 +81,9 @@
         </fieldset>
 
 
-        <div class="row">
+        <div class="row" id="anchor3">
             <div class="page-header">
-                <h3>Détails offre</h3>
+                <h3>Détails de l'offre</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-10">
@@ -130,7 +129,7 @@
         </div>
 
 
-        <div class="row">
+        <div class="row" id="anchor4">
             <div class="page-header">
                 <h3>Compétences</h3>
             </div>
@@ -148,16 +147,27 @@
                   </span>
                     </div>
                 </div>
+                <!-- $MSG D'ERREURS DES COMPETENCES -->
+                <fieldset class="col-sm-5">
+                    <div>
+                        <label class="wildWarning control-label" ng-show="errorChoice">Vous avez déjà choisi cette compétence !</label>
+                        <label class="wildWarning control-label" ng-show="errorTyping">Cette compétence n'éxiste pas !</label>
+                    </div>
+                </fieldset>
             </fieldset>
+            <!-- $AFFICHAGE DES TAGS COMPETENCES -->
             <fieldset class="form-group">
-                <div class="col-sm-offset-1 col-sm-10">
-                    <ul ng-show="showSkill">
-                        <li class="skill-li" ng-repeat="listSkill in listSkills"><span class="wildSkill clickable">{{ listSkill }}<i class="fa fa-times cross" ng-click="deleteSkill(listSkill)"></i></span></li>
-                    </ul>
-                </div>
+                <fieldset class="col-sm-7">
+                    <div class="form-group">
+                        <ul ng-show="showSkill">
+                            <li class="skill-li" ng-repeat="listSkill in listSkills"><span class="wildSkill clickable">{{ listSkill }}<i class="fa fa-times cross times-skill" ng-click="deleteSkill(listSkill)"></i></span></li>
+                        </ul>
+                    </div>
+                </fieldset>
             </fieldset>
+
             <fieldset class="form-group">
-                <div class="col-sm-offset-8 col-sm-3">
+                <div class="col-sm-offset-8  col-sm-3">
                     <form>
                         <button class="btnW" ng-click="(update4)">mettre a jour</button>
                     </form>
@@ -165,9 +175,9 @@
             </fieldset>
         </div>
 
-        <div class="row">
+        <div class="row" id="anchor5">
             <div class="page-header">
-                <h3>je ne sais pas</h3>
+                <h3>Descriptions</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-10">
@@ -200,11 +210,11 @@
     <div class="col-md-3 col-lg-3 col-sm-3">
         <nav class="hidden-xs affix">
             <ul class="nav nav-pills nav-stacked">
-                <li><a ng-href="#titre1" target="_self">Infos personnelles</a></li>
-                <li><a href="">Coordonnées</a></li>
-                <li><a href="">Détails offre</a></li>
-                <li><a href="">Compétences</a></li>
-                <li><a href="">je ne sais pas</a></li>
+                <li ng-class="{active: activesubmenu=='#anchor1'}"><a ng-click="scrollTo('anchor1')">Infos personnelles</a></li>
+                <li ng-class="{active: activesubmenu=='#anchor2'}"><a ng-click="scrollTo('anchor2')">Coordonnées</a></li>
+                <li ng-class="{active: activesubmenu=='#anchor3'}"><a ng-click="scrollTo('anchor3')">Détails de l'offre</a></li>
+                <li ng-class="{active: activesubmenu=='#anchor4'}"><a ng-click="scrollTo('anchor4')">Compétences</a></li>
+                <li ng-class="{active: activesubmenu=='#anchor5'}"><a ng-click="scrollTo('anchor5')">Descriptions</a></li>
             </ul>
         </nav>
     </div>

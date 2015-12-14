@@ -1,4 +1,10 @@
-function homeRctrController($http, $scope, $rootScope, $location, offerService, studentService) {
+function homeRctrController($http, $scope, $rootScope, $location, $routeParams, offerService, studentService) {
+
+    //EDIT
+    var selectOffer = $routeParams.id;
+    $scope.edit = function (selectOffer) {
+        $location.path('/editOffer/' + selectOffer)
+    }
 
     function loadOffers() {
         offerService.getOfferByUser($rootScope.user._id).then(function (res) {

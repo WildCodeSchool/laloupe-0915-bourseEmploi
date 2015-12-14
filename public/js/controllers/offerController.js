@@ -1,8 +1,18 @@
-function offerController($scope, $http, $routeParams, offerService, geocoderService, recruiterService) {
+function offerController($scope, $http, $location, $routeParams, offerService, geocoderService, recruiterService) {
 
-    //LOAD OFFER
     var selectOffer = $routeParams.id;
 
+    //EDIT
+    $scope.edit = function (id) {
+        $location.path('/editOffer/' + id)
+    }
+
+    //DELETE
+    $scope.delete = function (id) {
+        $location.path('/editOffer/' + id)
+    }
+
+    //LOAD OFFER
     function loadOffer() {
         offerService.getOfferbyId(selectOffer).then(function (res) {
             $scope.offer = res.data;

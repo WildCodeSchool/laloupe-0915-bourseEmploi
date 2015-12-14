@@ -43,8 +43,8 @@
         <!--OFFER-->
                     <div ng-repeat="offerList in offerLists" ng-show="after(offerList.startDate) && before(offerList.endDate)" class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
-                            <i class="fa fa-pencil fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Editer"></i>
-                            <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Supprimer"></i>
+                            <i class="fa fa-pencil fa-lg" ng-click="edit(offerList._id)" data-toggle="tooltip" data-placement="top" title="Editer"></i>
+                            <i class="fa fa-times fa-lg" ng-click="delete(offerList._id)" data-toggle="tooltip" data-placement="top" title="Supprimer"></i>
                         </div>
                         <ul>
                             <li class="headeradvert" ng-click="goToOffer(offerList)"><h2 class="headeradvert titleadvert">{{offerList.title}}</h2></li>

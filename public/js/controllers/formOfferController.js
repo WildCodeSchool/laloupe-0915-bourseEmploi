@@ -4,7 +4,6 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         $('[data-toggle="popover"]').popover()
     });
 
-
     $scope.country = $rootScope.user.country;
     $scope.city = $rootScope.user.city;
     $scope.address = $rootScope.user.address;
@@ -12,9 +11,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
     $scope.referentEmail = $rootScope.user.email;
     $scope.zipCode = $rootScope.user.zipCode;
 
-    //$scope.referent = false;
-
-    $scope.lol = function () {
+    $scope.empty = function () {
         $scope.country = "";
         $scope.city = "";
         $scope.address = "";
@@ -22,10 +19,6 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         $scope.referentEmail = "";
         $scope.zipCode = "";
     }
-
-
-
-
 
     /****   CREATION TAGS ******/
     //Import des compétences de shéma "skills"
