@@ -1,9 +1,9 @@
-function recruiterService($http, $rootScope) {
+function recruiterService($http, $cookies) {
     return {
         getRecruiterbyId: function (id) {
             return $http.get('/api/recruiters/' + id, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -23,7 +23,7 @@ function recruiterService($http, $rootScope) {
         update: function (id, data) {
             return $http.put('/api/recruiters/' + id, data, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -31,7 +31,7 @@ function recruiterService($http, $rootScope) {
         delete: function (id) {
             return $http.delete('/api/recruiters/' + id, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         }

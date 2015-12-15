@@ -1,9 +1,9 @@
-function offerService($http, $rootScope) {
+function offerService($http, $cookies) {
     return {
         getAll: function () {
             return $http.get('/offers', {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildfinder_token')
                 }
             });
         },
@@ -11,7 +11,7 @@ function offerService($http, $rootScope) {
         getOfferbyId: function (id) {
             return $http.get('/offers/' + id, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -19,7 +19,7 @@ function offerService($http, $rootScope) {
         getOfferByUser: function (id) {
             return $http.get('/offers/users/' + id, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -27,15 +27,15 @@ function offerService($http, $rootScope) {
         create: function (data) {
             return $http.post('/offers', data, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
 
-        update: function (id, data, user) {
+        update: function (id, data) {
             return $http.put('/offers/' + id, data, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -43,7 +43,7 @@ function offerService($http, $rootScope) {
         delete: function (id) {
             return $http.delete('/offers/' + id, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         }
