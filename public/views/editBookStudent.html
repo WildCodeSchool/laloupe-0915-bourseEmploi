@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 
-        <div class="row" id=titre1>
+        <div class="row" id="anchor1">
             <div class="page-header">
                 <h2>infos personnelles</h2>
             </div>
@@ -60,7 +60,7 @@
         </fieldset>
 
 
-        <div class="row">
+        <div class="row" id="anchor2">
             <div class="page-header">
                 <h2>Situation</h2>
             </div>
@@ -96,7 +96,7 @@
         </fieldset>
 
 
-        <div class="row">
+        <div class="row" id="anchor3">
             <div class="page-header">
                 <h2>Coté wild</h2>
             </div>
@@ -116,7 +116,7 @@
         </div>
 
 
-        <div class="row">
+        <div class="row" id="anchor4">
             <div class="page-header">
                 <h2>Compétences</h2>
             </div>
@@ -151,7 +151,7 @@
             </fieldset>
         </div>
 
-        <div class="row">
+        <div class="row" id="anchor5">
             <div class="page-header">
                 <h2>Expérience</h2>
             </div>
@@ -291,7 +291,7 @@
             </fieldset>
         </div>
 
-        <div class="row">
+        <div class="row" id="anchor6">
             <div class="page-header">
                 <h2>Formation</h2>
             </div>
@@ -404,7 +404,7 @@
                 </div>
             </fieldset>
 
-            <div class="row">
+            <div class="row" id="anchor7">
                 <div class="page-header">
                     <h2>Loisirs</h2>
                 </div>
@@ -442,19 +442,17 @@
         </div>
     </div>
 
-
-
-
     <div class="col-md-3 col-lg-3 col-sm-3">
         <nav class="hidden-xs affix">
             <ul class="nav nav-pills nav-stacked">
-                <li><a ng-href="#titre1" target="_self">Infos personnelles</a></li>
-                <li><a href="">Situation</a></li>
-                <li><a href="">Coté wild</a></li>
-                <li><a href="">Compétences</a></li>
-                <li><a href="">Expérience</a></li>
-                <li><a href="">Formation</a></li>
-                <li><a href="">Loisir</a></li>
+                {{activesubmenu}}
+                <li ng-class="{active: activesubmenu=='#anchor1'}"><a ng-click="scrollTo('anchor1')">Infos personnelles</a></li>
+                <li ng-class="{active: activesubmenu=='#anchor2'}"><a ng-click="scrollTo('anchor2')">Situation</a></li>
+                <li ng-class="{active: activesubmenu=='#anchor3'}"><a ng-click="scrollTo('anchor3')">Coté wild</a></li>
+                <li ng-class="{active: activesubmenu=='#anchor4'}"><a ng-click="scrollTo('anchor4')">Compétences</a></li>
+                <li ng-class="{active: activesubmenu=='#anchor5'}"><a ng-click="scrollTo('anchor5')">Expérience</a></li>
+                <li ng-class="{active: activesubmenu=='#anchor6'}"><a ng-click="scrollTo('anchor6')">Formation</a></li>
+                <li ng-class="{active: activesubmenu=='#anchor7'}"><a ng-click="scrollTo('anchor7')">Loisir</a></li>
             </ul>
         </nav>
     </div>

@@ -1,10 +1,30 @@
 function editOfferController($scope, $location, offerService, $anchorScroll, skillService, $rootScope, $routeParams) {
 
+    function loadOffer() {
+        offerService.getOfferbyId($routeParams.id).then(function (res) {
+            $scope.referentName = res.data.referentName;
+            $scope.referentEmail = res.data.referentEmail;
+            $scope.referentPhone = res.data.referentPhone;
+            $scope.country = res.data.country;
+            $scope.city = res.data.city;
+            $scope.zipCode = res.data.zipCode;
+            $scope.address = res.data.address;
+            $scope.title = res.data.title;
+            $scope.contract = res.data.contract;
+            $scope.experience = res.data.experience;
+            $scope.salary = res.data.salary;
+            $scope.description = res.data.description;
+            $scope.responsability = res.data.responsability;
+            $scope.wildSide = res.data.wildSide;
+        });
+    }
+
+    loadOffer();
+
     function loadSkill() {
         offerService.getOfferbyId($routeParams.id).then(function (res) {
             $scope.skillOffer = res.data.skills;
             $scope.idOffer = res.data._id;
-            console.log(res.data.skills);
 
             /****   CREATION TAGS ******/
             //Import des compétences de shéma "skills"
@@ -22,7 +42,6 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
                 // traitement à effectuer au chargement de la page
                 $scope.skillOffer.forEach(function (skill) {
                     dataSkilled.push(skill.skill.title);
-                    console.log(dataSkilled);
                 });
                 $scope.showSkill = true;
             });
@@ -31,7 +50,6 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
             function updateSkill(array, up) {
                 $scope.errorTyping = true;
                 $scope.offerSkills.forEach(function (skill) {
-                    //console.log(skill.title);
                     if (up == skill.title) {
                         $scope.errorTyping = false;
                     }
@@ -66,16 +84,17 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
     }
     loadSkill();
 
-
     //Mise a jour infos personnelles
     $scope.update1 = function () {
         var data = {};
         data.referentName = $scope.referentName;
         data.referentEmail = $scope.referentEmail;
         data.referentPhone = $scope.referentPhone;
-        offerService.update(data).then(function (res) {
-            if (!res.data) {} else {
-
+        offerService.update($routeParams.id, data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
     }
@@ -87,9 +106,11 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
         data.city = $scope.city;
         data.zipCode = $scope.zipCode;
         data.address = $scope.address;
-        offerService.update(data).then(function (res) {
-            if (!res.data) {} else {
-
+        offerService.update($routeParams.id, data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
     }
@@ -101,9 +122,38 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
         data.contract = $scope.contract;
         data.experience = $scope.experience;
         data.salary = $scope.salary;
-        offerService.update(data).then(function (res) {
-            if (!res.data) {} else {
+        offerService.update($routeParams.id, data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
+            }
+        })
+    }
 
+    //Mise a jour des skills
+    $scope.update4 = function () {
+        var data = {};
+        var idSkill = [];
+        data.skills = idSkill;
+        for (var i = 0; i < $scope.offerSkills.length; i++) {
+            var objs = {
+                skill: ""
+            };
+            var current = $scope.offerSkills[i].title;
+            console.log(current);
+            $scope.listSkills.forEach(function (skill) {
+                if (current === skill) {
+                    objs.skill = $scope.offerSkills[i]._id;
+                    idSkill.push(objs);
+                }
+            });
+        }
+        offerService.update($routeParams.id, data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
     }
@@ -114,13 +164,16 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
         data.description = $scope.description;
         data.responsability = $scope.responsability;
         data.wildSide = $scope.wildSide;
-        offerService.update(data).then(function (res) {
-            if (!res.data) {} else {
-
+        offerService.update($routeParams.id, data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
     }
 
+    // ancre pour le menu
     $anchorScroll.yOffset = 20;
     $scope.scrollTo = function (id) {
         $scope.activesubmenu = "#" + id;
