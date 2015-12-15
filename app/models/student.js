@@ -49,6 +49,18 @@ var StudentSchema = User.model.schema.extend({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Skill'
         }
+    }],
+    formations: [{
+        formation: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Formation'
+        }
+    }],
+    experiences: [{
+        experience: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Experience'
+        }
     }]
 });
 
@@ -56,7 +68,13 @@ var Student = {
     model: mongoose.model('Student', StudentSchema),
 
     findById: function (req, res) {
-        Student.model.findById(req.params.id, function (err, student) {
+        Student.model.findById(req.params.id)
+            .populate('skills.skill')
+            .populate('likes.like')
+            .populate('formation.formation')
+            .populate('experience.experience')
+
+        .exec(function (err, student) {
             res.json(student);
         });
     },

@@ -9,7 +9,6 @@ function homeRctrController($http, $scope, $rootScope, $location, $routeParams, 
     function loadOffers() {
         offerService.getOfferByUser($rootScope.user._id).then(function (res) {
             $scope.offerLists = res.data;
-            console.log($scope.offerLists);
         });
     }
     loadOffers();
@@ -18,14 +17,12 @@ function homeRctrController($http, $scope, $rootScope, $location, $routeParams, 
         var type = 'Student';
         studentService.getAll(type).then(function (res) {
             $scope.students = res.data;
-            console.log($scope.students);
         });
     }
     loadStudents();
 
     //affichage des dates dans les listes d'offres
     $scope.today = new Date();
-    console.log($scope.today);
     $scope.after = function (dates) {
         return moment($scope.today).isAfter(dates);
     }
