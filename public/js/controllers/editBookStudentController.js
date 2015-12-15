@@ -1,44 +1,43 @@
-function editBookStudentController($scope, $location, $anchorScroll, $rootScope, $routeParams, studentService) {
+function editBookStudentController($scope, $location, $anchorScroll, $rootScope, $routeParams, studentService, offerService, skillService) {
 
-    /*function () {
-        studentService.getUserbyId().then(function (res) {
-            $scope.firstName = .firstName;
-            $scope.name = .name;
-            $scope.birthDate = .birthDate;
-            $scope.gender = .gender;
-            $scope.email = .email;
-            $scope.phone = .phone;
-            $scope.situation = .situation;
-            $scope.status = .status;
-            $scope.mobility = .mobility;
-            $scope.wildSide = .wildSide;
+    function loadStudent() {
+        studentService.getUserbyId($rootScope._id).then(function (res) {
+            $scope.firstName = res.data.firstName;
+            $scope.name = res.data.name;
+            $scope.birthDate = res.data.birthDate;
+            $scope.gender = res.data.gender;
+            $scope.email = res.data.email;
+            $scope.phone = res.data.phone;
+            $scope.situation = res.data.situation;
+            $scope.status = res.data.status;
+            $scope.mobility = res.data.mobility;
+            $scope.wildSide = res.data.wildSide;
+
+            $scope.company = res.data.company;
+            $scope.contract = res.data.contract;
+            $scope.city = res.data.city;
+            $scope.country = res.data.country;
+            $scope.startDate = res.data.startDate;
+            $scope.endDate = res.data.endDate;
+            $scope.detailsExp = res.data.detailsExp;
+
+            $scope.title = res.data.title;
+            $scope.school = res.data.school;
+            $scope.city = res.data.city;
+            $scope.country = res.data.country;
+            $scope.startDate = res.data.startDate;
+            $scope.endDate = res.data.endDate;
+            $scope.description = res.data.description;
         })
-
-
-        $scope.company = $rootScope.user.company;
-        $scope.contract = $rootScope.user.contract;
-        $scope.city = $rootScope.user.city;
-        $scope.country = $rootScope.user.country;
-        $scope.startDate = $rootScope.user.startDate;
-        $scope.endDate = $rootScope.user.endDate;
-        $scope.detailsExp = $rootScope.user.detailsExp;
-
-        $scope.title = $rootScope.user.title;
-        $scope.school = $rootScope.user.school;
-        $scope.city = $rootScope.user.city;
-        $scope.country = $rootScope.user.country;
-        $scope.startDate = $rootScope.user.startDate;
-        $scope.endDate = $rootScope.user.endDate;
-        $scope.description = $rootScope.user.description;
-    }*/
+    }
+    loadStudent();
 
     function loadSkill() {
         offerService.getOfferbyId($routeParams.id).then(function (res) {
             $scope.skillOffer = res.data.skills;
             $scope.idOffer = res.data._id;
-            console.log(res.data.skills);
 
-            /****   CREATION TAGS ******/
+            //* * * CREATION TAGS * * * * *
             //Import des compétences de shéma "skills"
             skillService.get().then(function (res) {
                 $scope.offerSkills = res.data;
@@ -54,7 +53,6 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
                 // traitement à effectuer au chargement de la page
                 $scope.skillOffer.forEach(function (skill) {
                     dataSkilled.push(skill.skill.title);
-                    console.log(dataSkilled);
                 });
                 $scope.showSkill = true;
             });
@@ -63,7 +61,6 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
             function updateSkill(array, up) {
                 $scope.errorTyping = true;
                 $scope.offerSkills.forEach(function (skill) {
-                    //console.log(skill.title);
                     if (up == skill.title) {
                         $scope.errorTyping = false;
                     }
@@ -108,8 +105,10 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.email = $scope.email;
         data.phone = $scope.phone;
         studentService.update(data).then(function (res) {
-            if (!res.data) {} else {
-
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
     }
@@ -121,8 +120,10 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.status = $scope.status;
         data.mobility = $scope.mobility;
         studentService.update(data).then(function (res) {
-            if (!res.data) {} else {
-
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
     }
@@ -132,10 +133,32 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         var data = {};
         data.wildSide = $scope.wildSide;
         studentService.update(data).then(function (res) {
-            if (!res.data) {} else {
-
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
+    }
+
+    //Mise a jour des skills
+    $scope.update4 = function () {
+        var data = {};
+        var idSkill = [];
+        data.skills = idSkill;
+        for (var i = 0; i < $scope.offerSkills.length; i++) {
+            var objs = {
+                skill: ""
+            };
+            var current = $scope.offerSkills[i].title;
+            console.log(current);
+            $scope.listSkills.forEach(function (skill) {
+                if (current === skill) {
+                    objs.skill = $scope.offerSkills[i]._id;
+                    idSkill.push(objs);
+                }
+            });
+        }
     }
 
     //Mise a jour...
@@ -150,8 +173,10 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.endDate = $scope.endDate;
         data.detailsExp = $scope.detailsExp;
         studentService.update(data).then(function (res) {
-            if (!res.data) {} else {
-
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
     }
@@ -166,8 +191,10 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.endDate = $scope.endDate;
         data.description = $scope.description;
         studentService.update(data).then(function (res) {
-            if (!res.data) {} else {
-
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
     }
@@ -176,8 +203,10 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         var data = {};
         data.hobbies = $scope.hobbies;
         studentService.update(data).then(function (res) {
-            if (!res.data) {} else {
-
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
     }
@@ -192,8 +221,10 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.endDate = $scope.endDate;
         data.description = $scope.description;
         studentService.create(data).then(function (res) {
-            if (!res.data) {} else {
-
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
     }
@@ -208,8 +239,10 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.endDate = $scope.endDate;
         data.description = $scope.description;
         studentService.create(data).then(function (res) {
-            if (!res.data) {} else {
-
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
     }
@@ -218,8 +251,10 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         var data = {};
         data.hobbies = $scope.hobbies;
         studentService.create(data).then(function (res) {
-            if (!res.data) {} else {
-
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
             }
         })
     }
@@ -229,7 +264,4 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         $scope.activesubmenu = "#" + id;
         $anchorScroll(id);
     }
-
-
-
 }

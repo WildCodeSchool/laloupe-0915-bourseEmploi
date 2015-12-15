@@ -17,7 +17,7 @@ module.exports = function (app, passport) {
             id: req.user._id,
             admin: req.user.admin
         }, 'tokenSecret', {
-            expiresIn: 120
+            expiresInMinutes: 120
         });
         next();
     }, function (req, res) {
