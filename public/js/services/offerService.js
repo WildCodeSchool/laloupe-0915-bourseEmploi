@@ -46,6 +46,14 @@ function offerService($http, $cookies) {
                     authorization: $cookies.get('wildFinder_token')
                 }
             });
+        },
+
+        getOfferBySkill: function (data) {
+            return $http.post('api/offers/skills', data, {
+                headers: {
+                    authorization: $rootScope.token
+                }
+            });
         }
     }
 };

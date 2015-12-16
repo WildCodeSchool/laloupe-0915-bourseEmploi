@@ -10,7 +10,7 @@ function studentService($http, $cookies) {
         },
 
         getUserbyId: function (id) {
-            return $http.get('/api/students' + id, {
+            return $http.get('/api/students/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }

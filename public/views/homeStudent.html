@@ -10,15 +10,14 @@
                     <div class="wildpanelheader panel paneldefault">
                     </div>
                     <div class="wildpanelbody panel paneldefault" id="studentCVmin">
-                        <img class="imgprofilstudent" src="../img/darkvador.jpg">
-                        <h1 class="studentname">Student name</h1>
-                        <h3 class="studentteaser">Sudent teaser</h3>
+                        <img class="imgprofilstudent" ng-src="{{student.picture}}">
+                        <h1 class="studentname">{{student.firstName}} {{student.name}}</h1>
+                        <h3 class="studentteaser">{{student.teaser}}</h3>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
-                        <h5>Ma derniere expérience</h5>
                         <h5>Mes compétences</h5>
                         <ul class="skill-ul">
-                            <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
+                            <li class="headeradvert skill-li" ng-repeat="skill in student.skills"><span class="wildSkill">{{skill.skill.title}}</span>
                         </ul>
                     </div>
                     <div class="wildpanelfooterinput panel paneldefault form-inline row">
@@ -37,8 +36,9 @@
             <div class="col-xs12 col-sm-6 col-md-12 col-lg-12">
                 <div class=" wildpanel panel paneldefault">
                     <div class="wildpanelbody panel paneldefault">
-                        <h5>Mon statut</h5>
-                        <h5>Ma Mobilité</h5>
+                        <h5>{{student.status}}</h5>
+                        <h5>{{student.situation}}</h5>
+                        <h5>{{student.mobility}}</h5>
                     </div>
                     <div class="wildpanelfooter panel paneldefault">
                         <a>Editer vos statuts</a>
@@ -68,19 +68,19 @@
         <!--MATCHING OFFERS-->
         <div class="row wildpanel panel paneldefault">
             <div class="wildpanelheader panel paneldefault">
-                <h4>Annonces qui pourraient m'interresser</h4>
+                <h4>{{matchingOffers.length}} {{matchingOffers.length > 1 ? 'Annonces' : 'Annonce'}} qui {{matchingOffers.length > 1 ? 'pourraient' : 'pourrait'}} m'interresser</h4>
             </div>
 
             <!--OFFER-->
-            <div class="wildpanelbodys panel paneldefault">
+            <div ng-repeat="matchingOffer in matchingOffers" class="wildpanelbodys panel paneldefault">
                 <div class="offerdelete">
                     <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Ne plus voir cette offre"></i>
                 </div>
                 <ul>
                     <li class="headeradvert">
-                        <h2 class="headeradvert titleadvert">Nom de l'offre</h2></li>
+                        <h2 class="headeradvert titleadvert">{{matchingOffer.title}}</h2></li>
                     <li class="headeradvert">
-                        <p class="headeradvert smalltexadvert">depuis n jours</p>
+                        <p class="headeradvert smalltexadvert">Posté {{startOffer(matchingOffer.startDate)}}</p>
                     </li>
                     <li class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive" data-toggle="tooltip" data-placement="top" title="Liker cette offre"></i></li>
                     <li class="headeradvert"><i class="fa fa-share-alt fa-lg" data-toggle="tooltip" data-placement="top" title="Partager"></i></li>
@@ -90,30 +90,32 @@
                         <p class="headeradvert smalltexadvert">chez</p>
                     </li>
                     <li class="headeradvert">
-                        <p class="headeradvert companytexadvert">Nom de l'entreprise</p>
+                        <p class="headeradvert companytexadvert">{{matchingOffer.referentId.name}}</p>
                     </li>
                 </ul>
                 <ul class="skill-ul">
-                    <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
+                    <li class="headeradvert skill-li" ng-repeat="skill in matchingOffer.skills"><span class="wildSkill">{{skill.skill.title}}</span>
                 </ul>
                 <ul>
                     <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
-                        <p class="headeradvert smalltexadvert1">Contrat</p>
+                        <p class="headeradvert smalltexadvert1">{{matchingOffer.contract}}</p>
                     </li>
                     <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
-                        <p class="headeradvert smalltexadvert1">Salaire</p>
+                        <p class="headeradvert smalltexadvert1">{{matchingOffer.salary}}</p>
                     </li>
                     <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
-                        <p class="headeradvert smalltexadvert1">Expérience</p>
+                        <p class="headeradvert smalltexadvert1">{{matchingOffer.experience}}</p>
                     </li>
                     <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
-                        <p class="headeradvert smalltexadvert1">Adresse</p>
+                        <p class="headeradvert smalltexadvert1">{{matchingOffer.city}} ({{matchingOffer.country}})</p>
                     </li>
                 </ul>
             </div>
 
             <div class="wildpanelfooter panel paneldefault">
-                <button class="btnW-sm">Voir plus d'annonces</button>
+                <a href="/#/searchOffer">
+                    <button class="btnW-sm">Voir plus d'annonces</button>
+                </a>
             </div>
         </div>
 
