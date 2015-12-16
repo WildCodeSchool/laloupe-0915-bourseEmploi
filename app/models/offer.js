@@ -114,8 +114,9 @@ var Offer = {
 
     create: function (req, res) {
         Offer.model.create(req.body, function (err, offer) {
+            if (err)
+                console.log(err);
             res.json(offer);
-            console.log(err);
         });
     },
 

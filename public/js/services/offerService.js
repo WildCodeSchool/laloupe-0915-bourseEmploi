@@ -1,7 +1,7 @@
 function offerService($http, $cookies) {
     return {
         getAll: function () {
-            return $http.get('/offers', {
+            return $http.get('/api/offers', {
                 headers: {
                     authorization: $cookies.get('wildfinder_token')
                 }
@@ -9,7 +9,7 @@ function offerService($http, $cookies) {
         },
 
         getOfferbyId: function (id) {
-            return $http.get('/offers/' + id, {
+            return $http.get('/api/ffers/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -17,7 +17,7 @@ function offerService($http, $cookies) {
         },
 
         getOfferByUser: function (id) {
-            return $http.get('/offers/users/' + id, {
+            return $http.get('/api/offers/users/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -25,15 +25,15 @@ function offerService($http, $cookies) {
         },
 
         create: function (data) {
-            return $http.post('/offers', data, {
+            return $http.post('/api/offers', data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
 
-        update: function (id, data) {
-            return $http.put('/offers/' + id, data, {
+        update: function (id, data, user) {
+            return $http.put('/api/offers/' + id, data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -41,7 +41,7 @@ function offerService($http, $cookies) {
         },
 
         delete: function (id) {
-            return $http.delete('/offers/' + id, {
+            return $http.delete('/api/offers/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }

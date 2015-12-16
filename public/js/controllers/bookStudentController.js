@@ -1,4 +1,11 @@
-function bookStudentController($scope) {
+function bookStudentController($http, $scope, $rootScope, studentService) {
+
+    function loadStudent(){
+        studentService.getUserById($rootScope.user._id).then(function(res){
+            console.log(res.data);
+        })
+    }
+    loadStudent();
 
     //INITIALISATION ICON
     $scope.facebookIf = true;

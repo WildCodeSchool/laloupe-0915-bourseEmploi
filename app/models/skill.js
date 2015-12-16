@@ -33,7 +33,7 @@ var Skill = {
     },
 
     findById: function (req, res) {
-        Skill.model.findById(req.headers.id, function (err, skill) {
+        Skill.model.findById(req.params.id, function (err, skill) {
             res.json(skill);
         });
     },
@@ -50,10 +50,8 @@ var Skill = {
     },
 
     update: function (req, res) {
-        Skill.model.findByIdAndUpdate(req.params.id, {
-            title: req.body.title
-        }, function () {
-            res.sendStatus(200);
+        Skill.model.findByIdAndUpdate(req.params.id, req.body, function (err, skill) {
+           res.json(skill);
         })
     },
 

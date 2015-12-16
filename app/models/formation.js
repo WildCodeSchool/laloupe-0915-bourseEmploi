@@ -29,7 +29,7 @@ var Formation = {
 
  findByStudent: function (req, res) {
         Formation.model.find({
-          studentId: req.params.studentId
+          studentId: req.params.id
         }, function(err, formation){
             res.json(formation);
         });
@@ -43,20 +43,22 @@ var Formation = {
 
     create: function (req, res) {
         Formation.model.create(req.body, function (err, formation) {
+            if (err)
+                console.log(err);
             res.json(formation);
-            console.log(err);
         });
     },
 
     update: function (req, res) {
         Formation.model.findByIdAndUpdate(req.params.id, req.body, function (err, formation) {
+            if (err)
+                console.log(err);
             res.json(formation);
-            console.log(err);
         });
     },
 
     delete: function (req, res) {
-        Student.model.findByIdAndRemove(req.params.id, function () {
+        Formation.model.findByIdAndRemove(req.params.id, function () {
             res.sendStatus(200);
         })
     }

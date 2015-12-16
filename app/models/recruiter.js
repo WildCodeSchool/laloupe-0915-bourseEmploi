@@ -81,7 +81,8 @@ var Recruiter = {
         Recruiter.model.findOne({
             email: req.headers.email
         }, function (err, data) {
-              console.log(err);
+            if(err)
+                console.log(err);
             if (data)
                 res.status(409).send("Un compte existe déjà avec l'adresse mail " + req.headers.email);
             else

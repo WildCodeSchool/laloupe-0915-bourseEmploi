@@ -87,8 +87,9 @@ var Student = {
 
     update: function (req, res) {
         Student.model.findByIdAndUpdate(req.params.id, req.body, function (err, student) {
+            if (err)
+                console.log(err);
             res.json(student);
-            console.log(err);
         });
     },
 

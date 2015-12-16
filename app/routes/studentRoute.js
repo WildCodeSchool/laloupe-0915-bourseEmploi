@@ -9,7 +9,7 @@ module.exports = function (app, passport) {
 
 	app.get('/api/students/:id', Auth.user.hasAuthorization, Student.findById);
 
-    app.post('/api/students', Auth.user.isAdministrator, Student.create);
+    app.post('/api/students', /*Auth.user.isAdministrator,*/ Student.create);
 
 	app.put('/api/students/:id', Auth.user.hasAuthorization, Student.update);
 
