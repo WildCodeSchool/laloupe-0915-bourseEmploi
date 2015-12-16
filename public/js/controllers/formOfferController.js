@@ -87,7 +87,6 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         data.startDate = moment($scope.startDate);
 
         //Comparaison des skills choisi et existant( pour envoi Ids)
-
         for (var i = 0; i < $scope.offerSkills.length; i++) {
             var objs = {
                 skill: ""

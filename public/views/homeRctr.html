@@ -44,7 +44,7 @@
                     <div ng-repeat="offerList in offerLists" ng-show="after(offerList.startDate) && before(offerList.endDate)" class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
                             <i class="fa fa-pencil fa-lg" ng-click="edit(offerList._id)" data-toggle="tooltip" data-placement="top" title="Editer"></i>
-                            <i class="fa fa-times fa-lg" ng-click="archiv(offerList._id)" data-toggle="tooltip" data-placement="top" title="Supprimer"></i>
+                            <i class="fa fa-sign-in fa-lg" ng-click="archiv(offerList._id)" data-toggle="tooltip" data-placement="top" title="Archiver"></i>
                         </div>
                         <ul>
                             <li class="headeradvert" ng-click="goToOffer(offerList)"><h2 class="headeradvert titleadvert">{{offerList.title}}</h2></li>
@@ -85,7 +85,7 @@
                     <div ng-repeat="offerList in offerLists" ng-show="before(offerList.startDate)" class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
                             <i class="fa fa-pencil fa-lg" ng-click="edit(offerList._id)" data-toggle="tooltip" data-placement="top" title="Editer"></i>
-                            <i class="fa fa-times fa-lg" ng-click="archiv(offerList._id)" data-toggle="tooltip" data-placement="top" title="Supprimer"></i>
+                            <i class="fa fa-sign-in fa-lg" ng-click="archiv(offerList._id)" data-toggle="tooltip" data-placement="top" title="Archiver"></i>
                         </div>
                         <ul>
                             <li class="headeradvert" ng-click="goToOffer(offerList)"><h2 class="headeradvert titleadvert">{{offerList.title}}</h2></li>
@@ -113,7 +113,7 @@
         </ul>
     </div>
     <div class="wildpanelfooter panel paneldefault">
-        <p class="paragraphWPF">{{numberOffer}} annonces en cours</p>
+        <p class="paragraphWPF">{{}} annonces en cours</p>
     </div>
     </span>
 
@@ -123,12 +123,12 @@
         <!--OFFER-->
             <div ng-repeat="offerList in offerLists" ng-if="after(offerList.endDate)" class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
-                            <i class="fa fa-repeat fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Reposter à partir de cette annonce"></i>
+                            <!--i class="fa fa-repeat fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Reposter à partir de cette annonce"></i-->
                             <i class="fa fa-times fa-lg" ng-click="delete(offerList._id)" data-toggle="tooltip" data-placement="top" title="Supprimer définitivement"></i>
                         </div>
                         <ul>
                             <li class="headeradvert" ng-click="goToOffer(offerList)"><h2 class="headeradvert titleadvert">{{offerList.title}}</h2></li>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Expirée {{endOffer(offerList.endDate)}}.</p></li>
+                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Archivée {{endOffer(offerList.endDate)}}.</p></li>
                         </ul>
                         
                         <ul class="skill-ul">
@@ -148,9 +148,10 @@
             <p class="headeradvert smalltexadvert1">{{offerList.address}}, {{offerList.zipCode}} {{offerList.city}}.</p>
         </li>
     </ul>
+
 </div>
 <div class="wildpanelfooter panel paneldefault">
-    <p class="paragraphWPF">{{(offerLists | filter: today > offerLists.offerList.endDate).length }} annonces en cours</p>
+    <p class="paragraphWPF">{{(offerLists | filter:after(offerLists.offerList.endDate)).length }} annonces en cours</p>
 </div>
 </span>
 

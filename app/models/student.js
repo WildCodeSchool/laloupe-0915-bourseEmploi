@@ -64,6 +64,7 @@ var Student = {
     create: function (req, res) {
         Student.model.create(req.body, function (err, student) {
             res.json(student);
+            console.log(err);
         });
     },
 

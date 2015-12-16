@@ -44,7 +44,10 @@
                     <li class="headeradvert">
                         <h2 class="headeradvert titleadvert">{{offer.title}}</h2></li>
                     <li class="headeradvert">
-                        <p class="headeradvert smalltexadvert">Postée {{startOffer}}. Expire {{endOffer}}</p>
+                        <p class="headeradvert smalltexadvert" ng-show="titleExpired">Postée {{startOffer}}.</p>
+                        <p class="headeradvert smalltexadvert">
+                            <span ng-show="titleExpired">Expire</span>
+                            <span ng-show="titleArchiv">Archivée </span><span>{{endOffer}}</span>
                     </li>
                     <li class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive" data-toggle="tooltip" data-placement="top" title="Liker cette offre"></i></li>
                     <li class="headeradvert"><i class="fa fa-share-alt fa-lg " data-toggle="tooltip" data-placement="top" title="Partager"></i></li>
@@ -106,8 +109,9 @@
                 <div id="map" style="height:300px;margin-top:15px;"></div>
 
             </div>
-            <div class="wildpanelfooter panel panel-default">
-                <h4 class="wildDelete" ng-click="delete()">Supprimer cette offre</h4>
+            <div class="wildpanelfooter panel panel-default deleteOffer">
+                <h4 ng-show="deleteOR" ng-click="delete()">Supprimer cette offre</h4>
+                <h4 ng-hide="noPublish" ng-click="archiv()">Ne plus publier cette offre</h4>
             </div>
         </div>
     </div>
