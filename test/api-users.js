@@ -9,6 +9,8 @@ var administrator,
     recruiter,
     skill,
     offer,
+    formation,
+    experience,
     token_student;
 
 describe('API RECRUITER', function () {
@@ -383,8 +385,176 @@ describe('API OFFER', function () {
         });
  });
 
+describe('API FORMATION', function () {
 
-describe('API RECRUITER, STUDENT, SKILL DELETE', function () {
+// /!\ Connexion obligatoire afin d'avoir le jeton d'authentification pour les autres requetes /!\
+    it('should connect with student to get token AUTH', function (done) {
+        request(app)
+            .post('/api/login')
+            .send({
+                email: 'student@email.fr',
+                password: 'student'
+            })
+            .end(function (err, res) {
+                if (err)
+                    throw err;
+
+                student = res.body.user;
+                token_student = res.body.token;
+                assert.notEqual(token_student, "");
+                done();
+            });
+    });
+
+    it('should create formation', function (done) {
+        request(app)
+            .post('/api/formations')
+            .set('Authorization', token_student)
+            .send({
+               studentId: student._id,
+               title: 'title'
+
+            })
+            .end(function (err, res) {
+                if (err)
+                    throw err;
+
+                formation = res.body;
+                assert.equal(formation.title, "title");
+                done();
+            });
+    });
+
+    it('should find formation by id', function (done) {
+        request(app)
+            .get('/api/formations/' + formation._id)
+            .set('Authorization', token_student)
+            .end(function (err, res) {
+                if (err)
+                    throw err;
+                
+                assert.equal(res.body.title, formation.title);
+                done();
+            });
+    });
+
+    it('should find formation by student id', function (done) {
+        request(app)
+            .get('/api/students/formations/' + student._id)
+            .set('Authorization', token_student)
+            .end(function (err, res) {
+                if (err)
+                    throw err;
+                
+                assert.equal(res.body[0].title, formation.title);
+                done();
+            });
+    });
+
+    it('should update formation title', function (done) {
+            request(app)
+                .put('/api/formations/' + formation._id)
+                .set('Authorization', token_student)
+                .send({
+                    title: 'title'
+                })
+                .end(function (err, res) {
+                    if (err)
+                        throw err;
+
+                    assert.equal(res.body.title, 'title');
+                    done();
+                });
+        });
+
+
+});
+
+describe('API EXPERIENCE', function () {
+
+// /!\ Connexion obligatoire afin d'avoir le jeton d'authentification pour les autres requetes /!\
+    it('should connect with student to get token AUTH', function (done) {
+        request(app)
+            .post('/api/login')
+            .send({
+                email: 'student@email.fr',
+                password: 'student'
+            })
+            .end(function (err, res) {
+                if (err)
+                    throw err;
+
+                student = res.body.user;
+                token_student = res.body.token;
+                assert.notEqual(token_student, "");
+                done();
+            });
+    });
+
+
+    it('should create experience', function (done) {
+        request(app)
+            .post('/api/experiences')
+            .set('Authorization', token_student)
+            .send({
+               studentId: student._id,
+               job: 'job',
+               city: 'la loupe'
+            })
+            .end(function (err, res) {
+                if (err)
+                    throw err;
+
+                experience = res.body;
+                assert.equal(experience.job, "job");
+                done();
+            });
+    });
+
+    it('should find experience by id', function (done) {
+        request(app)
+            .get('/api/experiences/' + experience._id)
+            .set('Authorization', token_student)
+            .end(function (err, res) {
+                if (err)
+                    throw err;
+                
+                assert.equal(res.body.job, experience.job);
+                done();
+            });
+    });
+
+    it('should find experience by student id', function (done) {
+        request(app)
+            .get('/api/students/experiences/' + student._id)
+            .set('Authorization', token_student)
+            .end(function (err, res) {
+                if (err)
+                    throw err;
+                
+                assert.equal(res.body[0].city, experience.city);
+                done();
+            });
+    });
+
+    it('should update experience job', function (done) {
+            request(app)
+                .put('/api/experiences/' + experience._id)
+                .set('Authorization', token_student)
+                .send({
+                    job: 'job'
+                })
+                .end(function (err, res) {
+                    if (err)
+                        throw err;
+
+                    assert.equal(res.body.job, 'job');
+                    done();
+                });
+        });
+});
+
+describe('API RECRUITER, STUDENT, SKILL, OFFER, FORMATION, EXPERIENCE DELETE', function () {
 
     it('should delete administrator', function (done) {
         request(app)
@@ -428,6 +598,32 @@ describe('API RECRUITER, STUDENT, SKILL DELETE', function () {
     it('should delete offer', function (done) {
         request(app)
             .delete('/api/offers/' + offer._id)
+            .set('Authorization', token_student)
+            .end(function (err, res) {
+                if (err)
+                    throw err;
+
+                assert.equal(res.statusCode, 200);
+                done();
+            });
+    });
+
+    it('should delete formation', function (done) {
+        request(app)
+            .delete('/api/formations/' + formation._id)
+            .set('Authorization', token_student)
+            .end(function (err, res) {
+                if (err)
+                    throw err;
+
+                assert.equal(res.statusCode, 200);
+                done();
+            });
+    });
+
+    it('should delete experience', function (done) {
+        request(app)
+            .delete('/api/experiences/' + experience._id)
             .set('Authorization', token_student)
             .end(function (err, res) {
                 if (err)

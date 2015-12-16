@@ -32,8 +32,10 @@ var Experience = {
 
     findByStudent: function (req, res) {
         Experience.model.find({
-            studentId: req.params.studentId
+            studentId: req.params.id
         }, function (err, experience) {
+            if (err)
+                console.log(err);
             res.json(experience);
         });
     },
@@ -46,15 +48,17 @@ var Experience = {
 
     create: function (req, res) {
         Experience.model.create(req.body, function (err, experience) {
+            if (err)
+                console.log(err);
             res.json(experience);
-            console.log(err);
         });
     },
 
     update: function (req, res) {
         Experience.model.findByIdAndUpdate(req.params.id, req.body, function (err, experience) {
+            if (err)
+                console.log(err);
             res.json(experience);
-            console.log(err);
         });
     },
 
