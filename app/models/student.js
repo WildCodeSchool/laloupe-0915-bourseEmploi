@@ -56,9 +56,11 @@ var Student = {
     model: mongoose.model('Student', StudentSchema),
 
     findById: function (req, res) {
-        Student.model.findById(req.params.id, function (err, student) {
-            res.json(student);
-        });
+        Student.model.findById(req.params.id)
+            .populate("skills.skill")
+            .exec(function (err, student) {
+                res.json(student);
+            });
     },
 
     create: function (req, res) {

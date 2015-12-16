@@ -112,6 +112,26 @@ var Offer = {
             });
     },
 
+    findBySkill: function (req, res) {
+        Offer.model.find({
+                'skills': {
+                    $elemMatch: req.body.language
+                },
+                'skills.skill': {
+                    $in: req.body.skills
+                }
+            })
+            .populate("skills.skill")
+            .populate("referentId")
+            .exec(function (err, offer) {
+                if (err) {
+                    res.status(400);
+                    console.log(err);
+                } else
+                    res.json(offer);
+            });
+    },
+
     create: function (req, res) {
         Offer.model.create(req.body, function (err, offer) {
             res.json(offer);

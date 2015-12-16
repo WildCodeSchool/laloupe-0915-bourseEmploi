@@ -10,7 +10,7 @@ function studentService($http, $rootScope) {
         },
 
         getUserbyId: function (id) {
-            return $http.get('/api/students' + id, {
+            return $http.get('/api/students/' + id, {
                 headers: {
                     authorization: $rootScope.token
                 }

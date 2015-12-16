@@ -19,4 +19,6 @@ module.exports = function (app, passport) {
 
     app.delete('/offers/:id', Auth.user.hasAuthorization, Offer.delete);
 
+    app.post('/api/offers/skills', Auth.user.hasAuthorization, Offer.findBySkill);
+
 }

@@ -18,6 +18,7 @@ exports.user = {
         } else {
             return res.sendStatus(403);
         }
+        next();
     },
 
     isAdministrator: function (req, res, next) {
@@ -33,6 +34,6 @@ exports.user = {
         } else {
             return res.sendStatus(401);
         }
+        next();
     }
-
 };

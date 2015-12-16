@@ -46,6 +46,14 @@ function offerService($http, $rootScope) {
                     authorization: $rootScope.token
                 }
             });
+        },
+
+        getOfferBySkill: function (data) {
+            return $http.post('api/offers/skills', data, {
+                headers: {
+                    authorization: $rootScope.token
+                }
+            });
         }
     }
 };

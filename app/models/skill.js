@@ -10,8 +10,11 @@ var SkillSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+    language: {
+        type: Boolean,
+        default: false
     }
-
 });
 
 var Skill = {
@@ -39,9 +42,7 @@ var Skill = {
     },
 
     create: function (req, res) {
-        Skill.model.create({
-            title: req.body.title
-        }, function (err, skill) {
+        Skill.model.create(req.body, function (err, skill) {
             if (err) {
                 res.sendStatus(400)
             } else

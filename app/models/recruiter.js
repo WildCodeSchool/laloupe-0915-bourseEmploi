@@ -4,7 +4,10 @@ var mongoose = require('mongoose'),
 var User = require('./user.js');
 
 var RecruiterSchema = User.model.schema.extend({
-    admin: {type: Boolean, Default: false},
+    admin: {
+        type: Boolean,
+        default: false
+    },
     name: {
         type: String,
         required: true
@@ -81,7 +84,7 @@ var Recruiter = {
         Recruiter.model.findOne({
             email: req.headers.email
         }, function (err, data) {
-              console.log(err);
+            console.log(err);
             if (data)
                 res.status(409).send("Un compte existe déjà avec l'adresse mail " + req.headers.email);
             else
