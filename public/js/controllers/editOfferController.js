@@ -18,7 +18,6 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
             $scope.wildSide = res.data.wildSide;
         });
     }
-
     loadOffer();
 
     function loadSkill() {

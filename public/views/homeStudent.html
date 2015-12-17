@@ -20,12 +20,16 @@
                             <li class="headeradvert skill-li" ng-repeat="skill in student.skills"><span class="wildSkill">{{skill.skill.title}}</span>
                         </ul>
                     </div>
+
                     <div class="wildpanelfooterinput panel paneldefault form-inline row">
                         <div class="inputwildpanelfooter input-group input-group-sm col-md-8 col-sm-10 col-xs-12">
-                            <input type="text" class="form-control" uib-typeahead="for skill in offerSkills | filter:$viewValue | limitTo:8" placeholder="Ajoutez une compétence" ng-model="skill">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default btn-side" type="button">OK</button>
-                            </div>
+                            <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage, de compétence" class="form-control" list="Languages" />
+                            <datalist id="Languages">
+                                <option ng-repeat="offerSkill in offerSkills | filter:$viewValue | limitTo:8" value="{{offerSkill.title}}">
+                            </datalist>
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-side" ng-click="add()" type="button" >OK</button>
+                            </span>
                         </div>
                         <a class="text-right">Editer mon CV</a>
                     </div>
