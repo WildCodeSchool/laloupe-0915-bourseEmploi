@@ -1,14 +1,75 @@
-function homeStudentController($scope, geocoderService, offerService, studentService, $rootScope) {
+function homeStudentController($scope, $rootScope, geocoderService, offerService, studentService, skillService) {
 
     //TOOLTIP    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
 
-    //LOAD STUDENT
-    studentService.getUserbyId($rootScope.user._id).then(function (res) {
-        $scope.student = res.data;
-    });
+    function loadSkill() {
+        //LOAD STUDENT
+        studentService.getUserbyId($rootScope.user._id).then(function (res) {
+            $scope.student = res.data;
+            $scope.studentSkill = res.data.skills;
+            //$scope.studentSkillId = res.data;
+            console.log($scope.studentSkill);
+
+            /****   CREATION TAGS ******/
+            //Import des compétences de shéma "skills"
+            skillService.get().then(function (res) {
+                $scope.offerSkills = res.data;
+            });
+
+            //Init de la fonctionnalitée
+            $scope.showSkill = false;
+            var dataSkilled = [];
+            $scope.listSkills = dataSkilled;
+
+            //Ajout des skills de l'user
+            $scope.$watch('$viewContentLoaded', function () {
+                // traitement à effectuer au chargement de la page
+                $scope.studentSkill.forEach(function (skill) {
+                    dataSkilled.push(skill.skill.title);
+                });
+                $scope.showSkill = true;
+            });
+
+            //Vérification et ajout de la valeur de l'input
+            function updateSkill(array, up) {
+                $scope.errorTyping = true;
+                $scope.offerSkills.forEach(function (skill) {
+                    if (up == skill.title) {
+                        $scope.errorTyping = false;
+                    }
+                });
+                if (!$scope.errorTyping && dataSkilled.indexOf(up) === -1) {
+                    dataSkilled.push(up);
+                    console.log('Le nouveau tableau est : ' + dataSkilled);
+                } else if (dataSkilled.indexOf(up) > -1) {
+                    $scope.errorChoice = true;
+                }
+            }
+
+            //Lancement de la fonction  precedente au clic
+            $scope.add = function () {
+                $scope.errorChoice = false;
+                $scope.errorTyping = false;
+                var up = $scope.chooseSkill.toUpperCase();
+                console.log("choix user: " + up);
+                updateSkill(dataSkilled, up);
+                //Affichage du skill et champ vide
+                //$scope.showSkill = true;
+                $scope.chooseSkill = "";
+            }
+
+            //Suppression des Tags
+            $scope.deleteSkill = function deleteASkill(id) {
+                var idDeletedSkill = dataSkilled.indexOf(id);
+                console.log("le skill " + $scope.listSkills + " sera effacé");
+                return dataSkilled.splice(idDeletedSkill, 1);
+            }
+        });
+    }
+    loadSkill();
 
     //MAP
     function loadOffer() {
