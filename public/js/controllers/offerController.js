@@ -28,10 +28,10 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
 
             function pop() {
                 var type = 'Recruiter';
-                studentService.getAll(type).then(function (res) {
-                    console.log();
-                    console.log(res.data);
-                    if (res.data._type === 'Recruiter')
+                recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {
+                    $scope.type = res.data;
+                    console.log($scope.type._type);
+                    if ($scope.type._type === 'Recruiter')
                         $scope.showRcrt = true;
                 });
             }
@@ -41,7 +41,7 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
             var a = moment($scope.offer.startDate);
             var b = moment($scope.offer.endDate);
             var c = moment();
-            $scope.startOffer = c.from(a);
+            $scope.startOffer = c.to(a);
             $scope.endOffer = c.to(b);
 
             //MAP

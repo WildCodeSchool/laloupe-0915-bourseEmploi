@@ -35,7 +35,7 @@
         <div class="wildpanel panel panel-default">
             <div class="wildpanelheader panel panel-default">
                 <div class="offerEdit">
-                    <i class="fa fa-pencil fa-lg i-header" data-placement="bottom" data-toggle="tooltip" title="Editer cette offre" ng-click="edit()"></i>
+                    <i ng-if="showRcrt" class="fa fa-pencil fa-lg i-header" data-placement="bottom" data-toggle="tooltip" title="Editer cette offre" ng-click="edit()"></i>
                 </div>
                 <h4>Description de l'offre</h4>
             </div>
@@ -49,8 +49,8 @@
                             <span ng-show="titleExpired">Expire</span>
                             <span ng-show="titleArchiv">Archivée </span><span>{{endOffer}}</span>
                     </li>
-                    <li class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive" data-toggle="tooltip" data-placement="top" title="Liker cette offre"></i></li>
-                    <li class="headeradvert"><i class="fa fa-share-alt fa-lg " data-toggle="tooltip" data-placement="top" title="Partager"></i></li>
+                    <li ng-if="showRcrt" class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive" data-toggle="tooltip" data-placement="top" title="Liker cette offre"></i></li>
+                    <li ng-if="showRcrt" class="headeradvert"><i class="fa fa-share-alt fa-lg " data-toggle="tooltip" data-placement="top" title="Partager"></i></li>
                 </ul>
                 <ul>
                     <li class="headeradvert">
@@ -109,7 +109,7 @@
                 <div id="map" style="height:300px;margin-top:15px;"></div>
 
             </div>
-            <div class="wildpanelfooter panel panel-default deleteOffer">
+            <div ng-if="showRcrt" class="wildpanelfooter panel panel-default deleteOffer">
                 <h4 ng-show="deleteOR" ng-click="delete()">Supprimer cette offre</h4>
                 <h4 ng-hide="noPublish" ng-click="archiv()">Ne plus publier cette offre</h4>
             </div>
