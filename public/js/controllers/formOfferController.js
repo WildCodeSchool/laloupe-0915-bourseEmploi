@@ -30,6 +30,30 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         referentInfo();
     }
 
+    $scope.noSalary = true;
+
+    var salary = '';
+
+    $scope.checkSalary = function () {
+        if ($scope.noSalary === true) {
+            salary = 'Non précisé';
+        } else {
+            salary = $scope.salaryNumber + ' ' + $scope.salaryPeriod;
+        };
+        console.log(salary)
+    }
+    $scope.checkSalary();
+
+    $scope.disabledSalary = function () {
+        $scope.noSalary = !$scope.noSalary
+        $scope.checkSalary()
+    }
+
+    var salary = '';
+
+
+
+
     /****   CREATION TAGS ******/
     //Import des compétences de shéma "skills"
     skillService.get().then(function (res) {
@@ -92,6 +116,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         data.referentPhone = $scope.referentPhone;
         data.referentEmail = $scope.referentEmail;
         data.referentId = $rootScope.user._id;
+        data.salary = salary;
         console.log(data.referentId);
         data.endDate = moment($scope.startDate).add(90, 'days');
         data.startDate = moment($scope.startDate);
