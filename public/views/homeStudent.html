@@ -77,7 +77,7 @@
                     <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Ne plus voir cette offre"></i>
                 </div>
                 <ul>
-                    <li class="headeradvert">
+                    <li class="headeradvert" ng-click="goToOffer(matchingOffer)">
                         <h2 class="headeradvert titleadvert">{{matchingOffer.title}}</h2></li>
                     <li class="headeradvert">
                         <p class="headeradvert smalltexadvert">Posté {{startOffer(matchingOffer.startDate)}}</p>

@@ -94,6 +94,22 @@ var Offer = {
             });
     },
 
+    findAllCurrent: function (req, res) {
+        Offer.model.find({
+                'startDate': {
+                    $lt: new Date()
+                },
+                'endDate': {
+                    $gte: new Date()
+                }
+            })
+            .populate("skills.skill")
+            .populate("referentId")
+            .exec(function (err, offers) {
+                res.json(offers);
+            });
+    },
+
     findById: function (req, res) {
         Offer.model.findById(req.params.id)
             .populate("skills.skill")
@@ -119,6 +135,12 @@ var Offer = {
                 },
                 'skills.skill': {
                     $in: req.body.skills
+                },
+                'startDate': {
+                    $lt: new Date()
+                },
+                'endDate': {
+                    $gte: new Date()
                 }
             })
             .populate("skills.skill")

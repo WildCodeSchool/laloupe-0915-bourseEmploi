@@ -912,3 +912,6 @@ li.active {
 .nav-pills>li.active>a:hover {
     background-color: #009587;
 }
+.fa-nav:hover {
+    color: white;
+}

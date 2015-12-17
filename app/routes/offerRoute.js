@@ -9,6 +9,8 @@ module.exports = function (app, passport) {
 
     app.get('/offers', Auth.user.hasAuthorization, Offer.findAll);
 
+    app.get('/offers/currents', Auth.user.hasAuthorization, Offer.findAllCurrent);
+
     app.get('/offers/:id', Auth.user.hasAuthorization, Offer.findById);
 
     app.get('/offers/users/:id', Auth.user.hasAuthorization, Offer.findByUser);
