@@ -4,20 +4,30 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         $('[data-toggle="popover"]').popover()
     });
 
-    $scope.country = $rootScope.user.country;
-    $scope.city = $rootScope.user.city;
-    $scope.address = $rootScope.user.address;
-    $scope.referentPhone = $rootScope.user.referentPhone;
-    $scope.referentEmail = $rootScope.user.email;
-    $scope.zipCode = $rootScope.user.zipCode;
+    $scope.empty = true;
 
-    $scope.empty = function () {
-        $scope.country = "";
-        $scope.city = "";
-        $scope.address = "";
-        $scope.referentPhone = "";
-        $scope.referentEmail = "";
-        $scope.zipCode = "";
+    var referentInfo = function () {
+        if ($scope.empty == true) {
+            $scope.country = $rootScope.user.country;
+            $scope.city = $rootScope.user.city;
+            $scope.address = $rootScope.user.address;
+            $scope.referentPhone = $rootScope.user.referentPhone;
+            $scope.referentEmail = $rootScope.user.email;
+            $scope.zipCode = $rootScope.user.zipCode;
+        } else {
+            $scope.country = null;
+            $scope.city = null;
+            $scope.address = null;
+            $scope.referentPhone = null;
+            $scope.referentEmail = null;
+            $scope.zipCode = null;
+        }
+    }
+    referentInfo();
+
+    $scope.checkEmpty = function () {
+        $scope.empty = !$scope.empty;
+        referentInfo();
     }
 
     /****   CREATION TAGS ******/
