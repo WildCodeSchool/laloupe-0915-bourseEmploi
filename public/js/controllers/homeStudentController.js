@@ -73,7 +73,7 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
 
     //MAP
     function loadOffer() {
-        offerService.getAll().then(function (res) {
+        offerService.getAllCurrent().then(function (res) {
             $scope.offers = res.data;
 
             L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
@@ -89,8 +89,10 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
                     var lat = res.data.features[0].geometry.coordinates[1];
 
                     var marker = new L.marker([lat, lng]).addTo(map);
+                    marker.bindPopup('<a href="/#/offer/' + offer._id + '"><b>' + offer.title + '</b></a><br>' + offer.city);
                 });
-            });
+
+            }.bind($scope));
         });
     }
 
@@ -113,6 +115,11 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
         }
 
         return a;
+    }
+
+    //LINK TO OFFER PAGE 
+    $scope.goToOffer = function (offer) {
+        $location.path('/offer/' + offer._id);
     }
 
     studentService.getUserbyId($rootScope.user._id).then(function (res) {

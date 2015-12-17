@@ -62,8 +62,7 @@
         </div>
 
         <div class="col-sm-offset-1 col-sm-9">
-            <input type="checkbox" ng-click="empty()" ng-model="referent" ng-checked="hey()" /> Vider les champs au dessus, si ceux ci sont diférents des coordonnées de la personne en charge de l'annonce.
-            <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Cocher si vos coordonnées sont identiques de celles enregistrées lors de votre inscription."><i class="fa fa-question-circle"></i></a>
+            <input type="checkbox" checked ng-click="checkEmpty()" /> {{empty === true ? 'Vider tous les champs' : 'Remplir avec vos coordonées'}}
         </div>
 
 
@@ -89,7 +88,7 @@
                         <option type="text" class="form-control">CDI</option>
                     </select>
                 </div>
-                <div class="col-sm-offset-1 col-sm-3">
+                <div class="col-sm-3">
                     <label class="control-label">Expérience* :</label>
                     <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Junior: 0 - 2 ans. &#13; Expérimenté: 3 - 5 ans.&#13; Sénior: Plus de 6 ans."><i class="fa fa-question-circle"></i></a>
                     <select class="form-control" ng-model="offer.experience">
@@ -100,11 +99,19 @@
                     </select>
                 </div>
                 <span ng-show='offerForm.salary.$invalid'>Your login should be a valid email</span>
-                <div class="col-sm-offset-1 col-sm-2">
+                <div class="col-sm-offset-1 col-sm-3">
                     <label class="control-label">Salaire :</label>
                     <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Salaire en millier d'euros par année. Ex: 30 K€/an." data-placement="top"><i class="fa fa-question-circle"></i></a>
-
-                    <input type="text" name="salary" class="form-control" id="" placeholder="K € /an" ng-pattern="salaryRegex" ng-model="offer.salary">
+                    <input type="number" name="salary" class="form-control" id="" placeholder="{{salaryPeriod}}" ng-model="salaryNumber" ng-disabled="noSalary">
+                    <label class="radio-inline">
+                        <input type="radio" name="YearSalaryOptions" id="YearSalaryOptions" value="k€/ans" ng-click="checkSalary()" ng-model="salaryPeriod"> par ans
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="MonthSalaryOptions" id="MonthSalaryOptions" value="€/mois" ng-click="checkSalary()" ng-model="salaryPeriod"> par mois
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="noSalaryOptions" value="non précisé" ng-click="disabledSalary()" checked> non précisé
+                    </label>
                 </div>
             </div>
         </div>

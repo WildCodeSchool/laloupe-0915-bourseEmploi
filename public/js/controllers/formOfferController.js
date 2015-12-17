@@ -4,21 +4,55 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         $('[data-toggle="popover"]').popover()
     });
 
-    $scope.country = $rootScope.user.country;
-    $scope.city = $rootScope.user.city;
-    $scope.address = $rootScope.user.address;
-    $scope.referentPhone = $rootScope.user.referentPhone;
-    $scope.referentEmail = $rootScope.user.email;
-    $scope.zipCode = $rootScope.user.zipCode;
+    $scope.empty = true;
 
-    $scope.empty = function () {
-        $scope.country = "";
-        $scope.city = "";
-        $scope.address = "";
-        $scope.referentPhone = "";
-        $scope.referentEmail = "";
-        $scope.zipCode = "";
+    var referentInfo = function () {
+        if ($scope.empty == true) {
+            $scope.country = $rootScope.user.country;
+            $scope.city = $rootScope.user.city;
+            $scope.address = $rootScope.user.address;
+            $scope.referentPhone = $rootScope.user.referentPhone;
+            $scope.referentEmail = $rootScope.user.email;
+            $scope.zipCode = $rootScope.user.zipCode;
+        } else {
+            $scope.country = null;
+            $scope.city = null;
+            $scope.address = null;
+            $scope.referentPhone = null;
+            $scope.referentEmail = null;
+            $scope.zipCode = null;
+        }
     }
+    referentInfo();
+
+    $scope.checkEmpty = function () {
+        $scope.empty = !$scope.empty;
+        referentInfo();
+    }
+
+    $scope.noSalary = true;
+
+    var salary = '';
+
+    $scope.checkSalary = function () {
+        if ($scope.noSalary === true) {
+            salary = 'Non précisé';
+        } else {
+            salary = $scope.salaryNumber + ' ' + $scope.salaryPeriod;
+        };
+        console.log(salary)
+    }
+    $scope.checkSalary();
+
+    $scope.disabledSalary = function () {
+        $scope.noSalary = !$scope.noSalary
+        $scope.checkSalary()
+    }
+
+    var salary = '';
+
+
+
 
     /****   CREATION TAGS ******/
     //Import des compétences de shéma "skills"
@@ -82,6 +116,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         data.referentPhone = $scope.referentPhone;
         data.referentEmail = $scope.referentEmail;
         data.referentId = $rootScope.user._id;
+        data.salary = salary;
         console.log(data.referentId);
         data.endDate = moment($scope.startDate).add(90, 'days');
         data.startDate = moment($scope.startDate);

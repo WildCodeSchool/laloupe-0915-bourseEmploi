@@ -6,7 +6,10 @@ function config($routeProvider) {
         })
         .when('/formOffer', {
             templateUrl: 'views/formOffer.html',
-            controller: 'formOfferController'
+            controller: 'formOfferController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/searchOffer', {
             templateUrl: 'views/searchOffer.html',

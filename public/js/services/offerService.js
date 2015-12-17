@@ -3,7 +3,15 @@ function offerService($http, $cookies) {
         getAll: function () {
             return $http.get('/offers', {
                 headers: {
-                    authorization: $cookies.get('wildfinder_token')
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
+        getAllCurrent: function () {
+            return $http.get('/offers/currents', {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
@@ -51,7 +59,7 @@ function offerService($http, $cookies) {
         getOfferBySkill: function (data) {
             return $http.post('api/offers/skills', data, {
                 headers: {
-                    authorization: $rootScope.token
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         }

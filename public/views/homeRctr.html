@@ -48,10 +48,10 @@
                         </div>
                         <ul>
                             <li class="headeradvert" ng-click="goToOffer(offerList)"><h2 class="headeradvert titleadvert">{{offerList.title}}</h2></li>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Posté {{startOffer(offerList.startDate)}}.</p></li>
                         </ul>
                         <ul>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Se termine {{endOffer(offerList.endDate)}}.</p></li>
+                           <li class="headeradvert"><p class="headeradvert smalltexadvert">Posté {{startOffer(offerList.startDate)}} -</p></li>
+                            <li class="headeradvert"><p class="headeradvert smalltexadvert"> Se termine {{endOffer(offerList.endDate)}}.</p></li>
                         </ul>
                         <ul class="skill-ul">
                             <li ng-repeat="skill in offerList.skills" class="headeradvert skill-li"><span class="wildSkill">{{skill.skill.title}}</span></li>
@@ -67,7 +67,7 @@
                     <p class="headeradvert smalltexadvert1">{{offerList.experience}}</p>
                 </li>
                 <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
-                    <p class="headeradvert smalltexadvert1">{{offerList.address}}, {{offerList.zipCode}} {{offerList.city}}.</p>
+                    <p class="headeradvert smalltexadvert1">{{offerList.city}} ({{offerList.country}}).</p>
                 </li>
             </ul>
 
@@ -89,10 +89,9 @@
                         </div>
                         <ul>
                             <li class="headeradvert" ng-click="goToOffer(offerList)"><h2 class="headeradvert titleadvert">{{offerList.title}}</h2></li>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Sera posté {{startOffer(offerList.startDate)}}.</p></li>
                         </ul>
                         <ul>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Se terminera {{endOffer(offerList.endDate)}}.</p></li>
+                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Sera posté {{startOffer(offerList.startDate)}}.</p></li>
                         </ul>
                         <ul class="skill-ul">
                             <li ng-repeat="skill in offerList.skills" class="headeradvert skill-li"><span class="wildSkill">{{skill.skill.title}}</span>
@@ -108,7 +107,7 @@
                 <p class="headeradvert smalltexadvert1">{{offerList.experience}}</p>
             </li>
             <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
-                <p class="headeradvert smalltexadvert1">{{offerList.address}}, {{offerList.zipCode}} {{offerList.city}}.</p>
+                <p class="headeradvert smalltexadvert1">{{offerList.city}} ({{offerList.country}}).</p>
             </li>
         </ul>
     </div>
@@ -130,7 +129,6 @@
                             <li class="headeradvert" ng-click="goToOffer(offerList)"><h2 class="headeradvert titleadvert">{{offerList.title}}</h2></li>
                             <li class="headeradvert"><p class="headeradvert smalltexadvert">Archivée {{endOffer(offerList.endDate)}}.</p></li>
                         </ul>
-                        
                         <ul class="skill-ul">
                             <li ng-repeat="skill in offerList.skills" class="headeradvert skill-li"><span class="wildSkill">{{skill.skill.title}}</span>
     </ul>
@@ -145,7 +143,7 @@
             <p class="headeradvert smalltexadvert1">{{offerList.experience}}</p>
         </li>
         <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
-            <p class="headeradvert smalltexadvert1">{{offerList.address}}, {{offerList.zipCode}} {{offerList.city}}.</p>
+            <p class="headeradvert smalltexadvert1">{{offerList.city}} ({{offerList.country}}).</p>
         </li>
     </ul>
 
