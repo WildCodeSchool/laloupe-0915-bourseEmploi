@@ -37,7 +37,7 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
             $scope.skillOffer = res.data.skills;
             $scope.idOffer = res.data._id;
 
-            //* * * CREATION TAGS * * * * *
+            /****   CREATION TAGS ******/
             //Import des compétences de shéma "skills"
             skillService.get().then(function (res) {
                 $scope.offerSkills = res.data;
@@ -159,6 +159,13 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
                 }
             });
         }
+        studentService.update($routeParams.id, data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
+            }
+        })
     }
 
     //Mise a jour...
