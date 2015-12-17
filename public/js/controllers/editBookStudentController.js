@@ -1,24 +1,36 @@
-function editOfferController($scope, $location, offerService, $anchorScroll, skillService, $rootScope, $routeParams) {
+function editBookStudentController($scope, $location, $anchorScroll, $rootScope, $routeParams, studentService, offerService, skillService) {
 
-    function loadOffer() {
-        offerService.getOfferbyId($routeParams.id).then(function (res) {
-            $scope.referentName = res.data.referentName;
-            $scope.referentEmail = res.data.referentEmail;
-            $scope.referentPhone = res.data.referentPhone;
-            $scope.country = res.data.country;
-            $scope.city = res.data.city;
-            $scope.zipCode = res.data.zipCode;
-            $scope.address = res.data.address;
-            $scope.title = res.data.title;
-            $scope.contract = res.data.contract;
-            $scope.experience = res.data.experience;
-            $scope.salary = res.data.salary;
-            $scope.description = res.data.description;
-            $scope.responsability = res.data.responsability;
+    function loadStudent() {
+        studentService.getUserbyId($rootScope._id).then(function (res) {
+            $scope.firstName = res.data.firstName;
+            $scope.name = res.data.name;
+            $scope.birthDate = res.data.birthDate;
+            $scope.gender = res.data.gender;
+            $scope.email = res.data.email;
+            $scope.phone = res.data.phone;
+            $scope.situation = res.data.situation;
+            $scope.status = res.data.status;
+            $scope.mobility = res.data.mobility;
             $scope.wildSide = res.data.wildSide;
-        });
+
+            $scope.company = res.data.company;
+            $scope.contract = res.data.contract;
+            $scope.city = res.data.city;
+            $scope.country = res.data.country;
+            $scope.startDate = res.data.startDate;
+            $scope.endDate = res.data.endDate;
+            $scope.detailsExp = res.data.detailsExp;
+
+            $scope.title = res.data.title;
+            $scope.school = res.data.school;
+            $scope.city = res.data.city;
+            $scope.country = res.data.country;
+            $scope.startDate = res.data.startDate;
+            $scope.endDate = res.data.endDate;
+            $scope.description = res.data.description;
+        })
     }
-    loadOffer();
+    loadStudent();
 
     function loadSkill() {
         offerService.getOfferbyId($routeParams.id).then(function (res) {
@@ -86,10 +98,13 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
     //Mise a jour infos personnelles
     $scope.update1 = function () {
         var data = {};
-        data.referentName = $scope.referentName;
-        data.referentEmail = $scope.referentEmail;
-        data.referentPhone = $scope.referentPhone;
-        offerService.update($routeParams.id, data).then(function (res) {
+        data.firstName = $scope.firstName;
+        data.name = $scope.name;
+        data.birthDate = $scope.birthDate;
+        data.gender = $scope.gender;
+        data.email = $scope.email;
+        data.phone = $scope.phone;
+        studentService.update(data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {
@@ -101,11 +116,10 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
     //Mise a jour coordonnées
     $scope.update2 = function () {
         var data = {};
-        data.country = $scope.country;
-        data.city = $scope.city;
-        data.zipCode = $scope.zipCode;
-        data.address = $scope.address;
-        offerService.update($routeParams.id, data).then(function (res) {
+        data.situation = $scope.situation;
+        data.status = $scope.status;
+        data.mobility = $scope.mobility;
+        studentService.update(data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {
@@ -117,11 +131,8 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
     //Mise a jour détail offre
     $scope.update3 = function () {
         var data = {};
-        data.title = $scope.title;
-        data.contract = $scope.contract;
-        data.experience = $scope.experience;
-        data.salary = $scope.salary;
-        offerService.update($routeParams.id, data).then(function (res) {
+        data.wildSide = $scope.wildSide;
+        studentService.update(data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {
@@ -148,7 +159,7 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
                 }
             });
         }
-        offerService.update($routeParams.id, data).then(function (res) {
+        studentService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {
@@ -160,10 +171,15 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
     //Mise a jour...
     $scope.update5 = function () {
         var data = {};
-        data.description = $scope.description;
-        data.responsability = $scope.responsability;
-        data.wildSide = $scope.wildSide;
-        offerService.update($routeParams.id, data).then(function (res) {
+        data.job = $scope.job;
+        data.company = $scope.company;
+        data.contract = $scope.contract;
+        data.city = $scope.city;
+        data.country = $scope.country;
+        data.startDate = $scope.startDate;
+        data.endDate = $scope.endDate;
+        data.detailsExp = $scope.detailsExp;
+        studentService.update(data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {
@@ -172,11 +188,87 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
         })
     }
 
-    // ancre pour le menu
+    $scope.update6 = function () {
+        var data = {};
+        data.title = $scope.title;
+        data.school = $scope.school;
+        data.city = $scope.city;
+        data.country = $scope.country;
+        data.startDate = $scope.startDate;
+        data.endDate = $scope.endDate;
+        data.description = $scope.description;
+        studentService.update(data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
+            }
+        })
+    }
+
+    $scope.update7 = function () {
+        var data = {};
+        data.hobbies = $scope.hobbies;
+        studentService.update(data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
+            }
+        })
+    }
+
+    $scope.createExperience = function () {
+        var data = {};
+        data.title = $scope.title;
+        data.school = $scope.school;
+        data.city = $scope.city;
+        data.country = $scope.country;
+        data.startDate = $scope.startDate;
+        data.endDate = $scope.endDate;
+        data.description = $scope.description;
+        studentService.create(data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
+            }
+        })
+    }
+
+    $scope.createFormation = function () {
+        var data = {};
+        data.title = $scope.title;
+        data.school = $scope.school;
+        data.city = $scope.city;
+        data.country = $scope.country;
+        data.startDate = $scope.startDate;
+        data.endDate = $scope.endDate;
+        data.description = $scope.description;
+        studentService.create(data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
+            }
+        })
+    }
+
+    $scope.createHobbies = function () {
+        var data = {};
+        data.hobbies = $scope.hobbies;
+        studentService.create(data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
+            }
+        })
+    }
+
     $anchorScroll.yOffset = 20;
     $scope.scrollTo = function (id) {
         $scope.activesubmenu = "#" + id;
         $anchorScroll(id);
     }
-
 }

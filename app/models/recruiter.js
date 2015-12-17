@@ -4,7 +4,10 @@ var mongoose = require('mongoose'),
 var User = require('./user.js');
 
 var RecruiterSchema = User.model.schema.extend({
-    admin: Boolean,
+    admin: {
+        type: Boolean,
+        default: false
+    },
     name: {
         type: String,
         required: true
@@ -58,8 +61,8 @@ var Recruiter = {
     findByType: function (req, res) {
         Recruiter.model.find({
             _type: req.params.type
-        }, function (err, recruiter) {
-            res.json(recruiter);
+        }, function (err, users) {
+            res.json(users);
         });
     },
 
@@ -70,9 +73,9 @@ var Recruiter = {
     },
 
     findById: function (req, res) {
-        console.log(req.params.id);
         Recruiter.model.findById(req.params.id, function (err, recruiter) {
-            console.log(err);
+            if (err)
+                console.log(err);
             res.json(recruiter);
         });
     },
@@ -81,6 +84,7 @@ var Recruiter = {
         Recruiter.model.findOne({
             email: req.headers.email
         }, function (err, data) {
+            console.log(err);
             if (data)
                 res.status(409).send("Un compte existe déjà avec l'adresse mail " + req.headers.email);
             else
@@ -89,17 +93,16 @@ var Recruiter = {
     },
 
     create: function (req, res) {
-        req.body.admin = false;
         Recruiter.model.create(req.body, function (err, recruiter) {
+            if (err)
+                console.log(err);
             res.json(recruiter);
-            console.log(recruiter)
-            console.log(err);
         });
     },
 
     update: function (req, res) {
         Recruiter.model.findByIdAndUpdate(req.params.id, req.body, function (err, recruiter) {
-            res.json(recruiter);
+            return Recruiter.findById(req, res);
         });
     },
 

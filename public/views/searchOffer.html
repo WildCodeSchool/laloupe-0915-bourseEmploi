@@ -89,11 +89,12 @@
         <div class="wildpanel panel panel-default ">
             <div class="wildpanelheader panel panel-default"></div>
             <!--OFFER-->
-            <div class="offer-list">
+            <div class="offer-list" ng-repeat="offer in offers" ng-if="after(offer.startDate) && before(offer.endDate)">
                 <div class="wildpanelbodys panel paneldefault">
                     <ul>
                         <li class="headeradvert">
-                            <h2 class="headeradvert titleadvert">Nom de l'offre</h2></li>
+                            <h2 class="headeradvert titleadvert">{{offer.title}}</h2></li>
+                        <li class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive" data-toggle="tooltip" data-placement="top" title="Liker cette offre"></i></li>
                         <li class="headeradvert"><i class="fa fa-share-alt fa-lg" data-toggle="tooltip" data-placement="top" title="Partager"></i></li>
                     </ul>
                     <ul>
@@ -101,27 +102,31 @@
                             <p class="headeradvert smalltexadvert">chez</p>
                         </li>
                         <li class="headeradvert">
-                            <p class="headeradvert companytexadvert">Nom de l'entreprise</p>
+                            <p class="headeradvert companytexadvert">{{offer.referentId.name}}</p>
                         </li>
                         <li class="headeradvert">
-                            <p class="headeradvert smalltexadvert">Expire dans ...</p>
+                            <p class="headeradvert smalltexadvert">- Posté {{startOffer(offer.startDate)}}</p>
                         </li>
+                        <li class="headeradvert">
+                            <p class="headeradvert smalltexadvert">- Expire {{endOffer(offer.endDate)}}</p>
+                        </li>
+
                     </ul>
                     <ul class="skill-ul">
-                        <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
+                        <li class="headeradvert skill-li" ng-repeat="skill in offer.skills"><span class="wildSkill">{{skill.skill.title}}</span>
                     </ul>
                     <ul>
                         <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
-                            <p class="headeradvert smalltexadvert1">Contrat</p>
+                            <p class="headeradvert smalltexadvert1">{{offer.contract}}</p>
                         </li>
                         <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
-                            <p class="headeradvert smalltexadvert1">Salaire</p>
+                            <p class="headeradvert smalltexadvert1">{{offer.salary}}</p>
                         </li>
                         <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
-                            <p class="headeradvert smalltexadvert1">Expérience</p>
+                            <p class="headeradvert smalltexadvert1">{{offer.experience}}</p>
                         </li>
                         <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
-                            <p class="headeradvert smalltexadvert1">Adresse</p>
+                            <p class="headeradvert smalltexadvert1">{{offer.city}} ({{offer.country}})</p>
                         </li>
                     </ul>
                 </div>

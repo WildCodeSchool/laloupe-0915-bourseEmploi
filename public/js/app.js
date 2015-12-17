@@ -6,7 +6,10 @@ function config($routeProvider) {
         })
         .when('/formOffer', {
             templateUrl: 'views/formOffer.html',
-            controller: 'formOfferController'
+            controller: 'formOfferController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/searchOffer', {
             templateUrl: 'views/searchOffer.html',
@@ -44,6 +47,13 @@ function config($routeProvider) {
             templateUrl: 'views/bookStudent.html',
             controller: 'bookStudentController'
         })
+        .when('/editBook/:id', {
+            templateUrl: 'views/editBookStudent.html',
+            controller: 'editBookStudentController'
+        })
+        .when('/connectRecruiter', {
+            templateUrl: 'views/connectRecruiter.html',
+        })
         .when('/formRecruiter', {
             templateUrl: 'views/formRecruiter.html',
             controller: 'formRecruiterController'
@@ -56,9 +66,12 @@ function config($routeProvider) {
                 connected: checkIsConnected
             }
         })
-        .when('/editOffer', {
+        .when('/editOffer/:id', {
             templateUrl: 'views/editOffer.html',
-            controller: 'editOfferController'
+            controller: 'editOfferController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .otherwise({
             redirectTo: '/login'
@@ -66,38 +79,38 @@ function config($routeProvider) {
 }
 
 function checkIsConnected($q, $http, $rootScope, $location) {
-   var deferred = $q.defer();
+    var deferred = $q.defer();
 
     $http.get('/loggedin').success(function (user) {
         // Authenticated 
         if (user !== '0') {
             $rootScope.user = user;
             deferred.resolve();
-       } else {
-           // Not Authenticated 
-           deferred.reject();
-           $location.url('/login');
-       }
-   });
+        } else {
+            // Not Authenticated 
+            deferred.reject();
+            $location.url('/login');
+        }
+    });
 
-   return deferred.promise;
+    return deferred.promise;
 };
 
 
 function checkIsAdmin($q, $rootScope, $location) {
-   var deferred = $q.defer();
+    var deferred = $q.defer();
 
-   if ($rootScope.user && $rootScope.user.admin)
-       deferred.resolve();
-   else {
-       deferred.reject();
-       $location.url('/');
-   }
+    if ($rootScope.user && $rootScope.user.admin)
+        deferred.resolve();
+    else {
+        deferred.reject();
+        $location.url('/');
+    }
 
-   return deferred.promise;
+    return deferred.promise;
 }
 
-function run($rootScope, $location, connectService) {
+function run($rootScope, $location, connectService, $cookies) {
     $rootScope.loginMessage = {};
     $rootScope.loginMessage.title = '';
     $rootScope.loginMessage.message = '';
@@ -110,17 +123,22 @@ function run($rootScope, $location, connectService) {
     });
 
     // Logout
-    $rootScope.logout = function(){
+    $rootScope.logout = function () {
+        $cookies.remove('wildFInder_token');
         $rootScope.user = null;
-        $rootScope.loginMessage.title = ''; 
-        $rootScope.loginMessage.message = ''; 
-        loginService.disconnect().then(function(){
+        $rootScope.loginMessage.title = '';
+        $rootScope.loginMessage.message = '';
+        connectService.disconnect().then(function () {
             $location.url('/login');
         })
     }
 }
 
-angular.module('app', ['ngRoute', 'ngSanitize'])
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+
+angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies'])
     .config(config)
     .controller('connectController', connectController)
     .controller('adminController', adminController)
@@ -133,11 +151,13 @@ angular.module('app', ['ngRoute', 'ngSanitize'])
     .controller('editOfferController', editOfferController)
     .controller('bookController', bookController)
     .controller('bookStudentController', bookStudentController)
+    .controller('editBookStudentController', editBookStudentController)
     .service('connectService', connectService)
     .service('offerService', offerService)
     .service('skillService', skillService)
-    .service('formRecruiterService', formRecruiterService)
+    .service('recruiterService', recruiterService)
     .service('geocoderService', geocoderService)
+    .service('studentService', studentService)
 
 /*.factory('', )*/
 .run(run);

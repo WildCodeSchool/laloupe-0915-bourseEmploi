@@ -1,10 +1,58 @@
-function formOfferController($scope, $location, $filter, offerService, skillService) {
+function formOfferController($scope, $location, $filter, $rootScope, offerService, skillService) {
     //JS pour les popups d'aides
     $(function () {
         $('[data-toggle="popover"]').popover()
     });
 
-    $scope.referent = false;
+    $scope.empty = true;
+
+    var referentInfo = function () {
+        if ($scope.empty == true) {
+            $scope.country = $rootScope.user.country;
+            $scope.city = $rootScope.user.city;
+            $scope.address = $rootScope.user.address;
+            $scope.referentPhone = $rootScope.user.referentPhone;
+            $scope.referentEmail = $rootScope.user.email;
+            $scope.zipCode = $rootScope.user.zipCode;
+        } else {
+            $scope.country = null;
+            $scope.city = null;
+            $scope.address = null;
+            $scope.referentPhone = null;
+            $scope.referentEmail = null;
+            $scope.zipCode = null;
+        }
+    }
+    referentInfo();
+
+    $scope.checkEmpty = function () {
+        $scope.empty = !$scope.empty;
+        referentInfo();
+    }
+
+    $scope.noSalary = true;
+
+    var salary = '';
+
+    $scope.checkSalary = function () {
+        if ($scope.noSalary === true) {
+            salary = 'Non précisé';
+        } else {
+            salary = $scope.salaryNumber + ' ' + $scope.salaryPeriod;
+        };
+        console.log(salary)
+    }
+    $scope.checkSalary();
+
+    $scope.disabledSalary = function () {
+        $scope.noSalary = !$scope.noSalary
+        $scope.checkSalary()
+    }
+
+    var salary = '';
+
+
+
 
     /****   CREATION TAGS ******/
     //Import des compétences de shéma "skills"
@@ -56,18 +104,24 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
 
     //Envoi des données du formulaire
     $scope.startDate = new Date();
-
     $scope.send = function () {
         var idSkill = [];
         var data = {};
         data = $scope.offer;
+        data.zipCode = $scope.zipCode;
+        data.country = $scope.country;
+        data.city = $scope.city;
+        data.address = $scope.address;
         data.skills = idSkill;
-        console.log(data.skills);
-        data.endDate = moment($scope.startDate).add(90, 'days').format('YYYY-MM-DD');
-        data.startDate = moment($scope.startDate).format('YYYY-MM-DD');
+        data.referentPhone = $scope.referentPhone;
+        data.referentEmail = $scope.referentEmail;
+        data.referentId = $rootScope.user._id;
+        data.salary = salary;
+        console.log(data.referentId);
+        data.endDate = moment($scope.startDate).add(90, 'days');
+        data.startDate = moment($scope.startDate);
 
         //Comparaison des skills choisi et existant( pour envoi Ids)
-
         for (var i = 0; i < $scope.offerSkills.length; i++) {
             var objs = {
                 skill: ""
@@ -82,7 +136,6 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
         }
 
         offerService.create(data).then(function (res) {
-            console.log(data);
             //ERREUR
             if (!res.data) {
                 $scope.incompleteError = true;
@@ -96,5 +149,5 @@ function formOfferController($scope, $location, $filter, offerService, skillServ
     }
 
     // Date du jour
-    $scope.Dday = moment().format('YYYY-MM-DD');
+    $scope.Dday = moment();
 }

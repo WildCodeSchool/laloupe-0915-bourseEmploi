@@ -6,7 +6,9 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 wildpanelbodybuttonrctr text-center">
-                <button type="submit" class="btnW"><strong>Créer une annonce</strong></button>
+                <a href="/#/formOffer">
+                    <button type="submit" class="btnW"><strong>Créer une annonce</strong></button>
+                </a>
             </div>
         </div>
     </div>
@@ -31,7 +33,7 @@
                 </a>
                 <a ng-click="show3()">
                     <div class="wildpanelmenu  col-xs-4 col-sm-4 col-md-4col-lg-4" ng-class="{'wildpanelmenuactive': expiredoffers==true}">
-                        <h4>Expirées</h4></div>
+                        <h4>Archivées</h4></div>
                 </a>
             </div>
 
@@ -39,36 +41,39 @@
             <span ng-show="currentoffers">
                    
         <!--OFFER-->
-                    <div class="wildpanelbodys panel paneldefault">
+                    <div ng-repeat="offerList in offerLists" ng-show="after(offerList.startDate) && before(offerList.endDate)" class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
-                            <i class="fa fa-pencil fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Editer"></i>
-                            <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Supprimer"></i>
+                            <i class="fa fa-pencil fa-lg" ng-click="edit(offerList._id)" data-toggle="tooltip" data-placement="top" title="Editer"></i>
+                            <i class="fa fa-sign-in fa-lg" ng-click="archiv(offerList._id)" data-toggle="tooltip" data-placement="top" title="Archiver"></i>
                         </div>
                         <ul>
-                            <li class="headeradvert"><h2 class="headeradvert titleadvert">Nom de l'offre</h2></li>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Expire dans n jours</p></li>
+                            <li class="headeradvert" ng-click="goToOffer(offerList)"><h2 class="headeradvert titleadvert">{{offerList.title}}</h2></li>
                         </ul>
                         <ul>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Emise le {date}</p></li>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Expire le {date}</p></li>
+                           <li class="headeradvert"><p class="headeradvert smalltexadvert">Posté {{startOffer(offerList.startDate)}} -</p></li>
+                            <li class="headeradvert"><p class="headeradvert smalltexadvert"> Se termine {{endOffer(offerList.endDate)}}.</p></li>
                         </ul>
                         <ul class="skill-ul">
-                            <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
+                            <li ng-repeat="skill in offerList.skills" class="headeradvert skill-li"><span class="wildSkill">{{skill.skill.title}}</span></li>
             </ul>
             <ul>
                 <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
-                    <p class="headeradvert smalltexadvert1">Contrat</p>
+                    <p class="headeradvert smalltexadvert1">{{offerList.contract}}</p>
                 </li>
                 <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
-                    <p class="headeradvert smalltexadvert1">Salaire</p>
+                    <p class="headeradvert smalltexadvert1">{{offerList.salary}}</p>
                 </li>
                 <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
-                    <p class="headeradvert smalltexadvert1">Expérience</p>
+                    <p class="headeradvert smalltexadvert1">{{offerList.experience}}</p>
                 </li>
                 <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
-                    <p class="headeradvert smalltexadvert1">Adresse</p>
+                    <p class="headeradvert smalltexadvert1">{{offerList.city}} ({{offerList.country}}).</p>
                 </li>
             </ul>
+
+        </div>
+        <div class="wildpanelfooter panel paneldefault">
+            <p class="paragraphWPF">{{offerLists.length}} annonces publiées au total</p>
         </div>
         </span>
 
@@ -77,78 +82,77 @@
         <span ng-show="comingoffers">
         
         <!--OFFER-->
-                    <div class="wildpanelbodys panel paneldefault">
+                    <div ng-repeat="offerList in offerLists" ng-show="before(offerList.startDate)" class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
-                            <i class="fa fa-pencil fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Editer"></i>
-                            <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Supprimer"></i>
+                            <i class="fa fa-pencil fa-lg" ng-click="edit(offerList._id)" data-toggle="tooltip" data-placement="top" title="Editer"></i>
+                            <i class="fa fa-sign-in fa-lg" ng-click="archiv(offerList._id)" data-toggle="tooltip" data-placement="top" title="Archiver"></i>
                         </div>
                         <ul>
-                            <li class="headeradvert"><h2 class="headeradvert titleadvert">Nom de l'offre</h2></li>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Débute dans n jours</p></li>
+                            <li class="headeradvert" ng-click="goToOffer(offerList)"><h2 class="headeradvert titleadvert">{{offerList.title}}</h2></li>
                         </ul>
                         <ul>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Débute le {date}</p></li>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Expire le {date}</p></li>
+                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Sera posté {{startOffer(offerList.startDate)}}.</p></li>
                         </ul>
                         <ul class="skill-ul">
-                            <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
+                            <li ng-repeat="skill in offerList.skills" class="headeradvert skill-li"><span class="wildSkill">{{skill.skill.title}}</span>
         </ul>
         <ul>
             <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
-                <p class="headeradvert smalltexadvert1">Contrat</p>
+                <p class="headeradvert smalltexadvert1">{{offerList.contract}}</p>
             </li>
             <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
-                <p class="headeradvert smalltexadvert1">Salaire</p>
+                <p class="headeradvert smalltexadvert1">{{offerList.salary}}</p>
             </li>
             <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
-                <p class="headeradvert smalltexadvert1">Expérience</p>
+                <p class="headeradvert smalltexadvert1">{{offerList.experience}}</p>
             </li>
             <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
-                <p class="headeradvert smalltexadvert1">Adresse</p>
+                <p class="headeradvert smalltexadvert1">{{offerList.city}} ({{offerList.country}}).</p>
             </li>
         </ul>
+    </div>
+    <div class="wildpanelfooter panel paneldefault">
+        <p class="paragraphWPF">{{offerLists.length}} annonces publiées au total</p>
     </div>
     </span>
 
     <!--EXPIRED OFFER-->
     <span ng-show="expiredoffers">
-                   
+    
         <!--OFFER-->
-                    <div class="wildpanelbodys panel paneldefault">
+            <div ng-repeat="offerList in offerLists" ng-if="after(offerList.endDate)" class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
-                            <i class="fa fa-repeat fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Reposter à partir de cette annonce"></i>
-                            <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Supprimer définitivement"></i>
+                            <!--i class="fa fa-repeat fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Reposter à partir de cette annonce"></i-->
+                            <i class="fa fa-times fa-lg" ng-click="delete(offerList._id)" data-toggle="tooltip" data-placement="top" title="Supprimer définitivement"></i>
                         </div>
                         <ul>
-                            <li class="headeradvert"><h2 class="headeradvert titleadvert">Nom de l'offre</h2></li>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Expirée depuis n jours</p></li>
-                        </ul>
-                        <ul>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Emise le {date}</p></li>
-                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Expirée le {date}</p></li>
+                            <li class="headeradvert" ng-click="goToOffer(offerList)"><h2 class="headeradvert titleadvert">{{offerList.title}}</h2></li>
+                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Archivée {{endOffer(offerList.endDate)}}.</p></li>
                         </ul>
                         <ul class="skill-ul">
-                            <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
+                            <li ng-repeat="skill in offerList.skills" class="headeradvert skill-li"><span class="wildSkill">{{skill.skill.title}}</span>
     </ul>
     <ul>
         <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
-            <p class="headeradvert smalltexadvert1">Contrat</p>
+            <p class="headeradvert smalltexadvert1">{{offerList.contract}}</p>
         </li>
         <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
-            <p class="headeradvert smalltexadvert1">Salaire</p>
+            <p class="headeradvert smalltexadvert1">{{offerList.salary}}</p>{{offferList.lengh}}
         </li>
         <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
-            <p class="headeradvert smalltexadvert1">Expérience</p>
+            <p class="headeradvert smalltexadvert1">{{offerList.experience}}</p>
         </li>
         <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
-            <p class="headeradvert smalltexadvert1">Adresse</p>
+            <p class="headeradvert smalltexadvert1">{{offerList.city}} ({{offerList.country}}).</p>
         </li>
     </ul>
+
+</div>
+<div class="wildpanelfooter panel paneldefault">
+    <p class="paragraphWPF">{{offerLists.length}} annonces publiées au total</p>
 </div>
 </span>
-<div class="wildpanelfooter panel paneldefault">
-    <p class="paragraphWPF">3 annonces en cours</p>
-</div>
+
 </div>
 </div>
 

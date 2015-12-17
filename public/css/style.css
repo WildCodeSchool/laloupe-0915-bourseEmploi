@@ -64,7 +64,7 @@ ul {
     padding-bottom: 15px;
     background-color: white;
     border-color: #b6b6b6;
-    margin-top: 200px;
+    margin-top: 130px;
     position: absolute;
     z-index: 2;
 }
@@ -78,12 +78,21 @@ ul {
     cursor: pointer;
 }
 
+.fa-sign-in {
+    color: #b6b6b6;
+}
+
+.fa-sugn-in:hover {
+    color: #202020;
+    cursor: pointer;
+}
+
 .caseAccueil {
     padding-top: 15px;
     padding-bottom: 15px;
     background-color: rgba(255, 255, 255, .6);
     border-color: #b6b6b6;
-    margin-top: 230px;
+    margin-top: 130px;
     padding: 10px;
 }
 
@@ -107,12 +116,19 @@ ul {
     border-radius: 10px;
     border-color: #009587;
     color: white;
+    background-size: 100% 200%;
     background-color: #009587;
+    background-image: linear-gradient(to top, #008080 50%, #009587 50%);
+    font-size: 16px;
+    -webkit-transition: background-position 1s;
+    -moz-transition: background-position 1s;
+    transition: background-position 1s;
 }
 
 .btnClassic:hover {
     border-color: #008080;
     background-color: #008080;
+    background-position: 0 100%;
 }
 
 .btnClassic:focus {
@@ -206,7 +222,6 @@ ul {
     color: #009587;
 }
 
-
 li {
     display: inline-block;
 }
@@ -235,15 +250,6 @@ ul {
 .align {
     line-height: 40px;
     color: red;
-}
-
-i:focus,
-a:focus {
-    outline: none;
-}
-
-.fa:hover {
-    color: #009587;
 }
 
 
@@ -287,7 +293,7 @@ a:focus {
 }
 
 
-/* WARNING */
+/* $WARNING */
 
 .bs-callout-warning {
     border-left-color: #f0ad4e;
@@ -298,7 +304,21 @@ a:focus {
 }
 
 
-/* DANGER */
+/* $DANGER */
+
+.deleteOffer:hover {
+    background-color: #ce4844;
+    color: white;
+}
+
+.deleteOffer {
+    cursor: pointer;
+    color: #ce4844;
+}
+
+.deleteOffer>h4 {
+    font-weight: 600;
+}
 
 .bs-callout-danger {
     border-left-color: #ce4844;
@@ -477,6 +497,7 @@ a:focus {
     margin-top: -30px;
     margin-right: 3px;
     margin-bottom: 5px;
+    background-color: #B6B6B6;
 }
 
 #studentCVmin {
@@ -670,12 +691,21 @@ a:focus {
     float: none;
 }
 
-.title-link {
+a.title-link {
     color: white;
     text-decoration: none;
 }
 
-.title-link:hover {
+a.title-link:visited {
+    color: white;
+    text-decoration: none;
+}
+
+a.title-link:focus {
+    outline: none;
+}
+
+a.title-link:hover {
     color: #DAA520;
     text-decoration: none;
     cursor: pointer;
@@ -826,6 +856,75 @@ p.white-space-pre-line {
     margin-top: 30px;
     margin-bottom: 5px;
 }
+
 .titleforme {
     color: #202020;
+}
+
+a.a-white {
+    font-size: 14px;
+    font-weight: 600;
+    color: #202020;
+}
+
+.headerAcc {
+    margin-bottom: 30px;
+}
+
+.marge-top {
+    margin-top: 40px;
+}
+
+.li-nav {
+    display: block;
+}
+
+li.active {
+    color: white;
+    background-color: crimson;
+}
+
+.navbarr-avatar {
+    height: 26px;
+    margin: -20px 5px -17px -5px;
+    border-image: 3px;
+    border-color: white;
+    border-radius: 3px;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.navbar-form {
+    padding-left: 60px;
+    padding-top: 2px;
+}
+
+.logo-company {
+    margin: 0 auto;
+    position: relative;
+    width: 50%;
+}
+
+.offerEdit {
+    float: right;
+    z-index: 9999;
+    padding: 10px 5px 0 0;
+    color: white;
+}
+
+.fa:hover {
+    color: black;
+}
+
+.nav-pills>li.active>a {
+    background-color: #009587;
+}
+
+.nav-pills>li.active>a:hover {
+    background-color: #009587;
+}
+.fa-nav:hover {
+    color: white;
 }

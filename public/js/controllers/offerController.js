@@ -1,31 +1,47 @@
-function offerController($scope, $http, $routeParams, offerService, geocoderService, formRecruiterService) {
+function offerController($scope, $rootScope, $http, $location, $routeParams, offerService, geocoderService, recruiterService, studentService) {
+
+    var selectOffer = $routeParams.id;
+    var today = new Date();
+    var d = moment(today).format();
 
     //LOAD OFFER
-    var selectOffer = $routeParams.id;
-
     function loadOffer() {
         offerService.getOfferbyId(selectOffer).then(function (res) {
             $scope.offer = res.data;
+            $scope.company = res.data.referentId;
 
+            //boutton ARCHIV ou DELETE en fonction de la date
+            $scope.noPublish = false;
+            $scope.deleteOR = false;
+            $scope.titleExpired = true;
+            $scope.titleArchiv = false;
 
-            //LOAD RECRUITER 
-            function loadRecruiter() {
-
-                formRecruiterService.getRecruiterbyId($scope.offer.referentId).then(function (res) {
-                    $scope.company = res.data;
-                    console.log(res.data);
-
-                });
-
+            function deletOrArch() {
+                if (d > $scope.offer.endDate) {
+                    $scope.noPublish = true;
+                    $scope.deleteOR = true;
+                    $scope.titleExpired = false;
+                    $scope.titleArchiv = true;
+                }
             }
+            deletOrArch();
 
-            loadRecruiter();
+            function pop() {
+                var type = 'Recruiter';
+                recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {
+                    $scope.type = res.data;
+                    console.log($scope.type._type);
+                    if ($scope.type._type === 'Recruiter')
+                        $scope.showRcrt = true;
+                });
+            }
+            pop();
 
             moment.locale('fr')
             var a = moment($scope.offer.startDate);
             var b = moment($scope.offer.endDate);
             var c = moment();
-            $scope.startOffer = c.from(a);
+            $scope.startOffer = c.to(a);
             $scope.endOffer = c.to(b);
 
             //MAP
@@ -34,8 +50,7 @@ function offerController($scope, $http, $routeParams, offerService, geocoderServ
             geocoderService.CoordinateByAdress(address).then(function (res) {
                 var lng = res.data.features[0].geometry.coordinates[0];
                 var lat = res.data.features[0].geometry.coordinates[1];
-                console.log(lng);
-                console.log(lat);
+
                 L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
                 var map = L.mapbox.map('map', 'mapbox.streets')
                     .setView([lat, lng], 15);
@@ -44,10 +59,33 @@ function offerController($scope, $http, $routeParams, offerService, geocoderServ
 
             });
 
-
         });
     }
     loadOffer();
+
+    //EDIT
+    $scope.edit = function () {
+        $location.path('/editOffer/' + selectOffer)
+    }
+
+    //DELETE
+    $scope.delete = function () {
+        offerService.delete(selectOffer).then(function (res) {
+            console.log(selectOffer);
+            alert("annonce supprimée");
+            $location.path('/homeRecruiter');
+        });
+    }
+
+    //ARCHIV
+    $scope.archiv = function (selectOffer) {
+        var data = {};
+        data.endDate = moment(today).add(-1, 'days');
+        offerService.update(selectOffer, data).then(function (res) {
+            alert("Annonce archivée");
+        });
+        loadOffer();
+    }
 
     //LOAD RECRUITER 
     function loadRecruiter() {

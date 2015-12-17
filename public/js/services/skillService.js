@@ -1,22 +1,32 @@
-function skillService($http) {
+function skillService($http, $cookies) {
     return {
-        get: function (data) {
-            return $http.get('/skills', data);
+        get: function () {
+            return $http.get('/skills', {
+                headers: {
+                 authorization: $cookies.get('wildFinder_token')
+             }
+            });
         },
-        update: function (id, data, user) {
+        update: function (id, data) {
             return $http.put('/skills/' + id, data, {
                 headers: {
-                    userid: user._id
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
+
         create: function (data) {
-            return $http.post('/skills', data);
+            return $http.post('/skills', data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
         },
-        delete: function (id, user) {
+
+        delete: function (id) {
             return $http.delete('/skills/' + id, {
                 headers: {
-                    userid: user._id
+                    authorization: $cookies.get('wildFinder_token')
                 }
             });
         }

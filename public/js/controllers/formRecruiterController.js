@@ -1,4 +1,4 @@
-function formRecruiterController($scope, $location, formRecruiterService) {
+function formRecruiterController($scope, $location, recruiterService) {
 
     $scope.EMAIL_REGEXP = /^[a-zA-Z0-9._]+@[a-z]+\.[a-z.]{2,3}$/;
 
@@ -20,12 +20,19 @@ function formRecruiterController($scope, $location, formRecruiterService) {
         data.logo = $scope.logo;
         data.picture = $scope.picture;
 
-        formRecruiterService.create(data).then(function (res) {
+        recruiterService.create(data).then(function (res) {
             if (!res.data) {
                 console.log(res.data);
                 $scope.incompleteError = true;
-            } else
-                $location.path('/homeRecruiter');
+            } else {
+                $scope.step1 = false;
+                $scope.step12 = false;
+                $scope.step23 = true;
+                $scope.step2 = false;
+                $scope.step3 = false;
+                $scope.step32 = true;
+                $scope.confirm = true;
+            }
         })
     }
 
@@ -71,7 +78,7 @@ function formRecruiterController($scope, $location, formRecruiterService) {
     $scope.step23 = false;
 
     $scope.Step2 = function () {
-        formRecruiterService.checkMail($scope.recruiter.email).then(function (res) {
+        recruiterService.checkMail($scope.recruiter.email).then(function (res) {
             // SUCCESS
             if ($scope.recruiter.password != $scope.password2) {
                 $scope.errPassword = true;
@@ -109,5 +116,6 @@ function formRecruiterController($scope, $location, formRecruiterService) {
         $scope.step23 = true;
         $scope.step2 = false;
         $scope.step3 = true;
+        $scope.step32 = true;
     }
 }

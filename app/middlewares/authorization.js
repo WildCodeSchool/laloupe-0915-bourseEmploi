@@ -2,20 +2,38 @@
  *  User authorization routing middleware
  */
 
+var jwt = require('jsonwebtoken');
+
 exports.user = {
-    
-	hasAuthorization: function (req, res, next) {
-	    if (!req.user || req.user._id != req.headers.userid) {
-	      	return res.sendStatus(403);
-	    }
-	    next();
- 	},
-    
-	isAdministrator: function (req, res, next) {
-		// if (req.user._type == "admin")
-	    if (!req.user.admin) {
-	      return res.sendStatus(401);
-	    }
-	    next();
-  	}
+
+    hasAuthorization: function (req, res, next) {
+        /*        console.log(req.headers)
+                if (req.headers.authorization) {
+                    jwt.verify(req.headers.authorization, 'tokenSecret', function (err, decoded) {
+                        if (err)
+                            return res.sendStatus(403);
+                        else
+                            next();
+                    });
+                } else {
+                    return res.sendStatus(403);
+                }*/
+        next();
+    },
+
+    isAdministrator: function (req, res, next) {
+        /*         if (req.headers.authorization) {
+                    jwt.verify(req.headers.authorization, 'tokenSecret', function (err, decoded) {
+                        if (err)
+                            return res.sendStatus(401);
+                        else if (!decoded.admin)
+                            return res.sendStatus(401);
+                        else
+                            next();
+                    });
+                } else {
+                    return res.sendStatus(401);
+                }*/
+        next();
+    }
 };

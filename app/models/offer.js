@@ -86,15 +86,72 @@ var Offer = {
     },
 
     findAll: function (req, res) {
-        Offer.model.find({}, function (err, offers) {
-            res.json(offers);
-        });
+        Offer.model.find({})
+            .populate("skills.skill")
+            .populate("referentId")
+            .exec(function (err, offers) {
+                res.json(offers);
+            });
+    },
+
+    findAllCurrent: function (req, res) {
+        Offer.model.find({
+                'startDate': {
+                    $lt: new Date()
+                },
+                'endDate': {
+                    $gte: new Date()
+                }
+            })
+            .populate("skills.skill")
+            .populate("referentId")
+            .exec(function (err, offers) {
+                res.json(offers);
+            });
     },
 
     findById: function (req, res) {
-        Offer.model.findById(req.params.id, function (err, offer) {
-            res.json(offer);
-        });
+        Offer.model.findById(req.params.id)
+            .populate("skills.skill")
+            .populate("referentId")
+            .exec(function (err, offer) {
+                res.json(offer);
+            });
+    },
+
+    findByUser: function (req, res) {
+        Offer.model.find(req.params.id)
+            .populate("skills.skill")
+            .populate("referentId")
+            .exec(function (err, offer) {
+                res.json(offer);
+            });
+    },
+
+    findBySkill: function (req, res) {
+        Offer.model.find({
+                'skills': {
+                    $elemMatch: req.body.language
+                },
+                'skills.skill': {
+                    $in: req.body.skills
+                },
+                'startDate': {
+                    $lt: new Date()
+                },
+                'endDate': {
+                    $gte: new Date()
+                }
+            })
+            .populate("skills.skill")
+            .populate("referentId")
+            .exec(function (err, offer) {
+                if (err) {
+                    res.status(400);
+                    console.log(err);
+                } else
+                    res.json(offer);
+            });
     },
 
     create: function (req, res) {
@@ -103,49 +160,6 @@ var Offer = {
             console.log(err);
         });
     },
-
-    /*create: function (req, res) {
-        Offer.model.create({
-            title: req.body.title,
-            referentEmail: req.body.referentEmail,
-            referentName: req.body.referentName,
-            referentPhone: req.body.referentPhone,
-            description: req.body.description,
-            contract: req.body.contract,
-            salary: req.body.salary,
-            experience: req.body.experience,
-            responsability: req.body.responsability,
-            wildSide: req.body.wildSide,
-            startDate: req.body.startDate,
-
-            endDate: moment(req.body.enDate).add(90, 'days'),
-            
-            address: req.body.address,
-            city: req.body.city,
-            country: req.body.country,
-            zipCode: req.body.zipCode,
-            referentId: req.body.referentId
-        }, function (err, offer) {
-console.log(err);
-            // if (!err){
-            //     for (var i = 0; i < req.bodls.y.skillength ; i++){
-            //         Offer.model.findByIdAndUpdate(offer.id,{ $push: {
-            //             skills: {
-            //                 skill: req.body.skills[i]
-            //             }
-            //         }}, function (err, oo) {
-            //             //nothing    
-            //         });
-                    
-            //     }
-            //     res.sendStatus(200);
-            // } 
-            // else {
-            //     res.sendStatus(500);
-            // }
-            res.sendStatus(offer);
-        });
-    },*/
 
 
     update: function (req, res) {
