@@ -1,4 +1,4 @@
-function homeStudentController($scope, $rootScope, geocoderService, offerService, studentService, skillService) {
+function homeStudentController($scope, $rootScope, geocoderService, offerService, studentService, skillService, $routeParams) {
 
     //TOOLTIP    
     $(function () {
@@ -10,8 +10,6 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
         studentService.getUserbyId($rootScope.user._id).then(function (res) {
             $scope.student = res.data;
             $scope.studentSkill = res.data.skills;
-            //$scope.studentSkillId = res.data;
-            console.log($scope.studentSkill);
 
             /****   CREATION TAGS ******/
             //Import des compétences de shéma "skills"
@@ -54,18 +52,51 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
                 $scope.errorChoice = false;
                 $scope.errorTyping = false;
                 var up = $scope.chooseSkill.toUpperCase();
-                console.log("choix user: " + up);
                 updateSkill(dataSkilled, up);
                 //Affichage du skill et champ vide
                 //$scope.showSkill = true;
                 $scope.chooseSkill = "";
+
+                var data = {};
+                var idSkill = [];
+                data.skills = idSkill;
+                for (var i = 0; i < $scope.offerSkills.length; i++) {
+                    var objs = {
+                        skill: ""
+                    };
+                    var current = $scope.offerSkills[i].title;
+                    $scope.listSkills.forEach(function (skill) {
+                        if (current === skill) {
+                            objs.skill = $scope.offerSkills[i]._id;
+                            idSkill.push(objs);
+                        }
+                    });
+                }
+                studentService.update($rootScope.user._id, data).then(function (res) {})
             }
 
             //Suppression des Tags
-            $scope.deleteSkill = function deleteASkill(id) {
-                var idDeletedSkill = dataSkilled.indexOf(id);
-                console.log("le skill " + $scope.listSkills + " sera effacé");
-                return dataSkilled.splice(idDeletedSkill, 1);
+            $scope.deleteSkill = function deleteASkill(skill) {
+                var idDeletedSkill = dataSkilled.indexOf(skill);
+                console.log("le skill " + skill + " sera effacé");
+                dataSkilled.splice(idDeletedSkill, 1);
+
+                var data = {};
+                var idSkill = [];
+                data.skills = idSkill;
+                for (var i = 0; i < $scope.offerSkills.length; i++) {
+                    var objs = {
+                        skill: ""
+                    };
+                    var current = $scope.offerSkills[i].title;
+                    $scope.listSkills.forEach(function (skill) {
+                        if (current === skill) {
+                            objs.skill = $scope.offerSkills[i]._id;
+                            idSkill.push(objs);
+                        }
+                    });
+                }
+                studentService.update($rootScope.user._id, data).then(function (res) {})
             }
         });
     }

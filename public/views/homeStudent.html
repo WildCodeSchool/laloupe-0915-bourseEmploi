@@ -16,11 +16,14 @@
                     </div>
                     <div class="wildpanelbody panel paneldefault">
                         <h5>Mes compétences</h5>
-                        <ul class="skill-ul">
-                            <li class="headeradvert skill-li" ng-repeat="skill in student.skills"><span class="wildSkill">{{skill.skill.title}}</span>
+                        <ul class="skill-ul" ng-show="showSkill">
+                            <li class="headeradvert skill-li" ng-repeat="skill in listSkills"><span class="wildSkill">{{skill}}<i class="fa fa-times cross times-skill" ng-click="deleteSkill(skill)"></i></span></li>
                         </ul>
                     </div>
-
+                    <div class="wildpanelbody panel paneldefault text-center">
+                        <p class="bg-warning" ng-show="errorChoice">Vous avez déjà renseigné cette compétence</p>
+                        <p class="bg-danger" ng-show="errorTyping">Cette compétence n'existe pas</p>
+                    </div>
                     <div class="wildpanelfooterinput panel paneldefault form-inline row">
                         <div class="inputwildpanelfooter input-group input-group-sm col-md-8 col-sm-10 col-xs-12">
                             <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage, de compétence" class="form-control" list="Languages" />
