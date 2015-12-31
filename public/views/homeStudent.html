@@ -11,7 +11,7 @@
                     </div>
                     <div class="wildpanelbody panel paneldefault" id="studentCVmin">
                         <img class="imgprofilstudent" ng-src="{{student.picture}}">
-                        <h1 class="studentname">{{student.firstName}} {{student.name}}</h1>
+                        <h1 class="studentname"><a href="/#/book/{{user._id}}">{{student.firstName}} {{student.name}}</a><h1>
                         <h3 class="studentteaser">{{student.teaser}}</h3>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
@@ -26,15 +26,15 @@
                     </div>
                     <div class="wildpanelfooterinput panel paneldefault form-inline row">
                         <div class="inputwildpanelfooter input-group input-group-sm col-md-8 col-sm-10 col-xs-12">
-                            <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage, de compétence" class="form-control" list="Languages" />
+                            <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage" class="form-control" list="Languages" />
                             <datalist id="Languages">
                                 <option ng-repeat="offerSkill in offerSkills | filter:$viewValue | limitTo:8" value="{{offerSkill.title}}">
                             </datalist>
                             <span class="input-group-btn">
-                                <button class="btn btn-default btn-side" ng-click="add()" type="button" >OK</button>
+                                <button class="btn btn-default btn-side" ng-click="add()" type="button">OK</button>
                             </span>
                         </div>
-                        <a class="text-right">Editer mon CV</a>
+                        <a class="text-right" href="/#/editBook/{{user._id}}">Editer mon CV</a>
                     </div>
                 </div>
             </div>

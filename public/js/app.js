@@ -45,7 +45,10 @@ function config($routeProvider) {
         })
         .when('/book/:id', {
             templateUrl: 'views/bookStudent.html',
-            controller: 'bookStudentController'
+            controller: 'bookStudentController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/editBook/:id', {
             templateUrl: 'views/editBookStudent.html',
