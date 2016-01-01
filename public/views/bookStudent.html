@@ -15,21 +15,21 @@
                 <p>{{teaser}}</p>
                 <h5>contact</h5>
                 <ul>
-                    <li class="li-block"><i ng-show="mailIf" class="fa fa-paper-plane-o fa-lg"></i>{{student.email}}</li>
-                    <li class="li-block"><i ng-show="phoneIf" class="fa fa-phone fa-lg"></i>{{student.phone}}</li>
+                    <li class="li-block" ng-if="student.email != undefined"><i class="fa fa-paper-plane-o fa-lg"></i>{{student.email}}</li>
+                    <li class="li-block" ng-show="phoneIf"><i class="fa fa-phone fa-lg"></i>{{student.phone}}</li>
                 </ul>
                 <h5>réseaux sociaux</h5>
                 <div class="text-center">
-                    <a ng-show="linkedinIf" href=""><i class="fa fa-linkedin fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Linkedin"></i></a>
-                    <a ng-show="githubIf" href=""><i class="fa fa-github fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Github"></i></a>
-                    <a ng-show="twitterIf" href=""><i class="fa fa-twitter fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Twitter"></i></a>
-                    <a ng-show="instagramIf" href=""><i class="fa fa-instagram fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Instagram"></i></a>
-                    <a ng-show="facebookIf" href=""><i class="fa fa-facebook-official fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a>
-                    <a ng-show="websiteIf" href=""><i class="fa fa-desktop fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Website"></i></a></div>
+                    <a ng-if="student.linkedin != undefined" href="{{student.linkedin}}"><i class="fa fa-linkedin fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Linkedin"></i></a>
+                    <a ng-if="student.github != undefined" href="{{student.github}}"><i class="fa fa-github fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Github"></i></a>
+                    <a ng-if="student.twitter != undefined" href="{{student.twitter}}"><i class="fa fa-twitter fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Twitter"></i></a>
+                    <a ng-if="student.instagram != undefined" href="{{student.instagram}}"><i class="fa fa-instagram fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Instagram"></i></a>
+                    <a ng-if="student.facebook != undefined" href="{{student.facebook}}"><i class="fa fa-facebook-official fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a>
+                    <a ng-if="student.website != undefined" href="{{student.website}}"><i class="fa fa-desktop fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Website"></i></a></div>
             </div>
             <div class="wildpanelbody panel paneldefault"></div>
             <div class="wildpanelfooter panel panel-default">
-                <a class="text-right" href="/#/editBook/{{user._id}}">Modifier</a>
+                <a ng-show="ifStudent" class="text-right" href="/#/editBook/{{user._id}}">Modifier</a>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
                 <p>{{student.mobility}}</p>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a class="text-right">Modifier</a>
+                <a ng-show="ifStudent" class="text-right">Modifier</a>
             </div>
         </div>
 
@@ -57,7 +57,7 @@
                 <p>{{student.wildSide}}</p>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a class="text-right" href="/#/editBook/{{user._id}}">Modifier</a>
+                <a ng-show="ifStudent" class="text-right" href="/#/editBook/{{user._id}}">Modifier</a>
             </div>
         </div>
     </div>
@@ -83,7 +83,7 @@
                         </div>
                         <h2 class="titleadvert" data-toggle="modal" data-target="#{{exp.experience._id}}">{{exp.experience.job}}</h2>
                         <p class="smalltexadvert">{{exp.experience.company}} - {{exp.experience.contract}} - {{exp.experience.city}} ({{exp.experience.country}})</p>
-                        <p class="smalltexadvert-sm">{{exp.experience.startDate}} - {{exp.experience.endDate}}</p>
+                        <p class="smalltexadvert-sm">De {{calculDate(exp.experience.startDate)}} - A {{calculDate(exp.experience.endDate)}}</p>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
                         <p class="white-space-pre-line">undefined ?</p>
@@ -97,7 +97,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h2 class="titlemodal" id="myModalLabel">{{exp.experience.job}}</h2>
                                     <p class="smalltexadvert">{{exp.experience.company}} - {{exp.experience.contract}} - {{exp.experience.city}} ({{exp.experience.country}})</p>
-                                    <p class="smalltexadvert-sm">{{exp.experience.startDate}} - {{exp.experience.endDate}}</p>
+                                    <p class="smalltexadvert-sm">De {{calculDate(exp.experience.startDate)}} - A {{calculDate(exp.experience.endDate)}}</p>
                                 </div>
                                 <div class="modal-body">
                                     <h5>Missions</h5>
@@ -116,7 +116,7 @@
                                     <a href="{{exp.experience.website}}">{{exp.experience.website}}</a>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" href="/#/editBook/{{user._id}}" class="btnW">Editer</button>
+                                    <button type="button" class="btnW">Editer</button>
                                 </div>
                             </div>
                         </div>
@@ -125,12 +125,12 @@
                 </div>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a href="/#/editBook/{{user._id}}">Ajouter ou modifier une expérience</a>
+                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Ajouter ou modifier une expérience</a>
             </div>
         </div>
 
         <!--EDUCATIONS-->
-        <div class=" wildpanel panel panel-default row ">
+        <div class=" wildpanel panel panel-default row">
             <div class="wildpanelheader panel panel-default">
                 <h4><i class="fa fa-graduation-cap i-header"></i> Formation</h4>
             </div>
@@ -147,40 +147,40 @@
                         </div>
                         <h2 class="titleadvert" data-toggle="modal" data-target="#{{for.formation._id}}">{{for.formation.title}}</h2>
                         <p class="smalltexadvert">{{for.formation.school}} - {{for.formation.city}} ({{for.formation.country}})</p>
-                        <p class="smalltexadvert-sm">{{for.formation.startDate}} - {{for.formation.endDate}}</p>
+                        <p class="smalltexadvert-sm">De {{calculDate(for.formation.startDate)}} - A {{calculDate(for.formation.endDate)}}</p>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
                         <p class="white-space-pre-line">undefined ?</p>
                     </div>
-                </div>
 
-                <div class="wildpanelfooter panel panel-default">
-                    <a href="/#/editBook/{{user._id}}">Ajouter ou modifier une formation</a>
-                </div>
+                    <div class="wildpanelfooter panel panel-default">
+                        <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Ajouter ou modifier une formation</a>
+                    </div>
 
-                <!-- Modal -->
-                <div class="modal fade" id="{{for.formation._id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h2 class="titlemodal" id="myModalLabel">{{for.formation.title}}</h2>
-                                <p class="smalltexadvert">{{for.formation.school}} - {{for.formation.city}} ({{for.formation.country}})</p>
-                                <p class="smalltexadvert-sm">{{for.formation.startDate}} - {{for.formation.endDate}}</p>
-                            </div>
-                            <div class="modal-body">
-                                <h5>Déscriptions de la formation</h5>
-                                <p class="white-space-pre-line">{{for.formation.description}}</p>
-                            </div>
-                            <div class="modal-body">
-                                <h5>Diplome</h5>
-                                <p class="white-space-pre-line">{{for.formation.graduate}}</p>
-                            </div>
-                            <div class="modal-body">
-                                <a href="{{exp.experience.website}}">{{exp.experience.website}}</a>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" href="/#/editBook/{{user._id}}" class="btnW float-right">Editer</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="{{for.formation._id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h2 class="titlemodal" id="myModalLabel1">{{for.formation.title}}</h2>
+                                    <p class="smalltexadvert">{{for.formation.school}} - {{for.formation.city}} ({{for.formation.country}})</p>
+                                    <p class="smalltexadvert-sm">De {{calculDate(for.formation.startDate)}} - A {{calculDate(for.formation.endDate)}}</p>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>Descriptions de la formation</h5>
+                                    <p class="white-space-pre-line">{{for.formation.description}}</p>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>Diplome</h5>
+                                    <p class="white-space-pre-line">{{for.formation.graduate}}</p>
+                                </div>
+                                <div class="modal-body">
+                                    <a href="{{exp.experience.website}}">{{exp.formation.website}}</a>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" href="/#/editBook/{{user._id}}" class="btnW float-right">Editer</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -189,7 +189,7 @@
         </div>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 ">
+    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
         <!--SKILLS-->
         <div class="wildpanel panel panel-default col-xs-12 col-sm-6 col-md-12 col-lg-12 no-padding">
             <div class="wildpanelheader panel panel-default">
@@ -231,7 +231,7 @@
                 </ul>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a href="">modifier</a>
+                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">modifier</a>
             </div>
         </div>
     </div>

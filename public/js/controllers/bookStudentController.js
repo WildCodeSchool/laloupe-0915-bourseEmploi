@@ -4,23 +4,22 @@ function bookStudentController($scope, $rootScope, skillService, studentService,
         $('[data-toggle="tooltip"]').tooltip()
     })
 
-    //INITIALISATION ICON
-    $scope.facebookIf = true;
-    $scope.twitterIf = true;
-    $scope.linkedinIf = true;
-    $scope.instagramIf = true;
-    $scope.phoneIf = true;
-    $scope.mailIf = true;
-    $scope.websiteIf = true;
-    $scope.githubIf = true;
-
     function loadStudent() {
         //LOAD STUDENT
         studentService.getUserbyId($rootScope.user._id).then(function (res) {
             $scope.student = res.data;
             $scope.studentSkill = res.data.skills;
+            console.log($scope.student);
+
+            //Cacher les actions d'édition selon le type
+            if ($rootScope.user._type === 'Student')
+                $scope.ifStudent = true;
+
+            //Afichage des dates
             $scope.born = moment().diff($scope.student.birthDate, "years");
-            console.log($scope.student.hobbies);
+            $scope.calculDate = function (date) {
+                return moment(date).format('YYYY');
+            }
 
             /****   CREATION TAGS ******/
             //Import des compétences de shéma "skills"
