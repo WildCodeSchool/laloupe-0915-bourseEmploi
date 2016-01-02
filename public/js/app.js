@@ -32,6 +32,13 @@ function config($routeProvider) {
                 connected: checkIsConnected
             }
         })
+        .when('/editRecruiter', {
+            templateUrl: 'views/editRecruiter.html',
+            controller: 'editRecruiterController',
+            resolve: {
+                connected: checkIsConnected
+            }
+        })
         .when('/homeStudent', {
             templateUrl: 'views/homeStudent.html',
             controller: 'homeStudentController',
@@ -148,6 +155,7 @@ angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies', 'ui.bootstrap'])
     .controller('formRecruiterController', formRecruiterController)
     .controller('formOfferController', formOfferController)
     .controller('homeRctrController', homeRctrController)
+    .controller('editRecruiterController', editRecruiterController)
     .controller('homeStudentController', homeStudentController)
     .controller('offerController', offerController)
     .controller('searchOfferController', searchOfferController)
