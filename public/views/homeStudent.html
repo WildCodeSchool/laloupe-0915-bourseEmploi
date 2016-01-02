@@ -43,12 +43,15 @@
             <div class="col-xs12 col-sm-6 col-md-12 col-lg-12">
                 <div class=" wildpanel panel paneldefault">
                     <div class="wildpanelbody panel paneldefault">
-                        <h5>{{student.status}}</h5>
-                        <h5>{{student.situation}}</h5>
-                        <h5>{{student.mobility}}</h5>
+                        <h5>Situation</h5>
+                        <p>{{student.situation}}</p>
+                        <h5>Statut</h5>
+                        <p>{{student.status}}</p>
+                        <h5>Mobilité</h5>
+                        <p>{{student.mobility}}</p>
                     </div>
                     <div class="wildpanelfooter panel paneldefault">
-                        <a>Editer vos statuts</a>
+                        <a href="/#/editBook/{{user._id}}">Editer vos statuts</a>
                     </div>
                 </div>
             </div>

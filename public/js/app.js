@@ -141,7 +141,7 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 
-angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies'])
+angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies', 'ui.bootstrap'])
     .config(config)
     .controller('connectController', connectController)
     .controller('adminController', adminController)

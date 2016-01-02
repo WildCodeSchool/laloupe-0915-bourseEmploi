@@ -1,4 +1,4 @@
-function bookStudentController($scope, $rootScope, skillService, studentService, $location) {
+function bookStudentController($scope, $rootScope, skillService, studentService, $location, $uibModalStack) {
     //TOOLTIP    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
@@ -9,7 +9,7 @@ function bookStudentController($scope, $rootScope, skillService, studentService,
         studentService.getUserbyId($rootScope.user._id).then(function (res) {
             $scope.student = res.data;
             $scope.studentSkill = res.data.skills;
-            console.log($scope.student);
+            console.log($scope.student.experiences);
 
             //Cacher les actions d'édition selon le type
             if ($rootScope.user._type === 'Student')
@@ -112,6 +112,10 @@ function bookStudentController($scope, $rootScope, skillService, studentService,
     }
     loadStudent();
 
-
+    $scope.goToEdit = function (d) {
+        console.log(d);
+        $uibModalStack.dismissAll();
+        $location.path('/editBook/' + d)
+    }
 
 };
