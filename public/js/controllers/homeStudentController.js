@@ -1,6 +1,5 @@
 function homeStudentController($scope, $rootScope, geocoderService, offerService, studentService, skillService, $routeParams, $location) {
 
-
     //TOOLTIP    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
@@ -42,7 +41,6 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
                 });
                 if (!$scope.errorTyping && dataSkilled.indexOf(up) === -1) {
                     dataSkilled.push(up);
-                    console.log('Le nouveau tableau est : ' + dataSkilled);
                 } else if (dataSkilled.indexOf(up) > -1) {
                     $scope.errorChoice = true;
                 }
@@ -79,7 +77,6 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
             //Suppression des Tags
             $scope.deleteSkill = function deleteASkill(skill) {
                 var idDeletedSkill = dataSkilled.indexOf(skill);
-                console.log("le skill " + skill + " sera effacé");
                 dataSkilled.splice(idDeletedSkill, 1);
 
                 var data = {};
@@ -107,7 +104,6 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
     function loadOffer() {
         offerService.getAllCurrent().then(function (res) {
             $scope.offers = res.data;
-
             L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
             var map = L.mapbox.map('map', 'mapbox.streets')
                 .setView([46.84, 2.00], 5);
@@ -174,10 +170,14 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
                 });
                 offerService.getOfferBySkill(data).then(function (res) {
                     matchOffer = arrayUnique(res.data.concat(matchOffer));
-                    console.log(matchOffer);
                     $scope.matchingOffers = matchOffer;
                 });
             }
         });
     });
+
+    //STUDENT BOOK INFO
+    studentService.getInfo().then(function (res) {
+        $scope.bookInfo = res.data;
+    })
 }

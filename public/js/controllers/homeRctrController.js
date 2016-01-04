@@ -7,13 +7,13 @@ function homeRctrController($http, $scope, $rootScope, $location, $routeParams, 
     }
     loadOffers();
 
-//    function loadStudents() {
-//        var type = 'Student';
-//        studentService.getAll(type).then(function (res) {
-//            $scope.students = res.data;
-//        });
-//    }
-//    loadStudents();
+    //    function loadStudents() {
+    //        var type = 'Student';
+    //        studentService.getAll(type).then(function (res) {
+    //            $scope.students = res.data;
+    //        });
+    //    }
+    //    loadStudents();
 
     //Lien vers l'EDITION de l'offre
     var selectOffer = $routeParams.id;
@@ -99,5 +99,10 @@ function homeRctrController($http, $scope, $rootScope, $location, $routeParams, 
     //TOOLTIP    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    //STUDENT BOOK INFO
+    studentService.getInfo().then(function (res) {
+        $scope.bookInfo = res.data;
     })
 }

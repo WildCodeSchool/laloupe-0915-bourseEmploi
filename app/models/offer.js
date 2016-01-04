@@ -106,6 +106,7 @@ var Offer = {
             .populate("skills.skill")
             .populate("referentId")
             .exec(function (err, offers) {
+                console.log(err)
                 res.json(offers);
             });
     },

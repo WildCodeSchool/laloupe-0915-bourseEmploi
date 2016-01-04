@@ -80,7 +80,7 @@
             <div class="wildpanelheader panel paneldefault">
                 <h4>{{matchingOffers.length}} {{matchingOffers.length > 1 ? 'Annonces' : 'Annonce'}} qui {{matchingOffers.length > 1 ? 'pourraient' : 'pourrait'}} m'interresser</h4>
             </div>
-
+            <div class="panelmatchoffer no-marge">
             <!--OFFER-->
             <div ng-repeat="matchingOffer in matchingOffers" class="wildpanelbodys panel paneldefault">
                 <div class="offerdelete">
@@ -120,6 +120,7 @@
                         <p class="headeradvert smalltexadvert1">{{matchingOffer.city}} ({{matchingOffer.country}})</p>
                     </li>
                 </ul>
+            </div>
             </div>
 
             <div class="wildpanelfooter panel paneldefault">
@@ -195,15 +196,15 @@
                     </div>
                     <div class="wildpanelbody panel paneldefault row">
                         <div class="col-xs-4 col-sm-4 col-md-4 text-center">
-                            <h2 class="bookstatnumber">41</h2>
+                            <h2 class="bookstatnumber">{{bookInfo.nb_student}}</h2>
                             <p class="bookstattitle">Wilders</p>
                         </div>
                         <div class="col-xs-4 col-sm-4 col-md-4 text-center">
-                            <h2 class="bookstatnumber">41</h2>
+                            <h2 class="bookstatnumber">{{bookInfo.nb_student_job}}</h2>
                             <p class="bookstattitle">en recherche d'emploi</p>
                         </div>
                         <div class="col-xs-4 col-sm-4 col-md-4 text-center">
-                            <h2 class="bookstatnumber">41</h2>
+                            <h2 class="bookstatnumber">{{bookInfo.nb_student_stage}}</h2>
                             <p class="bookstattitle">en recherche de stage</p>
                         </div>
                     </div>
