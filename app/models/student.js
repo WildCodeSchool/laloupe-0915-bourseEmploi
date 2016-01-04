@@ -71,6 +71,8 @@ var Student = {
     findByType: function (req, res) {
         Student.model.find({
                 _type: 'Student'
+            }, {
+                password: 0
             })
             .populate('skills.skill')
             .populate('likes.like')
@@ -80,7 +82,9 @@ var Student = {
     },
 
     findById: function (req, res) {
-        Student.model.findById(req.params.id)
+        Student.model.findById(req.params.id, {
+                password: 0
+            })
             .populate('skills.skill')
             .populate('likes.like')
             .populate('formations.formation')
@@ -93,17 +97,23 @@ var Student = {
     findInfo: function (req, res) {
         Student.model.find({
             _type: 'Student'
+        }, {
+            password: 0
         }, function (err, student) {
             var infos = {}
             infos.nb_student = student.length;
             Student.model.find({
                 _type: 'Student',
                 situation: "En recherche d'emploi"
+            }, {
+                password: 0
             }, function (err, student_stage) {
                 infos.nb_student_stage = student_stage.length;
                 Student.model.find({
                     _type: 'Student',
                     status: 'Ouvert aux opportunités',
+                }, {
+                    password: 0
                 }, function (err, student_job) {
                     infos.nb_student_job = student_job.length;
                     res.json(infos);

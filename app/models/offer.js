@@ -88,7 +88,7 @@ var Offer = {
     findAll: function (req, res) {
         Offer.model.find({})
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offers) {
                 res.json(offers);
             });
@@ -104,7 +104,7 @@ var Offer = {
                 }
             })
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offers) {
                 console.log(err)
                 res.json(offers);
@@ -114,7 +114,7 @@ var Offer = {
     findById: function (req, res) {
         Offer.model.findById(req.params.id)
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offer) {
                 res.json(offer);
             });
@@ -123,7 +123,7 @@ var Offer = {
     findByUser: function (req, res) {
         Offer.model.find(req.params.id)
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offer) {
                 res.json(offer);
             });
@@ -145,7 +145,7 @@ var Offer = {
                 }
             })
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offer) {
                 if (err) {
                     res.status(400);

@@ -61,19 +61,25 @@ var Recruiter = {
     findByType: function (req, res) {
         Recruiter.model.find({
             _type: 'Recruiter'
+        }, {
+            password: 0
         }, function (err, users) {
             res.json(users);
         });
     },
 
     findAll: function (req, res) {
-        Recruiter.model.find({}, function (err, recruiters) {
+        Recruiter.model.find({}, {
+            password: 0
+        }, function (err, recruiters) {
             res.json(recruiters);
         });
     },
 
     findById: function (req, res) {
-        Recruiter.model.findById(req.params.id, function (err, recruiter) {
+        Recruiter.model.findById(req.params.id, {
+            password: 0
+        }, function (err, recruiter) {
             if (err)
                 console.log(err);
             res.json(recruiter);
@@ -83,6 +89,8 @@ var Recruiter = {
     findByEmail: function (req, res) {
         Recruiter.model.findOne({
             email: req.headers.email
+        }, {
+            password: 0
         }, function (err, data) {
             if (data)
                 res.status(409).send("Un compte existe déjà avec l'adresse mail " + req.headers.email);
