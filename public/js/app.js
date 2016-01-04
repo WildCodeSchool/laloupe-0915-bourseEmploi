@@ -48,7 +48,10 @@ function config($routeProvider) {
         })
         .when('/book', {
             templateUrl: 'views/book.html',
-            controller: 'bookController'
+            controller: 'bookController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/book/:id', {
             templateUrl: 'views/bookStudent.html',

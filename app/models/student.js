@@ -25,6 +25,7 @@ var StudentSchema = User.model.schema.extend({
     wildSide: String,
     status: String,
     situation: String,
+    teaser: String,
     classe: {
         type: String,
         required: true
@@ -66,6 +67,17 @@ var StudentSchema = User.model.schema.extend({
 
 var Student = {
     model: mongoose.model('Student', StudentSchema),
+
+    findByType: function (req, res) {
+        Student.model.find({
+                _type: 'Student'
+            })
+            .populate('skills.skill')
+            .populate('likes.like')
+            .exec(function (err, users) {
+                res.json(users);
+            });
+    },
 
     findById: function (req, res) {
         Student.model.findById(req.params.id)

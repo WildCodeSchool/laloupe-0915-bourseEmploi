@@ -1,5 +1,6 @@
 function homeStudentController($scope, $rootScope, geocoderService, offerService, studentService, skillService, $routeParams, $location) {
 
+
     //TOOLTIP    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()

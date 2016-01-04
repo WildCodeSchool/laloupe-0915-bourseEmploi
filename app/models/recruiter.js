@@ -60,7 +60,7 @@ var Recruiter = {
 
     findByType: function (req, res) {
         Recruiter.model.find({
-            _type: req.params.type
+            _type: 'Recruiter'
         }, function (err, users) {
             res.json(users);
         });
