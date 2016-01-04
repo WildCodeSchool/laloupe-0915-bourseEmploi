@@ -1,8 +1,8 @@
 function studentService($http, $cookies) {
     return {
         //STUDENT'S ROUTES   /!\ 
-        getAll: function (type) {
-            return $http.get('/api/users/' + type, {
+        getAll: function () {
+            return $http.get('/api/users/students', {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -19,9 +19,9 @@ function studentService($http, $cookies) {
 
         create: function (data) {
             return $http.post('/api/students', data, {
-                     headers: {
-                         authorization: $cookies.get('wildFinder_token')
-                     }
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
             });
         },
 

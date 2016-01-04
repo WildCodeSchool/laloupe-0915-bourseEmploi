@@ -352,7 +352,7 @@ ul {
     border-radius: 10px;
     border-color: #daa520;
     color: #daa520;
-    margin: 0 10px 0 0;
+    margin: 2px 10px 0 0;
 }
 
 .skill-ul {
@@ -441,7 +441,15 @@ ul {
     padding: 5px 10px 5px 10px;
     border-top-color: #B6B6B6;
     border-radius: 0px;
-    min-height: 90px;
+    min-height: 101px;
+}
+
+.wildpanelbook {
+    margin: 0 auto;
+    padding: 5px 10px 5px 10px;
+    border-top-color: #B6B6B6;
+    border-radius: 0px;
+    min-height: 112px;
 }
 
 .wildpanelfooter {
@@ -712,7 +720,15 @@ a.title-link:hover {
 }
 
 .profilimg-sm {
-    height: 101px;
+    height: 100px;
+    margin-top: -5px;
+    margin-left: -10px;
+    margin-right: 10px;
+    float: left;
+}
+
+.profilimg-book {
+    height: 110px;
     margin-top: -5px;
     margin-left: -10px;
     margin-right: 10px;
@@ -927,4 +943,10 @@ li.active {
 }
 .fa-nav:hover {
     color: white;
+}
+
+
+
+.li-skill {
+    margin-bottom: 5px;
 }
