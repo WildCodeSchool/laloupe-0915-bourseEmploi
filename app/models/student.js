@@ -90,6 +90,28 @@ var Student = {
             });
     },
 
+    findInfo: function (req, res) {
+        Student.model.find({
+            _type: 'Student'
+        }, function (err, student) {
+            var infos = {}
+            infos.nb_student = student.length;
+            Student.model.find({
+                _type: 'Student',
+                situation: "En recherche d'emploi"
+            }, function (err, student_stage) {
+                infos.nb_student_stage = student_stage.length;
+                Student.model.find({
+                    _type: 'Student',
+                    status: 'Ouvert aux opportunités',
+                }, function (err, student_job) {
+                    infos.nb_student_job = student_job.length;
+                    res.json(infos);
+                });
+            });
+        });
+    },
+
     create: function (req, res) {
         Student.model.create(req.body, function (err, student) {
             res.json(student);

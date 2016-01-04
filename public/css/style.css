@@ -950,3 +950,8 @@ li.active {
 .li-skill {
     margin-bottom: 5px;
 }
+
+.panelmatchoffer {
+    max-height: 400px;
+    overflow: scroll;
+}
