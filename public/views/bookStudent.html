@@ -1,4 +1,4 @@
-<h1 class="student-title">Nom de l'élève <small>Teaser</small></h1>
+<h1 class="student-title">{{student.firstName}} {{student.name}}<small>{{student.teaser}}</small></h1>
 
 <div class="row">
     <div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
@@ -8,15 +8,15 @@
             <div class="wildpanelheader panel panel-default"></div>
             <div class="wildpanelbody panel paneldefault" id="studentCVmin">
                 <img class="imgprofilstudent" src="../img/darkvador.jpg">
-                <p>Age</p>
-                <p>Sexe</p>
+                <p>{{student.birthDate}}</p>
+                <p>{{student.gender}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault" id="studentCVmin">
-                <p>Petit texte de présentation en quelques lignes.</p>
+                <p>{{student.description}}</p>
                 <h5>contact</h5>
                 <ul>
-                    <li class="li-block"><i ng-show="mailIf" class="fa fa-paper-plane-o fa-lg"></i>mail</li>
-                    <li class="li-block"><i ng-show="phoneIf" class="fa fa-phone fa-lg"></i>phone</li>
+                    <li class="li-block"><i ng-show="mailIf" class="fa fa-paper-plane-o fa-lg"></i>{{student.email}}</li>
+                    <li class="li-block"><i ng-show="phoneIf" class="fa fa-phone fa-lg"></i>{{student.studentPhone}}</li>
                 </ul>
                 <h5>réseaux sociaux</h5>
                 <div class="text-center">
@@ -37,11 +37,11 @@
         <div class="wildpanel panel panel-default row">
             <div class="wildpanelbody panel paneldefault">
                 <h5>Situation</h5>
-                <p>undifine</p>
+                <p>{{student.situation}}</p>
                 <h5>Statut</h5>
-                <p>undifine</p>
+                <p>{{student.status}}</p>
                 <h5>Mobilité</h5>
-                <p>undifine</p>
+                <p>{{student.mobility}}</p>
             </div>
             <div class="wildpanelfooter panel panel-default">
                 <a class="text-right">Modifier</a>
@@ -54,7 +54,7 @@
                 <h4>Son coté Wild</h4>
             </div>
             <div class="wildpanelbody panel paneldefault">
-                <p>undifine</p>
+                <p>{{student.wildSide}}</p>
             </div>
             <div class="wildpanelfooter panel panel-default">
                 <a class="text-right">Modifier</a>
@@ -84,7 +84,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h2 class="titlemodal" id="myModalLabel">Intitulé du poste</h2>
+                                <h2 class="titlemodal" id="myModalLabel">{{student.experience.job}}</h2>
                                 <p class="smalltexadvert">Entreprise - Type de Contrat - Ville (pays)</p>
                                 <p class="smalltexadvert-sm">Date de début - Date de fin</p>
                             </div>
@@ -113,7 +113,7 @@
                 </div>
                 <!--Teaser-->
                 <div class="wildpanelbodys panel paneldefault">
-                    <h2 class="titleadvert" data-toggle="modal" data-target="#myModal">Intitulé du poste</h2>
+                    <h2 class="titleadvert" data-toggle="modal" data-target="#myModal">{{student.experience.job}}</h2>
                     <p class="smalltexadvert">Entreprise - Type de Contrat - Ville (pays)</p>
                     <p class="smalltexadvert-sm">Date de début - Date de fin</p>
                 </div>
@@ -146,7 +146,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h2 class="titlemodal" id="myModalLabel">Intitulé de la formation</h2>
+                                <h2 class="titlemodal" id="myModalLabel">{{student.formation.title}}</h2>
                                 <p class="smalltexadvert">Ecole - Ville (Pays)</p>
                                 <p class="smalltexadvert-sm">Date de début - Date de fin</p>
                             </div>
@@ -171,7 +171,7 @@
                 </div>
                 <!--Teaser-->
                 <div class="wildpanelbodys panel paneldefault">
-                    <h2 class="titleadvert" data-toggle="modal" data-target="#myModal2">Intitulé de la formation</h2>
+                    <h2 class="titleadvert" data-toggle="modal" data-target="#myModal2">{{student.formation.title}}</h2>
                     <p class="smalltexadvert">Ecole - Ville (pays)</p>
                     <p class="smalltexadvert-sm">Date de début - Date de fin</p>
                 </div>
@@ -221,7 +221,7 @@
             <div class="wildpanelbody panel paneldefault">
                 <ul>
                     <li class="li-block">
-                        <p> • undifine</p>
+                        <p> • {{student.hobbies}}</p>
                     </li>
 
                 </ul>

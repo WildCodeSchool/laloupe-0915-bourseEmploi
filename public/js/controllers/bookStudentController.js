@@ -3,6 +3,7 @@ function bookStudentController($http, $scope, $rootScope, studentService) {
     function loadStudent(){
         studentService.getUserById($rootScope.user._id).then(function(res){
             console.log(res.data);
+            $scope.student = res.data;
         })
     }
     loadStudent();
@@ -22,4 +23,4 @@ function bookStudentController($http, $scope, $rootScope, studentService) {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
-};
+}
