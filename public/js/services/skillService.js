@@ -3,8 +3,8 @@ function skillService($http, $cookies) {
         get: function () {
             return $http.get('/api/skills', {
                 headers: {
-                    authorization: $cookies.get('wildFinder_token')
-                }
+                 authorization: $cookies.get('wildFinder_token')
+             }
             });
         },
         update: function (id, data) {

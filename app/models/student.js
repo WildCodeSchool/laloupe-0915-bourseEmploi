@@ -71,17 +71,17 @@ var Student = {
         Student.model.findById(req.params.id)
             .populate('skills.skill')
             .populate('likes.like')
-            .populate('formation.formation')
-            .populate('experience.experience')
-
-        .exec(function (err, student) {
-            res.json(student);
-        });
+            .populate('formations.formation')
+            .populate('experiences.experience')
+            .exec(function (err, student) {
+                res.json(student);
+            });
     },
 
     create: function (req, res) {
         Student.model.create(req.body, function (err, student) {
             res.json(student);
+            console.log(err);
         });
     },
 

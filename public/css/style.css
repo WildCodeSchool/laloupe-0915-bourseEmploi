@@ -78,6 +78,15 @@ ul {
     cursor: pointer;
 }
 
+.fa-sign-in {
+    color: #b6b6b6;
+}
+
+.fa-sugn-in:hover {
+    color: #202020;
+    cursor: pointer;
+}
+
 .caseAccueil {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -286,16 +295,6 @@ ul {
 
 /* $WARNING */
 
-.wildDelete {
-    color: #008080;
-    cursor: pointer;
-    font-weight: 500;
-}
-
-.wildDelete:hover {
-    color: #ce4844;
-}
-
 .bs-callout-warning {
     border-left-color: #f0ad4e;
 }
@@ -306,6 +305,20 @@ ul {
 
 
 /* $DANGER */
+
+.deleteOffer:hover {
+    background-color: #ce4844;
+    color: white;
+}
+
+.deleteOffer {
+    cursor: pointer;
+    color: #ce4844;
+}
+
+.deleteOffer>h4 {
+    font-weight: 600;
+}
 
 .bs-callout-danger {
     border-left-color: #ce4844;
@@ -484,6 +497,7 @@ ul {
     margin-top: -30px;
     margin-right: 3px;
     margin-bottom: 5px;
+    background-color: #B6B6B6;
 }
 
 #studentCVmin {
@@ -910,4 +924,7 @@ li.active {
 
 .nav-pills>li.active>a:hover {
     background-color: #009587;
+}
+.fa-nav:hover {
+    color: white;
 }

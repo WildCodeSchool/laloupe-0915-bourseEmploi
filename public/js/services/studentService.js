@@ -9,8 +9,8 @@ function studentService($http, $cookies) {
             });
         },
 
-        getUserById: function (id) {
-            return $http.get('/api/students' + id, {
+        getUserbyId: function (id) {
+            return $http.get('/api/students/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -19,9 +19,9 @@ function studentService($http, $cookies) {
 
         create: function (data) {
             return $http.post('/api/students', data, {
-                headers: {
-                    authorization: $cookies.get('wildFinder_token')
-                }
+                     headers: {
+                         authorization: $cookies.get('wildFinder_token')
+                     }
             });
         },
 

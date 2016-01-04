@@ -11,6 +11,8 @@ module.exports = function (app, passport) {
 
     app.get('/api/offers/:id', Auth.user.hasAuthorization, Offer.findById);
 
+    app.get('/api/offers/currents', Auth.user.hasAuthorization, Offer.findAllCurrent);
+
     app.get('/api/offers/users/:id', Auth.user.hasAuthorization, Offer.findByUser);
 
     app.post('/api/offers', Auth.user.hasAuthorization, Offer.create);
@@ -18,5 +20,7 @@ module.exports = function (app, passport) {
     app.put('/api/offers/:id', Auth.user.hasAuthorization, Offer.update);
 
     app.delete('/api/offers/:id', Auth.user.hasAuthorization, Offer.delete);
+
+    app.post('/api/offers/skills', Auth.user.hasAuthorization, Offer.findBySkill);
 
 }

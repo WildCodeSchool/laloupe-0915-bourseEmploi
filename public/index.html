@@ -42,6 +42,7 @@
     <script src="js/controllers/formOfferController.js"></script>
     <script src="js/controllers/offerController.js"></script>
     <script src="js/controllers/homeRctrController.js"></script>
+    <script src="js/controllers/editRecruiterController.js"></script>
     <script src="js/controllers/homeStudentController.js"></script>
     <script src="js/controllers/searchOfferController.js"></script>
     <script src="js/controllers/editOfferController.js"></script>
@@ -94,23 +95,23 @@
                     <!--OFFERS-->
                     <li ng-class="{active: activetab=='/formOffer'}" class="dropdown li-nav">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bullhorn"></i> Mes annonces <span class="caret"></span>
+                            <i class="fa fa-bullhorn fa-nav"></i> Mes annonces <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="li-nav"><a href="/#/formOffer">Créer une annonces</a></li>
                             <li class="li-nav divider" role="separator"></li>
                             <li class="li-nav"><a href="">Voir mes annonces</a></li>
-                            <li class="li-nav"><a href="">Editer mes annonces</a></li>
+                            <li class="li-nav"><a href="/#/editRecruiter">Editer mes annonces</a></li>
                         </ul>
                     </li>
                     <!--BOOK-->
                     <li ng-class="{active: activetab=='/book'}" class="li-nav" data-toggle="tooltip" data-placement="bottom" title="Decouvrir les étudiants de la WCS">
-                        <a href="/#/book"><i class="fa fa-search"></i> Le Book </a>
+                        <a href="/#/book"><i class="fa fa-search fa-nav"></i> Le Book </a>
                     </li>
                     <!--FAVOURITES STUDENTS-->
                     <li ng-class="{active: activetab=='/'}" class="li-nav" data-toggle="tooltip" data-placement="bottom" title="Vos coup de coeur">
                         <a href="">
-                            <i class="fa fa-heart fa-lg"></i>
+                            <i class="fa fa-heart fa-lg fa-nav"></i>
                         </a>
                     </li>
                     <!--MY ACCOUNT-->
@@ -120,7 +121,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="li-nav"><a href="/#/homeRecruiter">Ma page d'accueil</a></li>
-                            <li class="li-nav"><a href="">Editer mon compte</a></li>
+                            <li class="li-nav"><a href="/#/editRecruiter">Editer mon compte</a></li>
                             <li class="li-nav divider" role="separator"></li>
                             <li class="li-nav"><a ng-click="logout()">Deconnexion</a></li>
                         </ul>
@@ -131,19 +132,19 @@
                 <ul ng-if="user._type == 'Student'" class="nav navbar-nav navbar-right">
                     <!--OFFERS-->
                     <li ng-class="{active: activetab=='/searchOffer'}" class="li-nav" data-toggle="tooltip" data-placement="bottom" title="Découvrir les offres d'emplois des partenaires de la WCS">
-                        <a href="/#/searchOffer"><i class="fa fa-bullhorn"></i> Les offres</a>
+                        <a href="/#/searchOffer"><i class="fa fa-bullhorn fa-nav"></i> Les offres</a>
                     </li>
                     <!--STUDENT'S BOOK-->
                     <li ng-class="{active: activetab=='/book'}" class="li-nav" data-toggle="tooltip" data-placement="bottom" title="Decouvrir les étudiants de la WCS">
-                        <a href="/#/book"><i class="fa fa-search"></i> Le Book</a>
+                        <a href="/#/book"><i class="fa fa-search fa-nav"></i> Le Book</a>
                     </li>
                     <!--FAVOURITES OFFERS-->
                     <li ng-class="{active: activetab=='/'}" class="li-nav" data-toggle="tooltip" data-placement="bottom" title="Vos offres favorites">
-                        <a href=""><i class="fa fa-heart fa-lg"></i></a>
+                        <a href=""><i class="fa fa-heart fa-lg fa-nav"></i></a>
                     </li>
                     <!--CV-->
                     <li ng-class="{active: activetab=='/'}" class="li-nav">
-                        <a href="/#/book/{{user._id}}"><i class="fa fa-file-text"></i> Mon CV</a>
+                        <a href="/#/book/{{user._id}}"><i class="fa fa-file-text fa-nav"></i> Mon CV</a>
                     </li>
                     <!--STUDENT ACCOUNT-->
                     <li ng-class="{active: activetab=='/homeStudent'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Votre compte">
@@ -152,7 +153,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="li-nav"><a href="/#/homeStudent">Ma page d'accueil</a></li>
-                            <li class="li-nav"><a href="">Editer mon compte</a></li>
+                            <li class="li-nav"><a href="/#/editBook/{{user._id}}">Editer mon compte</a></li>
                             <li class="li-nav divider" role="separator"></li>
                             <li class="li-nav"><a ng-click="logout()">Deconnexion</a></li>
                         </ul>

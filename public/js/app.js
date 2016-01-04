@@ -6,7 +6,10 @@ function config($routeProvider) {
         })
         .when('/formOffer', {
             templateUrl: 'views/formOffer.html',
-            controller: 'formOfferController'
+            controller: 'formOfferController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/searchOffer', {
             templateUrl: 'views/searchOffer.html',
@@ -29,6 +32,13 @@ function config($routeProvider) {
                 connected: checkIsConnected
             }
         })
+        .when('/editRecruiter', {
+            templateUrl: 'views/editRecruiter.html',
+            controller: 'editRecruiterController',
+            resolve: {
+                connected: checkIsConnected
+            }
+        })
         .when('/homeStudent', {
             templateUrl: 'views/homeStudent.html',
             controller: 'homeStudentController',
@@ -42,7 +52,10 @@ function config($routeProvider) {
         })
         .when('/book/:id', {
             templateUrl: 'views/bookStudent.html',
-            controller: 'bookStudentController'
+            controller: 'bookStudentController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/editBook/:id', {
             templateUrl: 'views/editBookStudent.html',
@@ -135,13 +148,14 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 
-angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies'])
+angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies', 'ui.bootstrap'])
     .config(config)
     .controller('connectController', connectController)
     .controller('adminController', adminController)
     .controller('formRecruiterController', formRecruiterController)
     .controller('formOfferController', formOfferController)
     .controller('homeRctrController', homeRctrController)
+    .controller('editRecruiterController', editRecruiterController)
     .controller('homeStudentController', homeStudentController)
     .controller('offerController', offerController)
     .controller('searchOfferController', searchOfferController)

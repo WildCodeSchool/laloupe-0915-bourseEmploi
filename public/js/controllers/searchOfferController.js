@@ -12,17 +12,15 @@ function searchOfferController($scope, offerService, geocoderService) {
         .setView([46.84, 2.00], 5);
 
     function loadOffer() {
-        offerService.getAll().then(function (res) {
+        offerService.getAllCurrent().then(function (res) {
             $scope.offers = res.data;
             $scope.today = new Date();
-            console.log($scope.today);
             $scope.after = function (dates) {
                 return moment($scope.today).isAfter(dates);
             }
             $scope.before = function (dates) {
                 return moment($scope.today).isBefore(dates);
             }
-
             $scope.startOffer = function (date) {
                 moment.locale('fr')
                 var d = moment(date);
@@ -36,17 +34,17 @@ function searchOfferController($scope, offerService, geocoderService) {
 
             //MARKERS
             $scope.offers.forEach(function (offer) {
-                if ($scope.after(offer.startDate) && $scope.before(offer.enDate)) {
-                    var address = offer.address + ", " + offer.zipCode + " " + offer.city + ", " + offer.country;
+                var address = offer.address + ", " + offer.zipCode + " " + offer.city + ", " + offer.country;
 
-                    geocoderService.CoordinateByAdress(address).then(function (res) {
-                        var lng = res.data.features[0].geometry.coordinates[0];
-                        var lat = res.data.features[0].geometry.coordinates[1];
+                geocoderService.CoordinateByAdress(address).then(function (res) {
+                    var lng = res.data.features[0].geometry.coordinates[0];
+                    var lat = res.data.features[0].geometry.coordinates[1];
 
-                        var marker = new L.marker([lat, lng]).addTo(map);
-                        var marker2 = new L.marker([lat, lng]).addTo(map2);
-                    });
-                }
+                    var marker = new L.marker([lat, lng]).addTo(map);
+                    marker.bindPopup('<a href="/#/offer/' + offer._id + '"><b>' + offer.title + '</b></a><br>' + offer.city);
+                    var marker2 = new L.marker([lat, lng]).addTo(map2);
+                    marker2.bindPopup('<a href="/#/offer/' + offer._id + '"><b>' + offer.title + '</b></a><br>' + offer.city);
+                });
             }.bind($scope));
 
         });

@@ -1,4 +1,4 @@
-<h1>edition profil élève</h1>
+<h2>Edition d'un profil élève.</h2>
 
 
 <div class="row">
@@ -6,7 +6,7 @@
 
         <div class="row" id="anchor1">
             <div class="page-header">
-                <h2>infos personnelles</h2>
+                <h2>Informations personnelles :</h2>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-5">
@@ -38,13 +38,13 @@
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-5">
-                    <label class="control-label">email :</label>
+                    <label class="control-label">Email :</label>
                     <div>
                         <input type="text" class="form-control" id="" ng-model="email">
                     </div>
                 </div>
                 <div class="col-sm-5">
-                    <label class="control-label">telephone :</label>
+                    <label class="control-label">Telephone :</label>
                     <div>
                         <input type="text" class="form-control" id="" ng-model="phone">
                     </div>
@@ -62,7 +62,7 @@
 
         <div class="row" id="anchor2">
             <div class="page-header">
-                <h2>Situation</h2>
+                <h2>Situation :</h2>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-5">
@@ -155,7 +155,7 @@
             <div class="page-header">
                 <h2>Expérience</h2>
             </div>
-            <h4>modifier une experience</h4>
+            <h4>Modifier une experience :</h4>
             <fieldset class="form-group">
                 <div class="col-sm-10">
                     <label class="control-label">Intitulé du poste :</label>
@@ -222,7 +222,7 @@
                     </form>
                 </div>
             </fieldset>
-            <h4>ajouter une experience</h4>
+            <h4>Ajouter une experience</h4>
             <fieldset class="form-group">
                 <div class="col-sm-10">
                     <label class="control-label">Intitulé du poste :</label>
@@ -295,7 +295,7 @@
             <div class="page-header">
                 <h2>Formation</h2>
             </div>
-            <h4>modifier une formation</h4>
+            <h4>Modifier une formation</h4>
             <fieldset class="form-group">
                 <div class="col-sm-10">
                     <label class="control-label">Intitulé de la formation :</label>
@@ -349,7 +349,7 @@
                     </form>
                 </div>
             </fieldset>
-            <h4>ajouter une formation</h4>
+            <h4>Ajouter une formation</h4>
             <fieldset class="form-group">
                 <div class="col-sm-10">
                     <label class="control-label">Intitulé de la formation :</label>
@@ -410,7 +410,7 @@
                 </div>
                 <fieldset class="form-group">
                     <div class="col-sm-5">
-                        <label class="control-label">Modifié loisir :</label>
+                        <label class="control-label">Modifier les loisirs :</label>
                         <div>
                             <input type="text" class="form-control" id="" ng-model="hobbies">
                         </div>
@@ -425,7 +425,7 @@
                 </fieldset>
                 <fieldset class="form-group">
                     <div class="col-sm-5">
-                        <label class="control-label">Ajouter loisir :</label>
+                        <label class="control-label">Ajouter un loisir :</label>
                         <div>
                             <input type="text" class="form-control" id="" ng-model="hobbies">
                         </div>
@@ -445,7 +445,6 @@
     <div class="col-md-3 col-lg-3 col-sm-3">
         <nav class="hidden-xs affix">
             <ul class="nav nav-pills nav-stacked">
-                {{activesubmenu}}
                 <li ng-class="{active: activesubmenu=='#anchor1'}"><a ng-click="scrollTo('anchor1')">Infos personnelles</a></li>
                 <li ng-class="{active: activesubmenu=='#anchor2'}"><a ng-click="scrollTo('anchor2')">Situation</a></li>
                 <li ng-class="{active: activesubmenu=='#anchor3'}"><a ng-click="scrollTo('anchor3')">Coté wild</a></li>
