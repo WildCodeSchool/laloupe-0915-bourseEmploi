@@ -1,42 +1,47 @@
-function offerController($scope, $http, $location, $routeParams, offerService, geocoderService, recruiterService) {
+function offerController($scope, $rootScope, $http, $location, $routeParams, offerService, geocoderService, recruiterService, studentService) {
 
     var selectOffer = $routeParams.id;
-
-    //EDIT
-    $scope.edit = function () {
-        $location.path('/editOffer/' + selectOffer)
-    }
-
-    //DELETE
-    $scope.delete = function () {
-        offerService.delete(selectOffer).then(function (res) {
-            console.log(selectOffer);
-            alert("annonce supprimée");
-            $location.path('/homeRecruiter');
-        });
-    }
+    var today = new Date();
+    var d = moment(today).format();
 
     //LOAD OFFER
     function loadOffer() {
         offerService.getOfferbyId(selectOffer).then(function (res) {
             $scope.offer = res.data;
+            $scope.company = res.data.referentId;
 
-            //LOAD RECRUITER 
-            function loadRecruiter() {
+            //boutton ARCHIV ou DELETE en fonction de la date
+            $scope.noPublish = false;
+            $scope.deleteOR = false;
+            $scope.titleExpired = true;
+            $scope.titleArchiv = false;
 
-                recruiterService.getRecruiterbyId($scope.offer.referentId).then(function (res) {
-                    $scope.company = res.data;
-                    console.log(res.data);
+            function deletOrArch() {
+                if (d > $scope.offer.endDate) {
+                    $scope.noPublish = true;
+                    $scope.deleteOR = true;
+                    $scope.titleExpired = false;
+                    $scope.titleArchiv = true;
+                }
+            }
+            deletOrArch();
+
+            function pop() {
+                var type = 'Recruiter';
+                recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {
+                    $scope.type = res.data;
+                    console.log($scope.type._type);
+                    if ($scope.type._type === 'Recruiter')
+                        $scope.showRcrt = true;
                 });
             }
-
-            loadRecruiter();
+            pop();
 
             moment.locale('fr')
             var a = moment($scope.offer.startDate);
             var b = moment($scope.offer.endDate);
             var c = moment();
-            $scope.startOffer = c.from(a);
+            $scope.startOffer = c.to(a);
             $scope.endOffer = c.to(b);
 
             //MAP
@@ -57,6 +62,30 @@ function offerController($scope, $http, $location, $routeParams, offerService, g
         });
     }
     loadOffer();
+
+    //EDIT
+    $scope.edit = function () {
+        $location.path('/editOffer/' + selectOffer)
+    }
+
+    //DELETE
+    $scope.delete = function () {
+        offerService.delete(selectOffer).then(function (res) {
+            console.log(selectOffer);
+            alert("annonce supprimée");
+            $location.path('/homeRecruiter');
+        });
+    }
+
+    //ARCHIV
+    $scope.archiv = function (selectOffer) {
+        var data = {};
+        data.endDate = moment(today).add(-1, 'days');
+        offerService.update(selectOffer, data).then(function (res) {
+            alert("Annonce archivée");
+        });
+        loadOffer();
+    }
 
     //LOAD RECRUITER 
     function loadRecruiter() {

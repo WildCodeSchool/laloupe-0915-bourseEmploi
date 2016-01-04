@@ -16,16 +16,20 @@ var UserSchema = new mongoose.Schema({
     twitter: String,
     facebook: String,
     linkedin: String,
-    instagram: String
-}, {collection: 'user', discriminatorKey : '_type' });
+    instagram: String,
+    github: String
+}, {
+    collection: 'user',
+    discriminatorKey: '_type'
+});
 
 var User = {
     model: mongoose.model('User', UserSchema),
 
-    find: function(email, password, callback){
+    find: function (email, password, callback) {
         User.model.findOne({
-          email: email,
-          password: password
+            email: email,
+            password: password
         }, callback);
     }
 

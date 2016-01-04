@@ -1,11 +1,11 @@
-<h2>edition offre</h2>
+<h2>Edition d'une offre.</h2>
 
 <div class="row">
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 
         <div class="row" id="anchor1">
             <div class="page-header">
-                <h3>infos personnelles</h3>
+                <h3>Informations personnelles :</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-5">
@@ -41,7 +41,7 @@
 
         <div class="row" id="anchor2">
             <div class="page-header">
-                <h3>Coordonnées</h3>
+                <h3>Coordonnées :</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-3">
@@ -83,7 +83,7 @@
 
         <div class="row" id="anchor3">
             <div class="page-header">
-                <h3>Détails de l'offre</h3>
+                <h3>Détails de l'offre :</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-10">
@@ -131,7 +131,7 @@
 
         <div class="row" id="anchor4">
             <div class="page-header">
-                <h3>Compétences</h3>
+                <h3>Compétences :</h3>
             </div>
             <fieldset class="form-group">
                 <div class=" col-sm-4">
@@ -177,17 +177,17 @@
 
         <div class="row" id="anchor5">
             <div class="page-header">
-                <h3>Descriptions</h3>
+                <h3>Descriptions :</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-10">
-                    <label>Description du poste</label>
+                    <label>Description du poste :</label>
                     <textarea class="form-control" rows="6" ng-model="description" name="desc"></textarea>
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-10">
-                    <label>Responsabilités du candidat</label>
+                    <label>Responsabilités du candidat :</label>
                     <textarea class="form-control" rows="4" ng-model="responsability"></textarea>
                 </div>
             </fieldset>
@@ -210,7 +210,6 @@
     <div class="col-md-3 col-lg-3 col-sm-3">
         <nav class="hidden-xs affix">
             <ul class="nav nav-pills nav-stacked">
-                {{activesubmenu}}
                 <li ng-class="{active: activesubmenu=='#anchor1'}"><a ng-click="scrollTo('anchor1')">Infos personnelles</a></li>
                 <li ng-class="{active: activesubmenu=='#anchor2'}"><a ng-click="scrollTo('anchor2')">Coordonnées</a></li>
                 <li ng-class="{active: activesubmenu=='#anchor3'}"><a ng-click="scrollTo('anchor3')">Détails de l'offre</a></li>

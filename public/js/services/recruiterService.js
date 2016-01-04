@@ -1,6 +1,6 @@
 function recruiterService($http, $cookies) {
     return {
-        getRecruiterbyId: function (id) {
+        getRecruiterById: function (id) {
             return $http.get('/api/recruiters/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
