@@ -1,4 +1,4 @@
-function homeStudentController($scope, $rootScope, geocoderService, offerService, studentService, skillService) {
+function homeStudentController($scope, $rootScope, geocoderService, offerService, studentService, skillService, $location) {
 
     //TOOLTIP    
     $(function () {

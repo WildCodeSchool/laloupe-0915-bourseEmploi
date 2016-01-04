@@ -1,4 +1,4 @@
-function bookController($scope, studentService) {
+function bookController($scope, $location, studentService) {
 
     //TOOLTIP    
     $(function () {
@@ -10,5 +10,10 @@ function bookController($scope, studentService) {
         $scope.students = res.data
         console.log(res.data);
     });
+
+    //LINK TO CV STUDENT
+    $scope.goToStudent = function (student) {
+        $location.path('/book/' + student._id);
+    }
 
 };
