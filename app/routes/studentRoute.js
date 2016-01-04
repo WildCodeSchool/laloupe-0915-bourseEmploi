@@ -11,7 +11,7 @@ module.exports = function (app, passport) {
 
     app.post('/api/students', /*Auth.user.isAdministrator,*/ Student.create);
 
-    app.put('/api/students/:id', Auth.user.hasAuthorization, Student.update);
+	app.put('/api/students/:id', /*Auth.user.hasAuthorization*/ Student.update);
 
     app.delete('/api/students/:id', Auth.user.isAdministrator, Student.delete);
 

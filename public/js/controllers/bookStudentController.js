@@ -120,3 +120,4 @@ function bookStudentController($scope, $rootScope, skillService, studentService,
     }
 
 };
+
