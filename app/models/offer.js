@@ -120,7 +120,9 @@ var Offer = {
     },
 
     findByUser: function (req, res) {
-        Offer.model.find(req.params.id)
+        Offer.model.find({
+                referentId: req.params.id
+            })
             .populate("skills.skill")
             .populate("referentId")
             .exec(function (err, offer) {

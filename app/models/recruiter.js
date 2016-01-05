@@ -26,6 +26,9 @@ var RecruiterSchema = User.model.schema.extend({
         type: String,
         required: true
     },
+    wildSide: {
+        type: String
+    },
     country: {
         type: String,
         required: true

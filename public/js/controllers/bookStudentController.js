@@ -1,12 +1,15 @@
-function bookStudentController($scope, $rootScope, skillService, studentService, $location, $uibModalStack) {
+function bookStudentController($scope, $rootScope, skillService, $routeParams, studentService, $location, $uibModal) {
     //TOOLTIP    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
 
+    var selectUser = $routeParams.id;
+
     function loadStudent() {
         //LOAD STUDENT
-        studentService.getUserbyId($rootScope.user._id).then(function (res) {
+        console.log($rootScope.user);
+        studentService.getUserbyId(selectUser).then(function (res) {
             $scope.student = res.data;
             $scope.studentSkill = res.data.skills;
             console.log($scope.student.experiences);
@@ -113,9 +116,9 @@ function bookStudentController($scope, $rootScope, skillService, studentService,
     loadStudent();
 
     $scope.goToEdit = function (d) {
-        console.log(d);
-        $uibModalStack.dismissAll();
-        $location.path('/editBook/' + d)
+        $("body").removeClass("modal-open");
+        $(".modal-backdrop").hide();
+        $location.path('/editBook/' + $scope.student._id);
     }
 
 };

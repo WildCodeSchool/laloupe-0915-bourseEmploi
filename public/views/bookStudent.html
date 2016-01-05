@@ -73,7 +73,7 @@
 
             <!--EXPERIENCE-->
             <div class="no-marge">
-                <div ng-repeat="exp in student.experiences">
+                <div ng-repeat="exp in student.experiences | orderBy: '-experience.startDate'">
 
                     <!--Teaser-->
                     <div class="wildpanelbodys panel paneldefault">
@@ -86,7 +86,7 @@
                         <p class="smalltexadvert-sm">De {{calculDate(exp.experience.startDate)}} - A {{calculDate(exp.experience.endDate)}}</p>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
-                        <p class="white-space-pre-line">undefined ?</p>
+                        <p class="white-space-pre-line">{{exp.experience.detailsExp}}</p>
                     </div>
 
                     <!-- Modal -->
@@ -116,7 +116,7 @@
                                     <a href="{{exp.experience.website}}">{{exp.experience.website}}</a>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" data-dismiss="modal" class="btnW">Editer</button>
+                                    <button ng-show="ifStudent" ng-click="goToEdit()" type="button" data-dismiss="modal" class="btnW">Editer</button>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +137,7 @@
 
             <!--EDUCATION-->
             <div class="no-marge">
-                <div ng-repeat="for in student.formations">
+                <div ng-repeat="for in student.formations | orderBy: '-formation.startDate'">
 
                     <!--Teaser-->
                     <div class="wildpanelbodys panel paneldefault">
@@ -150,7 +150,8 @@
                         <p class="smalltexadvert-sm">De {{calculDate(for.formation.startDate)}} - A {{calculDate(for.formation.endDate)}}</p>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
-                        <p class="white-space-pre-line">undefined ?</p>
+                        <p class="white-space-pre-line">{{for.formation.description}}
+                            <p>
                     </div>
 
                     <div class="wildpanelfooter panel panel-default">
@@ -176,10 +177,10 @@
                                     <p class="white-space-pre-line">{{for.formation.graduate}}</p>
                                 </div>
                                 <div class="modal-body">
-                                    <a href="{{exp.experience.website}}">{{exp.formation.website}}</a>
+                                    <a href="{{exp.experience.website}}">{{for.formation.website}}</a>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" data-dismiss="modal" class="btnW float-right">Editer</button>
+                                    <button ng-show="ifStudent" ng-click="goToEdit()" type="button" data-dismiss="modal" class="btnW">Editer</button>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +206,7 @@
                 <p class="bg-danger" ng-show="errorTyping">Cette compétence n'existe pas</p>
             </div>
             <div class="wildpanelfooterinput panel paneldefault form-inline row">
-                <div class="inputwildpanelfooter input-group input-group-sm col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div ng-show="ifStudent" class="inputwildpanelfooter input-group input-group-sm col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage" class="form-control" list="Languages" />
                     <datalist id="Languages">
                         <option ng-repeat="offerSkill in offerSkills | filter:$viewValue | limitTo:8" value="{{offerSkill.title}}">

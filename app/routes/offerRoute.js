@@ -13,7 +13,7 @@ module.exports = function (app, passport) {
 
     app.get('/offers/:id', Auth.user.hasAuthorization, Offer.findById);
 
-    app.get('/offers/users/:id', Auth.user.hasAuthorization, Offer.findByUser);
+    app.get('/offersUsers/:id', Auth.user.hasAuthorization, Offer.findByUser);
 
     app.post('/offers', Auth.user.hasAuthorization, Offer.create);
 

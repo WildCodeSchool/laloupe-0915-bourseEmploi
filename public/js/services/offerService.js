@@ -25,7 +25,7 @@ function offerService($http, $cookies) {
         },
 
         getOfferByUser: function (id) {
-            return $http.get('/offers/users/' + id, {
+            return $http.get('/offersUsers/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
