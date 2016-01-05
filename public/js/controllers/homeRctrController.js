@@ -2,7 +2,9 @@ function homeRctrController($http, $scope, $rootScope, $location, $routeParams, 
 
     function loadOffers() {
         offerService.getOfferByUser($rootScope.user._id).then(function (res) {
+            console.log($rootScope.user._id);
             $scope.offerLists = res.data;
+            console.log(res.data);
         });
     }
     loadOffers();
