@@ -9,7 +9,7 @@ function offerService($http, $cookies) {
         },
 
         getAllCurrent: function () {
-            return $http.get('/offers/currents', {
+            return $http.get('/api/currents', {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }

@@ -914,10 +914,6 @@ li.active {
     color: white;
 }
 
-.fa:hover {
-    color: black;
-}
-
 .nav-pills>li.active>a {
     background-color: #009587;
 }
@@ -928,3 +924,47 @@ li.active {
 .fa-nav:hover {
     color: white;
 }
+
+/*   FOOTER   */
+
+#footer {
+    background-color: #101010;
+    border-color: #080808;
+    padding: 20px;
+    font-size: 13px;
+    line line-height: 38px;
+    bottom: 0; 
+    left: 0; 
+    right: 0;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    z-index: 1131;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.copyright {
+    color: white;
+    text-align: center; 
+}
+
+.fa-facebook-official {
+    color: white;
+}
+
+.fa-facebook-official:hover {
+    color: #009587;
+}
+
+.fa-twitter {
+    color: white;
+}
+
+.fa-twitter:hover {
+    color: #009587;
+}
+
+
+

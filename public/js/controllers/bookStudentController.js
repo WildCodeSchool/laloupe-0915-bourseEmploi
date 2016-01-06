@@ -4,7 +4,6 @@ function bookStudentController($scope, $rootScope, skillService, studentService,
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
-}
 
     function loadStudent() {
         //LOAD STUDENT
@@ -119,5 +118,4 @@ function bookStudentController($scope, $rootScope, skillService, studentService,
         $uibModalStack.dismissAll();
         $location.path('/editBook/' + d)
     }
-
-};
+}

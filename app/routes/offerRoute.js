@@ -11,7 +11,7 @@ module.exports = function (app, passport) {
 
     app.get('/api/offers/:id', Auth.user.hasAuthorization, Offer.findById);
 
-    app.get('/api/offers/currents', Auth.user.hasAuthorization, Offer.findAllCurrent);
+    app.get('/api/currents', Auth.user.hasAuthorization, Offer.findAllCurrent);
 
     app.get('/api/offers/users/:id', Auth.user.hasAuthorization, Offer.findByUser);
 
