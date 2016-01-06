@@ -71,7 +71,7 @@ var offerSchema = new mongoose.Schema({
     zipCode: {
         type: String,
         required: true
-    }
+    },
 });
 
 var Offer = {
@@ -163,13 +163,11 @@ var Offer = {
         });
     },
 
-
     update: function (req, res) {
         Offer.model.findByIdAndUpdate(req.params.id, req.body, function (err, offer) {
             res.json(offer);
         });
     },
-
 
     /*update: function (req, res) {
         Offer.model.findByIdAndUpdate(req.params.id, {
@@ -213,6 +211,5 @@ var Offer = {
         })
     }
 }
-
 
 module.exports = Offer;

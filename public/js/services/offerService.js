@@ -62,6 +62,6 @@ function offerService($http, $cookies) {
                     authorization: $cookies.get('wildFinder_token')
                 }
             });
-        }
+        },
     }
 };

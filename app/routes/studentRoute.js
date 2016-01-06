@@ -17,6 +17,10 @@ module.exports = function (app, passport) {
 
     app.put('/api/students/:id', Auth.user.hasAuthorization, Student.update);
 
+    app.put('/api/like/students/:id', Auth.user.hasAuthorization, Student.like);
+
+    app.put('/api/unlike/students/:id', Auth.user.hasAuthorization, Student.unlike);
+
     app.delete('/api/students/:id', Auth.user.isAdministrator, Student.delete);
 
 }
