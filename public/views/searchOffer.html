@@ -91,11 +91,16 @@
             <!--OFFER-->
             <div class="offer-list" ng-repeat="offer in offers" ng-if="after(offer.startDate) && before(offer.endDate)">
                 <div class="wildpanelbodys panel paneldefault">
+                    <div class="offerdelete">
+                        <ul>
+                            <li class="headeradvert"><i ng-click="likeClick(offer)" class="fa fa-heart fa-lg" ng-class="{'heartnotactive': offer.isLiked===false,'heartactive': offer.isLiked===true}" uib-tooltip="{{offer.isLiked ? 'Ne plus aimer' : 'aimer cette offre'}}" tooltip-placement="top"></i></li>
+                            <li class="headeradvert"><i class="fa fa-share-alt fa-lg" uib-tooltip="Partager" tooltip-placement="top"></i></li>
+                        </ul>
+                    </div>
                     <ul>
                         <li class="headeradvert">
-                            <h2 class="headeradvert titleadvert">{{offer.title}}</h2></li>
-                        <li class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive" data-toggle="tooltip" data-placement="top" title="Liker cette offre"></i></li>
-                        <li class="headeradvert"><i class="fa fa-share-alt fa-lg" data-toggle="tooltip" data-placement="top" title="Partager"></i></li>
+                            <h2 class="headeradvert titleadvert" ng-click="goToOffer(offer)">{{offer.title}}</h2>
+                        </li>
                     </ul>
                     <ul>
                         <li class="headeradvert">

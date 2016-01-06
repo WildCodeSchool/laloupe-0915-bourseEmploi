@@ -55,7 +55,6 @@ var RecruiterSchema = User.model.schema.extend({
             ref: 'User'
         }
     }]
-
 });
 
 var Recruiter = {

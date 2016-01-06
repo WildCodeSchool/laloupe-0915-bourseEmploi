@@ -49,8 +49,8 @@
                             <span ng-show="titleExpired">Expire</span>
                             <span ng-show="titleArchiv">Archivée </span><span>{{endOffer}}</span>
                     </li>
-                    <li ng-if="showRcrt" class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive" data-toggle="tooltip" data-placement="top" title="Liker cette offre"></i></li>
-                    <li ng-if="showRcrt" class="headeradvert"><i class="fa fa-share-alt fa-lg " data-toggle="tooltip" data-placement="top" title="Partager"></i></li>
+                    <li ng-if="showStudent" ng-click="likeClick(offer)" class="headeradvert"><i class="fa fa-heart fa-lg" ng-class="{'heartnotactive': offer.isLiked===false,'heartactive': offer.isLiked===true}" uib-tooltip="{{offer.isLiked ? 'Ne plus aimer' : 'aimer cette offre'}}" tooltip-placement="bottom"></i></li>
+                    <li ng-if="showStudent" class="headeradvert"><i class="fa fa-share-alt fa-lg " uib-tooltip="Partager" tooltip-placement="bottom"></i></li>
                 </ul>
                 <ul>
                     <li class="headeradvert">
@@ -70,7 +70,7 @@
                         <p class="headeradvert smalltexadvert1">{{offer.contract}}</p>
                     </li>
                     <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
-                        <p class="headeradvert smalltexadvert1">{{offer.salary}}k€/ans</p>
+                        <p class="headeradvert smalltexadvert1">{{offer.salary}}</p>
                     </li>
                     <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
                         <p class="headeradvert smalltexadvert1">{{offer.experience}}</p>

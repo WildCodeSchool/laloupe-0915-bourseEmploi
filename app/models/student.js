@@ -40,10 +40,8 @@ var StudentSchema = User.model.schema.extend({
         "default": []
     },
     likes: [{
-        like: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Offer'
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Offer'
     }],
     skills: [{
         skill: {
@@ -75,7 +73,7 @@ var Student = {
                 password: 0
             })
             .populate('skills.skill')
-            .populate('likes.like')
+            .populate('likes')
             .exec(function (err, users) {
                 res.json(users);
             });
@@ -86,7 +84,7 @@ var Student = {
                 password: 0
             })
             .populate('skills.skill')
-            .populate('likes.like')
+            .populate('likes')
             .populate('formations.formation')
             .populate('experiences.experience')
             .exec(function (err, student) {
@@ -134,6 +132,26 @@ var Student = {
             if (err)
                 console.log(err);
             res.json(student);
+        });
+    },
+
+    like: function (req, res) {
+        Student.model.findById(req.params.id, function (err, offer) {
+            offer.likes.push(req.body.like);
+            offer.save();
+            res.json(offer);
+        });
+    },
+
+    unlike: function (req, res) {
+        Student.model.findById(req.params.id, function (err, offer) {
+            var index = offer.likes.indexOf(req.body.unlike);
+            if (index > -1) {
+                offer.likes.splice(index, 1);
+            }
+            offer.save();
+            console.log(err)
+            res.json(offer);
         });
     },
 
