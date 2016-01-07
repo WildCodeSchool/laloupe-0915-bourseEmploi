@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-function searchOfferController($scope, offerService, geocoderService, $location, $rootScope, studentService) {
-=======
-function searchOfferController($scope, offerService, skillService, $location, geocoderService) {
+function searchOfferController($scope, offerService, skillService, studentService, $location, $rootScope, geocoderService) {
 
     function loadSkill() {
         skillService.get().then(function (res) {
@@ -19,15 +16,8 @@ function searchOfferController($scope, offerService, skillService, $location, ge
         console.log(data);
         offerService.getOffersFiltered(data).then(function (res) {
             $scope.offers = res.data;
-            console.log(res.data);
         });
     }
-
-    //Lien vers la PAGE offre
-    $scope.goToOffer = function (offer) {
-        $location.path('/offer/' + offer._id);
-    }
->>>>>>> searchOffer
 
     $scope.showMap = true;
 
@@ -108,6 +98,19 @@ function searchOfferController($scope, offerService, skillService, $location, ge
         });
     }
     loadOffer();
+
+    $scope.showMap = true;
+
+    //STUDENTS'LIKE UPDATE IN ROOTSCOPE
+    studentService.getUserbyId($rootScope.user._id).then(function (res) {
+        $scope.student = res.data
+        var offerliked = [];
+        $scope.student.likes.forEach(function (like) {
+            offerliked.push(like._id);
+        }.bind($scope));
+        console.log(offerliked)
+        $rootScope.user.likes = offerliked;
+    });
 
     //LIKE
     function like(offer) {

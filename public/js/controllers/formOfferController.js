@@ -14,6 +14,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
             $scope.referentPhone = $rootScope.user.referentPhone;
             $scope.referentEmail = $rootScope.user.email;
             $scope.zipCode = $rootScope.user.zipCode;
+            $scope.region = $rootScope.user.region;
         } else {
             $scope.country = null;
             $scope.city = null;
@@ -21,6 +22,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
             $scope.referentPhone = null;
             $scope.referentEmail = null;
             $scope.zipCode = null;
+            $scope.region = null;
         }
     }
     referentInfo();
@@ -116,10 +118,12 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         data.referentPhone = $scope.referentPhone;
         data.referentEmail = $scope.referentEmail;
         data.referentId = $rootScope.user._id;
+        data.region = $scope.region;
         data.salary = salary;
         console.log(data.referentId);
         data.endDate = moment($scope.startDate).add(90, 'days');
         data.startDate = moment($scope.startDate);
+        console.log(data);
 
         //Comparaison des skills choisi et existant( pour envoi Ids)
         for (var i = 0; i < $scope.offerSkills.length; i++) {
