@@ -1,4 +1,4 @@
-<h1 class="student-title">{{student.firstName}} {{student.name}}<small>{{student.teaser}}</small></h1>
+<h1 class="student-title">{{student.name}} {{student.firstName}} <small>{{student.teaser}}</small></h1>
 
 <div class="row">
     <div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
@@ -17,7 +17,6 @@
                 <ul>
                     <li class="li-block" ng-if="student.email != undefined"><i class="fa fa-paper-plane-o fa-lg"></i>{{student.email}}</li>
                     <li class="li-block" ng-show="phoneIf"><i class="fa fa-phone fa-lg"></i>{{student.phone}}</li>
-
                 </ul>
                 <h5>réseaux sociaux</h5>
                 <div class="text-center">
@@ -76,7 +75,6 @@
             <div class="no-marge">
                 <div ng-repeat="exp in student.experiences | orderBy: '-experience.startDate'">
 
-
                     <!--Teaser-->
                     <div class="wildpanelbodys panel paneldefault">
                         <!--Btn Modal-->
@@ -123,6 +121,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="wildpanelfooter panel panel-default">

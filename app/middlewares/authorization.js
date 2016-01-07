@@ -16,7 +16,6 @@ exports.user = {
                             next();
                     });
                 } else {
->>>>>>> da54e078d8673c339a106a9bd3189a01b99b9351
                     return res.sendStatus(403);
                 }*/
         next();
