@@ -106,11 +106,34 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
                 }
                 studentService.update($rootScope.user._id, data).then(function (res) {})
             }
+
+            //STUDENTS'LIKE UPDATE IN ROOTSCOPE
+            var offerLikedId = [];
+            $scope.likedOffers = [];
+            var i = 0
+            $scope.student.likes.forEach(function (like) {
+                offerLikedId.push(like._id);
+            }.bind($scope));
+            $rootScope.user.likes = offerLikedId;
+            //LOAD LIKED OFFER
+            offerLikedId.forEach(function (like) {
+                offerService.getOfferbyId(like).then(function (res) {
+                    $scope.likedOffers.push(res.data);
+                    //NUMBER OF LIKED OFFER
+                    if ($scope.after(res.data.startDate) && $scope.before(res.data.endDate)) {
+                        i += 1
+                    };
+                    $scope.numberMatchOffer = i
+                    console.log($scope.likedOffers);
+                });
+
+            });
+
+
+
         });
     }
     loadSkill();
-
-
 
     //MAP
     function loadOffer() {
