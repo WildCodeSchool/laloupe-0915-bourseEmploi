@@ -83,6 +83,10 @@ function config($routeProvider) {
                 connected: checkIsConnected
             }
         })
+        .when('/mentionsLegales', {
+            templateUrl: 'views/mentionsLegales.html'
+        })
+        
         .otherwise({
             redirectTo: '/login'
         });
