@@ -37,6 +37,7 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
             }
             deletOrArch();
 
+            //CHECK USER TYPE
             function pop() {
                 var type = 'Recruiter';
                 recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {

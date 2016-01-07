@@ -9,7 +9,6 @@ function searchOfferController($scope, offerService, geocoderService, $location,
         $scope.student.likes.forEach(function (like) {
             offerliked.push(like._id);
         }.bind($scope));
-        console.log(offerliked)
         $rootScope.user.likes = offerliked;
     });
 
