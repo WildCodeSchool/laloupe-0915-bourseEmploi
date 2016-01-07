@@ -32,6 +32,14 @@ function offerService($http, $cookies) {
             });
         },
 
+        getOffersFiltered: function (data) {
+            return $http.post('/api/offers/search', data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         create: function (data) {
             return $http.post('/api/offers', data, {
                 headers: {

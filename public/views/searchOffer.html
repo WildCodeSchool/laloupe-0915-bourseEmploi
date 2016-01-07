@@ -19,56 +19,54 @@
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                     <h5>Lieu</h5>
                     <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="Ville, Region, ect ...">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default btn-side" type="button">OK</button>
-                        </div>
-                    </div>
-                    <h5>Rémunération minimum</h5>
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="en K€ par ans">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default btn-side" type="button">OK</button>
-                        </div>
+                        <select type="text" class="form-control" ng-model="region">
+                            <option value="">Tous</option>
+                            <option>Alsace-Champagne-Ardenne-Lorraine</option>
+                            <option>Aquitaine-Limousin-Poitou-Charentes</option>
+                            <option>Auvergne-Rhône-Alpes</option>
+                            <option>Bourgogne-Franche-Comté</option>
+                            <option>Bretagne</option>
+                            <option>Centre-Val de Loire</option>
+                            <option>Corse</option>
+                            <option>Île-de-France</option>
+                            <option>Languedoc-Roussillon-Midi-Pyrénées</option>
+                            <option>Nord-Pas-De-Calais-Picardie</option>
+                            <option>Normandie</option>
+                            <option>Pays-De-la-Loire</option>
+                            <option>Provence-Alpes-Côte-d'Azur</option>
+                        </select>
                     </div>
                     <h5>Compétences</h5>
                     <div class="input-group input-group-sm">
-                        <input type="text" class="form-control">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default btn-side" type="button">OK</button>
-                        </div>
+                        <select class="form-control" type="button" ng-model="querySkill">
+                            <option value="">Tous</option>
+                            <option ng-repeat="skill in skills">{{skill.title}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                     <h5>Contrat</h5>
                     <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="CDI, CDD, ...">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default btn-side" type="button">OK</button>
-                        </div>
-                    </div>
-                    <h5>Type de société</h5>
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default btn-side" type="button">OK</button>
-                        </div>
-                    </div>
-                    <h5>Secteur d'activité</h5>
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default btn-side" type="button">OK</button>
-                        </div>
+                        <select type="text" class="form-control" ng-model="contract">
+                            <option value="">Tous</option>
+                            <option>Stage</option>
+                            <option>Apprentissage</option>
+                            <option>CDD</option>
+                            <option>CDI</option>
+                        </select>
                     </div>
                     <h5>Expérience</h5>
-
-                    <select type="text" class="form-control" placeholder="">
-                        <option>Junior</option>
-                        <option>Expérimenté</option>
-                        <option>Senior</option>
-                    </select>
-
+                    <div class="input-group input-group-sm">
+                        <select type="text" class="form-control" ng-model="experience">
+                            <option value="">Tous</option>
+                            <option>Junior</option>
+                            <option>Expérimenté</option>
+                            <option>Senior</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <button class="btn btn-default btnW spacer" ng-click="searchOffers()" type="button">OK</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -89,11 +87,11 @@
         <div class="wildpanel panel panel-default ">
             <div class="wildpanelheader panel panel-default"></div>
             <!--OFFER-->
-            <div class="offer-list" ng-repeat="offer in offers" ng-if="after(offer.startDate) && before(offer.endDate)">
+            <div class="offer-list" ng-repeat="offer in offers | orderBy: '-startDate'">
                 <div class="wildpanelbodys panel paneldefault">
                     <ul>
                         <li class="headeradvert">
-                            <h2 class="headeradvert titleadvert">{{offer.title}}</h2></li>
+                            <h2 class="headeradvert titleadvert" ng-click="goToOffer(offer)">{{offer.title}}</h2></li>
                         <li class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive" data-toggle="tooltip" data-placement="top" title="Liker cette offre"></i></li>
                         <li class="headeradvert"><i class="fa fa-share-alt fa-lg" data-toggle="tooltip" data-placement="top" title="Partager"></i></li>
                     </ul>

@@ -71,6 +71,10 @@ var offerSchema = new mongoose.Schema({
     zipCode: {
         type: String,
         required: true
+    },
+    region: {
+        type: String,
+        required: true
     }
 });
 
@@ -82,6 +86,46 @@ var Offer = {
             _id: req.headers.id
         }, function (err, offer) {
             res.json(offer);
+        });
+    },
+
+    findFiltered: function (req, res) {
+        var contract = req.body.contract;
+        var region = req.body.region;
+        var experience = req.body.experience;
+        var skill = {
+            'skills': {
+                $elemMatch: req.body.language
+            },
+            'skills.skill': {
+                $in: req.body.skills
+            }
+        };
+
+        var query = Offer.model.find({
+            'startDate': {
+                $lt: new Date()
+            },
+            'endDate': {
+                $gte: new Date()
+            }
+        });
+
+        if (contract)
+            query = query.where('contract').equals(contract);
+        if (region)
+            query = query.where('region').equals(region);
+        if (experience)
+            query = query.where('experience').equals(experience);
+        if (req.body.skill)
+            query = query.where('skills.skill').equals(req.body.skill);
+
+        query.populate("skills.skill").populate("referentId", "-password").exec(function (err, offer) {
+            if (err) {
+                res.status(400);
+                console.log(err);
+            } else
+                res.json(offer);
         });
     },
 
