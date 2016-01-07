@@ -17,6 +17,10 @@ module.exports = function (app, passport) {
 
     app.put('/api/recruiters/:id', Auth.user.hasAuthorization, Recruiter.update);
 
+    app.put('/api/like/recruiters/:id', Auth.user.hasAuthorization, Recruiter.like);
+
+    app.put('/api/unlike/recruiters/:id', Auth.user.hasAuthorization, Recruiter.unlike);
+
     app.delete('/api/recruiters/:id', Auth.user.hasAuthorization, Recruiter.delete);
 
 }

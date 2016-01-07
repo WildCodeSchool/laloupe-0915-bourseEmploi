@@ -36,6 +36,22 @@ function recruiterService($http, $cookies) {
             });
         },
 
+        like: function (id, data) {
+            return $http.put('api/like/recruiters/' + id, data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
+        unlike: function (id, data) {
+            return $http.put('api/unlike/recruiters/' + id, data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         delete: function (id) {
             return $http.delete('/api/recruiters/' + id, {
                 headers: {

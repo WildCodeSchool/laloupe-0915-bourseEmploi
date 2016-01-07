@@ -507,7 +507,19 @@ ul {
     margin-bottom: 2px;
 }
 
+.studentname-mini {
+    color: #202020;
+    font-size: 25px;
+    margin-top: 0px;
+    margin-bottom: 2px;
+}
+
 .studentname:hover {
+    cursor: pointer;
+    color: #009587;
+}
+
+.studentname-mini:hover {
     cursor: pointer;
     color: #009587;
 }
@@ -945,6 +957,12 @@ li.active {
     z-index: 9999;
     padding: 10px 5px 0 0;
     color: white;
+}
+
+.bookLike {
+    float: right;
+    z-index: 9999;
+    padding: 10px 10px 0 0;
 }
 
 .nav-pills>li.active>a {

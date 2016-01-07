@@ -198,25 +198,25 @@
             </div>
 
             <!--STUDENT-->
-            <div class="wildpanelheart panel paneldefault">
+            <div ng-repeat="student in likedStudents" class="wildpanelheart panel paneldefault">
                 <img class="profilimg-sm" src="../img/darkvador.jpg" alt="photo de profil de ...">
                 <div class="offerdelete">
-                    <i class="fa fa-times fa-lg" ng-click="" uib-tooltip="Ne plus suivre" tooltip-placement="bottom"></i>
+                    <i class="fa fa-times fa-lg" ng-click="likeClick(student)" uib-tooltip="Ne plus suivre" tooltip-placement="bottom"></i>
                 </div>
                 <ul>
                     <li class="headeradvert" ng-click="">
-                        <h2 class="headeradvert studentname">Nom de l'élève</h2></li>
+                        <h2 class="headeradvert studentname-mini">{{student.firstName}} {{student.name}}</h2></li>
                 </ul>
                 <ul>
                     <li class="headeradvert">
-                        <h3 class="headeradvert studentteaser">Teaser de l'élève</h3></li>
+                        <h3 class="headeradvert studentteaser">{{student.teaser}}</h3></li>
                 </ul>
                 <ul>
-                    <li class="headeradvert"><span class="wildSkill">Compétence</span>
+                    <li ng-repeat="skill in student.skills" class="headeradvert"><span class="wildSkill">{{skill.skill.title}}</span>
                 </ul>
             </div>
             <div class="wildpanelfooter panel paneldefault">
-                <p class="paragraphWPF">n pofil(s) dans vos coups de coeur</p>
+                <p class="paragraphWPF">{{numberStudentLiked}} {{numberStudentLiked > 1 ? 'élèves' : 'élève'}} dans vos favoris</p>
             </div>
         </div>
     </div>
