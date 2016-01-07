@@ -984,7 +984,7 @@ li.active {
 
 .panelmatchoffer {
     max-height: 400px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .fa-heart:hover {
@@ -993,7 +993,7 @@ li.active {
 }
 .panelfavouritesoffer {
     max-height: 282px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 /*   FOOTER   */
