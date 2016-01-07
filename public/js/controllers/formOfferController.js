@@ -41,6 +41,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
             salary = 'Non précisé';
         } else {
             salary = $scope.salaryNumber + ' ' + $scope.salaryPeriod;
+            console.log($scope.salaryNumber);
         };
         console.log(salary)
     }
@@ -50,11 +51,6 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         $scope.noSalary = !$scope.noSalary
         $scope.checkSalary()
     }
-
-    var salary = '';
-
-
-
 
     /****   CREATION TAGS ******/
     //Import des compétences de shéma "skills"
@@ -107,6 +103,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
     //Envoi des données du formulaire
     $scope.startDate = new Date();
     $scope.send = function () {
+        $scope.checkSalary();
         var idSkill = [];
         var data = {};
         data = $scope.offer;

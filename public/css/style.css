@@ -819,10 +819,6 @@ i.mini {
     color: #009587;
 }
 
-.fa-facebook-official {
-    color: #009587;
-}
-
 .fa-form {
     color: #009587;
 }
@@ -977,8 +973,7 @@ li.active {
     color: white;
 }
 
-<<<<<<< HEAD
-.li-skill {
+<<<<<<< HEAD .li-skill {
     margin-bottom: 5px;
 }
 
@@ -991,10 +986,12 @@ li.active {
     color: #E2264D;
     cursor: pointer;
 }
+
 .panelfavouritesoffer {
     max-height: 282px;
     overflow: auto;
 }
+
 
 /*   FOOTER   */
 
@@ -1003,9 +1000,9 @@ li.active {
     border-color: #080808;
     padding: 20px;
     font-size: 13px;
-    line line-height: 38px;
-    bottom: 0; 
-    left: 0; 
+    line-height: 38px;
+    bottom: 0;
+    left: 0;
     right: 0;
     margin-top: 50px;
     margin-bottom: 0px;
@@ -1017,23 +1014,22 @@ li.active {
 }
 
 .copyright {
-    color: white;
-    text-align: center; 
+    color: #009587;
+    text-align: center;
 }
 
 .fa-facebook-official {
-    color: white;
+    color: #009587;
 }
 
 .fa-facebook-official:hover {
-    color: #009587;
+    color: #008080;
 }
 
 .fa-twitter {
-    color: white;
-}
-
-.fa-twitter:hover {
     color: #009587;
 }
 
+.fa-twitter:hover {
+    color: #008080;
+}
