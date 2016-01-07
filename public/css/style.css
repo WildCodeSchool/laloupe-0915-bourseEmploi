@@ -352,12 +352,34 @@ ul {
     border-radius: 10px;
     border-color: #daa520;
     color: #daa520;
-    margin: 0 10px 0 0;
+    margin: 2px 10px 0 0;
+}
+
+.wildSkill-mini {
+    height: 20px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 1px 8px 1px 8px;
+    border: 2px solid;
+    border-radius: 8px;
+    border-color: #daa520;
+    color: #daa520;
+    margin: 0px 6px 0 0;
 }
 
 .skill-ul {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.skill-ul-mini {
+    margin-top: 0px;
+    margin-bottom: 3px;
+}
+
+.skill-li-mini {
+    margin-bottom: 3px;
 }
 
 .skill-li {
@@ -441,7 +463,15 @@ ul {
     padding: 5px 10px 5px 10px;
     border-top-color: #B6B6B6;
     border-radius: 0px;
-    min-height: 90px;
+    min-height: 101px;
+}
+
+.wildpanelbook {
+    margin: 0 auto;
+    padding: 5px 10px 5px 10px;
+    border-top-color: #B6B6B6;
+    border-radius: 0px;
+    min-height: 112px;
 }
 
 .wildpanelfooter {
@@ -529,7 +559,7 @@ ul {
 .smalltexadvert1-sm {
     font-size: 12px;
     color: #696969;
-    margin: 0 10px 0 1px;
+    margin: 0 3px 0 1px;
 }
 
 .titleadvert {
@@ -556,6 +586,7 @@ ul {
     color: #202020;
     font-family: 'Raleway', sans-serif;
     margin-top: 5px;
+    margin-bottom: 0;
 }
 
 .titleadvert-sm:hover {
@@ -568,19 +599,9 @@ ul {
     margin: 0 2px 0 10px;
 }
 
-.heartnotactive:hover {
-    color: #202020;
-    cursor: pointer;
-}
-
 .heartactive {
-    color: #DAA520;
+    color: #E2264D;
     margin: 0 2px 0 10px;
-}
-
-.heartactive:hover {
-    color: #202020;
-    cursor: pointer;
 }
 
 .fa-share-alt {
@@ -589,7 +610,7 @@ ul {
 }
 
 .fa-share-alt:hover {
-    color: #202020;
+    color: #009587;
     cursor: pointer;
 }
 
@@ -712,7 +733,15 @@ a.title-link:hover {
 }
 
 .profilimg-sm {
-    height: 101px;
+    height: 100px;
+    margin-top: -5px;
+    margin-left: -10px;
+    margin-right: 10px;
+    float: left;
+}
+
+.profilimg-book {
+    height: 110px;
     margin-top: -5px;
     margin-left: -10px;
     margin-right: 10px;
@@ -765,6 +794,10 @@ a.title-link:hover {
 
 i {
     margin-right: 3px;
+}
+
+i.mini {
+    margin-right: 0;
 }
 
 
@@ -914,10 +947,6 @@ li.active {
     color: white;
 }
 
-.fa:hover {
-    color: black;
-}
-
 .nav-pills>li.active>a {
     background-color: #009587;
 }
@@ -925,6 +954,25 @@ li.active {
 .nav-pills>li.active>a:hover {
     background-color: #009587;
 }
+
 .fa-nav:hover {
     color: white;
+}
+
+.li-skill {
+    margin-bottom: 5px;
+}
+
+.panelmatchoffer {
+    max-height: 400px;
+    overflow: scroll;
+}
+
+.fa-heart:hover {
+    color: #E2264D;
+    cursor: pointer;
+}
+.panelfavouritesoffer {
+    max-height: 282px;
+    overflow: scroll;
 }

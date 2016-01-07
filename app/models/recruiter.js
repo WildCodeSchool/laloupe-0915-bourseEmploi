@@ -26,6 +26,9 @@ var RecruiterSchema = User.model.schema.extend({
         type: String,
         required: true
     },
+    wildSide: {
+        type: String
+    },
     country: {
         type: String,
         required: true
@@ -52,7 +55,6 @@ var RecruiterSchema = User.model.schema.extend({
             ref: 'User'
         }
     }]
-
 });
 
 var Recruiter = {
@@ -60,20 +62,26 @@ var Recruiter = {
 
     findByType: function (req, res) {
         Recruiter.model.find({
-            _type: req.params.type
+            _type: 'Recruiter'
+        }, {
+            password: 0
         }, function (err, users) {
             res.json(users);
         });
     },
 
     findAll: function (req, res) {
-        Recruiter.model.find({}, function (err, recruiters) {
+        Recruiter.model.find({}, {
+            password: 0
+        }, function (err, recruiters) {
             res.json(recruiters);
         });
     },
 
     findById: function (req, res) {
-        Recruiter.model.findById(req.params.id, function (err, recruiter) {
+        Recruiter.model.findById(req.params.id, {
+            password: 0
+        }, function (err, recruiter) {
             if (err)
                 console.log(err);
             res.json(recruiter);
@@ -83,6 +91,8 @@ var Recruiter = {
     findByEmail: function (req, res) {
         Recruiter.model.findOne({
             email: req.headers.email
+        }, {
+            password: 0
         }, function (err, data) {
             if (data)
                 res.status(409).send("Un compte existe déjà avec l'adresse mail " + req.headers.email);

@@ -1,8 +1,8 @@
 function studentService($http, $cookies) {
     return {
         //STUDENT'S ROUTES   /!\ 
-        getAll: function (type) {
-            return $http.get('/api/users/' + type, {
+        getAll: function () {
+            return $http.get('/api/users/students', {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -18,16 +18,40 @@ function studentService($http, $cookies) {
             });
         },
 
+        getInfo: function () {
+            return $http.get('/api/infos/students', {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         create: function (data) {
             return $http.post('/api/students', data, {
-                     headers: {
-                         authorization: $cookies.get('wildFinder_token')
-                     }
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
             });
         },
 
         update: function (id, data) {
             return $http.put('/api/students/' + id, data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
+        like: function (id, data) {
+            return $http.put('api/like/students/' + id, data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
+        unlike: function (id, data) {
+            return $http.put('api/unlike/students/' + id, data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }

@@ -9,7 +9,7 @@ function offerService($http, $cookies) {
         },
 
         getAllCurrent: function () {
-            return $http.get('/offers/currents', {
+            return $http.get('/api/currents', {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -17,7 +17,7 @@ function offerService($http, $cookies) {
         },
 
         getOfferbyId: function (id) {
-            return $http.get('/api/ffers/' + id, {
+            return $http.get('/api/offers/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -25,7 +25,7 @@ function offerService($http, $cookies) {
         },
 
         getOfferByUser: function (id) {
-            return $http.get('/api/offers/users/' + id, {
+            return $http.get('/offersUsers/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -62,6 +62,6 @@ function offerService($http, $cookies) {
                     authorization: $cookies.get('wildFinder_token')
                 }
             });
-        }
+        },
     }
 };

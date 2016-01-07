@@ -1,8 +1,19 @@
-function offerController($scope, $rootScope, $http, $location, $routeParams, offerService, geocoderService, recruiterService, studentService) {
+function offerController($scope, $rootScope, $http, $location, $routeParams, offerService, geocoderService, recruiterService, studentService, $route) {
 
     var selectOffer = $routeParams.id;
     var today = new Date();
     var d = moment(today).format();
+
+    //STUDENTS'LIKE UPDATE IN ROOTSCOPE
+    studentService.getUserbyId($rootScope.user._id).then(function (res) {
+        $scope.student = res.data
+        var offerliked = [];
+        $scope.student.likes.forEach(function (like) {
+            offerliked.push(like._id);
+        }.bind($scope));
+        console.log(offerliked)
+        $rootScope.user.likes = offerliked;
+    });
 
     //LOAD OFFER
     function loadOffer() {
@@ -33,6 +44,8 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
                     console.log($scope.type._type);
                     if ($scope.type._type === 'Recruiter')
                         $scope.showRcrt = true;
+                    else
+                        $scope.showStudent = true;
                 });
             }
             pop();
@@ -59,6 +72,8 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
 
             });
 
+            //CHECK IS lIKED
+            $scope.offer.isLiked = ($rootScope.user.likes.indexOf($scope.offer._id) > -1);
         });
     }
     loadOffer();
@@ -112,6 +127,35 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
         if ($scope.company.phone == undefined) {
             $scope.linkedinIf = true;
         };
+    }
+
+    //LIKE
+    function like(offer) {
+        var data = {}
+        data.like = offer._id
+        studentService.like($rootScope.user._id, data).then(function (res) {
+            $rootScope.user.likes.push(offer._id);
+            $scope.offer.isLiked = true;
+            //$route.reload()
+        });
+    };
+    //UNLIKE
+    function unlike(offer) {
+        var data = {}
+        data.unlike = offer._id
+        studentService.unlike($rootScope.user._id, data).then(function (res) {
+            $rootScope.user.likes.splice($rootScope.user.likes.indexOf(offer._id), 1);
+            $scope.offer.isLiked = false;
+            //$route.reload()
+        });
+    };
+    //LIKE OR UNLIKE
+    $scope.likeClick = function (offer) {
+        if ($rootScope.user.likes.indexOf(offer._id) > -1) {
+            unlike(offer);
+        } else {
+            like(offer);
+        }
     }
 
     //TOOLTIP    

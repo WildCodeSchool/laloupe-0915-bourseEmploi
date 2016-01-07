@@ -71,7 +71,7 @@ var offerSchema = new mongoose.Schema({
     zipCode: {
         type: String,
         required: true
-    }
+    },
 });
 
 var Offer = {
@@ -88,7 +88,7 @@ var Offer = {
     findAll: function (req, res) {
         Offer.model.find({})
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offers) {
                 res.json(offers);
             });
@@ -104,8 +104,9 @@ var Offer = {
                 }
             })
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offers) {
+                console.log(err)
                 res.json(offers);
             });
     },
@@ -113,16 +114,18 @@ var Offer = {
     findById: function (req, res) {
         Offer.model.findById(req.params.id)
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offer) {
                 res.json(offer);
             });
     },
 
     findByUser: function (req, res) {
-        Offer.model.find(req.params.id)
+        Offer.model.find({
+                referentId: req.params.id
+            })
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offer) {
                 res.json(offer);
             });
@@ -144,7 +147,7 @@ var Offer = {
                 }
             })
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offer) {
                 if (err) {
                     res.status(400);
@@ -162,13 +165,11 @@ var Offer = {
         });
     },
 
-
     update: function (req, res) {
         Offer.model.findByIdAndUpdate(req.params.id, req.body, function (err, offer) {
             res.json(offer);
         });
     },
-
 
     /*update: function (req, res) {
         Offer.model.findByIdAndUpdate(req.params.id, {
@@ -212,6 +213,5 @@ var Offer = {
         })
     }
 }
-
 
 module.exports = Offer;

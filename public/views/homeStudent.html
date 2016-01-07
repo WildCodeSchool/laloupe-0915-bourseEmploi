@@ -13,6 +13,7 @@
                         <img class="imgprofilstudent" ng-src="{{student.picture}}">
                         <h1 class="studentname"><a href="/#/book/{{user._id}}">{{student.firstName}} {{student.name}}</a><h1>
                         <h3 class="studentteaser">{{student.teaser}}</h3>
+                        <p class="headeradvert smalltexadvert">Ville - Département</p>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
                         <h5>Mes compétences</h5>
@@ -43,9 +44,9 @@
             <div class="col-xs12 col-sm-6 col-md-12 col-lg-12">
                 <div class=" wildpanel panel paneldefault">
                     <div class="wildpanelbody panel paneldefault">
-                        <h5>Situation</h5>
+                        <h5>Situation professionel</h5>
                         <p>{{student.situation}}</p>
-                        <h5>Statut</h5>
+                        <h5>Disponibilité</h5>
                         <p>{{student.status}}</p>
                         <h5>Mobilité</h5>
                         <p>{{student.mobility}}</p>
@@ -60,7 +61,7 @@
             <div class="col-xs12 col-sm-6 col-md-12 col-lg-12">
                 <div class="wildpanel panel paneldefault">
                     <div class="wildpanelheader panel paneldefault">
-                        <h4></h4>
+                        <h4>{{offers.length}} {{offers.length > 1 ? 'annonces' : 'annonce'}} sur wildfinder</h4>
                     </div>
                     <div id="map" style="width:100%;height:300px;"></div>
                     <div class="wildpanelfooter panel paneldefault">
@@ -80,20 +81,21 @@
             <div class="wildpanelheader panel paneldefault">
                 <h4>{{matchingOffers.length}} {{matchingOffers.length > 1 ? 'Annonces' : 'Annonce'}} qui {{matchingOffers.length > 1 ? 'pourraient' : 'pourrait'}} m'interresser</h4>
             </div>
-
+            <div class="panelmatchoffer no-marge">
             <!--OFFER-->
             <div ng-repeat="matchingOffer in matchingOffers" class="wildpanelbodys panel paneldefault">
                 <div class="offerdelete">
-                    <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Ne plus voir cette offre"></i>
+                   <ul>
+                    <li class="headeradvert">
+                        <i ng-click="likeClick(matchingOffer)" class="fa fa-heart fa-lg" ng-class="{'heartnotactive': matchingOffer.isLiked===false,'heartactive': matchingOffer.isLiked===true}" uib-tooltip="{{matchingOffer.isLiked ? 'Ne plus aimer' : 'aimer cette offre'}}" tooltip-placement="top"></i>
+                    </li>
+                    <li class="headeradvert"><i class="fa fa-share-alt fa-lg" uib-tooltip="Partager" tooltip-placement="top"></i></li>
+                    </ul>
                 </div>
                 <ul>
                     <li class="headeradvert" ng-click="goToOffer(matchingOffer)">
                         <h2 class="headeradvert titleadvert">{{matchingOffer.title}}</h2></li>
-                    <li class="headeradvert">
-                        <p class="headeradvert smalltexadvert">Posté {{startOffer(matchingOffer.startDate)}}</p>
-                    </li>
-                    <li class="headeradvert"><i class="fa fa-heart fa-lg heartnotactive" data-toggle="tooltip" data-placement="top" title="Liker cette offre"></i></li>
-                    <li class="headeradvert"><i class="fa fa-share-alt fa-lg" data-toggle="tooltip" data-placement="top" title="Partager"></i></li>
+                    
                 </ul>
                 <ul>
                     <li class="headeradvert">
@@ -101,6 +103,9 @@
                     </li>
                     <li class="headeradvert">
                         <p class="headeradvert companytexadvert">{{matchingOffer.referentId.name}}</p>
+                    </li>
+                    <li class="headeradvert">
+                        <p class="headeradvert smalltexadvert">Posté {{startOffer(matchingOffer.startDate)}}</p>
                     </li>
                 </ul>
                 <ul class="skill-ul">
@@ -121,6 +126,7 @@
                     </li>
                 </ul>
             </div>
+            </div>
 
             <div class="wildpanelfooter panel paneldefault">
                 <a href="/#/searchOffer">
@@ -138,48 +144,50 @@
                     <div class="wildpanelheader panel paneldefault">
                         <h4>Mes annonces favorites</h4>
                     </div>
+                    <div class="panelfavouritesoffer no-marge">
                     <!--OFFER-->
-                    <div class="wildpanelbodys panel paneldefault">
+                    <div ng-repeat="likedOffer in likedOffers" ng-show="after(likedOffer.startDate) && before(likedOffer.endDate)" class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
-                            <i class="fa fa-times fa-lg" ng-click="" data-toggle="tooltip" data-placement="top" title="Ne plus Liker"></i>
+                            <i ng-click="likeClick(likedOffer)" class="fa fa-times fa-lg" ng-click="" uib-tooltip="Ne plus liker" tooltip-placement="bottom"></i>
                         </div>
 
                         <ul>
-                            <li class="headeradvert">
-                                <h2 class="headeradvert titleadvert-sm">Nom de l'offre</h2></li>
-                            <li class="headeradvert"><i class="fa fa-share-alt fa-lg" data-toggle="tooltip" data-placement="top" title="Partager"></i></li>
+                            <li class="headeradvert" ng-click="goToOffer(likedOffer)">
+                                <h2 class="headeradvert titleadvert-sm">{{likedOffer.title}}</h2></li>
+                            <li class="headeradvert"><i class="fa fa-share-alt fa-lg" uib-tooltip="Partager" tooltip-placement="top"></i></li>
                         </ul>
                         <ul>
                             <li class="headeradvert">
                                 <p class="headeradvert smalltexadvert-sm">chez</p>
                             </li>
                             <li class="headeradvert">
-                                <p class="headeradvert companytexadvert-sm">Nom de l'entreprise</p>
+                                <p class="headeradvert companytexadvert-sm">{{likedOffer.referentId.name}}</p>
                             </li>
                             <li class="headeradvert">
-                                <p class="headeradvert smalltexadvert-sm">Expire dans ...</p>
+                                <p class="headeradvert smalltexadvert-sm">Posté {{startOffer(likedOffer.startDate)}}</p>
                             </li>
                         </ul>
-                        <ul class="skill-ul">
-                            <li class="headeradvert skill-li"><span class="wildSkill">Compétence</span>
+                        <ul class="skill-ul-mini">
+                            <li class="headeradvert skill-li-mini" ng-repeat="skill in likedOffer.skills"><span class="wildSkill-mini">{{skill.skill.title}}</span>
                         </ul>
                         <ul>
-                            <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
-                                <p class="headeradvert smalltexadvert1-sm">Contrat</p>
+                            <li class="headeradvert"><i class="fa fa-file-text-o fa-lg mini"></i>
+                                <p class="headeradvert smalltexadvert1-sm">{{likedOffer.contract}}</p>
                             </li>
-                            <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
-                                <p class="headeradvert smalltexadvert1-sm">Salaire</p>
+                            <li class="headeradvert"><i class="fa fa-eur fa-lg mini"></i>
+                                <p class="headeradvert smalltexadvert1-sm">{{likedOffer.salary}}</p>
                             </li>
-                            <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
-                                <p class="headeradvert smalltexadvert1-sm">Expérience</p>
+                            <li class="headeradvert"><i class="fa fa-briefcase fa-lg mini"></i>
+                                <p class="headeradvert smalltexadvert1-sm">{{likedOffer.experience}}</p>
                             </li>
-                            <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
-                                <p class="headeradvert smalltexadvert1-sm">Adresse</p>
+                            <li class="headeradvert"><i class="fa fa-map-marker fa-lg mini"></i>
+                                <p class="headeradvert smalltexadvert1-sm">{{likedOffer.city}} ({{likedOffer.country}})</p>
                             </li>
                         </ul>
                     </div>
+                    </div>
                     <div class="wildpanelfooter panel paneldefault">
-                        <p class="paragraphWPF">0 annonces au total</p>
+                        <p class="paragraphWPF">{{numberMatchOffer}} {{numberMatchOffer > 1 ? 'annonces' : 'annonce'}} dans vos favoris</p>
                     </div>
                 </div>
             </div>
@@ -195,15 +203,15 @@
                     </div>
                     <div class="wildpanelbody panel paneldefault row">
                         <div class="col-xs-4 col-sm-4 col-md-4 text-center">
-                            <h2 class="bookstatnumber">41</h2>
+                            <h2 class="bookstatnumber">{{bookInfo.nb_student}}</h2>
                             <p class="bookstattitle">Wilders</p>
                         </div>
                         <div class="col-xs-4 col-sm-4 col-md-4 text-center">
-                            <h2 class="bookstatnumber">41</h2>
+                            <h2 class="bookstatnumber">{{bookInfo.nb_student_job}}</h2>
                             <p class="bookstattitle">en recherche d'emploi</p>
                         </div>
                         <div class="col-xs-4 col-sm-4 col-md-4 text-center">
-                            <h2 class="bookstatnumber">41</h2>
+                            <h2 class="bookstatnumber">{{bookInfo.nb_student_stage}}</h2>
                             <p class="bookstattitle">en recherche de stage</p>
                         </div>
                     </div>

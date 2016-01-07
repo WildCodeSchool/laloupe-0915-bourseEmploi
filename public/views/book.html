@@ -1,0 +1,46 @@
+<div class="row">
+    <!--FILTERS-->
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+        <div class="wildpanel no-marge panel panel-default">
+            <div class="wildpanelheader panel panel-default">
+                <h4>filtre</h4>
+            </div>
+            <div class="wildpanelbody panel panel-default"></div>
+            <div class="wildpanelfooter panel panel-default">
+                <a>réinitialiser les filtres</a>
+            </div>
+        </div>
+    </div>
+    <!--STUDENTS-->
+    <div class="col-xs-12 col-sm-8 col-md-9 col-lg-9">
+        <!--RESULTS INFO-->
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <h3 class="no-marge">Resultat de la recherche</h3>
+        </div>
+        <!--STUDENT-->
+        <div class="col-xs-12">
+            <div ng-repeat="student in students" class="wildpanel panel panel-default">
+                <div class="wildpanelbook panel panel-default">
+                    <img class="profilimg-book" src="../img/darkvador.jpg" alt="photo de profil de ...">
+                    <ul>
+                        <li class="headeradvert" ng-click="goToStudent(student)">
+                            <h2 class="headeradvert studentname no-marge">{{student.firstName}} {{student.name}}</h2>
+                        </li>
+                        <li class="headeradvert">
+                            <i class="fa fa-heart fa-lg heartnotactive" data-toggle="tooltip" data-placement="top" title="Liker cette offre"></i>
+                        </li>
+                    </ul>
+                    <h3 class="headeradvert no-marge studentteaser">{{student.teaser}}</h3>
+                    <ul>
+                        <li class="headerasvert">
+                            <p class="no-marge">{{student.status}}</p>
+                        </li>
+                    </ul>
+                    <ul class="skill-ul">
+                        <li ng-repeat="skill in student.skills" class="headeradvert li-skill"><span class="wildSkill">{{skill.skill.title}}</span>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

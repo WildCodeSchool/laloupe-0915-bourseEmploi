@@ -1,5 +1,13 @@
 function recruiterService($http, $cookies) {
     return {
+        getAll: function () {
+            return $http.get('/api/users/recruiters', {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         getRecruiterById: function (id) {
             return $http.get('/api/recruiters/' + id, {
                 headers: {

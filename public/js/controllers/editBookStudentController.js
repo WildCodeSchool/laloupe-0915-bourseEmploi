@@ -1,7 +1,7 @@
 function editBookStudentController($scope, $location, $anchorScroll, $rootScope, $routeParams, studentService, offerService, skillService) {
 
     function loadStudent() {
-        studentService.getUserbyId($rootScope._id).then(function (res) {
+        studentService.getUserbyId($rootScope.user._id).then(function (res) {
             $scope.firstName = res.data.firstName;
             $scope.name = res.data.name;
             $scope.birthDate = res.data.birthDate;

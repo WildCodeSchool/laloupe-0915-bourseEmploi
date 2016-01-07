@@ -2,18 +2,20 @@ function homeRctrController($http, $scope, $rootScope, $location, $routeParams, 
 
     function loadOffers() {
         offerService.getOfferByUser($rootScope.user._id).then(function (res) {
+            console.log($rootScope.user._id);
             $scope.offerLists = res.data;
+            console.log(res.data);
         });
     }
     loadOffers();
 
-//    function loadStudents() {
-//        var type = 'Student';
-//        studentService.getAll(type).then(function (res) {
-//            $scope.students = res.data;
-//        });
-//    }
-//    loadStudents();
+    //    function loadStudents() {
+    //        var type = 'Student';
+    //        studentService.getAll(type).then(function (res) {
+    //            $scope.students = res.data;
+    //        });
+    //    }
+    //    loadStudents();
 
     //Lien vers l'EDITION de l'offre
     var selectOffer = $routeParams.id;
@@ -99,5 +101,10 @@ function homeRctrController($http, $scope, $rootScope, $location, $routeParams, 
     //TOOLTIP    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    //STUDENT BOOK INFO
+    studentService.getInfo().then(function (res) {
+        $scope.bookInfo = res.data;
     })
 }

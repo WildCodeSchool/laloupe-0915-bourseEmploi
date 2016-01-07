@@ -25,6 +25,7 @@ var StudentSchema = User.model.schema.extend({
     wildSide: String,
     status: String,
     situation: String,
+    teaser: String,
     classe: {
         type: String,
         required: true
@@ -39,10 +40,8 @@ var StudentSchema = User.model.schema.extend({
         "default": []
     },
     likes: [{
-        like: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Offer'
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Offer'
     }],
     skills: [{
         skill: {
@@ -67,15 +66,58 @@ var StudentSchema = User.model.schema.extend({
 var Student = {
     model: mongoose.model('Student', StudentSchema),
 
-    findById: function (req, res) {
-        Student.model.findById(req.params.id)
+    findByType: function (req, res) {
+        Student.model.find({
+                _type: 'Student'
+            }, {
+                password: 0
+            })
             .populate('skills.skill')
-            .populate('likes.like')
+            .populate('likes')
+            .exec(function (err, users) {
+                res.json(users);
+            });
+    },
+
+    findById: function (req, res) {
+        Student.model.findById(req.params.id, {
+                password: 0
+            })
+            .populate('skills.skill')
+            .populate('likes')
             .populate('formations.formation')
             .populate('experiences.experience')
             .exec(function (err, student) {
                 res.json(student);
             });
+    },
+
+    findInfo: function (req, res) {
+        Student.model.find({
+            _type: 'Student'
+        }, {
+            password: 0
+        }, function (err, student) {
+            var infos = {}
+            infos.nb_student = student.length;
+            Student.model.find({
+                _type: 'Student',
+                situation: "En recherche d'emploi"
+            }, {
+                password: 0
+            }, function (err, student_stage) {
+                infos.nb_student_stage = student_stage.length;
+                Student.model.find({
+                    _type: 'Student',
+                    status: 'Ouvert aux opportunités',
+                }, {
+                    password: 0
+                }, function (err, student_job) {
+                    infos.nb_student_job = student_job.length;
+                    res.json(infos);
+                });
+            });
+        });
     },
 
     create: function (req, res) {
@@ -90,6 +132,26 @@ var Student = {
             if (err)
                 console.log(err);
             res.json(student);
+        });
+    },
+
+    like: function (req, res) {
+        Student.model.findById(req.params.id, function (err, offer) {
+            offer.likes.push(req.body.like);
+            offer.save();
+            res.json(offer);
+        });
+    },
+
+    unlike: function (req, res) {
+        Student.model.findById(req.params.id, function (err, offer) {
+            var index = offer.likes.indexOf(req.body.unlike);
+            if (index > -1) {
+                offer.likes.splice(index, 1);
+            }
+            offer.save();
+            console.log(err)
+            res.json(offer);
         });
     },
 
