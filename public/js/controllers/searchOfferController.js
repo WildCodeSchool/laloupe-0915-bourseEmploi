@@ -1,4 +1,33 @@
+<<<<<<< HEAD
 function searchOfferController($scope, offerService, geocoderService, $location, $rootScope, studentService) {
+=======
+function searchOfferController($scope, offerService, skillService, $location, geocoderService) {
+
+    function loadSkill() {
+        skillService.get().then(function (res) {
+            $scope.skills = res.data;
+        })
+    }
+    loadSkill();
+
+    $scope.searchOffers = function () {
+        var data = {};
+        data.region = $scope.region;
+        data.skill = $scope.querySkill;
+        data.contract = $scope.contract;
+        data.experience = $scope.experience;
+        console.log(data);
+        offerService.getOffersFiltered(data).then(function (res) {
+            $scope.offers = res.data;
+            console.log(res.data);
+        });
+    }
+
+    //Lien vers la PAGE offre
+    $scope.goToOffer = function (offer) {
+        $location.path('/offer/' + offer._id);
+    }
+>>>>>>> searchOffer
 
     $scope.showMap = true;
 
