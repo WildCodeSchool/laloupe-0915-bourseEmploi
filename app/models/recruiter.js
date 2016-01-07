@@ -50,10 +50,8 @@ var RecruiterSchema = User.model.schema.extend({
         required: true
     },
     likes: [{
-        like: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
-        }
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }]
 });
 
@@ -112,6 +110,25 @@ var Recruiter = {
     update: function (req, res) {
         Recruiter.model.findByIdAndUpdate(req.params.id, req.body, function (err, recruiter) {
             return Recruiter.findById(req, res);
+        });
+    },
+
+    like: function (req, res) {
+        Recruiter.model.findById(req.params.id, function (err, student) {
+            student.likes.push(req.body.like);
+            student.save();
+            res.json(student);
+        });
+    },
+
+    unlike: function (req, res) {
+        Recruiter.model.findById(req.params.id, function (err, student) {
+            var index = student.likes.indexOf(req.body.unlike);
+            if (index > -1) {
+                student.likes.splice(index, 1);
+            }
+            student.save();
+            res.json(student);
         });
     },
 

@@ -20,15 +20,18 @@
         <!--STUDENT-->
         <div class="col-xs-12">
             <div ng-repeat="student in students" class="wildpanel panel panel-default">
+                <div class="bookLike">
+                    <li ng-if="showRcrt" ng-click="likeClick(student)" class="headeradvert">
+                        <i class="fa fa-heart fa-lg" ng-class="{'heartnotactive': student.isLiked===false,'heartactive': student.isLiked===true}" uib-tooltip="{{student.isLiked ? 'Retirer des favoris' : 'Ajouter aux favoris'}}" tooltip-placement="left"></i>
+                    </li>
+                </div>
                 <div class="wildpanelbook panel panel-default">
                     <img class="profilimg-book" src="../img/darkvador.jpg" alt="photo de profil de ...">
                     <ul>
                         <li class="headeradvert" ng-click="goToStudent(student)">
                             <h2 class="headeradvert studentname no-marge">{{student.firstName}} {{student.name}}</h2>
                         </li>
-                        <li class="headeradvert">
-                            <i class="fa fa-heart fa-lg heartnotactive" data-toggle="tooltip" data-placement="top" title="Liker cette offre"></i>
-                        </li>
+
                     </ul>
                     <h3 class="headeradvert no-marge studentteaser">{{student.teaser}}</h3>
                     <ul>
