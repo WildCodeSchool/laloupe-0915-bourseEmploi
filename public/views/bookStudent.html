@@ -1,4 +1,4 @@
-<h1 class="student-title">{{student.name}} {{student.firstName}} <small>{{student.teaser}}</small></h1>
+<h1 class="student-title">{{student.name}} {{student.firstName}}  <small>  "{{student.teaser}}"</small></h1>
 
 <div class="row">
     <div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
@@ -12,7 +12,7 @@
                 <p>{{student.gender}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault" id="studentCVmin">
-                <p>{{teaser}}</p>
+                <p class="headeradvert smalltexadvert">{{student.city}} - {{student.region}}</p>
                 <h5>contact</h5>
                 <ul>
                     <li class="li-block" ng-if="student.email != undefined"><i class="fa fa-paper-plane-o fa-lg"></i>{{student.email}}</li>
