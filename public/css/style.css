@@ -1,13 +1,20 @@
 /* $ GENERAL */
 
+html,
+body {
+    height: 100%;
+}
+
 body {
     padding-top: 70px;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: #F5FAF9;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     color: #202020;
-}
-
-.container {
+    min-height: 100%;
     position: relative;
 }
 
@@ -19,6 +26,28 @@ body {
     background-size: cover;
     background-color: black;
     padding-top: 20px;
+}
+
+#container {
+    min-height: 100%;
+    position: relative;
+}
+
+#body {
+    padding: 10px;
+    padding-bottom: 58px;
+    /* Height of the footer */
+}
+
+#footer {
+    background-color: #101010;
+    border-color: #080808;
+    padding: 10px;
+    font-size: 13px;
+    line-height: 38px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 p {
@@ -1001,23 +1030,6 @@ li.active {
 .panelfavouritesoffer {
     max-height: 282px;
     overflow: auto;
-}
-
-
-/*   FOOTER   */
-
-#footer {
-    background-color: #101010;
-    border-color: #080808;
-    padding: 20px;
-    font-size: 13px;
-    line-height: 38px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin-top: 50px;
-    margin-bottom: 0px;
-    z-index: 1131;
 }
 
 .fixed {
