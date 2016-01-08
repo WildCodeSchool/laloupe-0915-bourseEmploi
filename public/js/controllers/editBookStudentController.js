@@ -202,16 +202,17 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         })
     }
 
-    $scope.update6 = function () {
+    $scope.update6 = function (form) {
         var data = {};
-        data.title = $scope.title;
-        data.school = $scope.school;
-        data.city = $scope.city;
-        data.country = $scope.country;
-        data.startDate = $scope.startDate;
-        data.endDate = $scope.endDate;
-        data.description = $scope.description;
-        studentService.updateFormation($rootScope.user._id, data).then(function (res) {
+        data.studentId = $rootScope.user._id;
+        data.title = form.formation.title;
+        data.school = form.formation.school;
+        data.city = form.formation.city;
+        data.country = form.formation.country;
+        data.startDate = form.formation.startDate;
+        data.endDate = form.formation.endDate;
+        data.description = form.formation.description;
+        studentService.updateFormation(form.formation._id, data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {
@@ -250,16 +251,16 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         })
     }
 
-    $scope.createFormation = function () {
+    $scope.createFormation = function (form) {
         var data = {};
-        data.title = $scope.title;
-        data.school = $scope.school;
-        data.city = $scope.city;
-        data.country = $scope.country;
-        data.startDate = $scope.startDate;
-        data.endDate = $scope.endDate;
-        data.description = $scope.description;
-        studentService.create(data).then(function (res) {
+        data.title = form.formation.title;
+        data.school = form.formation.school;
+        data.city = form.formation.city;
+        data.country = form.formation.country;
+        data.startDate = form.formation.startDate;
+        data.endDate = form.formation.endDate;
+        data.description = form.formation.description;
+        studentService.create($rootScope.user._id, data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {
