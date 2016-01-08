@@ -12,6 +12,8 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
             $scope.status = res.data.status;
             $scope.mobility = res.data.mobility;
             $scope.wildSide = res.data.wildSide;
+            $scope.hobbies = res.data.hobbies;
+            $scope.languages = res.data.languages;
 
             $scope.company = res.data.company;
             $scope.contract = res.data.contract;
@@ -119,6 +121,7 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.situation = $scope.situation;
         data.status = $scope.status;
         data.mobility = $scope.mobility;
+        data.languages = $scope.languages;
         studentService.update(data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
