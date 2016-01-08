@@ -110,6 +110,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         data.zipCode = $scope.zipCode;
         data.country = $scope.country;
         data.city = $scope.city;
+        data.region = $scope.region;
         data.address = $scope.address;
         data.skills = idSkill;
         data.referentPhone = $scope.referentPhone;

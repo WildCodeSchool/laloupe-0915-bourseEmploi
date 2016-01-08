@@ -17,6 +17,8 @@ var StudentSchema = User.model.schema.extend({
         type: String,
         required: true
     },
+    region: String,
+    city: String,
     gender: String,
     picture: String,
     birthDate: Date,
@@ -39,6 +41,11 @@ var StudentSchema = User.model.schema.extend({
         type: Array,
         "default": []
     },
+    languages: [{
+        language: {
+            type: Array
+        }
+    }],
     likes: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Offer'
@@ -109,7 +116,7 @@ var Student = {
                 infos.nb_student_stage = student_stage.length;
                 Student.model.find({
                     _type: 'Student',
-                    status: 'Ouvert aux opportunités',
+                    situation: "En recherche de stage",
                 }, {
                     password: 0
                 }, function (err, student_job) {
