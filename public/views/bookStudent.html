@@ -218,6 +218,24 @@
             </div>
         </div>
 
+        <!--LANGUAGES-->
+        <div class="wildpanel panel panel-default col-xs-12 col-sm-6 col-md-12 col-lg-12 no-padding">
+            <div class="wildpanelheader panel panel-default">
+                <h4><i class="fa fa-language i-header"></i> Langues</h4>
+            </div>
+            <div class="wildpanelbody panel paneldefault">
+                <ul>
+                    <li class="li-block">
+                        <p ng-repeat="language in student.language"> • {{language}}</p>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="wildpanelfooter panel panel-default">
+                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">modifier</a>
+            </div>
+        </div>
+
         <!--HOBBIES-->
         <div class="wildpanel panel panel-default col-xs-12 col-sm-6 col-md-12 col-lg-12 no-padding">
             <div class="wildpanelheader panel panel-default">
