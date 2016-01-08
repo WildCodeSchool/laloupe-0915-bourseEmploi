@@ -153,11 +153,22 @@ ul {
 .btnW:hover {
     background-position: 0 100%;
     background-color: transparent;
+    border-color: #009587;
     color: white;
 }
 
 .btnW:focus {
     outline: none;
+    border-radius: 10px;
+    border-color: #009587;
+    color: #009587;
+    background-color: transparent;
+}
+
+.btnW:focus:hover {
+    background-position: 0 100%;
+    background-color: transparent;
+    color: white;
 }
 
 .btnW-sm {
