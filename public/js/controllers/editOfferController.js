@@ -16,6 +16,7 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
             $scope.description = res.data.description;
             $scope.responsability = res.data.responsability;
             $scope.wildSide = res.data.wildSide;
+            console.log(res.data);
         });
     }
     loadOffer();

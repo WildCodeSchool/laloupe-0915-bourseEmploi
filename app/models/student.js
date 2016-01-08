@@ -17,6 +17,8 @@ var StudentSchema = User.model.schema.extend({
         type: String,
         required: true
     },
+    region: String,
+    city: String,
     gender: String,
     picture: String,
     birthDate: Date,
