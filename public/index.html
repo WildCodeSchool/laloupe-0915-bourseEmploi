@@ -64,8 +64,8 @@
 </head>
 
 <body ng-class="{'bg': activetab==='/login'}">
+    <!--NAVBAR-->
     <div id="container">
-        <!--NAVBARR-->
         <header ng-hide="activetab === '/login'" class="navbar navbar-inverse navbar-fixed-top navbar-border" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -150,23 +150,21 @@
                 </nav>
             </div>
         </header>
+    </div>
+    <div id="container">
 
         <div id="body" ng-class="{'container-fluid': activetab=='/login', 'container': activetab!=='/login'}">
             <ng-view></ng-view>
         </div>
 
         <!--FOOTER-->
-        <div id="footer" ng-class="{'fixed': activetab=='/login'}">
-            <div class="row copyright">
-                <div class="col-xs-12 txt-center">
-                    Copyright ©
-                    <a href="http://wildcodeschool.fr/">Conception: Wild Code School</a> | 09 72 52 63 94 |
-                    <a href="mailto:pauline@wildcodeschool.fr">Nous contacter</a>
-                    <li><a href="/#/mentionsLegales"> | Mentions Légales | </a></li>
-                    <a href="https://facebook.com/wildcodeschool" target="_blank"><i class="fa fa-facebook-official fa-lg"></i></a>
-                    <a href="https://twitter.com/wildcodeschool" target="_blank"><i class="fa fa-twitter fa-lg"></i></a>
-                </div>
-            </div>
+        <div id="footer" class="text-center" ng-class="{'fixed': activetab=='/login'}">
+            Copyright ©
+            <a href="http://wildcodeschool.fr/">Conception: Wild Code School</a> <span class="white">| 09 72 52 63 94 |</span>
+            <a href="mailto:pauline@wildcodeschool.fr">Nous contacter</a>
+            <li><a class="white" href="/#/mentionsLegales"> | Mentions Légales | </a></li>
+            <a href="https://facebook.com/wildcodeschool" target="_blank"><i class="fa fa-facebook-official fa-lg"></i></a>
+            <a href="https://twitter.com/wildcodeschool" target="_blank"><i class="fa fa-twitter fa-lg"></i></a>
         </div>
     </div>
 </body>
