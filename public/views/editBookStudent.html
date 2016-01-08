@@ -50,6 +50,33 @@
                     </div>
                 </div>
             </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Ville :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="email">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Région :</label>
+                    <select class="form-control" ng-model="situation">
+                        <option value="" disabled>Région</option>
+                        <option>Alsace-Champagne-Ardenne-Lorraine</option>
+                        <option>Aquitaine-Limousin-Poitou-Charentes</option>
+                        <option>Auvergne-Rhône-Alpes</option>
+                        <option>Bourgogne-Franche-Comté</option>
+                        <option>Bretagne</option>
+                        <option>Centre-Val de Loire</option>
+                        <option>Corse</option>
+                        <option>Île-de-France</option>
+                        <option>Languedoc-Roussillon-Midi-Pyrénées</option>
+                        <option>Nord-Pas-De-Calais-Picardie</option>
+                        <option>Normandie</option>
+                        <option>Pays-De-la-Loire</option>
+                        <option>Provence-Alpes-Côte-d'Azur</option>
+                    </select>
+                </div>
+            </fieldset>
         </div>
         <fieldset class="form-group">
             <div class="col-sm-offset-8 col-sm-3">
@@ -66,26 +93,46 @@
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-5">
-                    <label class="control-label">Situation :</label>
-                    <div>
-                        <input type="text" class="form-control" id="" ng-model="situation">
-                    </div>
+                    <label class="control-label">Situation professionelle:</label>
+                    <select class="form-control" ng-model="situation">
+                        <option type="text" class="form-control" value="" disabled></option>
+                        <option type="text" class="form-control">En poste</option>
+                        <option type="text" class="form-control">En fin de contrat</option>
+                        <option type="text" class="form-control">En recherche d'emploi</option>
+                        <option type="text" class="form-control">Freelance</option>
+                        <option type="text" class="form-control">Consultant</option>
+                        <option type="text" class="form-control">Entrepreneur</option>
+                        <option type="text" class="form-control">Porteur de projet</option>
+                        <option type="text" class="form-control">Etudiant</option>
+                        <option type="text" class="form-control">En fin d'études</option>
+                        <option type="text" class="form-control">Stagiaire</option>
+                        <option type="text" class="form-control">Apprenti</option>
+                        <option type="text" class="form-control">En alternance</option>
+                    </select>
                 </div>
                 <div class="col-sm-5">
-                    <label class="control-label">Status :</label>
-                    <div>
-                        <input type="email" class="form-control" id="" ng-model="status">
-                    </div>
+                    <label class="control-label">Disponibilité :</label>
+                    <select class="form-control" ng-model="status">
+                        <option type="text" class="form-control" value="" disabled></option>
+                        <option type="text" class="form-control">En recherche active</option>
+                        <option type="text" class="form-control">En recherche de stage</option>
+                        <option type="text" class="form-control">Ouvert aux opportunités</option>
+                        <option type="text" class="form-control">Indisponible</option>
+                    </select>
                 </div>
             </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-5">
-                    <label class="control-label">Mobilité :</label>
-                    <div>
-                        <input type="text" class="form-control" id="" ng-model="mobility">
-                    </div>
-                </div>
-            </fieldset>
+            <div class="col-sm-5">
+                <label class="control-label">Mobilité :</label>
+                <fieldset class="form-group">
+                    <select class="form-control" ng-model="mobility">
+                        <option type="text" class="form-control" value="" disabled></option>
+                        <option type="text" class="form-control">Départementale</option>
+                        <option type="text" class="form-control">Régionale</option>
+                        <option type="text" class="form-control">Nationale</option>
+                        <option type="text" class="form-control">Internationale</option>
+                    </select>
+                </fieldset>
+            </div>
         </div>
         <fieldset class="form-group">
             <div class="col-sm-offset-8 col-sm-3">
@@ -94,7 +141,6 @@
                 </form>
             </div>
         </fieldset>
-
 
         <div class="row" id="anchor3">
             <div class="page-header">
@@ -127,7 +173,7 @@
                     <div class="input-group">
                         <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage, de compétence" class="form-control" list="Languages" />
                         <datalist id="Languages">
-                            <option ng-repeat="offerSkill in offerSkills" value="{{offerSkill.title}}">
+                            <option ng-repeat="studentSkill in studentSkills" value="{{studentSkill.title}}">
                         </datalist>
                         <span class="input-group-btn">
                     <button class="btn btn-default btn-side" ng-click="add()" type="button" >OK</button>
@@ -155,73 +201,75 @@
             <div class="page-header">
                 <h2>Expérience</h2>
             </div>
-            <h4>Modifier une experience :</h4>
-            <fieldset class="form-group">
-                <div class="col-sm-10">
-                    <label class="control-label">Intitulé du poste :</label>
-                    <input type="text" name="title" class="form-control" id="" ng-model="job">
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-5">
-                    <label class="control-label">Entreprise :</label>
-                    <div>
-                        <input type="text" class="form-control" id="" ng-model="company">
+            <div ng-repeat="exp in student.experiences">
+                <h4>Modifier une experience :</h4>
+                <fieldset class="form-group">
+                    <div class="col-sm-10">
+                        <label class="control-label">Intitulé du poste :</label>
+                        <input type="text" name="title" class="form-control" id="" ng-model="exp.experience.job">
                     </div>
-                </div>
-                <div class="col-sm-5">
-                    <label class="control-label">Type de contrat :</label>
-                    <select class="form-control" ng-model="contract">
-                        <option type="text" class="form-control" value="" disabled>Choisissez un contrat...</option>
-                        <option type="text" class="form-control">Stage</option>
-                        <option type="text" class="formcontrol">Apprentissage</option>
-                        <option type="text" class="form-control">CDD</option>
-                        <option type="text" class="form-control">CDI</option>
-                    </select>
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-5">
-                    <label class="control-label">Ville :</label>
-                    <div>
-                        <input type="text" class="form-control" id="" ng-model="city">
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="col-sm-5">
+                        <label class="control-label">Entreprise :</label>
+                        <div>
+                            <input type="text" class="form-control" id="" ng-model="exp.experience.company">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-5">
-                    <label class="control-label">Pays :</label>
-                    <div>
-                        <input type="email" class="form-control" id="" ng-model="country">
+                    <div class="col-sm-5">
+                        <label class="control-label">Type de contrat :</label>
+                        <select class="form-control" ng-model="exp.experience.contract">
+                            <option type="text" class="form-control" value="" disabled>Choisissez un contrat...</option>
+                            <option type="text" class="form-control">Stage</option>
+                            <option type="text" class="formcontrol">Apprentissage</option>
+                            <option type="text" class="form-control">CDD</option>
+                            <option type="text" class="form-control">CDI</option>
+                        </select>
                     </div>
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-5">
-                    <label class="control-label">Date de début :</label>
-                    <div>
-                        <input class="form-control" type="date" ng-model="startDate" min="">
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="col-sm-5">
+                        <label class="control-label">Ville :</label>
+                        <div>
+                            <input type="text" class="form-control" id="" ng-model="exp.experience.city">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-5">
-                    <label class="control-label">Date de fin :</label>
-                    <div>
-                        <input class="form-control" type="date" ng-model="endDate" min="">
+                    <div class="col-sm-5">
+                        <label class="control-label">Pays :</label>
+                        <div>
+                            <input type="email" class="form-control" id="" ng-model="exp.experience.country">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="col-sm-5">
+                        <label class="control-label">Date de début :</label>
+                        <div>
+                            <input class="form-control" type="date" ng-model="exp.experience.startDate" min="">
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <label class="control-label">Date de fin :</label>
+                        <div>
+                            <input class="form-control" type="date" ng-model="exp.experience.endDate" min="">
 
+                        </div>
                     </div>
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-10">
-                    <label>Description de l'expérience</label>
-                    <textarea class="form-control" rows="6" ng-model="detailsExp" name="desc"></textarea>
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-offset-8 col-sm-3">
-                    <form>
-                        <button class="btnW" ng-click="update5()">mettre a jour</button>
-                    </form>
-                </div>
-            </fieldset>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="col-sm-10">
+                        <label>Description de l'expérience</label>
+                        <textarea class="form-control" rows="6" ng-model="exp.experience.detailsExp" name="desc"></textarea>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="col-sm-offset-8 col-sm-3">
+                        <form>
+                            <button class="btnW" ng-click="update5(exp)">mettre a jour</button>
+                        </form>
+                    </div>
+                </fieldset>
+            </div>
             <h4>Ajouter une experience</h4>
             <fieldset class="form-group">
                 <div class="col-sm-10">
@@ -295,53 +343,55 @@
             <div class="page-header">
                 <h2>Formation</h2>
             </div>
-            <h4>Modifier une formation</h4>
-            <fieldset class="form-group">
-                <div class="col-sm-10">
-                    <label class="control-label">Intitulé de la formation :</label>
-                    <input type="text" name="title" class="form-control" id="" ng-model="title">
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-5">
-                    <label class="control-label">Ecole :</label>
-                    <input type="text" name="title" class="form-control" id="" ng-model="school">
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-5">
-                    <label class="control-label">ville :</label>
-                    <div>
-                        <input type="text" class="form-control" id="" ng-model="city">
+            <div ng-repeat="for in student.formations">
+                <h4>Modifier une formation</h4>
+                <fieldset class="form-group">
+                    <div class="col-sm-10">
+                        <label class="control-label">Intitulé de la formation :</label>
+                        <input type="text" name="title" class="form-control" id="" ng-model="for.formation.title">
                     </div>
-                </div>
-                <div class="col-sm-5">
-                    <label class="control-label">Pays :</label>
-                    <div>
-                        <input type="text" class="form-control" id="" ng-model="country">
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="col-sm-5">
+                        <label class="control-label">Ecole :</label>
+                        <input type="text" name="title" class="form-control" id="" ng-model="school">
                     </div>
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-5">
-                    <label class="control-label">Date de début :</label>
-                    <div>
-                        <input class="form-control" type="date" ng-model="startDate" min="">
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="col-sm-5">
+                        <label class="control-label">ville :</label>
+                        <div>
+                            <input type="text" class="form-control" id="" ng-model="city">
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-5">
-                    <label class="control-label">Date de fin :</label>
-                    <div>
-                        <input class="form-control" type="date" ng-model="endDate" min="">
+                    <div class="col-sm-5">
+                        <label class="control-label">Pays :</label>
+                        <div>
+                            <input type="text" class="form-control" id="" ng-model="country">
+                        </div>
                     </div>
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-10">
-                    <label>Description de la formation</label>
-                    <textarea class="form-control" rows="6" ng-model="description" name="desc"></textarea>
-                </div>
-            </fieldset>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="col-sm-5">
+                        <label class="control-label">Date de début :</label>
+                        <div>
+                            <input class="form-control" type="date" ng-model="startDate" min="">
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <label class="control-label">Date de fin :</label>
+                        <div>
+                            <input class="form-control" type="date" ng-model="endDate" min="">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="col-sm-10">
+                        <label>Description de la formation</label>
+                        <textarea class="form-control" rows="6" ng-model="description" name="desc"></textarea>
+                    </div>
+                </fieldset>
+            </div>
             <fieldset class="form-group">
                 <div class="col-sm-offset-8 col-sm-3">
                     <form>

@@ -14,6 +14,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
             $scope.referentPhone = $rootScope.user.referentPhone;
             $scope.referentEmail = $rootScope.user.email;
             $scope.zipCode = $rootScope.user.zipCode;
+            $scope.region = $rootScope.user.region;
         } else {
             $scope.country = null;
             $scope.city = null;
@@ -21,6 +22,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
             $scope.referentPhone = null;
             $scope.referentEmail = null;
             $scope.zipCode = null;
+            $scope.region = null;
         }
     }
     referentInfo();
@@ -111,6 +113,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         data.zipCode = $scope.zipCode;
         data.country = $scope.country;
         data.city = $scope.city;
+        data.region = $scope.region;
         data.address = $scope.address;
         data.skills = idSkill;
         data.referentPhone = $scope.referentPhone;
