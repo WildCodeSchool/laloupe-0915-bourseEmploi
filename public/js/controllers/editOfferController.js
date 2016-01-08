@@ -15,7 +15,6 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
             $scope.salary = res.data.salary;
             $scope.description = res.data.description;
             $scope.responsability = res.data.responsability;
-            $scope.wildSide = res.data.wildSide;
         });
     }
     loadOffer();
@@ -162,7 +161,6 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
         var data = {};
         data.description = $scope.description;
         data.responsability = $scope.responsability;
-        data.wildSide = $scope.wildSide;
         offerService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');

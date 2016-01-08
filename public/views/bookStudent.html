@@ -154,10 +154,6 @@
                             <p>
                     </div>
 
-                    <div class="wildpanelfooter panel panel-default">
-                        <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Ajouter ou modifier une formation</a>
-                    </div>
-
                     <!-- Modal -->
                     <div class="modal fade" id="{{for.formation._id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
                         <div class="modal-dialog" role="document">
@@ -187,6 +183,9 @@
                     </div>
                 </div>
             </div>
+            <div class="wildpanelfooter panel panel-default">
+                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Ajouter ou modifier une formation</a>
+            </div>
         </div>
     </div>
 
@@ -198,7 +197,7 @@
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <ul class="skill-ul" ng-show="showSkill">
-                    <li class="headeradvert skill-li" ng-repeat="skill in listSkills"><span class="wildSkill">{{skill}}<i class="fa fa-times cross times-skill" ng-click="deleteSkill(skill)"></i></span></li>
+                    <li class="headeradvert skill-li" ng-repeat="skill in listSkills"><span class="wildSkill">{{skill}}<i class="fa fa-times cross times-skill" ng-if="ifStudent" ng-click="deleteSkill(skill)"></i></span></li>
                 </ul>
             </div>
             <div class="wildpanelbody panel paneldefault text-center">

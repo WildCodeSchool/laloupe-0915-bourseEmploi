@@ -16,6 +16,10 @@ function searchOfferController($scope, offerService, skillService, studentServic
         console.log(data);
         offerService.getOffersFiltered(data).then(function (res) {
             $scope.offers = res.data;
+            //CHECK IS lIKED
+            $scope.offers.forEach(function (offer) {
+                offer.isLiked = ($rootScope.user.likes.indexOf(offer._id) > -1);
+            }.bind($scope));
         });
     }
 

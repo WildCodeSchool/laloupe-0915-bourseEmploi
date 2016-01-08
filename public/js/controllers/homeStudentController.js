@@ -121,7 +121,7 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
                     $scope.likedOffers.push(res.data);
                     //NUMBER OF LIKED OFFER
                     if ($scope.after(res.data.startDate) && $scope.before(res.data.endDate)) {
-                        i += 1
+                        i++
                     };
                     $scope.numberMatchOffer = i
                     console.log($scope.likedOffers);
