@@ -51,10 +51,15 @@ function homeRctrController($http, $scope, $rootScope, $location, $routeParams, 
         $location.path('/offer/' + offer._id);
     }
 
+    //Lien vers la PAGE eleve
+    $scope.goToStudent = function (student) {
+        console.log(student);
+        $location.path('/book/' + student);
+    }
+
     //ARCHIV d'une offre via actualisation de la fin de date de publication
     $scope.archiv = function (selectOffer) {
         var today = new Date();
-        console.log(today);
         var data = {};
         data.endDate = moment(today).add(-1, 'days');
         offerService.update(selectOffer, data).then(function (res) {

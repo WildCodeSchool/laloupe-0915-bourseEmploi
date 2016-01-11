@@ -16,7 +16,7 @@ function bookStudentController($scope, $rootScope, skillService, $routeParams, s
             console.log($scope.student.experiences);
 
             //Cacher les actions d'édition selon le type
-            if ($rootScope.user._type === 'Student')
+            if ($rootScope.user._type === 'Student' && $rootScope.user._id === selectUser)
                 $scope.ifStudent = true;
 
             //Afichage des dates
@@ -123,4 +123,3 @@ function bookStudentController($scope, $rootScope, skillService, $routeParams, s
     }
 
 };
-

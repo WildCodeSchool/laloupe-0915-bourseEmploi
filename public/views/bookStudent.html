@@ -100,16 +100,16 @@
                                     <p class="smalltexadvert-sm">De {{calculDate(exp.experience.startDate)}} - A {{calculDate(exp.experience.endDate)}}</p>
                                 </div>
                                 <div class="modal-body">
-                                    <h5>Missions</h5>
+                                    <h5>Missions :</h5>
                                     <p class="white-space-pre-line">{{exp.experience.missions}}</p>
                                 </div>
                                 <div class="modal-body">
-                                    <h5>Détail sur l'experience</h5>
+                                    <h5>Détail sur l'experience :</h5>
 
                                     <p class="white-space-pre-line">{{exp.experience.detailsExp}}</p>
                                 </div>
                                 <div class="modal-body">
-                                    <h5>Déscription de l'entreprise</h5>
+                                    <h5>Déscription de l'entreprise :</h5>
                                     <p class="white-space-pre-line">{{exp.experience.companyDescription}}</p>
                                 </div>
                                 <div class="modal-body">
@@ -154,10 +154,6 @@
                             <p>
                     </div>
 
-                    <div class="wildpanelfooter panel panel-default">
-                        <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Ajouter ou modifier une formation</a>
-                    </div>
-
                     <!-- Modal -->
                     <div class="modal fade" id="{{for.formation._id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
                         <div class="modal-dialog" role="document">
@@ -169,7 +165,7 @@
                                     <p class="smalltexadvert-sm">De {{calculDate(for.formation.startDate)}} - A {{calculDate(for.formation.endDate)}}</p>
                                 </div>
                                 <div class="modal-body">
-                                    <h5>Descriptions de la formation</h5>
+                                    <h5>Descriptions de la formation :</h5>
                                     <p class="white-space-pre-line">{{for.formation.description}}</p>
                                 </div>
                                 <div class="modal-body">
@@ -187,6 +183,9 @@
                     </div>
                 </div>
             </div>
+            <div class="wildpanelfooter panel panel-default">
+                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Ajouter ou modifier une formation</a>
+            </div>
         </div>
     </div>
 
@@ -198,7 +197,7 @@
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <ul class="skill-ul" ng-show="showSkill">
-                    <li class="headeradvert skill-li" ng-repeat="skill in listSkills"><span class="wildSkill">{{skill}}<i class="fa fa-times cross times-skill" ng-click="deleteSkill(skill)"></i></span></li>
+                    <li class="headeradvert skill-li" ng-repeat="skill in listSkills"><span class="wildSkill">{{skill}}<i class="fa fa-times cross times-skill" ng-if="ifStudent" ng-click="deleteSkill(skill)"></i></span></li>
                 </ul>
             </div>
             <div class="wildpanelbody panel paneldefault text-center">

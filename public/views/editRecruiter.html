@@ -50,21 +50,42 @@
                         <input type="text" class="form-control" id="" ng-model="country">
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-offset-1 col-sm-4">
+                    <label class="control-label"><i class="fa fa-map-o fa-form"></i>Région :</label>
+                    <div class="input-group input-group-sm">
+                        <select type="text" class="form-control" ng-model="region">
+                            <option value="" disabled>Choisssez une région</option>
+                            <option>Alsace-Champagne-Ardenne-Lorraine</option>
+                            <option>Aquitaine-Limousin-Poitou-Charentes</option>
+                            <option>Auvergne-Rhône-Alpes</option>
+                            <option>Bourgogne-Franche-Comté</option>
+                            <option>Bretagne</option>
+                            <option>Centre-Val de Loire</option>
+                            <option>Corse</option>
+                            <option>Île-de-France</option>
+                            <option>Languedoc-Roussillon-Midi-Pyrénées</option>
+                            <option>Nord-Pas-De-Calais-Picardie</option>
+                            <option>Normandie</option>
+                            <option>Pays-De-la-Loire</option>
+                            <option>Provence-Alpes-Côte-d'Azur</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-2">
                     <label class="control-label"><i class="fa fa-map-o fa-form"></i> Ville :</label>
                     <div>
                         <input type="text" class="form-control" id="" ng-model="city">
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <label class="control-label"><i class="fa fa-map-o fa-form"></i> Code postal :</label>
                     <div>
                         <input type="text" class="form-control" id="" ng-model="zipCode">
                     </div>
                 </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <label class="control-label"><i class="fa fa-map-marker fa-form"></i> Adresse :</label>
                     <div>
                         <input type="text" class="form-control" id="" ng-model="address">

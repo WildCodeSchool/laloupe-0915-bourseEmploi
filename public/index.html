@@ -64,8 +64,7 @@
 </head>
 
 <body ng-class="{'bg': activetab==='/login'}">
-
-    <!--NAVBARR-->
+    <!--NAVBAR-->
     <header ng-hide="activetab === '/login'" class="navbar navbar-inverse navbar-fixed-top navbar-border" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -151,25 +150,24 @@
         </div>
     </header>
 
-    <div ng-class="{'container-fluid': activetab=='/login', 'container': activetab!=='/login'}">
-        <ng-view></ng-view>
-    </div>
+    <div id="container">
 
-    <!--FOOTER-->
-
-    <section id="footer" ng-class="{'fixed': activetab=='/login'}">
-        <div class="row copyright">
-            <div class="col-xs-12 txt-center">
-                Copyright © 
-                <li><a href="http://innoveduc.fr/">Innoveduc</a></li> 
-                <a href="http://wildcodeschool.fr/"> | Conception: Wild Code School</a> 
-                | 09 72 52 63 94 | 
-                <a href="mailto:pauline@wildcodeschool.fr">Nous contacter</a> 
-                <a href="https://facebook.com/wildcodeschool" target="_blank"></a><i class="fa fa-facebook-official fa-lg"></i> 
-                <a href="https://twitter.com/wildcodeschool" target="_blank"></a><i class="fa fa-twitter fa-lg"></i>
-            </div>
+        <div id="body" ng-class="{'container-fluid': activetab=='/login', 'container': activetab!=='/login'}">
+            <ng-view></ng-view>
         </div>
-    </section>
+
+        <!--FOOTER-->
+
+        <div id="footer" class="text-center" ng-class="{'fixed': activetab=='/login'}">
+            <span class="white">Copyright ©</span>
+            <li><a href="http://innoveduc.fr/">Innoveduc</a></li> 
+            <a href="http://wildcodeschool.fr/"> | Conception: Wild Code School</a> 
+            <span class="white">| 09 72 52 63 94 |</span> 
+            <a class="footercontact" href="mailto:pauline@wildcodeschool.fr">Nous contacter</a> 
+            <a href="https://facebook.com/wildcodeschool" target="_blank"><i class="fa fa-facebook-official fa-lg footerclass"></i></a> 
+            <a href="https://twitter.com/wildcodeschool" target="_blank"><i class="fa fa-twitter fa-lg footerclass"></i></a>
+        </div>
+    </div>
 </body>
 
 </html>

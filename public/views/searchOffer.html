@@ -40,7 +40,7 @@
                     <div class="input-group input-group-sm">
                         <select class="form-control" type="button" ng-model="querySkill">
                             <option value="">Tous</option>
-                            <option ng-repeat="skill in skills">{{skill.title}}</option>
+                            <option ng-repeat="skill in skills" value="{{skill._id}}">{{skill.title}}</option>
                         </select>
                     </div>
                 </div>

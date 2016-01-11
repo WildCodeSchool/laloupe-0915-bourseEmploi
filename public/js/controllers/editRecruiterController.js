@@ -19,6 +19,7 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
             $scope.email = res.data.email;
             $scope.phone = res.data.phone;
             $scope.country = res.data.country;
+            $scope.region = res.data.region;
             $scope.city = res.data.city;
             $scope.zipCode = res.data.zipCode;
             $scope.address = res.data.address;
@@ -95,6 +96,7 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
     $scope.update2 = function () {
         var data = {};
         data.country = $scope.country;
+        data.region = $scope.region;
         data.city = $scope.city;
         data.zipCode = $scope.zipCode;
         data.address = $scope.address;

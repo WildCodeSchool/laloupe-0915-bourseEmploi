@@ -67,7 +67,7 @@ function studentService($http, $cookies) {
 
         //FORMATION ROUTES  /!\ 
         newFormation: function (data) {
-            return $http.post('/api/formations', data, {
+            return $http.post('/api/formations', data,{
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
