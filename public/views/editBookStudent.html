@@ -270,6 +270,7 @@
                     </div>
                 </fieldset>
             </div>
+
             <h4>Ajouter une experience</h4>
             <fieldset class="form-group">
                 <div class="col-sm-10">
@@ -399,30 +400,31 @@
                     </div>
                 </fieldset>
             </div>
+
             <h4>Ajouter une formation</h4>
             <fieldset class="form-group">
                 <div class="col-sm-10">
                     <label class="control-label">Intitulé de la formation :</label>
-                    <input type="text" name="title" class="form-control" id="" ng-model="form.formation.title">
+                    <input type="text" name="title" class="form-control" id="" ng-model="title">
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-5">
                     <label class="control-label">Ecole :</label>
-                    <input type="text" name="title" class="form-control" id="" ng-model="form.formation.school">
+                    <input type="text" name="title" class="form-control" id="" ng-model="school">
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-5">
                     <label class="control-label">ville :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="form.formation.city">
+                        <input type="text" class="form-control" id="" ng-model="city">
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <label class="control-label">Pays :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="form.formation.country">
+                        <input type="text" class="form-control" id="" ng-model="country">
                     </div>
                 </div>
             </fieldset>
@@ -430,26 +432,26 @@
                 <div class="col-sm-5">
                     <label class="control-label">Date de début :</label>
                     <div>
-                        <input class="form-control" type="date" ng-model="form.formation.startDate" min="">
+                        <input class="form-control" type="date" ng-model="startDate" min="">
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <label class="control-label">Date de fin :</label>
                     <div>
-                        <input class="form-control" type="date" ng-model="form.formation.endDate" min="">
+                        <input class="form-control" type="date" ng-model="endDate" min="">
                     </div>
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-10">
                     <label>Description de la formation</label>
-                    <textarea class="form-control" rows="6" ng-model="form.formation.description" name="desc"></textarea>
+                    <textarea class="form-control" rows="6" ng-model="description" name="desc"></textarea>
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-offset-8 col-sm-3">
                     <form>
-                        <button class="btnW" ng-click="createFormation(form)">Ajouter</button>
+                        <button class="btnW" ng-click="createFormation()">Ajouter</button>
                     </form>
                 </div>
             </fieldset>
