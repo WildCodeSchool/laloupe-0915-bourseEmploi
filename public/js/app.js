@@ -85,9 +85,9 @@ function config($routeProvider) {
                 administrator: checkIsAdmin,
                 connected: checkIsConnected
             }
-        }).when('/ModerateOffer', {
+        }).when('/moderateOffer', {
             templateUrl: 'views/moderateOffer.html',
-            controller: 'ModerateOfferController',
+            controller: 'moderateOfferController',
             resolve: {
                 administrator: checkIsAdmin,
                 connected: checkIsConnected
