@@ -280,6 +280,18 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         })
     }
 
+    $scope.createLanguages = function () {
+        var data = {};
+        data.languages = $scope.languages;
+        studentService.create(data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
+            }
+        })
+    }
+
     $anchorScroll.yOffset = 20;
     $scope.scrollTo = function (id) {
         $scope.activesubmenu = "#" + id;

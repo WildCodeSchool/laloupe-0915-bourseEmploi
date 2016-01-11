@@ -13,12 +13,12 @@
             </div>
             <div class="wildpanelbody panel paneldefault" id="studentCVmin">
                 <p class="headeradvert smalltexadvert">{{student.city}} - {{student.region}}</p>
-                <h5>contact</h5>
+                <h5>Contact</h5>
                 <ul>
                     <li class="li-block" ng-if="student.email != undefined"><i class="fa fa-paper-plane-o fa-lg"></i>{{student.email}}</li>
                     <li class="li-block" ng-show="phoneIf"><i class="fa fa-phone fa-lg"></i>{{student.phone}}</li>
                 </ul>
-                <h5>réseaux sociaux</h5>
+                <h5>Réseaux sociaux</h5>
                 <div class="text-center">
                     <a ng-if="student.linkedin != undefined" href="{{student.linkedin}}"><i class="fa fa-linkedin fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Linkedin"></i></a>
                     <a ng-if="student.github != undefined" href="{{student.github}}"><i class="fa fa-github fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Github"></i></a>
@@ -36,11 +36,11 @@
         <!--SITUATION-->
         <div class="wildpanel panel panel-default row">
             <div class="wildpanelbody panel paneldefault">
-                <h5>Situation</h5>
+                <h5>Situation professionelle :</h5>
                 <p>{{student.situation}}</p>
-                <h5>Statut</h5>
+                <h5>Disponibilité :</h5>
                 <p>{{student.status}}</p>
-                <h5>Mobilité</h5>
+                <h5>Mobilité :</h5>
                 <p>{{student.mobility}}</p>
             </div>
             <div class="wildpanelfooter panel panel-default">
@@ -51,7 +51,7 @@
         <!--WILD SIDE-->
         <div class="wildpanel panel panel-default row">
             <div class="wildpanelheader panel panel-default">
-                <h4>Son coté Wild</h4>
+                <h4>Son coté wild</h4>
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <p>{{student.wildSide}}</p>
@@ -68,7 +68,7 @@
         <!--EXPERIENCES-->
         <div class="wildpanel panel panel-default row">
             <div class="wildpanelheader panel panel-default">
-                <h4><i class="fa fa-briefcase i-header"></i> Expérience</h4>
+                <h4><i class="fa fa-briefcase i-header"></i> Expérience(s)</h4>
             </div>
 
             <!--EXPERIENCE-->
@@ -132,7 +132,7 @@
         <!--EDUCATIONS-->
         <div class=" wildpanel panel panel-default row">
             <div class="wildpanelheader panel panel-default">
-                <h4><i class="fa fa-graduation-cap i-header"></i> Formation</h4>
+                <h4><i class="fa fa-graduation-cap i-header"></i> Formation(s)</h4>
             </div>
 
             <!--EDUCATION-->
@@ -173,7 +173,7 @@
                                     <p class="white-space-pre-line">{{for.formation.description}}</p>
                                 </div>
                                 <div class="modal-body">
-                                    <h5>Diplome</h5>
+                                    <h5>Diplôme</h5>
                                     <p class="white-space-pre-line">{{for.formation.graduate}}</p>
                                 </div>
                                 <div class="modal-body">
@@ -194,7 +194,7 @@
         <!--SKILLS-->
         <div class="wildpanel panel panel-default col-xs-12 col-sm-6 col-md-12 col-lg-12 no-padding">
             <div class="wildpanelheader panel panel-default">
-                <h4><i class="fa fa-cubes i-header"></i> Compétence</h4>
+                <h4><i class="fa fa-cubes i-header"></i> Compétence(s)</h4>
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <ul class="skill-ul" ng-show="showSkill">
@@ -221,7 +221,7 @@
         <!--LANGUAGES-->
         <div class="wildpanel panel panel-default col-xs-12 col-sm-6 col-md-12 col-lg-12 no-padding">
             <div class="wildpanelheader panel panel-default">
-                <h4><i class="fa fa-language i-header"></i> Langues</h4>
+                <h4><i class="fa fa-language i-header"></i> Langue(s)</h4>
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <ul>
@@ -232,14 +232,14 @@
                 </ul>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">modifier</a>
+                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Modifier</a>
             </div>
         </div>
 
         <!--HOBBIES-->
         <div class="wildpanel panel panel-default col-xs-12 col-sm-6 col-md-12 col-lg-12 no-padding">
             <div class="wildpanelheader panel panel-default">
-                <h4><i class="fa fa-futbol-o i-header"></i> Loisirs</h4>
+                <h4><i class="fa fa-futbol-o i-header"></i> Loisir(s)</h4>
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <ul>
@@ -250,7 +250,7 @@
                 </ul>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">modifier</a>
+                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Modifier</a>
             </div>
         </div>
     </div>

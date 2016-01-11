@@ -42,8 +42,9 @@ var StudentSchema = User.model.schema.extend({
         "default": []
     },
     languages: [{
-        language {
-            type: Array
+        language: {
+            type: Array,
+        }
     }],
     likes: [{
         type: mongoose.Schema.Types.ObjectId,

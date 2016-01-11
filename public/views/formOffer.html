@@ -1,4 +1,4 @@
-<h2>Déposer une annonce.</h2>
+<h2>Déposer une annonce</h2>
 
 <div class="">
 
@@ -125,7 +125,6 @@
                         <option type="text" class="form-control">Sénior</option>
                     </select>
                 </div>
-                <span ng-show='offerForm.salary.$invalid'>Your login should be a valid email</span>
                 <div class="col-sm-offset-1 col-sm-3">
                     <label class="control-label">Salaire :</label>
                     <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Salaire en millier d'euros par année. Ex: 30 K€/an." data-placement="top"><i class="fa fa-question-circle"></i></a>
@@ -162,8 +161,8 @@
             <!-- $MSG D'ERREURS DES COMPETENCES -->
             <div class="col-sm-3">
                 <div>
-                    <label class="wildWarning control-label" ng-show="errorChoice">Vous avez déjà choisi cette compétence !</label>
-                    <label class="wildWarning control-label" ng-show="errorTyping">Cette compétence n'éxiste pas !</label>
+                    <label class="wildWarning control-label" ng-show="errorChoice">Vous avez déjà choisi cette compétence</label>
+                    <label class="wildWarning control-label" ng-show="errorTyping">Cette compétence n'éxiste pas</label>
                 </div>
             </div>
             <div class="col-sm-3">
@@ -203,7 +202,7 @@
 
         <div class="form-group spacer">
             <div class="col-sm-offset-1 col-sm-10">
-                <label>Quel est le côté Wild de votre entreprise ? :</label>
+                <label>Quel est le côté wild de votre entreprise ? :</label>
                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Donnez envie à votre futur candidat de travailler chez vous !"><i class="fa fa-question-circle"></i></a>
                 <textarea class="form-control" rows="3" ng-model="offer.wildSide"></textarea>
             </div>
@@ -212,7 +211,7 @@
         <!-- $BOUTON D'ENVOI -->
         <div class="form-group">
             <div class="col-sm-9 text-right align">
-                <label class="control-label" ng-show="incompleteError">Veuillez remplir tous les champs.</label>
+                <label class="control-label" ng-show="incompleteError">Veuillez remplir tous les champs</label>
             </div>
             <div class="col-sm-3">
                 <button class="btnW" type="submit"><strong>Poster cette annonce</strong></button>
