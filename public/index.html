@@ -41,7 +41,7 @@
     <script src="js/libs/bower_components/angular/ui-bootstrap-tpls-0.14.3.min.js"></script>
 
     <script src="js/controllers/connectController.js"></script>
-    <script src="js/controllers/adminController.js"></script>
+    <script src="js/controllers/adminStatsController.js"></script>
     <script src="js/controllers/formRecruiterController.js"></script>
     <script src="js/controllers/formOfferController.js"></script>
     <script src="js/controllers/offerController.js"></script>
@@ -53,6 +53,9 @@
     <script src="js/controllers/bookController.js"></script>
     <script src="js/controllers/bookStudentController.js"></script>
     <script src="js/controllers/editBookStudentController.js"></script>
+    <script src="js/controllers/editSchoolController.js"></script>
+    <script src="js/controllers/skillsController.js"></script>
+    <script src="js/controllers/moderateOfferController.js"></script>
     <script src="js/services/connectService.js"></script>
     <script src="js/services/offerService.js"></script>
     <script src="js/services/skillService.js"></script>
@@ -122,33 +125,33 @@
                 <!--NAVBAR ADMIN-->
                 <ul ng-if="user._type == 'Recruiter' && user.admin == true" class="nav navbar-nav navbar-right">
                     <!--STAT-->
-                    <li ng-class="{active: activetab=='/stats'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Gestion des écoles et promos">
+                    <li ng-class="{active: activetab=='/adminStats'}" class="dropdown li-nav">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-area-chart"></i> Statistiques <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="li-nav"><a href="">Statistique</a></li>
+                            <li class="li-nav"><a href="/#/adminStats">Statistique</a></li>
                         </ul>
                     </li>
                     <!--SKILLS-->
                     <li ng-class="{active: activetab=='/skills'}" class="dropdown li-nav">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a href="/#/skills" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-cogs"></i> Compétences
                         </a>
                     </li>
                     <!--CLASSES-->
-                    <li ng-class="{active: activetab=='/book', active: activetab=='/EditSchool'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Gestion des écoles et promos">
+                    <li ng-class="{active: activetab=='/book', active: activetab=='/editSchool'}" class="dropdown li-nav">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-graduation-cap"></i> Promos <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="li-nav"><a href="">Gestion des promos</a></li>
+                            <li class="li-nav"><a href="/#/editSchool">Gestion des promos</a></li>
                             <li class="li-nav divider" role="separator"></li>
                             <li class="li-nav"><a href="/#/book">Le Book des élèves</a></li>
                         </ul>
                     </li>
                     <!--OFFERS-->
-                    <li ng-class="{active: activetab=='/formOffer', active: activetab=='/AdminOffer', active: activetab=='/ModerateOffer'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Gestion des écoles et promos">
+                    <li ng-class="{active: activetab=='/formOffer', active: activetab=='/moderateOffer'}" class="dropdown li-nav">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-file-text"></i> Offres <span class="caret"></span>
                         </a>
@@ -156,11 +159,11 @@
                             <li class="li-nav"><a href="/#/formOffer">Créer une offre</a></li>
                             <li class="li-nav"><a href="/#/homeRecruiter">Mes Offres</a></li>
                             <li class="li-nav divider" role="separator"></li>
-                            <li class="li-nav"><a href="">Modération des offres</a></li>
+                            <li class="li-nav"><a href="/#/moderateOffer">Modération des offres</a></li>
                         </ul>
                     </li>
                     <!--MY ACCOUNT-->
-                    <li ng-class="{active: activetab=='/homeRecruiter'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Votre compte">
+                    <li ng-class="{active: activetab=='/homeRecruiter', active: activetab=='/editRecruiter'}" class="dropdown li-nav">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <img ng-src="{{user.logo}}" class="navbarr-avatar"> {{user.name}} <span class="caret"></span>
                         </a>
