@@ -71,9 +71,30 @@ function config($routeProvider) {
             templateUrl: 'views/formRecruiter.html',
             controller: 'formRecruiterController'
         })
-        .when('/admin', {
-            templateUrl: 'views/admin.html',
-            controller: 'adminController',
+        .when('/skills', {
+            templateUrl: 'views/skills.html',
+            controller: 'skillsController',
+            resolve: {
+                administrator: checkIsAdmin,
+                connected: checkIsConnected
+            }
+        }).when('/editSchool', {
+            templateUrl: 'views/editSchool.html',
+            controller: 'EditSchoolController',
+            resolve: {
+                administrator: checkIsAdmin,
+                connected: checkIsConnected
+            }
+        }).when('/ModerateOffer', {
+            templateUrl: 'views/moderateOffer.html',
+            controller: 'ModerateOfferController',
+            resolve: {
+                administrator: checkIsAdmin,
+                connected: checkIsConnected
+            }
+        }).when('/adminStats', {
+            templateUrl: 'views/adminStats.html',
+            controller: 'adminStatsController',
             resolve: {
                 administrator: checkIsAdmin,
                 connected: checkIsConnected
@@ -89,10 +110,10 @@ function config($routeProvider) {
         .when('/mentionsLegales', {
             templateUrl: 'views/mentionsLegales.html'
         })
-        
-        .otherwise({
-            redirectTo: '/login'
-        });
+
+    .otherwise({
+        redirectTo: '/login'
+    });
 }
 
 function checkIsConnected($q, $http, $rootScope, $location) {
@@ -158,7 +179,6 @@ $(function () {
 angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies', 'ui.bootstrap'])
     .config(config)
     .controller('connectController', connectController)
-    .controller('adminController', adminController)
     .controller('formRecruiterController', formRecruiterController)
     .controller('formOfferController', formOfferController)
     .controller('homeRctrController', homeRctrController)
@@ -170,6 +190,11 @@ angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies', 'ui.bootstrap'])
     .controller('bookController', bookController)
     .controller('bookStudentController', bookStudentController)
     .controller('editBookStudentController', editBookStudentController)
+    .controller('adminStatsController', adminStatsController)
+    .controller('skillsController', skillsController)
+    .controller('moderateOfferController', moderateOfferController)
+    .controller('editSchoolController', editSchoolController)
+    .controller('adminStatsController', adminStatsController)
     .service('connectService', connectService)
     .service('offerService', offerService)
     .service('skillService', skillService)
