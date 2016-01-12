@@ -89,10 +89,10 @@ function config($routeProvider) {
         .when('/mentionsLegales', {
             templateUrl: 'views/mentionsLegales.html'
         })
-        
-        .otherwise({
-            redirectTo: '/login'
-        });
+
+    .otherwise({
+        redirectTo: '/login'
+    });
 }
 
 function checkIsConnected($q, $http, $rootScope, $location) {
@@ -176,6 +176,7 @@ angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies', 'ui.bootstrap'])
     .service('recruiterService', recruiterService)
     .service('geocoderService', geocoderService)
     .service('studentService', studentService)
+    .service('schoolPromoService', schoolPromoService)
 
 /*.factory('', )*/
 .run(run);

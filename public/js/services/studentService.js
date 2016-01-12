@@ -25,6 +25,14 @@ function studentService($http, $cookies) {
             });
         },
 
+        getStudentFiltered: function (data) {
+            return $http.post('/api/students/filter', data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         create: function (data) {
             return $http.post('/api/students', data, {
                 headers: {
