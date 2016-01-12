@@ -13,7 +13,7 @@ var SkillSchema = new mongoose.Schema({
     },
     language: {
         type: Boolean,
-        default: false
+        required: true
     }
 });
 
@@ -28,7 +28,16 @@ var Skill = {
             res.json(skill);
         });
     },
-
+    checkSkill: function (req, res) {
+        Skill.model.findOne({
+            title: req.headers.title
+        }, function (err, data) {
+            if (data)
+                res.status(409).send("La compétence " + req.headers.title + " existe déjà");
+            else
+                res.status(200).send();
+        });
+    },
     findAll: function (req, res) {
         Skill.model.find({}, function (err, skills) {
             res.json(skills);
@@ -52,7 +61,7 @@ var Skill = {
 
     update: function (req, res) {
         Skill.model.findByIdAndUpdate(req.params.id, req.body, function (err, skill) {
-           res.json(skill);
+            res.json(skill);
         })
     },
 

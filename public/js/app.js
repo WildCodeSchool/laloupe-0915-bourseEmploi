@@ -62,14 +62,20 @@ function config($routeProvider) {
         })
         .when('/editBook/:id', {
             templateUrl: 'views/editBookStudent.html',
-            controller: 'editBookStudentController'
+            controller: 'editBookStudentController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/connectRecruiter', {
-            templateUrl: 'views/connectRecruiter.html',
+            templateUrl: 'views/connectRecruiter.html'
         })
         .when('/formRecruiter', {
             templateUrl: 'views/formRecruiter.html',
-            controller: 'formRecruiterController'
+            controller: 'formRecruiterController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/skills', {
             templateUrl: 'views/skills.html',

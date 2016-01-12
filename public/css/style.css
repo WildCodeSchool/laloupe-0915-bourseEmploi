@@ -489,6 +489,24 @@ ul {
     border: 0;
 }
 
+.wildpanelbody-skill {
+    margin: 0 auto;
+    padding: 7px 10px 5px 10px;
+    border-radius: 0px;
+    border: 0;
+}
+
+.wildpanelbody-skill:hover {
+    background-color: #F5FAF9;
+}
+
+.wildpanelbodyskill {
+    margin: 0 auto;
+    padding: 30px 15px 30px 10px;
+    border-radius: 0px;
+    border: 0;
+}
+
 .wildpanelbodybook-bg {
     margin: 0 auto;
     padding: 0;
@@ -645,6 +663,13 @@ ul {
     margin-bottom: 0;
 }
 
+.title-skill {
+    font-size: 18px;
+    color: #202020;
+    font-family: 'Raleway', sans-serif;
+    margin: 0px 0 0px 0;
+}
+
 .titleadvert-sm:hover {
     cursor: pointer;
     color: #009587;
@@ -675,7 +700,17 @@ ul {
     margin: 0 2px 0 2px;
 }
 
+.fa-trash {
+    color: #B6B6B6;
+    margin: 0 2px 0 2px;
+}
+
 .fa-pencil:hover {
+    color: #202020;
+    cursor: pointer;
+}
+
+.fa-trash:hover {
     color: #202020;
     cursor: pointer;
 }
@@ -1060,6 +1095,12 @@ li.active {
 .fa-twitter:hover {
     color: #008080;
 }
+
 .white {
     color: white;
+}
+
+.skill-list {
+    margin-left: 10px;
+    margin-top: 3px;
 }

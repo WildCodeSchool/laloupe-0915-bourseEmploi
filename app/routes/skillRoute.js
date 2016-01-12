@@ -11,6 +11,8 @@ module.exports = function (app, passport) {
 
     app.get('/api/skills/:id', Auth.user.hasAuthorization, Skill.findById);
 
+    app.get('/api/checkskill', Auth.user.hasAuthorization, Skill.checkSkill);
+
     app.post('/api/skills', Auth.user.hasAuthorization, Skill.create);
 
     app.put('/api/skills/:id', Auth.user.hasAuthorization, Skill.update);
