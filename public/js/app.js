@@ -207,6 +207,7 @@ angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies', 'ui.bootstrap'])
     .service('recruiterService', recruiterService)
     .service('geocoderService', geocoderService)
     .service('studentService', studentService)
+    .service('schoolPromoService', schoolPromoService)
     .directive('capitalize', function () {
         return {
             require: 'ngModel',
@@ -225,7 +226,6 @@ angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies', 'ui.bootstrap'])
             }
         };
     })
-
 
 /*.factory('', )*/
 .run(run);

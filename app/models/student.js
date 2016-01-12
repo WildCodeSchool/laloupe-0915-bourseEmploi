@@ -28,14 +28,10 @@ var StudentSchema = User.model.schema.extend({
     status: String,
     situation: String,
     teaser: String,
-    classe: {
-        type: String,
-        required: true
-    },
-    school: {
-        type: String,
-        required: true
-    },
+    promos: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Promo'
+    }],
     mobility: String,
     hobbies: {
         type: Array,
@@ -79,6 +75,7 @@ var Student = {
             }, {
                 password: 0
             })
+            .populate('promos')
             .populate('skills.skill')
             .populate('likes')
             .exec(function (err, users) {
@@ -90,6 +87,7 @@ var Student = {
         Student.model.findById(req.params.id, {
                 password: 0
             })
+            .populate('promos')
             .populate('skills.skill')
             .populate('likes')
             .populate('formations.formation')
@@ -125,6 +123,42 @@ var Student = {
                 });
             });
         });
+    },
+
+    findFiltered: function (req, res) {
+        var status = req.body.status;
+        var region = req.body.region;
+        var situation = req.body.situation;
+        var school = req.body.school;
+        var promos = req.body.promos;
+
+        var query = Student.model.find({
+            _type: 'Student'
+        }, {
+            password: 0
+        });
+        if (status)
+            query = query.where('status').equals(status);
+        if (region)
+            query = query.where('region').equals(region);
+        if (situation)
+            query = query.where('situation').equals(situation);
+        if (promos)
+            query = query.where('promos').equals(promos);
+        if (req.body.shool)
+            query = query.where('school').equals(req.body.shool);
+        if (req.body.skill)
+            query = query.where('skills.skill').equals(req.body.skill);
+
+        query.populate("skills.skill")
+            .populate('promos')
+            .exec(function (err, student) {
+                if (err) {
+                    res.status(400);
+                    console.log(err);
+                } else
+                    res.json(student);
+            });
     },
 
     create: function (req, res) {

@@ -162,7 +162,7 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
                 skill: ""
             };
             var current = $scope.studentSkills[i].title;
-            console.log(current);
+            console.log(data);
             $scope.listSkills.forEach(function (skill) {
                 if (current === skill) {
                     objs.skill = $scope.studentSkills[i]._id;
