@@ -7,6 +7,14 @@ function skillService($http, $cookies) {
                 }
             });
         },
+        getbyId: function (id) {
+            return $http.get('/api/one/skills', {
+                headers: {
+                    '_id': id,
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
         checkSkill: function (title) {
             return $http.get('/api/checkskill', {
                 headers: {

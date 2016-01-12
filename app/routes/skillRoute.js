@@ -9,7 +9,7 @@ module.exports = function (app, passport) {
 
     app.get('/api/skills', Auth.user.hasAuthorization, Skill.findAll);
 
-    app.get('/api/skills/:id', Auth.user.hasAuthorization, Skill.findById);
+    app.get('/api/one/skills', Auth.user.hasAuthorization, Skill.findById);
 
     app.get('/api/checkskill', Auth.user.hasAuthorization, Skill.checkSkill);
 

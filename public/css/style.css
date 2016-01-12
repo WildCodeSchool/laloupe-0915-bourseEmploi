@@ -1104,3 +1104,7 @@ li.active {
     margin-left: 10px;
     margin-top: 3px;
 }
+.skill-scrool {
+    max-height: 700px;
+    overflow: auto;
+}

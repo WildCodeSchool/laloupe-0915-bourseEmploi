@@ -13,7 +13,8 @@ var SkillSchema = new mongoose.Schema({
     },
     language: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     }
 });
 
@@ -21,9 +22,9 @@ var Skill = {
 
     model: mongoose.model('Skill', SkillSchema),
 
-    find: function (req, res) {
+    findById: function (req, res) {
         Skill.model.findOne({
-            _id: req.headers.id
+            _id: req.headers._id
         }, function (err, skill) {
             res.json(skill);
         });
@@ -43,13 +44,6 @@ var Skill = {
             res.json(skills);
         });
     },
-
-    findById: function (req, res) {
-        Skill.model.findById(req.params.id, function (err, skill) {
-            res.json(skill);
-        });
-    },
-
     create: function (req, res) {
         Skill.model.create(req.body, function (err, skill) {
             if (err) {
