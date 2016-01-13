@@ -32,7 +32,6 @@
                     <div class="form-group">
                         <select type="text" class="form-control" id="promo" ng-model="promo" ng-disabled="school == '' ">
                             <option value="">Tous</option>
-                            <!--<option ng-repeat="promo in promos" value="{{promo._id}}">{{shortDate(promo.startDate)}} - {{shortDate(promo.endDate)}}</option>-->
                             <option ng-repeat="promo in promos | filter:promosFilter" value="{{promo._id}}">{{shortDate(promo.startDate)}} - {{shortDate(promo.endDate)}}</option>
                         </select>
                     </div>
