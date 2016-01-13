@@ -28,10 +28,10 @@ var StudentSchema = User.model.schema.extend({
     status: String,
     situation: String,
     teaser: String,
-    promos: [{
+    promos: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Promo'
-    }],
+    },
     mobility: String,
     hobbies: {
         type: Array,
@@ -129,9 +129,7 @@ var Student = {
         var status = req.body.status;
         var region = req.body.region;
         var situation = req.body.situation;
-        var school = req.body.school;
         var promos = req.body.promos;
-
         var query = Student.model.find({
             _type: 'Student'
         }, {
@@ -145,19 +143,24 @@ var Student = {
             query = query.where('situation').equals(situation);
         if (promos)
             query = query.where('promos').equals(promos);
-        if (req.body.shool)
-            query = query.where('school').equals(req.body.shool);
         if (req.body.skill)
             query = query.where('skills.skill').equals(req.body.skill);
 
         query.populate("skills.skill")
             .populate('promos')
-            .exec(function (err, student) {
+            .exec(function (err, students) {
                 if (err) {
                     res.status(400);
                     console.log(err);
-                } else
-                    res.json(student);
+                } else {
+                    students = students.filter(function (student) {
+                        console.log(student.promos);
+                        if (req.body.school)
+                            return (student.promos ? student.promos.schoolId == req.body.school : false);
+                        return true;
+                    })
+                    res.json(students);
+                }
             });
     },
 

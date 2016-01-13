@@ -1,5 +1,12 @@
 function bookController($scope, $location, studentService, $rootScope, skillService, schoolPromoService, recruiterService) {
 
+
+    $scope.school = "";
+
+    $scope.promosFilter = function (promo) {
+        return promo.schoolId == $scope.school;
+    }
+
     //TOOLTIP    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
@@ -36,16 +43,6 @@ function bookController($scope, $location, studentService, $rootScope, skillServ
             }
         })*/
     ;
-
-    function pi() {
-        if ($scope.school === 'Tous') {
-            $scope.noSchool = true;
-        } else {
-            $scope.noSchool = false;
-        }
-        console.log('popo');
-    }
-    pi();
 
     //Chargement des promos
     function loadPromos() {

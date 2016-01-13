@@ -23,16 +23,17 @@
                     <div class="form-group">
                         <select type="text" class="form-control" id="school" ng-model="school">
                             <option value="">Tous</option>
-                            <option ng-repeat="school in schools">{{school.title}}</option>
+                            <option value="{{school._id}}" ng-repeat="school in schools">{{school.title}}</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <h5>Promo :</h5>
                     <div class="form-group">
-                        <select type="text" class="form-control" id="promo" ng-model="promo">
+                        <select type="text" class="form-control" id="promo" ng-model="promo" ng-disabled="school == '' ">
                             <option value="">Tous</option>
-                            <option ng-repeat="promo in promos" ng-disabled="noSchool" value="{{promo._id}}">{{shortDate(promo.startDate)}} - {{shortDate(promo.endDate)}}</option>
+                            <!--<option ng-repeat="promo in promos" value="{{promo._id}}">{{shortDate(promo.startDate)}} - {{shortDate(promo.endDate)}}</option>-->
+                            <option ng-repeat="promo in promos | filter:promosFilter" value="{{promo._id}}">{{shortDate(promo.startDate)}} - {{shortDate(promo.endDate)}}</option>
                         </select>
                     </div>
                 </div>
