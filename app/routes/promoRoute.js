@@ -9,6 +9,8 @@ module.exports = function (app, passport) {
 
     app.get('/api/promo', Auth.user.hasAuthorization, Promo.findAll);
 
+    app.get('/api/promo_school', Auth.user.hasAuthorization, Promo.findBySchool);
+
     app.get('/api/promo/:id', Auth.user.hasAuthorization, Promo.findById);
 
     app.post('/api/promo', Auth.user.hasAuthorization, Promo.create);

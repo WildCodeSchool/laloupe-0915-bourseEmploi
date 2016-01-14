@@ -8,6 +8,21 @@ function schoolPromoService($http, $cookies) {
                 }
             });
         },
+        getPromoById: function (id) {
+            return $http.get('/api/promo/' + id, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+        getPromoBySchoolId: function (school) {
+            return $http.get('/api/promo_school', {
+                headers: {
+                    '_id': school,
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
         updatePromo: function (id, data) {
             return $http.put('/api/promo/' + id, data, {
                 headers: {
@@ -36,6 +51,13 @@ function schoolPromoService($http, $cookies) {
 
         getSchool: function () {
             return $http.get('/api/school', {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+        getSchoolById: function (id) {
+            return $http.get('/api/school/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }

@@ -443,6 +443,12 @@ ul {
     border-color: #b6b6b6
 }
 
+.wildpanel-promo {
+    margin: 0px 0px 15px 0px;
+    padding: 0 auto;
+    border-color: #b6b6b6
+}
+
 .wildpanelheader {
     margin: 0 auto;
     background-color: #009587;
@@ -1173,4 +1179,21 @@ li.active {
 
 .list-section:hover {
     background-color: #F5FAF9;
+    cursor: pointer;
+}
+
+
+
+.min-marge {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.min-padding {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.no-marge-form {
+    padding: 0 8px 0 8px
 }

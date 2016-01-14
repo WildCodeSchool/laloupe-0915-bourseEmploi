@@ -35,7 +35,13 @@ var Promo = {
             res.json(promo);
         });
     },
-
+    findBySchool: function (req, res) {
+        Promo.model.find({
+            schoolId: req.headers._id
+        }, function (err, promo) {
+            res.json(promo);
+        });
+    },
     findById: function (req, res) {
         Promo.model.findById(req.params.id, function (err, promo) {
             if (err)

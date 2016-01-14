@@ -14,7 +14,12 @@ var SchoolSchema = new mongoose.Schema({
         unique: true
     },
     address: {
-        type: String
+        type: String,
+        required: true
+    },
+    CP: {
+        type: String,
+        required: true
     }
 })
 
@@ -22,9 +27,7 @@ var School = {
     model: mongoose.model('School', SchoolSchema),
 
     findAll: function (req, res) {
-        School.model.find({
-            schoolId: req.params.schoolId
-        }, function (err, school) {
+        School.model.find({}, function (err, school) {
             res.json(school);
         });
     },

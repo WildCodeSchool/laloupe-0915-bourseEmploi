@@ -1,146 +1,138 @@
-<div class="row">
+<div class="row min-padding">
     <!--SCHOOLS-->
-    <div class="col-sm-7 no-marge">
-        <div class="col-sm-6">
-            <div class="wildpanel panel panel-default">
+    <div class="col-sm-6 no-marge">
+        <div class="col-sm-4 min-marge">
+            <div class="wildpanel-promo panel panel-default">
                 <div class="wildpanelheader panel panel-default">
                     <div class="button-header">
-                        <i class="fa fa-plus fa-lg" uib-tooltip="Creer une nouvelle école" tooltip-placement="left"></i>
+                        <i ng-click="btnCreateSchool()" class="fa fa-plus fa-lg" uib-tooltip="Creer une nouvelle école" tooltip-placement="left"></i>
                     </div>
                     <h4>Ecoles</h4>
                 </div>
                 <!--CREATE SCHOOL-->
-                <div class="wildpanelbodys-menu panel panel-default">
+                <div ng-if="displayCreateSchool" class="wildpanelbodys-menu panel panel-default">
                     <form class="" role="form">
                         <div class="row">
-                            <div class="form-group form-group-sm col-sm-8 form-school">
-                                <input class="form-control" type="text" id="createSchoolCity" placeholder="Ville">
+                            <div class="form-group form-group-sm col-sm-8 form-school no-marge-form">
+                                <input class="form-control" type="text" id="createSchoolCity" placeholder="Ville" ng-model="newSchool.title">
                             </div>
-                            <div class="form-group form-group-sm col-sm-4 form-school no-marge-left">
-                                <input class="form-control" type="text" id="createSchoolPostalCode" placeholder="Code Postal">
+                            <div class="form-group form-group-sm col-sm-4 form-school no-marge-form">
+                                <input class="form-control" type="text" id="createSchoolPostalCode" placeholder="CP" ng-model="newSchool.CP">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group form-group-sm form-school col-md-9">
-                                <input class="form-control" type="text" id="createSchoolAdress" placeholder="Adresse">
+                            <div class="form-group form-group-sm form-school col-md-8 no-marge-form">
+                                <input class="form-control" type="text" id="createSchoolAdress" placeholder="Adresse" ng-model="newSchool.address">
                             </div>
-                            <div class="form-group form-group-sm col-md-3 no-marge-left">
-                                <button type="button" class="btnW-sm">Créer</button>
+                            <div class="form-group form-group-sm col-md-4 no-marge-form">
+                                <button type="submit" class="btnW-sm" ng-click="createSchool()">Créer</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <!--EDIT SCHOOL-->
-                <div class="wildpanelbodys-menu panel panel-default">
+                <div ng-if="displayEditSchool" class="wildpanelbodys-menu panel panel-default">
                     <form class="" role="form">
                         <div class="row">
-                            <div class="form-group form-group-sm col-sm-8 form-school">
-                                <input class="form-control" type="text" id="editSchoolCity" placeholder="Ville">
+                            <div class="form-group form-group-sm col-sm-8 form-school no-marge-form">
+                                <input class="form-control" type="text" id="editSchoolCity" placeholder="Ville" ng-model="schoolToEdit.title">
                             </div>
-                            <div class="form-group form-group-sm col-sm-4 form-school no-marge-left">
-                                <input class="form-control" type="text" id="editSchoolPostalCode" placeholder="Code Postal">
+                            <div class="form-group form-group-sm col-sm-4 form-school no-marge-form">
+                                <input class="form-control" type="text" id="editSchoolPostalCode" placeholder="CP" ng-model="schoolToEdit.CP">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="form-group form-group-sm form-school col-md-9">
-                                <input class="form-control" type="text" id="editSchoolAdress" placeholder="Adresse">
+                            <div class="form-group form-group-sm form-school col-md-8 no-marge-form">
+                                <input class="form-control" type="text" id="editSchoolAdress" placeholder="Adresse" ng-model="schoolToEdit.address">
                             </div>
-                            <div class="form-group form-group-sm col-md-3 no-marge-left">
-                                <button type="button" class="btnW-sm">Editer</button>
+                            <div class="form-group form-group-sm col-md-4 no-marge-form">
+                                <button type="submit" class="btnW-sm" ng-click="editSchool()">Editer</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <!--LIST SCHOOL-->
-                <div class="wildpanelbody panel panel-default list-section">
+                <div ng-repeat="listSchool in listSchools | orderBy:'title'" class="wildpanelbody panel panel-default list-section" ng-click="SchoolToPromos(listSchool)">
                     <div class="offerdelete">
                         <ul>
                             <li class="headeradvert">
-                                <i ng-click="" class="fa fa-pencil fa-lg" uib-tooltip="Editer" tooltip-placement="top"></i>
+                                <i ng-click="btnEditSchool(listSchool)" class="fa fa-pencil fa-lg" uib-tooltip="Editer" tooltip-placement="top"></i>
                             </li>
                             <li class="headeradvert">
-                                <i ng-click="" class="fa fa-trash fa-lg" uib-tooltip="Supprimer" tooltip-placement="top"></i>
+                                <i ng-click="deleteSchool(listSchool)" class="fa fa-trash fa-lg" uib-tooltip="Supprimer" tooltip-placement="top"></i>
                             </li>
                         </ul>
                     </div>
-                    <p class="no-marge">Nom de l'école</p>
+                    <p class="no-marge">{{listSchool.title}}</p>
                 </div>
             </div>
         </div>
         <!--CLASSES-->
-        <div class="col-sm-6">
-            <div class="wildpanel panel panel-default">
+        <div class="col-sm-8 min-marge">
+            <div ng-if="displayCreateClassBtn" class="wildpanel-promo panel panel-default">
                 <div class="wildpanelheader panel panel-default">
                     <div class="button-header">
-                        <i class="fa fa-plus fa-lg" uib-tooltip="Creer une nouvelle promos" tooltip-placement="left"></i>
+                        <i ng-click="btnCreateClass()" class="fa fa-plus fa-lg" uib-tooltip="Creer une nouvelle promos" tooltip-placement="left"></i>
                     </div>
-                    <h4>Promos</h4>
+                    <h4>Promos de l'école de {{whatSchool}}</h4>
                 </div>
                 <!--CREATE CLASSE-->
-                <div class="wildpanelbodys-menu panel panel-default">
+                <div ng-if="displayCreateClass" class="wildpanelbodys-menu panel panel-default">
                     <form class="" role="form">
                         <div class="row">
-                            <div class="form-group form-group-sm col-sm-5 form-school">
+                            <div class="form-group form-group-sm col-sm-5 form-school no-marge-form">
                                 <label class="control-label label-school" for="createClassStartDate">Début</label>
-                                <div class="">
-                                    <input class="form-control" type="date" id="createClassStartDate">
-                                </div>
+                                <input class="form-control" type="date" id="createClassStartDate" ng-model="newClass.startDate">
                             </div>
-                            <div class="form-group form-group-sm col-sm-4 form-school no-marge-left">
+                            <div class="form-group form-group-sm col-sm-4 form-school no-marge-form">
                                 <label class="control-label label-school" for="createClassSndDate">Fin</label>
-                                <div class="">
-                                    <input class="form-control" type="date" id="createClassSndDate">
-                                </div>
+                                <input class="form-control" type="date" id="createClassSndDate" ng-model="newClass.endDate">
                             </div>
                             <div class="form-group form-group-sm col-md-3 btn-promo no-marge-left">
-                                <button type="button" class="btnW-sm">Créer</button>
+                                <button type="button" class="btnW-sm" ng-click="createClass()">Créer</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <!--EDIT CLASSE-->
-                <div class="wildpanelbodys-menu panel panel-default">
+                <div ng-if="displayEditClass" class="wildpanelbodys-menu panel panel-default">
                     <p>Nom de la promo à editer</p>
                     <form class="" role="form">
                         <div class="row">
-                            <div class="form-group form-group-sm col-sm-5 form-school">
+                            <div class="form-group form-group-sm col-sm-5 form-school no-marge-form">
                                 <label class="control-label label-school" for="EditClassStartDate">Début</label>
-                                <div class="">
-                                    <input class="form-control" type="date" id="EditClassStartDate">
-                                </div>
+                                <input class="form-control" type="date" id="EditClassStartDate" ng-model="classToEdit.startDate">
                             </div>
-                            <div class="form-group form-group-sm col-sm-4 form-school no-marge-left">
+                            <div class="form-group form-group-sm col-sm-4 form-school no-marge-form">
                                 <label class="control-label label-school" for="EditClassSndDate">Fin</label>
-                                <div class="">
-                                    <input class="form-control" type="date" id="EditClassSndDate">
-                                </div>
+                                <input class="form-control" type="date" id="EditClassSndDate" ng-model="classToEdit.endDate">
                             </div>
                             <div class="form-group form-group-sm col-md-3 btn-promo no-marge-left">
-                                <button type="button" class="btnW-sm">Editer</button>
+                                <button type="button" class="btnW-sm" ng-click="editClass()">Editer</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <!--LIST CLASSES-->
-                <div class="wildpanelbody panel panel-default list-section">
+                <div ng-repeat="listPromo in listPromos | orderBy:'-startDate'" class="wildpanelbody panel panel-default list-section">
                     <div class="offerdelete">
                         <ul>
                             <li class="headeradvert">
-                                <i ng-click="" class="fa fa-pencil fa-lg" uib-tooltip="Editer" tooltip-placement="top"></i>
+                                <i ng-click="btnEditClass(listPromo)" class="fa fa-pencil fa-lg" uib-tooltip="Editer" tooltip-placement="top"></i>
                             </li>
                             <li class="headeradvert">
-                                <i ng-click="" class="fa fa-trash fa-lg" uib-tooltip="Supprimer" tooltip-placement="top"></i>
+                                <i ng-click="deleteClass(listPromo)" class="fa fa-trash fa-lg" uib-tooltip="Supprimer" tooltip-placement="top"></i>
                             </li>
                         </ul>
                     </div>
-                    <p class="no-marge">Nom de la promo</p>
+                    <p class="no-marge">{{listPromo.title}}</p>
                 </div>
             </div>
         </div>
     </div>
     <!--STUDENTS-->
-    <div class="col-sm-5">
-        <div class="wildpanel panel panel-default">
+    <div class="col-sm-6 min-marge">
+        <div class="wildpanel-promo panel panel-default">
             <div class="wildpanelheader panel panel-default dropdown">
                 <div class="dropdown-toggle dropdown-menu-left" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <div class="offerdelete"><span class="caret"></span></div>
