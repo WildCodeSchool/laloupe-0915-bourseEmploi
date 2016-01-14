@@ -15,11 +15,16 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
         $rootScope.user.likes = offerliked;
     });
 
+    $scope.showPublishButton = false;
+
     //LOAD OFFER
     function loadOffer() {
         offerService.getOfferbyId(selectOffer).then(function (res) {
             $scope.offer = res.data;
             $scope.company = res.data.referentId;
+            //Apparition du bouton d'édit si admin
+            if ($rootScope.user.admin === true && $scope.offer.published === false)
+                $scope.showPublishButton = true;
 
             //boutton ARCHIV ou DELETE en fonction de la date
             $scope.noPublish = false;
@@ -101,6 +106,31 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
             alert("Annonce archivée");
         });
         loadOffer();
+    }
+
+    //PUBLISH
+    $scope.publish = function () {
+        var data = {};
+        var publishDate = moment($scope.offer.startDate);
+        var alertDate = moment($scope.offer.startDate).format('LL');
+
+        if (publishDate < today) {
+            data.startDate = today;
+            data.published = true;
+            alert("Annonce publiée");
+            $location.path('/moderateOffer');
+        } else {
+            data.published = true;
+            alert("Validé. L'annonce sera publiée le " + alertDate + ".");
+            $location.path('/moderateOffer');
+        }
+        offerService.update(selectOffer, data).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
+            }
+        });
     }
 
     //LOAD RECRUITER 

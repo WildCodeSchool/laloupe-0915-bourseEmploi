@@ -32,6 +32,20 @@
 
     <!--OFFER DESCRIPTION-->
     <div class="col-md-8">
+        <div ng-if="showPublishButton">
+            <div>
+                <div class="panel panel-default publishOffer" ng-click="publish()">
+                    <h4 class="text-center">Valider et publier cette offre</h4>
+                </div>
+            </div>
+            <p class="text-center">OU</p>
+            <div>
+                <div class="panel panel-default publishOffer" ng-click="sendMail()">
+                    <h4 class="text-center">Envoyer un mail à ce recruteur</h4>
+                </div>
+            </div>
+        </div>
+
         <div class="wildpanel panel panel-default">
             <div class="wildpanelheader panel panel-default">
                 <div class="offerEdit">
@@ -49,8 +63,8 @@
                             <span ng-show="titleExpired">Expire</span>
                             <span ng-show="titleArchiv">Archivée </span><span>{{endOffer}}</span>
                     </li>
-                    <li ng-if="showStudent" ng-click="likeClick(offer)" class="headeradvert"><i class="fa fa-heart fa-lg" ng-class="{'heartnotactive': offer.isLiked===false,'heartactive': offer.isLiked===true}" uib-tooltip="{{offer.isLiked ? 'Ne plus aimer' : 'aimer cette offre'}}" tooltip-placement="bottom"></i></li>
-                    <li ng-if="showStudent" class="headeradvert"><i class="fa fa-share-alt fa-lg " uib-tooltip="Partager" tooltip-placement="bottom"></i></li>
+                    <li ng-if="showStudent" ng-click="likeClick(offer)" class="headeradvert"><i class="fa fa-heart fa-lg" ng-class="{ 'heartnotactive': offer.isLiked===false, 'heartactive': offer.isLiked===true}" uib-tooltip="{{offer.isLiked ? 'Ne plus aimer' : 'aimer cette offre'}}" tooltip-placement="bottom"></i></li>
+                    <li ng-if="showStudent" class="headeradvert"><i class="fa fa-share-alt fa-lg" uib-tooltip="Partager" tooltip-placement="bottom"></i></li>
                 </ul>
                 <ul>
                     <li class="headeradvert">

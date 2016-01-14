@@ -16,6 +16,22 @@ function offerService($http, $cookies) {
             });
         },
 
+        getNotPublished: function () {
+            return $http.get('/api/offersNotPublished', {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
+        getSoonEndedOffers: function () {
+            return $http.get('/api/offersSoonEnded', {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         getOfferbyId: function (id) {
             return $http.get('/api/offers/' + id, {
                 headers: {

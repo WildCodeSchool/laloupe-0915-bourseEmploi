@@ -364,6 +364,21 @@ ul {
     font-weight: 600;
 }
 
+.publishOffer:hover {
+    background-color: #daa520;
+    color: white;
+}
+
+.publishOffer {
+    cursor: pointer;
+    color: #daa520;
+    margin-bottom: 10px;
+}
+
+.publishOffer>h4 {
+    font-weight: 600;
+}
+
 .bs-callout-danger {
     border-left-color: #ce4844;
 }
@@ -381,6 +396,14 @@ ul {
 
 .fa-question-circle {
     color: #B6B6B6;
+}
+
+.advert-date {
+    font-size: 12px;
+    margin: 0 3px 0 1px;
+    color: red;
+    float: right;
+    z-index: 9999;
 }
 
 
@@ -1104,6 +1127,7 @@ li.active {
     margin-left: 10px;
     margin-top: 3px;
 }
+
 .skill-scrool {
     max-height: 700px;
     overflow: auto;
