@@ -20,7 +20,7 @@ var StudentSchema = User.model.schema.extend({
     },
     blocked: {
         type: Boolean,
-        default: false
+        default: true
     },
     region: String,
     city: String,
