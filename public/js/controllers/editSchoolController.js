@@ -1,4 +1,4 @@
-function editSchoolController($scope, schoolPromoService) {
+function editSchoolController($scope, schoolPromoService, studentService) {
     //TOOLTIP    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
@@ -9,7 +9,8 @@ function editSchoolController($scope, schoolPromoService) {
     $scope.displayCreateClass = false;
     $scope.displayEditSchool = false;
     $scope.displayEditClass = false;
-    $scope.displayCreateClassBtn = false;
+    $scope.displayClass = false;
+    $scope.displayStudent = false;
 
     $scope.btnCreateSchool = function () {
         $scope.displayCreateSchool = !$scope.displayCreateSchool;
@@ -82,11 +83,14 @@ function editSchoolController($scope, schoolPromoService) {
     function loadPromos(school) {
         schoolPromoService.getPromoBySchoolId(school).then(function (res) {
             $scope.listPromos = res.data
+            $scope.nbPromos = res.data.length;
         });
     }
 
     $scope.SchoolToPromos = function (school) {
-        $scope.displayCreateClassBtn = true;
+        $scope.selectedSchool = school._id;
+        $scope.displayClass = true;
+        $scope.displayStudent = false;
         $scope.whatSchool = school.title;
         loadPromos(school._id);
         //CREATE CLASS
@@ -119,5 +123,50 @@ function editSchoolController($scope, schoolPromoService) {
                 loadPromos(promo.schoolId);
             });
         }
+    }
+
+    //LOAD STUDENT
+    function loadStudents(promo) {
+        console.log(promo);
+        studentService.getStudentbyPromo(promo).then(function (res) {
+            $scope.listStudents = res.data
+            $scope.nbStudents = res.data.length;
+            console.log(res.data)
+        });
+    }
+
+    $scope.PromoToStudents = function (promo) {
+        $scope.selectedPromo = promo._id;
+        $scope.displayStudent = true;
+        $scope.whatPromo = promo.title;
+        loadStudents(promo._id);
+        //CREATE STUDENT
+        $scope.newStudent = {};
+        $scope.newStudent.promos = promo._id;
+        $scope.createStudent = function () {
+            studentService.create($scope.newStudent).then(function (res) {
+                loadStudents(promo._id);
+                $scope.newStudent = undefined;
+            })
+        }
+    }
+
+    //DELETE CLASS
+    $scope.deleteStudent = function (student) {
+        var message = "Voulez vraiment supprimer cette élève ?"
+        var resultat = window.confirm(message);
+        if (resultat) {
+            studentService.delete(student._id).then(function (res) {
+                loadStudents(student.promos);
+            });
+        }
+    }
+
+    //BLOCK STUDENT
+    $scope.blockStudent = function (student) {
+        student.blocked = !student.blocked;
+        studentService.update(student._id, student).then(function (res) {
+            loadStudents(student.promos);
+        });
     }
 }

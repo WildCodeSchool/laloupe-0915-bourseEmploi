@@ -11,13 +11,15 @@ module.exports = function (app, passport) {
 
     app.get('/api/students/:id', Auth.user.hasAuthorization, Student.findById);
 
-    app.get('/api/infos/students', Auth.user.hasAuthorization, Student.findInfo)
+    app.get('/api/infos/students', Auth.user.hasAuthorization, Student.findInfo);
 
-    app.post('/api/students', /*Auth.user.isAdministrator,*/ Student.create);
+    app.get('/api/students_promo', Auth.user.isAdministrator, Student.findByPromo);
+
+    app.post('/api/students', Auth.user.isAdministrator, Student.create);
 
     app.post('/api/students/filter', /*Auth.user.isAdministrator,*/ Student.findFiltered);
 
-    app.put('/api/students/:id', /*Auth.user.hasAuthorization*/ Student.update);
+    app.put('/api/students/:id', /*Auth.user.hasAuthorization,*/ Student.update);
 
     app.put('/api/like/students/:id', Auth.user.hasAuthorization, Student.like);
 

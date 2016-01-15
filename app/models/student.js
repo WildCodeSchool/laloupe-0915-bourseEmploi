@@ -2,9 +2,10 @@
                                 MODEL STUDENT
 \* ------------------------------------------------------------------------- */
 
-
 var mongoose = require('mongoose'),
     extend = require('mongoose-schema-extend');
+
+var generatePassword = require('password-generator');
 
 var User = require('./user.js');
 
@@ -16,6 +17,10 @@ var StudentSchema = User.model.schema.extend({
     firstName: {
         type: String,
         required: true
+    },
+    blocked: {
+        type: Boolean,
+        default: false
     },
     region: String,
     city: String,
@@ -97,6 +102,14 @@ var Student = {
             });
     },
 
+    findByPromo: function (req, res) {
+        Student.model.find({
+            promos: req.headers.promos
+        }, function (err, promo) {
+            res.json(promo);
+        });
+    },
+
     findInfo: function (req, res) {
         Student.model.find({
             _type: 'Student'
@@ -162,6 +175,8 @@ var Student = {
     },
 
     create: function (req, res) {
+        req.body.password = generatePassword(6, false);
+        req.body._type = 'Student';
         Student.model.create(req.body, function (err, student) {
             res.json(student);
             console.log(err);
@@ -202,6 +217,5 @@ var Student = {
         })
     }
 }
-
 
 module.exports = Student;
