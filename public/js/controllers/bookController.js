@@ -30,19 +30,13 @@ function bookController($scope, $location, studentService, $rootScope, skillServ
 
     //Mise a zero des filtres
     $scope.resetFilter = function () {
-            $scope.region = null;
-            $scope.querySkill = null;
-            $scope.school = null;
-            $scope.promo = null;
-            $scope.status = null;
-            $scope.situation = null;
-        }
-        /*$(document).ready(function () {
-            if $("#school :selected") {
-                $("#mySelect option[value='3']").attr('selected', 'selected');
-            }
-        })*/
-    ;
+        $scope.region = null;
+        $scope.querySkill = null;
+        $scope.school = null;
+        $scope.promo = null;
+        $scope.status = null;
+        $scope.situation = null;
+    }
 
     //Chargement des promos
     function loadPromos() {
