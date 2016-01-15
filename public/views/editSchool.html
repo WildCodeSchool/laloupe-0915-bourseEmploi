@@ -1,0 +1,210 @@
+<div class="row min-padding">
+    <!--SCHOOLS-->
+    <div class="col-sm-6 no-marge">
+        <div class="col-sm-4 min-marge">
+            <div class="wildpanel-promo panel panel-default">
+                <div class="wildpanelheader panel panel-default">
+                    <div class="button-header">
+                        <i ng-click="btnCreateSchool()" class="fa fa-plus fa-lg" uib-tooltip="Creer une nouvelle école" tooltip-placement="left"></i>
+                    </div>
+                    <h4>Ecoles</h4>
+                </div>
+                <!--CREATE SCHOOL-->
+                <div ng-if="displayCreateSchool" class="wildpanelbodys-menu panel panel-default">
+                    <form class="" role="form">
+                        <div class="row">
+                            <div class="form-group form-group-sm col-sm-8 form-school no-marge-form">
+                                <input class="form-control" type="text" id="createSchoolCity" placeholder="Ville" ng-model="newSchool.title">
+                            </div>
+                            <div class="form-group form-group-sm col-sm-4 form-school no-marge-form">
+                                <input class="form-control" type="text" id="createSchoolPostalCode" placeholder="CP" ng-model="newSchool.CP">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group form-group-sm form-school col-md-8 no-marge-form">
+                                <input class="form-control" type="text" id="createSchoolAdress" placeholder="Adresse" ng-model="newSchool.address">
+                            </div>
+                            <div class="form-group form-group-sm col-md-4 no-marge-form">
+                                <button type="submit" class="btnW-sm" ng-click="createSchool()">Créer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--EDIT SCHOOL-->
+                <div ng-if="displayEditSchool" class="wildpanelbodys-menu panel panel-default">
+                    <form class="" role="form">
+                        <div class="row">
+                            <div class="form-group form-group-sm col-sm-8 form-school no-marge-form">
+                                <input class="form-control" type="text" id="editSchoolCity" placeholder="Ville" ng-model="schoolToEdit.title">
+                            </div>
+                            <div class="form-group form-group-sm col-sm-4 form-school no-marge-form">
+                                <input class="form-control" type="text" id="editSchoolPostalCode" placeholder="CP" ng-model="schoolToEdit.CP">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group form-group-sm form-school col-md-8 no-marge-form">
+                                <input class="form-control" type="text" id="editSchoolAdress" placeholder="Adresse" ng-model="schoolToEdit.address">
+                            </div>
+                            <div class="form-group form-group-sm col-md-4 no-marge-form">
+                                <button type="submit" class="btnW-sm" ng-click="editSchool()">Editer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--LIST SCHOOL-->
+                <div ng-repeat="listSchool in listSchools | orderBy:'title'" class="wildpanelbody panel panel-default list-section" ng-click="SchoolToPromos(listSchool)" ng-class="{'list-clicked': listSchool._id == selectedSchool}">
+                    <div class="offerdelete">
+                        <ul>
+                            <li class="headeradvert">
+                                <i ng-click="btnEditSchool(listSchool)" class="fa fa-pencil fa-lg" uib-tooltip="Editer" tooltip-placement="top"></i>
+                            </li>
+                            <li class="headeradvert">
+                                <i ng-click="deleteSchool(listSchool)" class="fa fa-trash fa-lg" uib-tooltip="Supprimer" tooltip-placement="top"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="no-marge">{{listSchool.title}}</p>
+                </div>
+            </div>
+        </div>
+        <!--CLASSES-->
+        <div class="col-sm-8 min-marge">
+            <div ng-if="displayClass" class="wildpanel-promo panel panel-default">
+                <div class="wildpanelheader panel panel-default">
+                    <div class="button-header">
+                        <i ng-click="btnCreateClass()" class="fa fa-plus fa-lg" uib-tooltip="Creer une nouvelle promos" tooltip-placement="left"></i>
+                    </div>
+                    <h4>{{nbPromos}} {{nbPromos > 1 ? ' promos ' : ' promo '}} à {{whatSchool}}</h4>
+                </div>
+                <!--CREATE CLASSE-->
+                <div ng-if="displayCreateClass" class="wildpanelbodys-menu panel panel-default">
+                    <form class="" role="form">
+                        <div class="row">
+                            <div class="form-group form-group-sm col-sm-5 form-school no-marge-form">
+                                <label class="control-label label-school" for="createClassStartDate">Début</label>
+                                <input class="form-control" type="date" id="createClassStartDate" ng-model="newClass.startDate">
+                            </div>
+                            <div class="form-group form-group-sm col-sm-4 form-school no-marge-form">
+                                <label class="control-label label-school" for="createClassSndDate">Fin</label>
+                                <input class="form-control" type="date" id="createClassSndDate" ng-model="newClass.endDate">
+                            </div>
+                            <div class="form-group form-group-sm col-md-3 btn-promo no-marge-left">
+                                <button type="button" class="btnW-sm" ng-click="createClass()">Créer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--EDIT CLASSE-->
+                <div ng-if="displayEditClass" class="wildpanelbodys-menu panel panel-default">
+                    <p>Nom de la promo à editer</p>
+                    <form class="" role="form">
+                        <div class="row">
+                            <div class="form-group form-group-sm col-sm-5 form-school no-marge-form">
+                                <label class="control-label label-school" for="EditClassStartDate">Début</label>
+                                <input class="form-control" type="date" id="EditClassStartDate" ng-model="classToEdit.startDate">
+                            </div>
+                            <div class="form-group form-group-sm col-sm-4 form-school no-marge-form">
+                                <label class="control-label label-school" for="EditClassSndDate">Fin</label>
+                                <input class="form-control" type="date" id="EditClassSndDate" ng-model="classToEdit.endDate">
+                            </div>
+                            <div class="form-group form-group-sm col-md-3 btn-promo no-marge-left">
+                                <button type="button" class="btnW-sm" ng-click="editClass()">Editer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--LIST CLASSES-->
+                <div ng-repeat="listPromo in listPromos | orderBy:'-startDate'" class="wildpanelbody panel panel-default list-section" ng-click="PromoToStudents(listPromo)" ng-class="{'list-clicked': listPromo._id == selectedPromo}">
+                    <div class="offerdelete">
+                        <ul>
+                            <li class="headeradvert">
+                                <i ng-click="btnEditClass(listPromo)" class="fa fa-pencil fa-lg" uib-tooltip="Editer" tooltip-placement="top"></i>
+                            </li>
+                            <li class="headeradvert">
+                                <i ng-click="deleteClass(listPromo)" class="fa fa-trash fa-lg" uib-tooltip="Supprimer" tooltip-placement="top"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="no-marge">{{listPromo.title}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--STUDENTS-->
+    <div class="col-sm-6 min-marge">
+        <div ng-if="displayStudent" class="wildpanel-promo panel panel-default">
+            <div class="wildpanelheader panel panel-default dropdown">
+                <div class="dropdown-toggle dropdown-menu-left" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <div class="offerdelete"><span class="caret"></span></div>
+                    <h4 class="dropdown-hover">{{nbStudents}} {{nbStudents > 1 ? ' élèves ' : ' élève '}} dans la promo {{whatPromo}} à {{whatSchool}}</h4>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                    <li class="li-nav"><a href="#">Action</a></li>
+                    <li class="li-nav"><a href="#">Another action</a></li>
+                    <li class="li-nav"><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider li-nav"></li>
+                    <li class="li-nav"><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+            <!--CREATE STUDENT-->
+            <div class="wildpanelbodys-menu panel panel-default">
+                <form class="" role="form">
+                    <div class="row form-group form-group-sm no-marge">
+                        <div class="col-sm-3 form-school no-marge-left">
+                            <div class="col-sm-2 no-marge-newstudent">
+                                <i class="fa fa-user-plus"></i>
+                            </div>
+                            <div class="col-sm-10 form-school no-marge">
+                                <input class="form-control" type="text" placeholder="Prénom" ng-model="newStudent.firstName">
+                            </div>
+                        </div>
+                        <div class="col-sm-3 form-school no-marge-left">
+                            <input class="form-control" type="text" placeholder="Nom" ng-model="newStudent.name">
+                        </div>
+                        <div class="col-sm-4 form-school no-marge-left">
+                            <input class="form-control" type="text" placeholder="Adresse mail" ng-model="newStudent.email">
+                        </div>
+                        <div class="col-md-2 no-marge-left">
+                            <button type="submit" class="btnW-sm" ng-click="createStudent()">Créer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--LIST STUDENTS-->
+            <div ng-repeat="listStudent in listStudents | orderBy:'name'" class="wildpanelbody panel panel-default list-section dropdown">
+                <div class="dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <div class="offerdelete">
+                        <ul>
+                            <li class="headeradvert">
+                                <i class="fa fa-lg" ng-class="{'fa-check-circle': listStudent.blocked == false, 'fa-minus-circle': listStudent.blocked == true}" uib-tooltip="{{listStudent.blocked == false ? 'En ligne' : 'Bloqué'}}" tooltip-placement="top"></i>
+                            </li>
+                            <li class="headeradvert">
+                                <span class="caret"></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul>
+                        <li>
+                            <p class="no-marge"><strong>{{listStudent.name}}</strong></p>
+                        </li>
+                        <li>
+                            <p class="no-marge"><strong>{{listStudent.firstName}}</strong> -</p>
+                        </li>
+                        <li>
+                            <p class="no-marge">{{listStudent.email}}</p>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                    <li class="li-nav"><a href="#">Envoyer identifiant</a></li>
+                    <li class="li-nav"><a ng-click="blockStudent(listStudent)">{{listStudent.blocked == false ? "Bloquer l'élève" : "Débloquer l'élève"}}</a></li>
+                    <li role="separator" class="divider li-nav"></li>
+                    <li class="li-nav"><a href="/#/book/{{listStudent._id}}">Voir son CV</a></li>
+                    <li class="li-nav"><a href="/#/editBook/{{listStudent._id}}">Editer l'élève</a></li>
+                    <li role="separator" class="divider li-nav"></li>
+                    <li class="li-nav"><a ng-click="deleteStudent(listStudent)">Supprimer l'élève</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -17,6 +17,14 @@ function studentService($http, $cookies) {
             });
         },
 
+        getStudentbyPromo: function (promo) {
+            return $http.get('api/students_promo', {
+                headers: {
+                    'promos': promo,
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
         getInfo: function () {
             return $http.get('/api/infos/students', {
                 headers: {
@@ -75,7 +83,7 @@ function studentService($http, $cookies) {
 
         //FORMATION ROUTES  /!\ 
         newFormation: function (data) {
-            return $http.post('/api/formations', data,{
+            return $http.post('/api/formations', data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }

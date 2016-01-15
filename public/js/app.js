@@ -86,7 +86,7 @@ function config($routeProvider) {
             }
         }).when('/editSchool', {
             templateUrl: 'views/editSchool.html',
-            controller: 'EditSchoolController',
+            controller: 'editSchoolController',
             resolve: {
                 administrator: checkIsAdmin,
                 connected: checkIsConnected

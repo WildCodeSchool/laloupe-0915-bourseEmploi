@@ -68,7 +68,6 @@ function skillsController($scope, skillService) {
     }
 
     $scope.deleteSkill = function (skill) {
-        console.log(skill);
         var message = 'Voulez vraiment supprimer cette compétence ?'
         var resultat = window.confirm(message);
         if (resultat) {
