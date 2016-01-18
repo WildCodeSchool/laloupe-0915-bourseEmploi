@@ -139,11 +139,11 @@
                     <h4 class="dropdown-hover">{{nbStudents}} {{nbStudents > 1 ? ' élèves ' : ' élève '}} dans la promo {{whatPromo}} à {{whatSchool}}</h4>
                 </div>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                    <li class="li-nav"><a href="#">Action</a></li>
-                    <li class="li-nav"><a href="#">Another action</a></li>
-                    <li class="li-nav"><a href="#">Something else here</a></li>
+                    <li class="li-nav"><a ng-click="sendPasswords(listStudents)">Envoyer identifiants à la promo</a></li>
+                    <li class="li-nav"><a ng-click="blockStudents(listStudents)">Bloquer la promo</a></li>
+                    <li class="li-nav"><a ng-click="deblockStudents(listStudents)">Débloquer la promo</a></li>
                     <li role="separator" class="divider li-nav"></li>
-                    <li class="li-nav"><a href="#">Separated link</a></li>
+                    <li class="li-nav"><a href="mailto:{{promoMailList}}">Envoyer email à la promo </a></li>
                 </ul>
             </div>
             <!--CREATE STUDENT-->
@@ -196,8 +196,10 @@
                     </ul>
                 </div>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                    <li class="li-nav"><a href="#">Envoyer identifiant</a></li>
+                    <li class="li-nav"><a ng-click="sendPassword(listStudent)">Envoyer identifiant</a></li>
                     <li class="li-nav"><a ng-click="blockStudent(listStudent)">{{listStudent.blocked == false ? "Bloquer l'élève" : "Débloquer l'élève"}}</a></li>
+                    <li role="separator" class="divider li-nav"></li>
+                    <li class="li-nav"><a href="mailto:{{listStudent.email}}">Envoyer un email</a></li>
                     <li role="separator" class="divider li-nav"></li>
                     <li class="li-nav"><a href="/#/book/{{listStudent._id}}">Voir son CV</a></li>
                     <li class="li-nav"><a href="/#/editBook/{{listStudent._id}}">Editer l'élève</a></li>

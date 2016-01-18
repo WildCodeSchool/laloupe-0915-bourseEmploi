@@ -72,6 +72,14 @@ function offerService($http, $cookies) {
             });
         },
 
+        validate: function (id, data, user) {
+            return $http.put('/api/validate/' + id, data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         delete: function (id) {
             return $http.delete('/api/offers/' + id, {
                 headers: {

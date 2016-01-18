@@ -23,6 +23,8 @@ module.exports = function (app, passport) {
 
     app.post('/api/offers', Auth.user.hasAuthorization, Offer.create);
 
+    app.put('/api/validate/:id', Auth.user.isAdministrator, Offer.validate);
+
     app.put('/api/offers/:id', Auth.user.hasAuthorization, Offer.update);
 
     app.delete('/api/offers/:id', Auth.user.hasAuthorization, Offer.delete);

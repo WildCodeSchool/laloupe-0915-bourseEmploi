@@ -11,6 +11,7 @@ var passport = require('passport');
 var moment = require('moment');
 var expressJwt = require('express-jwt');
 var generatePassword = require('password-generator');
+var nodemailer = require('nodemailer');
 
 // Mongoose ====================================================================
 require('./config/database');

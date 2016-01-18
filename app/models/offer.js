@@ -4,6 +4,10 @@
 
 var mongoose = require('mongoose');
 var moment = require('moment');
+moment.locale('fr');
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport('smtps://wildfinder.wcs%40gmail.com:jecode4laloupe@smtp.gmail.com');
 
 var offerSchema = new mongoose.Schema({
     skills: [{
@@ -244,18 +248,35 @@ var Offer = {
             });
     },
 
-
     create: function (req, res) {
         Offer.model.create(req.body, function (err, offer) {
             if (err)
                 console.log(err);
             res.json(offer);
+            transporter.sendMail(require('../mails/Mail.js').newOfferMail(offer.referentEmail, offer.title), function (error, info) {
+                if (error) {
+                    return console.log(error);
+                }
+                console.log('Message sent: ' + info.response);
+            });
         });
     },
 
     update: function (req, res) {
         Offer.model.findByIdAndUpdate(req.params.id, req.body, function (err, offer) {
             res.json(offer);
+        });
+    },
+
+    validate: function (req, res) {
+        Offer.model.findByIdAndUpdate(req.params.id, req.body, function (err, offer) {
+            res.json(offer);
+            transporter.sendMail(require('../mails/Mail.js').validateOfferMail(offer.referentEmail, offer.title, moment(offer.startDate).format('DD MMMM YYYY'), moment(offer.endDate).format('DD MMMM YYYY')), function (error, info) {
+                if (error) {
+                    return console.log(error);
+                }
+                console.log('Message sent: ' + info.response);
+            });
         });
     },
 

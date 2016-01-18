@@ -124,7 +124,7 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
             alert("Validé. L'annonce sera publiée le " + alertDate + ".");
             $location.path('/moderateOffer');
         }
-        offerService.update(selectOffer, data).then(function (res) {
+        offerService.validate(selectOffer, data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {

@@ -127,11 +127,14 @@ function editSchoolController($scope, schoolPromoService, studentService) {
 
     //LOAD STUDENT
     function loadStudents(promo) {
-        console.log(promo);
         studentService.getStudentbyPromo(promo).then(function (res) {
             $scope.listStudents = res.data
             $scope.nbStudents = res.data.length;
-            console.log(res.data)
+            $scope.listStudents = res.data
+            $scope.promoMailList = ""
+            res.data.forEach(function (student) {
+                $scope.promoMailList = $scope.promoMailList + student.email + ","
+            });
         });
     }
 
@@ -168,5 +171,38 @@ function editSchoolController($scope, schoolPromoService, studentService) {
         studentService.update(student._id, student).then(function (res) {
             loadStudents(student.promos);
         });
+    }
+
+    //BLOCK STUDENTS
+    $scope.blockStudents = function (students) {
+        students.forEach(function (student) {
+            student.blocked = true;
+            studentService.update(student._id, student).then(function (res) {});
+        })
+
+    }
+
+    //DEBLOCK STUDENTS
+    $scope.deblockStudents = function (students) {
+        students.forEach(function (student) {
+            student.blocked = false;
+            studentService.update(student._id, student).then(function (res) {});
+        })
+
+    }
+
+    //SEND PASSWORD
+    $scope.sendPassword = function (student) {
+        studentService.sendId(student._id).then(function (res) {
+            alert("Identifiants envoyés à " + student.firstName + " " + student.name);
+        });
+    }
+
+    //SEND PASSWORD
+    $scope.sendPasswords = function (students) {
+        students.forEach(function (student) {
+            studentService.sendId(student._id).then(function (res) {});
+        });
+        alert("Identifiants envoyés");
     }
 }

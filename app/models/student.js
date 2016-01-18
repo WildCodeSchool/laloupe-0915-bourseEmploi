@@ -7,6 +7,10 @@ var mongoose = require('mongoose'),
 
 var generatePassword = require('password-generator');
 
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport('smtps://wildfinder.wcs%40gmail.com:jecode4laloupe@smtp.gmail.com');
+
 var User = require('./user.js');
 
 var StudentSchema = User.model.schema.extend({
@@ -101,6 +105,20 @@ var Student = {
                 res.json(student);
             });
     },
+
+    sendId: function (req, res) {
+        Student.model.findById(req.params.id)
+            .exec(function (err, student) {
+                res.json(student);
+                transporter.sendMail(require('../mails/Mail.js').id(student.email, student.email, student.password, student.name, student.firstName), function (error, info) {
+                    if (error) {
+                        return console.log(error);
+                    }
+                    console.log('Message sent: ' + info.response);
+                });
+            });
+    },
+
 
     findByPromo: function (req, res) {
         Student.model.find({
