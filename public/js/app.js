@@ -62,14 +62,20 @@ function config($routeProvider) {
         })
         .when('/editBook/:id', {
             templateUrl: 'views/editBookStudent.html',
-            controller: 'editBookStudentController'
+            controller: 'editBookStudentController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/connectRecruiter', {
-            templateUrl: 'views/connectRecruiter.html',
+            templateUrl: 'views/connectRecruiter.html'
         })
         .when('/formRecruiter', {
             templateUrl: 'views/formRecruiter.html',
-            controller: 'formRecruiterController'
+            controller: 'formRecruiterController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/skills', {
             templateUrl: 'views/skills.html',
@@ -80,14 +86,14 @@ function config($routeProvider) {
             }
         }).when('/editSchool', {
             templateUrl: 'views/editSchool.html',
-            controller: 'EditSchoolController',
+            controller: 'editSchoolController',
             resolve: {
                 administrator: checkIsAdmin,
                 connected: checkIsConnected
             }
-        }).when('/ModerateOffer', {
+        }).when('/moderateOffer', {
             templateUrl: 'views/moderateOffer.html',
-            controller: 'ModerateOfferController',
+            controller: 'moderateOfferController',
             resolve: {
                 administrator: checkIsAdmin,
                 connected: checkIsConnected
@@ -201,6 +207,25 @@ angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies', 'ui.bootstrap'])
     .service('recruiterService', recruiterService)
     .service('geocoderService', geocoderService)
     .service('studentService', studentService)
+    .service('schoolPromoService', schoolPromoService)
+    .directive('capitalize', function () {
+        return {
+            require: 'ngModel',
+            link: function (scope, element, attrs, modelCtrl) {
+                var capitalize = function (inputValue) {
+                    if (inputValue == undefined) inputValue = '';
+                    var capitalized = inputValue.toUpperCase();
+                    if (capitalized !== inputValue) {
+                        modelCtrl.$setViewValue(capitalized);
+                        modelCtrl.$render();
+                    }
+                    return capitalized;
+                }
+                modelCtrl.$parsers.push(capitalize);
+                capitalize(scope[attrs.ngModel]); // capitalize initial value
+            }
+        };
+    })
 
 /*.factory('', )*/
 .run(run);

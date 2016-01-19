@@ -1,99 +1,90 @@
-function offerService($http, $cookies) {
+function schoolPromoService($http, $cookies) {
     return {
-        getAll: function () {
-            return $http.get('/api/offers', {
+        /* ----------------------   PROMO SERVICE   ----------------------------- */
+        getPromo: function () {
+            return $http.get('/api/promo', {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+        getPromoById: function (id) {
+            return $http.get('/api/promo/' + id, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+        getPromoBySchoolId: function (school) {
+            return $http.get('/api/promo_school', {
+                headers: {
+                    '_id': school,
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+        updatePromo: function (id, data) {
+            return $http.put('/api/promo/' + id, data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
 
-        getAllCurrent: function () {
-            return $http.get('/api/currents', {
+        createPromo: function (data) {
+            return $http.post('/api/promo', data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
 
-        getNotPublished: function () {
-            return $http.get('/api/offersNotPublished', {
+        deletePromo: function (id) {
+            return $http.delete('/api/promo/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
 
-        getSoonEndedOffers: function () {
-            return $http.get('/api/offersSoonEnded', {
+        /* ----------------------   SCHOOL SERVICE   ----------------------------- */
+
+        getSchool: function () {
+            return $http.get('/api/school', {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+        getSchoolById: function (id) {
+            return $http.get('/api/school/' + id, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+        updateSchool: function (id, data) {
+            return $http.put('/api/school/' + id, data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
 
-        getOfferbyId: function (id) {
-            return $http.get('/api/offers/' + id, {
+        createSchool: function (data) {
+            return $http.post('/api/school', data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
             });
         },
 
-        getOfferByUser: function (id) {
-            return $http.get('/offersUsers/' + id, {
+        deleteSchool: function (id) {
+            return $http.delete('/api/school/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
             });
-        },
-
-        getOffersFiltered: function (data) {
-            return $http.post('/api/offers/search', data, {
-                headers: {
-                    authorization: $cookies.get('wildFinder_token')
-                }
-            });
-        },
-
-        create: function (data) {
-            return $http.post('/api/offers', data, {
-                headers: {
-                    authorization: $cookies.get('wildFinder_token')
-                }
-            });
-        },
-
-        update: function (id, data, user) {
-            return $http.put('/api/offers/' + id, data, {
-                headers: {
-                    authorization: $cookies.get('wildFinder_token')
-                }
-            });
-        },
-
-        validate: function (id, data, user) {
-            return $http.put('/api/validate/' + id, data, {
-                headers: {
-                    authorization: $cookies.get('wildFinder_token')
-                }
-            });
-        },
-
-        delete: function (id) {
-            return $http.delete('/api/offers/' + id, {
-                headers: {
-                    authorization: $cookies.get('wildFinder_token')
-                }
-            });
-        },
-
-        getOfferBySkill: function (data) {
-            return $http.post('api/offers/skills', data, {
-                headers: {
-                    authorization: $cookies.get('wildFinder_token')
-                }
-            });
-        },
+        }
     }
 };

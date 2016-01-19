@@ -15,9 +15,15 @@ module.exports = function (app, passport) {
 
     app.get('/offersUsers/:id', Auth.user.hasAuthorization, Offer.findByUser);
 
+    app.get('/api/offersNotPublished', Auth.user.hasAuthorization, Offer.findNotPublished);
+
+    app.get('/api/offersSoonEnded', Auth.user.hasAuthorization, Offer.findSoonEnded);
+
     app.post('/api/offers/search', Auth.user.hasAuthorization, Offer.findFiltered);
 
     app.post('/api/offers', Auth.user.hasAuthorization, Offer.create);
+
+    app.put('/api/validate/:id', Auth.user.isAdministrator, Offer.validate);
 
     app.put('/api/offers/:id', Auth.user.hasAuthorization, Offer.update);
 

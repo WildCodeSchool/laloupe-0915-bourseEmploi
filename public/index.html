@@ -11,7 +11,6 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
@@ -21,7 +20,6 @@
     <!--OPENSTREET MAP-->
     <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
-
 
     <!-- JQ - boostrap -->
     <script src="js/libs/jquery-1.11.3.min.js"></script>
@@ -62,6 +60,7 @@
     <script src="js/services/recruiterService.js"></script>
     <script src="js/services/geocoderService.js"></script>
     <script src="js/services/studentService.js"></script>
+    <script src="js/services/schoolPromoService.js"></script>
     <script src="js/app.js"></script>
 
 </head>
@@ -95,7 +94,6 @@
                 </form>
 -->
 
-
                 <!--NAVBAR RECRUITER-->
                 <ul ng-if="user._type == 'Recruiter' && user.admin == false" class="nav navbar-nav navbar-right">
                     <!--OFFERS-->
@@ -109,7 +107,7 @@
                         <a href="/#/book"><i class="fa fa-search fa-nav"></i> Le Book </a>
                     </li>
                     <!--MY ACCOUNT-->
-                    <li ng-class="{active: activetab=='/homeRecruiter'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Votre compte">
+                    <li ng-class="{active: activetab=='/homeRecruiter'|| activetab=='/editRecruiter'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Votre compte">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <img ng-src="{{user.logo}}" class="navbarr-avatar"> {{user.name}} <span class="caret"></span>
                         </a>
@@ -140,7 +138,7 @@
                         </a>
                     </li>
                     <!--CLASSES-->
-                    <li ng-class="{active: activetab=='/book', active: activetab=='/editSchool'}" class="dropdown li-nav">
+                    <li ng-class="{active: activetab=='/book' || activetab=='/editSchool'}" class="dropdown li-nav">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-graduation-cap"></i> Promos <span class="caret"></span>
                         </a>
@@ -151,7 +149,7 @@
                         </ul>
                     </li>
                     <!--OFFERS-->
-                    <li ng-class="{active: activetab=='/formOffer', active: activetab=='/moderateOffer'}" class="dropdown li-nav">
+                    <li ng-class="{active: activetab=='/formOffer' || activetab=='/moderateOffer' || activetab=='/searchOffer'}" class="dropdown li-nav">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-file-text"></i> Offres <span class="caret"></span>
                         </a>
@@ -160,10 +158,11 @@
                             <li class="li-nav"><a href="/#/homeRecruiter">Mes Offres</a></li>
                             <li class="li-nav divider" role="separator"></li>
                             <li class="li-nav"><a href="/#/moderateOffer">Modération des offres</a></li>
+                            <li class="li-nav"><a href="/#/searchOffer">Toutes les offres</a></li>
                         </ul>
                     </li>
                     <!--MY ACCOUNT-->
-                    <li ng-class="{active: activetab=='/homeRecruiter', active: activetab=='/editRecruiter'}" class="dropdown li-nav">
+                    <li ng-class="{active: activetab=='/homeRecruiter' || activetab=='/editRecruiter'}" class="dropdown li-nav">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <img ng-src="{{user.logo}}" class="navbarr-avatar"> {{user.name}} <span class="caret"></span>
                         </a>
@@ -191,7 +190,7 @@
                         <a href="/#/book/{{user._id}}"><i class="fa fa-file-text fa-nav"></i> Mon CV</a>
                     </li>
                     <!--STUDENT ACCOUNT-->
-                    <li ng-class="{active: activetab=='/homeStudent'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Votre compte">
+                    <li ng-class="{active: activetab=='/homeStudent'  || activetab=='/editBook'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Votre compte">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <img ng-src="{{user.picture}}" class="navbarr-avatar"> {{user.firstName}} {{user.name}} <span class="caret"></span>
                         </a>
@@ -209,7 +208,7 @@
 
     <div id="container">
 
-        <div id="body" ng-class="{'container-fluid': activetab=='/login', 'container': activetab!=='/login'}">
+        <div id="body" ng-class="{'container-fluid': activetab=='/login' || activetab=='/editSchool', 'container': activetab!=='/login' && activetab!=='/editSchool'}">
             <ng-view></ng-view>
         </div>
 

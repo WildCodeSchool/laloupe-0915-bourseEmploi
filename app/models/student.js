@@ -2,9 +2,14 @@
                                 MODEL STUDENT
 \* ------------------------------------------------------------------------- */
 
-
 var mongoose = require('mongoose'),
     extend = require('mongoose-schema-extend');
+
+var generatePassword = require('password-generator');
+
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport('smtps://wildfinder.wcs%40gmail.com:jecode4laloupe@smtp.gmail.com');
 
 var User = require('./user.js');
 
@@ -17,6 +22,10 @@ var StudentSchema = User.model.schema.extend({
         type: String,
         required: true
     },
+    blocked: {
+        type: Boolean,
+        default: true
+    },
     region: String,
     city: String,
     gender: String,
@@ -28,13 +37,9 @@ var StudentSchema = User.model.schema.extend({
     status: String,
     situation: String,
     teaser: String,
-    classe: {
-        type: String,
-        required: true
-    },
-    school: {
-        type: String,
-        required: true
+    promos: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Promo'
     },
     mobility: String,
     hobbies: {
@@ -84,6 +89,7 @@ var Student = {
             }, {
                 password: 0
             })
+            .populate('promos')
             .populate('skills.skill')
             .populate('likes')
             .exec(function (err, users) {
@@ -95,6 +101,7 @@ var Student = {
         Student.model.findById(req.params.id, {
                 password: 0
             })
+            .populate('promos')
             .populate('skills.skill')
             .populate('likes')
             .populate('formations.formation')
@@ -102,6 +109,28 @@ var Student = {
             .exec(function (err, student) {
                 res.json(student);
             });
+    },
+
+    sendId: function (req, res) {
+        Student.model.findById(req.params.id)
+            .exec(function (err, student) {
+                res.json(student);
+                transporter.sendMail(require('../mails/Mail.js').id(student.email, student.email, student.password, student.name, student.firstName), function (error, info) {
+                    if (error) {
+                        return console.log(error);
+                    }
+                    console.log('Message sent: ' + info.response);
+                });
+            });
+    },
+
+
+    findByPromo: function (req, res) {
+        Student.model.find({
+            promos: req.headers.promos
+        }, function (err, promo) {
+            res.json(promo);
+        });
     },
 
     findInfo: function (req, res) {
@@ -132,7 +161,48 @@ var Student = {
         });
     },
 
+    findFiltered: function (req, res) {
+        var status = req.body.status;
+        var region = req.body.region;
+        var situation = req.body.situation;
+        var promos = req.body.promos;
+        var query = Student.model.find({
+            _type: 'Student'
+        }, {
+            password: 0
+        });
+        if (status)
+            query = query.where('status').equals(status);
+        if (region)
+            query = query.where('region').equals(region);
+        if (situation)
+            query = query.where('situation').equals(situation);
+        if (promos)
+            query = query.where('promos').equals(promos);
+        if (req.body.skill)
+            query = query.where('skills.skill').equals(req.body.skill);
+
+        query.populate("skills.skill")
+            .populate('promos')
+            .exec(function (err, students) {
+                if (err) {
+                    res.status(400);
+                    console.log(err);
+                } else {
+                    students = students.filter(function (student) {
+                        console.log(student.promos);
+                        if (req.body.school)
+                            return (student.promos ? student.promos.schoolId == req.body.school : false);
+                        return true;
+                    })
+                    res.json(students);
+                }
+            });
+    },
+
     create: function (req, res) {
+        req.body.password = generatePassword(6, false);
+        req.body._type = 'Student';
         Student.model.create(req.body, function (err, student) {
             res.json(student);
             console.log(err);
@@ -193,6 +263,5 @@ var Student = {
         })
     }
 }
-
 
 module.exports = Student;

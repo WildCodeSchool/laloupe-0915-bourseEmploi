@@ -1,4 +1,11 @@
-function bookController($scope, $location, studentService, $rootScope, recruiterService) {
+function bookController($scope, $location, studentService, $rootScope, skillService, schoolPromoService, recruiterService) {
+
+
+    $scope.school = "";
+
+    $scope.promosFilter = function (promo) {
+        return promo.schoolId == $scope.school;
+    }
 
     //TOOLTIP    
     $(function () {
@@ -7,6 +14,68 @@ function bookController($scope, $location, studentService, $rootScope, recruiter
 
     console.log($rootScope.user.likes);
 
+    //Chargement du modèle skills
+    function loadSkill() {
+        skillService.get().then(function (res) {
+            $scope.skills = res.data;
+        })
+    }
+    loadSkill();
+
+    //Format des dates
+    $scope.shortDate = function (date) {
+        moment.locale('fr');
+        return moment(date).format('MMM YYYY');
+    }
+
+    //Mise a zero des filtres
+    $scope.resetFilter = function () {
+        $scope.region = null;
+        $scope.querySkill = null;
+        $scope.school = null;
+        $scope.promo = null;
+        $scope.status = null;
+        $scope.situation = null;
+    }
+
+    //Chargement des promos
+    function loadPromos() {
+        schoolPromoService.getPromo().then(function (res) {
+            $scope.promos = res.data;
+            console.log(res.data);
+        });
+        schoolPromoService.getSchool().then(function (res) {
+            $scope.schools = res.data;
+            console.log(res.data);
+        });
+    }
+    loadPromos();
+
+    $scope.$watch('$viewContentLoaded', function () {
+        studentService.getAll().then(function (res) {
+            $scope.students = res.data;
+        });
+    });
+
+    //Bouton de filtre des students
+    $scope.studentFiltered = function () {
+        var data = {};
+        data.school = $scope.school;
+        data.promos = $scope.promo;
+        data.region = $scope.region;
+        data.skill = $scope.querySkill;
+        data.status = $scope.status;
+        data.situation = $scope.situation;
+        console.log($scope.promo);
+        studentService.getStudentFiltered(data).then(function (res) {
+            console.log(res.data);
+            $scope.students = res.data;
+            //CHECK IS lIKED
+            $scope.students.forEach(function (student) {
+                student.isLiked = ($rootScope.user.likes.indexOf(student._id) > -1);
+            }.bind($scope));
+        });
+    }
 
     //RECRUITER'S LIKE UPDATE IN ROOTSCOPE
     recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {
@@ -15,7 +84,7 @@ function bookController($scope, $location, studentService, $rootScope, recruiter
         $scope.recruiter.likes.forEach(function (like) {
             studentliked.push(like);
         }.bind($scope));
-        console.log(studentliked);
+        /*        console.log(studentliked);*/
         $rootScope.user.likes = studentliked;
     });
 
@@ -31,19 +100,6 @@ function bookController($scope, $location, studentService, $rootScope, recruiter
         });
     }
     pop();
-
-    //GET STUDENTS
-    studentService.getAll('Student').then(function (res) {
-        $scope.students = res.data
-
-        //CHECK IS lIKED
-        $scope.students.forEach(function (student) {
-            student.isLiked = ($rootScope.user.likes.indexOf(student._id) > -1);
-            console.log(student._id);
-            console.log($rootScope.user.likes.indexOf(student._id))
-        }.bind($scope));
-
-    });
 
     //LIKE
     function like(student) {

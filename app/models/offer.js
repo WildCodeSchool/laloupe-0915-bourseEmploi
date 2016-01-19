@@ -4,6 +4,10 @@
 
 var mongoose = require('mongoose');
 var moment = require('moment');
+moment.locale('fr');
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport('smtps://wildfinder.wcs%40gmail.com:jecode4laloupe@smtp.gmail.com');
 
 var offerSchema = new mongoose.Schema({
     skills: [{
@@ -54,6 +58,14 @@ var offerSchema = new mongoose.Schema({
     },
     endDate: {
         type: Date,
+        required: true
+    },
+    endOfPublish: {
+        type: Date,
+        required: true
+    },
+    published: {
+        type: Boolean,
         required: true
     },
     address: {
@@ -201,11 +213,52 @@ var Offer = {
             });
     },
 
+    findNotPublished: function (req, res) {
+        Offer.model.find({
+                published: false
+            })
+            .populate("skills.skill")
+            .populate("referentId", "-password")
+            .exec(function (err, offers) {
+                if (err) {
+                    res.status(400);
+                    console.log(err);
+                } else
+                    res.json(offers);
+            });
+    },
+
+    findSoonEnded: function (req, res) {
+        Offer.model.find({
+                'endOfPublish': {
+                    $lt: new Date()
+                },
+                'endDate': {
+                    $gt: new Date()
+                }
+            })
+            .populate("skills.skill")
+            .populate("referentId", "-password")
+            .exec(function (err, offers) {
+                if (err) {
+                    res.status(400);
+                    console.log(err);
+                } else
+                    res.json(offers);
+            });
+    },
+
     create: function (req, res) {
         Offer.model.create(req.body, function (err, offer) {
             if (err)
                 console.log(err);
             res.json(offer);
+            transporter.sendMail(require('../mails/Mail.js').newOfferMail(offer.referentEmail, offer.title), function (error, info) {
+                if (error) {
+                    return console.log(error);
+                }
+                console.log('Message sent: ' + info.response);
+            });
         });
     },
 
@@ -215,41 +268,17 @@ var Offer = {
         });
     },
 
-    /*update: function (req, res) {
-        Offer.model.findByIdAndUpdate(req.params.id, {
-            title: req.body.title,
-            email: req.body.email,
-            referentName: req.body.referentName,
-            referentPhone: req.body.referentPhone || 0,
-            description: req.body.description,
-            contract: req.body.contract,
-            salary: req.body.salary || 0,
-            experience: req.body.experience,
-            responsability: req.body.responsability,
-            wildSide: req.body.wildSide,
-            startDate: req.body.startDate,
-
-            endDate: moment(req.body.enDate).add(90, 'days'),
-
-            address: req.body.address,
-            city: req.body.city,
-            country: req.body.country,
-            zipCode: req.body.zipCode
-
-        }, function (err, offer) {
-           // for (var i = 0; i < req.body.skills.length ; i++){
-           //          Offer.model.findByIdAndUpdate(offer.id,{ $push: {
-           //              skills: {
-           //                  skill: req.body.skills[i]
-           //              }
-           //          }}, function (err, oo) {
-           //              //nothing    
-           //          });
-                    
-           //      }
-                res.sendStatus(200);
-        });    
-    },*/
+    validate: function (req, res) {
+        Offer.model.findByIdAndUpdate(req.params.id, req.body, function (err, offer) {
+            res.json(offer);
+            transporter.sendMail(require('../mails/Mail.js').validateOfferMail(offer.referentEmail, offer.title, moment(offer.startDate).format('DD MMMM YYYY'), moment(offer.endDate).format('DD MMMM YYYY')), function (error, info) {
+                if (error) {
+                    return console.log(error);
+                }
+                console.log('Message sent: ' + info.response);
+            });
+        });
+    },
 
     delete: function (req, res) {
         Offer.model.findByIdAndRemove(req.params.id, function () {

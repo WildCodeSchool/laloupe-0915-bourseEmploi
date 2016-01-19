@@ -17,8 +17,32 @@ function studentService($http, $cookies) {
             });
         },
 
+        sendId: function (id) {
+            return $http.get('/api/sendId/' + id, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
+        getStudentbyPromo: function (promo) {
+            return $http.get('api/students_promo', {
+                headers: {
+                    'promos': promo,
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
         getInfo: function () {
             return $http.get('/api/infos/students', {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
+        getStudentFiltered: function (data) {
+            return $http.post('/api/students/filter', data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -83,7 +107,7 @@ function studentService($http, $cookies) {
 
         //FORMATION ROUTES  /!\ 
         newFormation: function (data) {
-            return $http.post('/api/formations', data,{
+            return $http.post('/api/formations', data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }

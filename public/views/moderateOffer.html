@@ -1,0 +1,101 @@
+<div class="row">
+    <!-- OFFRES WAITING FOR PUBLICATION -->
+    <div class="col-sm-6 col-md-6 col-lg-6 ">
+        <div class="wildpanel panel paneldefault">
+            <div class="wildpanelheader panel paneldefault">
+                <h4>Annonces en attente de publication ({{numberOffer}}):</h4>
+            </div>
+            <div class="wildpanelbodys panel paneldefault" ng-repeat="publishOffer in publishOffers">
+                <div>
+                    <ul>
+                        <li class="headeradvert" ng-click="goToOffer(publishOffer)">
+                            <h2 class="headeradvert titleadvert-sm">{{publishOffer.title}}</h2></li>
+                    </ul>
+                    <div class="headeradvert">
+                        <p class="advert-date"> Publication : {{alertDate(publishOffer.startDate)}}</p>
+                    </div>
+                    <ul>
+                        <li class="headeradvert">
+                            <p class="headeradvert smalltexadvert-sm">chez</p>
+                        </li>
+                        <li class="headeradvert">
+                            <p class="headeradvert companytexadvert-sm">{{publishOffer.referentId.name}}</p>
+                        </li>
+                    </ul>
+                    <ul class="skill-ul-mini">
+                        <li class="headeradvert skill-li-mini" ng-repeat="skill in publishOffer.skills"><span class="wildSkill-mini">{{skill.skill.title}}</span>
+                    </ul>
+                    <ul>
+                        <li class="headeradvert"><i class="fa fa-file-text-o fa-lg mini"></i>
+                            <p class="headeradvert smalltexadvert1-sm">{{publishOffer.contract}}</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-eur fa-lg mini"></i>
+                            <p class="headeradvert smalltexadvert1-sm">{{publishOffer.salary}}</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-briefcase fa-lg mini"></i>
+                            <p class="headeradvert smalltexadvert1-sm">{{publishOffer.experience}}</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-map-marker fa-lg mini"></i>
+                            <p class="headeradvert smalltexadvert1-sm">{{publishOffer.city}} ({{publishOffer.country}})</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wildpanelfooter panel paneldefault">
+                <p class="paragraphWPF">{{numberOffer}} {{numberOffer > 1 ? 'annonces' : 'annonce'}} en attente de validation</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- OFFERS WILL SOON BE FINISH -->
+    <div class="col-sm-6 col-md-6 col-lg-6 ">
+        <div class="wildpanel panel paneldefault">
+            <div class="wildpanelheader panel paneldefault">
+                <h4>Annonces arrivant bientôt à expiration ({{numberEndOfOffers}}) :</h4>
+            </div>
+            <div class="wildpanelbodys panel paneldefault" ng-repeat="endOfOffer in endOfOffers">
+                <div>
+                    <ul>
+                        <li class="headeradvert" ng-click="goToOffer(endOfOffer)">
+                            <h2 class="headeradvert titleadvert-sm">{{endOfOffer.title}}</h2></li>
+                    </ul>
+                    <ul>
+                        <li class="headeradvert">
+                            <p class="headeradvert smalltexadvert-sm">chez</p>
+                        </li>
+                        <li class="headeradvert">
+                            <p class="headeradvert companytexadvert-sm">{{endOfOffer.referentId.name}}</p>
+                        </li>
+                        <li class="headeradvert">
+                            <p class="headeradvert smalltexadvert-sm">Posté {{startOffer(endOfOffer.startDate)}}</p>
+                        </li>
+                    </ul>
+                    <ul class="skill-ul-mini">
+                        <li class="headeradvert skill-li-mini" ng-repeat="skill in endOfOffer.skills"><span class="wildSkill-mini">{{skill.skill.title}}</span>
+                    </ul>
+                    <ul>
+                        <li class="headeradvert"><i class="fa fa-file-text-o fa-lg mini"></i>
+                            <p class="headeradvert smalltexadvert1-sm">{{endOfOffer.contract}}</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-eur fa-lg mini"></i>
+                            <p class="headeradvert smalltexadvert1-sm">{{endOfOffer.salary}}</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-briefcase fa-lg mini"></i>
+                            <p class="headeradvert smalltexadvert1-sm">{{endOfOffer.experience}}</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-map-marker fa-lg mini"></i>
+                            <p class="headeradvert smalltexadvert1-sm">{{endOfOffer.city}} ({{endOfOffer.country}})</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-map-marker fa-lg mini"></i>
+                            <p class="headeradvert smalltexadvert1-sm"> {{endOfOffer.referentEmail}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wildpanelfooter panel paneldefault">
+                <p class="paragraphWPF">{{numberEndOfOffers}} {{numberEndOfOffers > 1 ? 'annonces' : 'annonce'}} bientôt à expiration.</p>
+            </div>
+        </div>
+    </div>
+</div>

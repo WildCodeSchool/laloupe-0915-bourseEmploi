@@ -12,6 +12,10 @@ var RecruiterSchema = User.model.schema.extend({
         type: String,
         required: true
     },
+    createdAt: {
+        type: Date,
+        required: true
+    },
     size: {
         type: String,
         required: true

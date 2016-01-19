@@ -84,6 +84,7 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         data.email = $scope.email;
         data.phone = $scope.phone;
         recruiterService.update($rootScope.user._id, data).then(function (res) {
+            console.log(data);
             if (!res.data) {
                 alert('pas ok');
             } else {
@@ -130,8 +131,8 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         recruiterService.update($rootScope.user._id, data).then(function (res) {
             alert('ok');
         });
+        loadRecruiter();
     }
-    loadRecruiter();
 
     //Suppression de la photo
     $scope.deletePicture = function () {
@@ -140,8 +141,8 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         recruiterService.update($rootScope.user._id, data).then(function (res) {
             alert('ok');
         });
+        loadRecruiter();
     }
-    loadRecruiter();
 
     //Mise a jour des descriptions
     $scope.update4 = function () {

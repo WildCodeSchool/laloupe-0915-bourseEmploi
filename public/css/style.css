@@ -206,7 +206,7 @@ ul {
 
 .btnW-sm {
     height: 30px;
-    padding: 0px 20px 0px 20px;
+    padding: 0px 7px 0px 7px;
     border: 2px solid;
     border-radius: 10px;
     border-color: #009587;
@@ -364,6 +364,21 @@ ul {
     font-weight: 600;
 }
 
+.publishOffer:hover {
+    background-color: #daa520;
+    color: white;
+}
+
+.publishOffer {
+    cursor: pointer;
+    color: #daa520;
+    margin-bottom: 10px;
+}
+
+.publishOffer>h4 {
+    font-weight: 600;
+}
+
 .bs-callout-danger {
     border-left-color: #ce4844;
 }
@@ -381,6 +396,14 @@ ul {
 
 .fa-question-circle {
     color: #B6B6B6;
+}
+
+.advert-date {
+    font-size: 12px;
+    margin: 0 3px 0 1px;
+    color: red;
+    float: right;
+    z-index: 9999;
 }
 
 
@@ -443,6 +466,12 @@ ul {
     border-color: #b6b6b6
 }
 
+.wildpanel-promo {
+    margin: 0px 0px 15px 0px;
+    padding: 0 auto;
+    border-color: #b6b6b6
+}
+
 .wildpanelheader {
     margin: 0 auto;
     background-color: #009587;
@@ -489,6 +518,24 @@ ul {
     border: 0;
 }
 
+.wildpanelbody-skill {
+    margin: 0 auto;
+    padding: 7px 10px 5px 10px;
+    border-radius: 0px;
+    border: 0;
+}
+
+.wildpanelbody-skill:hover {
+    background-color: #F5FAF9;
+}
+
+.wildpanelbodyskill {
+    margin: 0 auto;
+    padding: 30px 15px 30px 10px;
+    border-radius: 0px;
+    border: 0;
+}
+
 .wildpanelbodybook-bg {
     margin: 0 auto;
     padding: 0;
@@ -500,6 +547,14 @@ ul {
     padding: 5px 10px 5px 10px;
     border-top-color: #B6B6B6;
     border-radius: 0px;
+}
+
+.wildpanelbodys-menu {
+    margin: 0 auto;
+    padding: 5px 10px 5px 10px;
+    border-top-color: #B6B6B6;
+    border-radius: 0px;
+    background-color: #F5FAF9;
 }
 
 .wildpanelheart {
@@ -645,6 +700,13 @@ ul {
     margin-bottom: 0;
 }
 
+.title-skill {
+    font-size: 18px;
+    color: #202020;
+    font-family: 'Raleway', sans-serif;
+    margin: 0px 0 0px 0;
+}
+
 .titleadvert-sm:hover {
     cursor: pointer;
     color: #009587;
@@ -675,7 +737,17 @@ ul {
     margin: 0 2px 0 2px;
 }
 
+.fa-trash {
+    color: #B6B6B6;
+    margin: 0 2px 0 2px;
+}
+
 .fa-pencil:hover {
+    color: #202020;
+    cursor: pointer;
+}
+
+.fa-trash:hover {
     color: #202020;
     cursor: pointer;
 }
@@ -715,6 +787,12 @@ ul {
 }
 
 .offerdelete {
+    float: right;
+    z-index: 9999;
+}
+
+.button-header {
+    padding-top: 10px;
     float: right;
     z-index: 9999;
 }
@@ -1075,5 +1153,90 @@ li.active {
 
 .footerclass:hover {
     color: #009587;
+}
+
+.skill-list {
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+.skill-scrool {
+    max-height: 700px;
+    overflow: auto;
+}
+
+.fa-plus {
+    color: white;
+}
+
+.fa-plus:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.form-school {
+    margin-bottom: 5px;
+}
+
+.label-school {
+    margin-bottom: 0;
+}
+
+.btn-promo {
+    padding-top: 20px;
+}
+
+.no-marge-left {
+    margin-left: 0;
+    padding-left: 2px;
+    margin-bottom: 0;
+}
+
+.dropdown:hover {
+    cursor: pointer;
+}
+
+.dropdown-hover:hover {
+    color: black;
+}
+
+.fa-user-plus {
+    color: #B6B6B6;
+}
+
+.no-marge-newstudent {
+    margin: 0;
+    padding: 4px 0 0 0;
+}
+
+.list-section:hover {
+    background-color: #F5FAF9;
+    cursor: pointer;
+}
+
+.min-marge {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.min-padding {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.no-marge-form {
+    padding: 0 8px 0 8px
+}
+
+.fa-minus-circle {
+    color: #e74c3c;
+}
+
+.fa-check-circle {
+    color: #2ecc71;
+}
+
+.list-clicked {
+    background-color: #F5FAF9;
 }
 
