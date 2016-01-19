@@ -9,7 +9,6 @@ function bookStudentController($scope, $rootScope, skillService, $routeParams, s
 
     function loadStudent() {
         //LOAD STUDENT
-        console.log($rootScope.user);
         studentService.getUserbyId(selectUser).then(function (res) {
             $scope.student = res.data;
             $scope.studentSkill = res.data.skills;

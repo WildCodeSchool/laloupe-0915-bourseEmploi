@@ -19,7 +19,6 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
         studentService.getUserbyId($rootScope.user._id).then(function (res) {
             $scope.student = res.data;
             $scope.studentSkill = res.data.skills;
-            console.log($scope.student)
 
             /****   CREATION TAGS ******/
             //Import des compétences de shéma "skills"
@@ -124,7 +123,6 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
                         i++
                     };
                     $scope.numberMatchOffer = i
-                    console.log($scope.likedOffers);
                 });
 
             });

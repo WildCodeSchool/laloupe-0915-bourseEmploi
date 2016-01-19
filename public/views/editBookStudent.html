@@ -1,8 +1,28 @@
 <h2>Edition d'un profil élève.</h2>
 
-
 <div class="row">
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+
+        <div class="row" id="">
+            <div class="page-header">
+                <h3>Logo et photo :</h3>
+            </div>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label><i class="fa fa-picture-o fa-form"></i> Ajouter un logo :</label>
+                    <input id="logo" type="file" nv-file-select uploader="uploader" ng-model="student.logo" onchange="angular.element(this).scope().previewFile(this)">
+                    <img id="preview" height="200" ng-src="{{student.logo}}" alt="Image preview...">
+                    <button ng-click="deleteLogo()" class="btn btn-default btnW spacer">Supprimer ce logo</button>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-offset-8 col-sm-3">
+                    <form>
+                        <button class="btnW" ng-click="updateLogo()">mettre a jour</button>
+                    </form>
+                </div>
+            </fieldset>
+        </div>
 
         <div class="row" id="anchor1">
             <div class="page-header">
@@ -12,27 +32,26 @@
                 <div class="col-sm-5">
                     <label class="control-label">Prénom :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="firstName">
+                        <input type="text" class="form-control" id="" ng-model="student.firstName">
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <label class="control-label">Nom :</label>
                     <div>
-                        <input type="email" class="form-control" id="" ng-model="name">
+                        <input type="text" class="form-control" id="" ng-model="student.name">
                     </div>
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-5">
-                    <label class="control-label">Age :</label>
-                    <div>
-                        <input type="text" class="form-control" id="" ng-model="birthDate">
-                    </div>
+                    <label class="control-label">Date de naissance :</label>
+                    <input type="date" class="form-control" ng-model="student.birthDate">
+
                 </div>
                 <div class="col-sm-5">
                     <label class="control-label">Sexe :</label>
                     <div>
-                        <input type="email" class="form-control" id="" ng-model="gender">
+                        <input type="text" class="form-control" id="" ng-model="student.gender">
                     </div>
                 </div>
             </fieldset>
@@ -40,13 +59,13 @@
                 <div class="col-sm-5">
                     <label class="control-label">Email :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="email">
+                        <input type="email" class="form-control" id="" ng-model="student.email">
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <label class="control-label">Telephone :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="phone">
+                        <input type="text" class="form-control" id="" ng-model="student.phone">
                     </div>
                 </div>
             </fieldset>
@@ -54,12 +73,12 @@
                 <div class="col-sm-5">
                     <label class="control-label">Ville :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="email">
+                        <input type="text" class="form-control" id="" ng-model="student.city">
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <label class="control-label">Région :</label>
-                    <select class="form-control" ng-model="situation">
+                    <select class="form-control" ng-model="student.region">
                         <option value="" disabled>Région</option>
                         <option>Alsace-Champagne-Ardenne-Lorraine</option>
                         <option>Aquitaine-Limousin-Poitou-Charentes</option>
@@ -86,6 +105,43 @@
             </div>
         </fieldset>
 
+        <div class="row" id="">
+            <div class="page-header">
+                <h3>Mot de passe :</h3>
+            </div>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Mot de passe actuel :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="user.password">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Nouveau mot de passe :</label>
+                    <div>
+                        <input type="text" class="form-control" id="">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-5">
+                    <label class="control-label">Confirmer mot de passe :</label>
+                    <div>
+                        <input type="text" class="form-control" id="">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <fieldset class="form-group">
+            <div class="col-sm-offset-8 col-sm-3">
+                <form>
+                    <button class="btnW" ng-click="update1()">mettre a jour</button>
+                </form>
+            </div>
+        </fieldset>
+
 
         <div class="row" id="anchor2">
             <div class="page-header">
@@ -94,7 +150,7 @@
             <fieldset class="form-group">
                 <div class="col-sm-5">
                     <label class="control-label">Situation professionelle:</label>
-                    <select class="form-control" ng-model="situation">
+                    <select class="form-control" ng-model="student.situation">
                         <option type="text" class="form-control" value="" disabled></option>
                         <option type="text" class="form-control">En poste</option>
                         <option type="text" class="form-control">En fin de contrat</option>
@@ -112,7 +168,7 @@
                 </div>
                 <div class="col-sm-5">
                     <label class="control-label">Disponibilité :</label>
-                    <select class="form-control" ng-model="status">
+                    <select class="form-control" ng-model="student.status">
                         <option type="text" class="form-control" value="" disabled></option>
                         <option type="text" class="form-control">En recherche active</option>
                         <option type="text" class="form-control">En recherche de stage</option>
@@ -124,7 +180,7 @@
             <div class="col-sm-5">
                 <label class="control-label">Mobilité :</label>
                 <fieldset class="form-group">
-                    <select class="form-control" ng-model="mobility">
+                    <select class="form-control" ng-model="student.mobility">
                         <option type="text" class="form-control" value="" disabled></option>
                         <option type="text" class="form-control">Départementale</option>
                         <option type="text" class="form-control">Régionale</option>
@@ -149,7 +205,7 @@
             <fieldset class="form-group">
                 <div class="col-sm-10">
                     <label>Son coté wild</label>
-                    <textarea class="form-control" rows="4" ng-model="wildSide"></textarea>
+                    <textarea class="form-control" rows="4" ng-model="student.wildSide"></textarea>
                 </div>
             </fieldset>
             <fieldset class="form-group">
@@ -237,23 +293,58 @@
                     <div class="col-sm-5">
                         <label class="control-label">Pays :</label>
                         <div>
-                            <input type="email" class="form-control" id="" ng-model="exp.experience.country">
+                            <input type="text" class="form-control" id="" ng-model="exp.experience.country">
                         </div>
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
-                    <div class="col-sm-5">
-                        <label class="control-label">Date de début :</label>
-                        <div>
-                            <input class="form-control" type="date" ng-model="exp.experience.startDate" min="">
-                        </div>
+                    <div class="col-sm-3">
+                        <label class="control-label">Mois de début :</label>
+                        <select class="form-control" ng-model="exp.experience.monthStart">
+                            <option type="text" class="form-control" value="" disabled></option>
+                            <option type="text" class="form-control">Janvier</option>
+                            <option type="text" class="form-control">Fevrier</option>
+                            <option type="text" class="form-control">Mars</option>
+                            <option type="text" class="form-control">Avril</option>
+                            <option type="text" class="form-control">Mai</option>
+                            <option type="text" class="form-control">Juin</option>
+                            <option type="text" class="form-control">Juillet</option>
+                            <option type="text" class="form-control">Aout</option>
+                            <option type="text" class="form-control">Septembre</option>
+                            <option type="text" class="form-control">Octobre</option>
+                            <option type="text" class="form-control">Novembre</option>
+                            <option type="text" class="form-control">Décembre</option>
+                        </select>
                     </div>
-                    <div class="col-sm-5">
-                        <label class="control-label">Date de fin :</label>
-                        <div>
-                            <input class="form-control" type="date" ng-model="exp.experience.endDate" min="">
-
-                        </div>
+                    <div class="col-sm-2">
+                        <label class="control-label">Année de début :</label>
+                        <select class="form-control" ng-model="exp.experience.yearStart">
+                            <option type="text" class="form-control" ng-repeat="year in years">{{year}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="control-label">Mois de fin :</label>
+                        <select class="form-control" ng-model="exp.experience.monthEnd">
+                            <option type="text" class="form-control" value="" disabled></option>
+                            <option type="text" class="form-control">Janvier</option>
+                            <option type="text" class="form-control">Fevrier</option>
+                            <option type="text" class="form-control">Mars</option>
+                            <option type="text" class="form-control">Avril</option>
+                            <option type="text" class="form-control">Mai</option>
+                            <option type="text" class="form-control">Juin</option>
+                            <option type="text" class="form-control">Juillet</option>
+                            <option type="text" class="form-control">Aout</option>
+                            <option type="text" class="form-control">Septembre</option>
+                            <option type="text" class="form-control">Octobre</option>
+                            <option type="text" class="form-control">Novembre</option>
+                            <option type="text" class="form-control">Décembre</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <label class="control-label">Année de fin :</label>
+                        <select class="form-control" ng-model="exp.experience.yearEnd">
+                            <option type="text" class="form-control" ng-repeat="year in years">{{year}}</option>
+                        </select>
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
@@ -306,23 +397,58 @@
                 <div class="col-sm-5">
                     <label class="control-label">Pays :</label>
                     <div>
-                        <input type="email" class="form-control" id="" ng-model="country">
+                        <input type="text" class="form-control" id="" ng-model="country">
                     </div>
                 </div>
             </fieldset>
             <fieldset class="form-group">
-                <div class="col-sm-5">
-                    <label class="control-label">Date de début :</label>
-                    <div>
-                        <input class="form-control" type="date" ng-model="startDate" min="">
-                    </div>
+                <div class="col-sm-3">
+                    <label class="control-label">Mois de début :</label>
+                    <select class="form-control" ng-model="monthStart">
+                        <option type="text" class="form-control" value="" disabled></option>
+                        <option type="text" class="form-control">Janvier</option>
+                        <option type="text" class="form-control">Fevrier</option>
+                        <option type="text" class="form-control">Mars</option>
+                        <option type="text" class="form-control">Avril</option>
+                        <option type="text" class="form-control">Mai</option>
+                        <option type="text" class="form-control">Juin</option>
+                        <option type="text" class="form-control">Juillet</option>
+                        <option type="text" class="form-control">Aout</option>
+                        <option type="text" class="form-control">Septembre</option>
+                        <option type="text" class="form-control">Octobre</option>
+                        <option type="text" class="form-control">Novembre</option>
+                        <option type="text" class="form-control">Décembre</option>
+                    </select>
                 </div>
-                <div class="col-sm-5">
-                    <label class="control-label">Date de fin :</label>
-                    <div>
-                        <input class="form-control" type="date" ng-model="endDate" min="">
-
-                    </div>
+                <div class="col-sm-2">
+                    <label class="control-label">Année de début :</label>
+                    <select class="form-control" ng-model="yearStart">
+                        <option type="text" class="form-control" ng-repeat="year in years">{{year}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <label class="control-label">Mois de fin :</label>
+                    <select class="form-control" ng-model="monthEnd">
+                        <option type="text" class="form-control" value="" disabled></option>
+                        <option type="text" class="form-control">Janvier</option>
+                        <option type="text" class="form-control">Fevrier</option>
+                        <option type="text" class="form-control">Mars</option>
+                        <option type="text" class="form-control">Avril</option>
+                        <option type="text" class="form-control">Mai</option>
+                        <option type="text" class="form-control">Juin</option>
+                        <option type="text" class="form-control">Juillet</option>
+                        <option type="text" class="form-control">Aout</option>
+                        <option type="text" class="form-control">Septembre</option>
+                        <option type="text" class="form-control">Octobre</option>
+                        <option type="text" class="form-control">Novembre</option>
+                        <option type="text" class="form-control">Décembre</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <label class="control-label">Année de fin :</label>
+                    <select class="form-control" ng-model="yearEnd">
+                        <option type="text" class="form-control" ng-repeat="year in years">{{year}}</option>
+                    </select>
                 </div>
             </fieldset>
             <fieldset class="form-group">
@@ -373,17 +499,53 @@
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
-                    <div class="col-sm-5">
-                        <label class="control-label">Date de début :</label>
-                        <div>
-                            <input class="form-control" type="date" ng-model="form.formation.startDate" min="">
-                        </div>
+                    <div class="col-sm-3">
+                        <label class="control-label">Mois de début :</label>
+                        <select class="form-control" ng-model="form.formation.monthStart">
+                            <option type="text" class="form-control" value="" disabled></option>
+                            <option type="text" class="form-control">Janvier</option>
+                            <option type="text" class="form-control">Fevrier</option>
+                            <option type="text" class="form-control">Mars</option>
+                            <option type="text" class="form-control">Avril</option>
+                            <option type="text" class="form-control">Mai</option>
+                            <option type="text" class="form-control">Juin</option>
+                            <option type="text" class="form-control">Juillet</option>
+                            <option type="text" class="form-control">Aout</option>
+                            <option type="text" class="form-control">Septembre</option>
+                            <option type="text" class="form-control">Octobre</option>
+                            <option type="text" class="form-control">Novembre</option>
+                            <option type="text" class="form-control">Décembre</option>
+                        </select>
                     </div>
-                    <div class="col-sm-5">
-                        <label class="control-label">Date de fin :</label>
-                        <div>
-                            <input class="form-control" type="date" ng-model="form.formation.endDate" min="">
-                        </div>
+                    <div class="col-sm-2">
+                        <label class="control-label">Année de début :</label>
+                        <select class="form-control" ng-model="form.formation.yearStart">
+                            <option type="text" class="form-control" ng-repeat="year in years">{{year}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="control-label">Mois de fin :</label>
+                        <select class="form-control" ng-model="form.formation.monthEnd">
+                            <option type="text" class="form-control" value="" disabled></option>
+                            <option type="text" class="form-control">Janvier</option>
+                            <option type="text" class="form-control">Fevrier</option>
+                            <option type="text" class="form-control">Mars</option>
+                            <option type="text" class="form-control">Avril</option>
+                            <option type="text" class="form-control">Mai</option>
+                            <option type="text" class="form-control">Juin</option>
+                            <option type="text" class="form-control">Juillet</option>
+                            <option type="text" class="form-control">Aout</option>
+                            <option type="text" class="form-control">Septembre</option>
+                            <option type="text" class="form-control">Octobre</option>
+                            <option type="text" class="form-control">Novembre</option>
+                            <option type="text" class="form-control">Décembre</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <label class="control-label">Année de fin :</label>
+                        <select class="form-control" ng-model="form.formation.yearEnd">
+                            <option type="text" class="form-control" ng-repeat="year in years">{{year}}</option>
+                        </select>
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
@@ -429,17 +591,53 @@
                 </div>
             </fieldset>
             <fieldset class="form-group">
-                <div class="col-sm-5">
-                    <label class="control-label">Date de début :</label>
-                    <div>
-                        <input class="form-control" type="date" ng-model="startDate" min="">
-                    </div>
+                <div class="col-sm-3">
+                    <label class="control-label">Mois de début :</label>
+                    <select class="form-control" ng-model="monthStart">
+                        <option type="text" class="form-control" value="" disabled></option>
+                        <option type="text" class="form-control">Janvier</option>
+                        <option type="text" class="form-control">Fevrier</option>
+                        <option type="text" class="form-control">Mars</option>
+                        <option type="text" class="form-control">Avril</option>
+                        <option type="text" class="form-control">Mai</option>
+                        <option type="text" class="form-control">Juin</option>
+                        <option type="text" class="form-control">Juillet</option>
+                        <option type="text" class="form-control">Aout</option>
+                        <option type="text" class="form-control">Septembre</option>
+                        <option type="text" class="form-control">Octobre</option>
+                        <option type="text" class="form-control">Novembre</option>
+                        <option type="text" class="form-control">Décembre</option>
+                    </select>
                 </div>
-                <div class="col-sm-5">
-                    <label class="control-label">Date de fin :</label>
-                    <div>
-                        <input class="form-control" type="date" ng-model="endDate" min="">
-                    </div>
+                <div class="col-sm-2">
+                    <label class="control-label">Année de début :</label>
+                    <select class="form-control" ng-model="yearStart">
+                        <option type="text" class="form-control" ng-repeat="year in years">{{year}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <label class="control-label">Mois de fin :</label>
+                    <select class="form-control" ng-model="monthEnd">
+                        <option type="text" class="form-control" value="" disabled></option>
+                        <option type="text" class="form-control">Janvier</option>
+                        <option type="text" class="form-control">Fevrier</option>
+                        <option type="text" class="form-control">Mars</option>
+                        <option type="text" class="form-control">Avril</option>
+                        <option type="text" class="form-control">Mai</option>
+                        <option type="text" class="form-control">Juin</option>
+                        <option type="text" class="form-control">Juillet</option>
+                        <option type="text" class="form-control">Aout</option>
+                        <option type="text" class="form-control">Septembre</option>
+                        <option type="text" class="form-control">Octobre</option>
+                        <option type="text" class="form-control">Novembre</option>
+                        <option type="text" class="form-control">Décembre</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <label class="control-label">Année de fin :</label>
+                    <select class="form-control" ng-model="yearEnd">
+                        <option type="text" class="form-control" ng-repeat="year in years">{{year}}</option>
+                    </select>
                 </div>
             </fieldset>
             <fieldset class="form-group">
@@ -464,7 +662,7 @@
                     <div class="col-sm-5">
                         <label class="control-label">Modifier les loisirs :</label>
                         <div>
-                            <input type="text" class="form-control" id="" ng-model="hobbies">
+                            <input type="text" class="form-control" id="" ng-model="student.hobbies">
                         </div>
                     </div>
                 </fieldset>
@@ -475,22 +673,7 @@
                         </form>
                     </div>
                 </fieldset>
-                <fieldset class="form-group">
-                    <div class="col-sm-5">
-                        <label class="control-label">Ajouter un loisir :</label>
-                        <div>
-                            <input type="text" class="form-control" id="" ng-model="hobbies">
-                        </div>
-                    </div>
-                </fieldset>
             </div>
-            <fieldset class="form-group">
-                <div class="col-sm-offset-8 col-sm-3">
-                    <form>
-                        <button class="btnW" ng-click="(createHobbies)">Ajouter</button>
-                    </form>
-                </div>
-            </fieldset>
         </div>
     </div>
 

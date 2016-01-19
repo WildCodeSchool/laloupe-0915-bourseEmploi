@@ -25,6 +25,14 @@ function studentService($http, $cookies) {
             });
         },
 
+        getPassword: function (id) {
+            return $http.get('/api/students' + id, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         create: function (data) {
             return $http.post('/api/students', data, {
                 headers: {
@@ -67,7 +75,7 @@ function studentService($http, $cookies) {
 
         //FORMATION ROUTES  /!\ 
         newFormation: function (data) {
-            return $http.post('/api/formations', data,{
+            return $http.post('/api/formations', data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }

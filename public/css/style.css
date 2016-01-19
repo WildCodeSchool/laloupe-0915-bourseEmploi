@@ -57,6 +57,7 @@ body {
 p {
     color: #202020;
     font-size: 16px;
+    word-wrap: break-word;
 }
 
 h1 {
@@ -1060,6 +1061,7 @@ li.active {
 .fa-twitter:hover {
     color: #008080;
 }
+
 .white {
     color: white;
 }

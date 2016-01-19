@@ -17,6 +17,7 @@ var StudentSchema = User.model.schema.extend({
         type: String,
         required: true
     },
+    logo: String,
     region: String,
     city: String,
     gender: String,
@@ -97,6 +98,12 @@ var Student = {
             .exec(function (err, student) {
                 res.json(student);
             });
+    },
+
+    getPassword: function (req, res) {
+        Student.model.getPassword(req.params.id, req.body, function (err, student) {
+            res.json(student);
+        });
     },
 
     findInfo: function (req, res) {
