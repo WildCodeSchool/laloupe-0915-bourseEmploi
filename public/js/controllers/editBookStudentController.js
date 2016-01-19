@@ -1,8 +1,7 @@
 function editBookStudentController($scope, $location, $anchorScroll, $rootScope, $routeParams, studentService, offerService, skillService) {
 
 
-
-    function loadStudent() {
+    //function loadStudent() {
         studentService.getUserbyId($rootScope.user._id).then(function (res) {
 
             $scope.student = res.data;
@@ -19,6 +18,7 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
             $scope.wildSide = res.data.wildSide;
             $scope.hobbies = res.data.hobbies;
             $scope.languages = res.data.languages;
+
 
             $scope.job = res.data.job;
             $scope.company = res.data.company;
@@ -39,8 +39,8 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
 
             console.log($scope.student.formations);
         })
-    }
-    loadStudent();
+    //}
+    //loadStudent();
 
     function loadSkill() {
         studentService.getUserbyId($rootScope.user._id).then(function (res) {
@@ -221,7 +221,14 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
 
     $scope.update7 = function () {
         var data = {};
-        data.hobbies = $scope.hobbies;
+        data.hobbies = [];
+        var hobbies = $scope.hobbies.split(',');
+        hobbies.forEach(function(hobby){
+            data.hobbies.push(hobby);    
+        });
+        
+        debugger
+        //data.hobbies = $scope.hobbies;
         studentService.update($rootScope.user._id, data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
@@ -273,8 +280,8 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
 
     $scope.createHobbies = function () {
         var data = {};
-        data.hobbies = $scope.hobbies;
-        studentService.create(data).then(function (res) {
+        data.hobbies = $scope.hobbiesQuery;
+        studentService.updateHobbie($rootScope.user._id, data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {
@@ -285,8 +292,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
 
     $scope.createLanguages = function () {
         var data = {};
-        data.languages = $scope.languages;
-        studentService.create(data).then(function (res) {
+        data.languages = $scope.languagesQuery;
+        studentService.updateLanguage($rootScope.user._id, data).then(function (res) {
+            console.log(data);
             if (!res.data) {
                 alert('pas ok');
             } else {

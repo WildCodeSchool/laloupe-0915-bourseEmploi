@@ -42,7 +42,7 @@
         <div class="row wildpanelbody panel panel-default form-recruiter">
             <div class="col-sm-9 text-right align">
                 <label class="control-label" ng-show="displayError">{{err}}.</label>
-                <label class="control-label" ng-show="errPassword">échec de la confirmation du mot de passe</label>
+                <label class="control-label" ng-show="errPassword">Echec de la confirmation du mot de passe</label>
                 <button class="btn btnW" ng-disabled="formstep1.$invalid" ng-click="Step2()"><strong>Continuer</strong></button>
             </div>
         </div>
@@ -215,7 +215,7 @@
                     <li ng-repeat="item in uploader.queue">
                         <span ng-bind="item.file.name"></span>
                         <br/>
-                        <button ng-click="item.upload()">upload</button>
+                        <button ng-click="item.upload()">Télécharger</button>
                     </li>
                 </ul>
                 <img id="preview" height="200" alt="Image preview...">
@@ -229,7 +229,7 @@
                     <li ng-repeat="item in uploader2.queue">
                         <span ng-bind="item.file.name"></span>
                         <br/>
-                        <button ng-click="item.upload()">upload</button>
+                        <button ng-click="item.upload()">Télécharger</button>
                     </li>
                 </ul>
                 <img id="preview2" height="200" alt="Image preview2...">

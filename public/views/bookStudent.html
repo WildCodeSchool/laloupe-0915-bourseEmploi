@@ -225,13 +225,13 @@
             <div class="wildpanelbody panel paneldefault">
                 <ul>
                     <li class="li-block">
-                        <p ng-repeat="language in student.language"> • {{language}}</p>
+                        <p ng-repeat="language in student.languages"> • {{language}}</p>
                     </li>
 
                 </ul>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Modifier</a>
+                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Ajouter ou modifier</a>
             </div>
         </div>
 
@@ -249,7 +249,7 @@
                 </ul>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Modifier</a>
+                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Ajouter ou modifier</a>
             </div>
         </div>
     </div>

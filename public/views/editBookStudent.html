@@ -18,7 +18,7 @@
                 <div class="col-sm-5">
                     <label class="control-label">Nom :</label>
                     <div>
-                        <input type="email" class="form-control" id="" ng-model="name">
+                        <input type="text" class="form-control" id="" ng-model="name">
                     </div>
                 </div>
             </fieldset>
@@ -32,7 +32,7 @@
                 <div class="col-sm-5">
                     <label class="control-label">Sexe :</label>
                     <div>
-                        <input type="email" class="form-control" id="" ng-model="gender">
+                        <input type="text" class="form-control" id="" ng-model="gender">
                     </div>
                 </div>
             </fieldset>
@@ -54,7 +54,7 @@
                 <div class="col-sm-5">
                     <label class="control-label">Ville :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="email">
+                        <input type="text" class="form-control" id="" ng-model="city">
                     </div>
                 </div>
                 <div class="col-sm-5">
@@ -81,7 +81,7 @@
         <fieldset class="form-group">
             <div class="col-sm-offset-8 col-sm-3">
                 <form>
-                    <button class="btnW" ng-click="update1()">mettre a jour</button>
+                    <button class="btnW" ng-click="update1()">Mettre a jour</button>
                 </form>
             </div>
         </fieldset>
@@ -137,7 +137,7 @@
         <fieldset class="form-group">
             <div class="col-sm-offset-8 col-sm-3">
                 <form>
-                    <button class="btnW" ng-click="update2()">mettre a jour</button>
+                    <button class="btnW" ng-click="update2()">Mettre a jour</button>
                 </form>
             </div>
         </fieldset>
@@ -155,7 +155,7 @@
             <fieldset class="form-group">
                 <div class="col-sm-offset-8 col-sm-3">
                     <form>
-                        <button class="btnW" ng-click="update3()">mettre a jour</button>
+                        <button class="btnW" ng-click="update3()">Mettre a jour</button>
                     </form>
                 </div>
             </fieldset>
@@ -191,7 +191,7 @@
             <fieldset class="form-group">
                 <div class="col-sm-offset-8 col-sm-3">
                     <form>
-                        <button class="btnW" ng-click="update4()">mettre a jour</button>
+                        <button class="btnW" ng-click="update4()">Mettre a jour</button>
                     </form>
                 </div>
             </fieldset>
@@ -265,7 +265,7 @@
                 <fieldset class="form-group">
                     <div class="col-sm-offset-8 col-sm-3">
                         <form>
-                            <button class="btnW" ng-click="update5(exp)">mettre a jour</button>
+                            <button class="btnW" ng-click="update5(exp)">Mettre a jour</button>
                         </form>
                     </div>
                 </fieldset>
@@ -395,7 +395,7 @@
                 <fieldset class="form-group">
                     <div class="col-sm-offset-8 col-sm-3">
                         <form>
-                            <button class="btnW" ng-click="update6(form)">mettre a jour</button>
+                            <button class="btnW" ng-click="update6(form)">Mettre a jour</button>
                         </form>
                     </div>
                 </fieldset>
@@ -463,15 +463,15 @@
                 <fieldset class="form-group">
                     <div class="col-sm-5">
                         <label class="control-label">Modifier les loisirs :</label>
-                        <div>
-                            <input type="text" class="form-control" id="" ng-model="hobbies">
-                        </div>
+                        <ul>
+                            <li ng-repeat="hobbie in student.hobbies" input type="text" class="form-control" id="" ng-model="hobbies">{{hobbie}}</li>
+                        </ul>
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
                     <div class="col-sm-offset-8 col-sm-3">
                         <form>
-                            <button class="btnW" ng-click="update7()">mettre a jour</button>
+                            <button class="btnW" ng-click="update7()">Mettre a jour</button>
                         </form>
                     </div>
                 </fieldset>
@@ -479,7 +479,7 @@
                     <div class="col-sm-5">
                         <label class="control-label">Ajouter un loisir :</label>
                         <div>
-                            <input type="text" class="form-control" id="" ng-model="hobbies">
+                            <input type="text" class="form-control" id="" ng-model="hobbiesQuery">
                         </div>
                     </div>
                 </fieldset>
@@ -526,14 +526,14 @@
                 <fieldset class="form-group">
                     <div class="col-sm-offset-8 col-sm-3">
                         <form>
-                            <button class="btnW" ng-click="update2()">mettre a jour</button>
+                            <button class="btnW" ng-click="update2()">Mettre a jour</button>
                         </form>
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
                     <div class="col-sm-5">
                         <label class="control-label">Ajouter une langue :</label>
-                            <select class="form-control" ng-model="languages">
+                            <select class="form-control" ng-model="languagesQuery">
                                 <option type="text" class="form-control" value="" disabled></option>
                                 <option type="text" class="form-control">Allemand</option>
                                 <option type="text" class="form-control">Anglais</option>

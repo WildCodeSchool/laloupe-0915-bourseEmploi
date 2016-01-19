@@ -41,6 +41,22 @@ function studentService($http, $cookies) {
             });
         },
 
+        updateHobbie: function (id, data) {
+            return $http.put('/api/students/hobbies/' + id, data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
+        updateLanguage: function (id, data) {
+            return $http.put('/api/students/languages/' + id, data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         like: function (id, data) {
             return $http.put('api/like/students/' + id, data, {
                 headers: {

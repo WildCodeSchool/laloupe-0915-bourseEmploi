@@ -41,11 +41,16 @@ var StudentSchema = User.model.schema.extend({
         type: Array,
         "default": []
     },
-    languages: [{
-        language: {
+    languages: {
             type: Array,
+            "default": []
+    },
+    /*languages: [{
+        language: {
+            name : String,
+            level: String
         }
-    }],
+    }],*/
     likes: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Offer'
@@ -136,6 +141,26 @@ var Student = {
 
     update: function (req, res) {
         Student.model.findByIdAndUpdate(req.params.id, req.body, function (err, student) {
+            if (err)
+                console.log(err);
+            res.json(student);
+        });
+    },
+
+    addHobbie: function (req, res) {
+        Student.model.findById(req.params.id, function (err, student) {
+            student.hobbies.push(req.body.hobbies);
+            student.save();
+            if (err)
+                console.log(err);
+            res.json(student);
+        });
+    },
+
+    addLanguage: function (req, res) {
+        Student.model.findById(req.params.id, function (err, student) {
+            student.languages.push(req.body.languages);
+            student.save();
             if (err)
                 console.log(err);
             res.json(student);
