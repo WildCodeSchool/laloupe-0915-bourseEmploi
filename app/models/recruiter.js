@@ -14,7 +14,8 @@ var RecruiterSchema = User.model.schema.extend({
     },
     createdAt: {
         type: Date,
-        required: true
+        required: true,
+        default: Date.now
     },
     size: {
         type: String,
@@ -142,6 +143,5 @@ var Recruiter = {
         })
     }
 }
-
 
 module.exports = Recruiter;
