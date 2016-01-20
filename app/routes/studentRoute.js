@@ -13,8 +13,6 @@ module.exports = function (app, passport) {
 
     app.get('/api/infos/students', Auth.user.hasAuthorization, Student.findInfo)
 
-    app.get('/api/students/:id', Auth.user.hasAuthorization, Student.getPassword)
-
     app.post('/api/students', /*Auth.user.isAdministrator,*/ Student.create);
 
     app.put('/api/students/:id', /*Auth.user.hasAuthorization*/ Student.update);

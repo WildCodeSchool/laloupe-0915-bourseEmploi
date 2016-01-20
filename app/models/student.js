@@ -100,12 +100,6 @@ var Student = {
             });
     },
 
-    getPassword: function (req, res) {
-        Student.model.getPassword(req.params.id, req.body, function (err, student) {
-            res.json(student);
-        });
-    },
-
     findInfo: function (req, res) {
         Student.model.find({
             _type: 'Student'

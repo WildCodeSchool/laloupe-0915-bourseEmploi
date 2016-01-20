@@ -24,6 +24,27 @@
             </fieldset>
         </div>
 
+        <div class="row" id="">
+            <div class="page-header">
+                <h2>Titre du profil :</h2>
+            </div>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label class="control-label">titre :</label>
+                    <div>
+                        <input type="text" class="form-control" id="" ng-model="student.teaser" maxlength="70">
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-offset-8 col-sm-3">
+                    <form>
+                        <button class="btnW" ng-click="update0()">mettre a jour</button>
+                    </form>
+                </div>
+            </fieldset>
+        </div>
+
         <div class="row" id="anchor1">
             <div class="page-header">
                 <h2>Informations personnelles :</h2>
@@ -113,7 +134,7 @@
                 <div class="col-sm-5">
                     <label class="control-label">Mot de passe actuel :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="user.password">
+                        <input type="text" class="form-control" id="" ng-model="user.actualPassword">
                     </div>
                 </div>
             </fieldset>
@@ -121,7 +142,7 @@
                 <div class="col-sm-5">
                     <label class="control-label">Nouveau mot de passe :</label>
                     <div>
-                        <input type="text" class="form-control" id="">
+                        <input ng-model="user.newPassword" class="form-control" type="password" />
                     </div>
                 </div>
             </fieldset>
@@ -129,7 +150,7 @@
                 <div class="col-sm-5">
                     <label class="control-label">Confirmer mot de passe :</label>
                     <div>
-                        <input type="text" class="form-control" id="">
+                        <input ng-model="user.passwordConfirm" class="form-control" type="password" />
                     </div>
                 </div>
             </fieldset>
@@ -137,7 +158,7 @@
         <fieldset class="form-group">
             <div class="col-sm-offset-8 col-sm-3">
                 <form>
-                    <button class="btnW" ng-click="update1()">mettre a jour</button>
+                    <button class="btnW" ng-click="update8()">mettre a jour</button>
                 </form>
             </div>
         </fieldset>
@@ -354,6 +375,18 @@
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
+                    <div class="col-sm-10">
+                        <label>missions au sein de l'entreprise</label>
+                        <textarea class="form-control" rows="4" ng-model="exp.experience.missions" name="desc"></textarea>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
+                    <div class="col-sm-10">
+                        <label>Description de l'entreprise</label>
+                        <textarea class="form-control" rows="2" ng-model="exp.experience.companyDescription" name="desc"></textarea>
+                    </div>
+                </fieldset>
+                <fieldset class="form-group">
                     <div class="col-sm-offset-8 col-sm-3">
                         <form>
                             <button class="btnW" ng-click="update5(exp)">mettre a jour</button>
@@ -458,6 +491,18 @@
                 </div>
             </fieldset>
             <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label>missions au sein de l'entreprise</label>
+                    <textarea class="form-control" rows="4" ng-model="missions" name="desc"></textarea>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <div class="col-sm-10">
+                    <label>Description de l'entreprise</label>
+                    <textarea class="form-control" rows="2" ng-model="companyDescription" name="desc"></textarea>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
                 <div class="col-sm-offset-8 col-sm-3">
                     <form>
                         <button class="btnW" ng-click="createExperience()">Ajouter</button>
@@ -482,6 +527,10 @@
                     <div class="col-sm-5">
                         <label class="control-label">Ecole :</label>
                         <input type="text" name="title" class="form-control" id="" ng-model="form.formation.school">
+                    </div>
+                    <div class="col-sm-5">
+                        <label class="control-label">Diplome :</label>
+                        <input type="text" name="title" class="form-control" id="" ng-model="form.formation.graduate">
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
@@ -574,6 +623,10 @@
                 <div class="col-sm-5">
                     <label class="control-label">Ecole :</label>
                     <input type="text" name="title" class="form-control" id="" ng-model="school">
+                </div>
+                <div class="col-sm-5">
+                    <label class="control-label">Diplome :</label>
+                    <input type="text" name="title" class="form-control" id="" ng-model="graduate">
                 </div>
             </fieldset>
             <fieldset class="form-group">

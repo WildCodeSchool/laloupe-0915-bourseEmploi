@@ -25,14 +25,6 @@ function studentService($http, $cookies) {
             });
         },
 
-        getPassword: function (id) {
-            return $http.get('/api/students' + id, {
-                headers: {
-                    authorization: $cookies.get('wildFinder_token')
-                }
-            });
-        },
-
         create: function (data) {
             return $http.post('/api/students', data, {
                 headers: {
