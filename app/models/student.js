@@ -26,6 +26,7 @@ var StudentSchema = User.model.schema.extend({
         type: Boolean,
         default: true
     },
+    logo: String,
     region: String,
     city: String,
     gender: String,
