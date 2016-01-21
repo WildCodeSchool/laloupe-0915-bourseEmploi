@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 moment.locale('fr');
 var nodemailer = require('nodemailer');
+var Student = require('./student.js');
 
 var transporter = nodemailer.createTransport('smtps://wildfinder.wcs%40gmail.com:jecode4laloupe@smtp.gmail.com');
 
@@ -281,8 +282,27 @@ var Offer = {
     },
 
     delete: function (req, res) {
-        Offer.model.findByIdAndRemove(req.params.id, function () {
-            res.sendStatus(200);
+        Offer.deleteById(req.params.id);
+        res.status(200)
+    },
+
+    deleteById: function (id) {
+        Offer.model.findByIdAndRemove(id, function () {
+            Student.model.find({
+                'likes': id
+            }).exec(function (err, students) {
+                students.forEach(function (student) {
+                    var newLikes = [];
+                    for (var i = 0; i < student.likes.length; i++) {
+                        if (student.likes[i] != id) {
+                            newSkills.push(student.likes[i]);
+                        }
+                    }
+                    Student.model.findByIdAndUpdate(student._id, {
+                        likes: newLikes
+                    }).exec();
+                });
+            });
         })
     }
 }

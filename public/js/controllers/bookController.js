@@ -54,6 +54,11 @@ function bookController($scope, $location, studentService, $rootScope, skillServ
     $scope.$watch('$viewContentLoaded', function () {
         studentService.getAll().then(function (res) {
             $scope.students = res.data;
+            //CHECK IS lIKED
+            $scope.students.forEach(function (student) {
+                student.isLiked = ($rootScope.user.likes.indexOf(student._id) > -1);
+            }.bind($scope));
+            console.log(console.log($scope.students));
         });
     });
 
