@@ -32,7 +32,7 @@ function config($routeProvider) {
                 connected: checkIsConnected
             }
         })
-        .when('/editRecruiter', {
+        .when('/editRecruiter/:id', {
             templateUrl: 'views/editRecruiter.html',
             controller: 'editRecruiterController',
             resolve: {

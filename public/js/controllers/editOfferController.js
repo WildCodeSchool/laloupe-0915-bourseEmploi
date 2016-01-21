@@ -90,9 +90,9 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
         data.referentPhone = $scope.referentPhone;
         offerService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -106,9 +106,9 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
         data.address = $scope.address;
         offerService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -122,9 +122,9 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
         data.salary = $scope.salary;
         offerService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -149,9 +149,9 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
         }
         offerService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -163,9 +163,9 @@ function editOfferController($scope, $location, offerService, $anchorScroll, ski
         data.responsability = $scope.responsability;
         offerService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }

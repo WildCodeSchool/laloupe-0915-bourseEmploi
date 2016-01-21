@@ -11,13 +11,13 @@
                 <div class="col-sm-5">
                     <label class="control-label"><i class="fa fa-user fa-form"></i> Nom de l'entreprise :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="name">
+                        <input type="text" class="form-control" id="" ng-model="recruiter.name">
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <label class="control-label"><i class="fa fa-at fa-form"></i> Email :</label>
                     <div>
-                        <input type="email" class="form-control" id="" ng-model="email">
+                        <input type="email" class="form-control" id="" ng-model="recruiter.email">
                     </div>
                 </div>
             </fieldset>
@@ -25,7 +25,7 @@
                 <div class="col-sm-5">
                     <label class="control-label"><i class="fa fa-phone fa-form"></i> Téléphone :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="phone">
+                        <input type="text" class="form-control" id="" ng-model="recruiter.phone">
                     </div>
                 </div>
             </fieldset>
@@ -47,13 +47,13 @@
                 <div class="col-sm-3">
                     <label class="control-label"><i class="fa fa-globe fa-form"></i> Pays :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="country">
+                        <input type="text" class="form-control" id="" ng-model="recruiter.country">
                     </div>
                 </div>
                 <div class="col-sm-offset-1 col-sm-4">
                     <label class="control-label"><i class="fa fa-map-o fa-form"></i>Région :</label>
                     <div class="input-group input-group-sm">
-                        <select type="text" class="form-control" ng-model="region">
+                        <select type="text" class="form-control" ng-model="recruiter.region">
                             <option value="" disabled>Choisssez une région</option>
                             <option>Alsace-Champagne-Ardenne-Lorraine</option>
                             <option>Aquitaine-Limousin-Poitou-Charentes</option>
@@ -76,19 +76,19 @@
                 <div class="col-sm-2">
                     <label class="control-label"><i class="fa fa-map-o fa-form"></i> Ville :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="city">
+                        <input type="text" class="form-control" id="" ng-model="recruiter.city">
                     </div>
                 </div>
                 <div class="col-sm-2">
                     <label class="control-label"><i class="fa fa-map-o fa-form"></i> Code postal :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="zipCode">
+                        <input type="text" class="form-control" id="" ng-model="recruiter.zipCode">
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <label class="control-label"><i class="fa fa-map-marker fa-form"></i> Adresse :</label>
                     <div>
-                        <input type="text" class="form-control" id="" ng-model="address">
+                        <input type="text" class="form-control" id="" ng-model="recruiter.address">
                     </div>
                 </div>
             </fieldset>
@@ -109,7 +109,7 @@
             <fieldset class="form-group">
                 <div class="col-sm-4">
                     <label class="control-label"><i class="fa fa-building-o fa-form"></i> Taille de l'entreprise :</label>
-                    <select class="form-control" ng-model="size">
+                    <select class="form-control" ng-model="recruiter.size">
                         <option type="text" class="form-control" value="" disabled>Taille en nombre de salariés...</option>
                         <option type="text" class="form-control">de 1 a 9 salariés</option>
                         <option type="text" class="form-control">de 10 a 49 salariés</option>
@@ -120,7 +120,7 @@
                 </div>
                 <div class="col-sm-4">
                     <label class="control-label"><i class="fa fa fa-bar-chart fa-form"></i> Secteur d'activité :</label>
-                    <select class="form-control" ng-model="businessSector">
+                    <select class="form-control" ng-model="recruiter.businessSector">
                         <option type="text" class="form-control" value="" disable>Secteur d'activité...</option>
                         <option type="text" class="form-control">Agroalimentaire</option>
                         <option type="text" class="form-control">Banque / Assurance</option>
@@ -160,14 +160,14 @@
             <fieldset class="form-group">
                 <div class="col-sm-10">
                     <label><i class="fa fa-copyright fa-form"></i>Description plus précise de l'entreprise :</label>
-                    <textarea class="form-control" rows="6" ng-model="description" name="desc"></textarea>
+                    <textarea class="form-control" rows="6" ng-model="recruiter.description" name="desc"></textarea>
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-10">
                     <label><i class="fa fa-paw"></i>Quel est le côté Wild de votre entreprise ?</label>
                     <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Donnez envie à votre futur candidat de travailler chez vous !"><i class="fa fa-question-circle"></i></a>
-                    <textarea class="form-control" rows="4" ng-model="wildSide"></textarea>
+                    <textarea class="form-control" rows="4" ng-model="recruiter.wildSide"></textarea>
                 </div>
             </fieldset>
             <fieldset class="form-group">
@@ -185,13 +185,13 @@
                 <fieldset class="form-group">
                     <div class="col-sm-5">
                         <label><i class="fa fa-picture-o fa-form"></i> Ajouter un logo :</label>
-                        <input id="logo" type="file" nv-file-select uploader="uploader" ng-model="logo" onchange="angular.element(this).scope().previewFile(this)">
+                        <input id="logo" type="file" nv-file-select uploader="uploader" ng-model="recruiter.logo" onchange="angular.element(this).scope().previewFile(this)">
                         <img id="preview" height="200" ng-src="{{logo}}" alt="Image preview...">
                         <button ng-click="deleteLogo()" class="btn btn-default btnW spacer">Supprimer ce logo</button>
                     </div>
                     <div class="col-sm-5">
                         <label><i class="fa fa-picture-o fa-form"></i> Ajouter une photo qui représente votre entreprise :</label>
-                        <input id="picture" type="file" nv-file-select uploader="uploader2" ng-model="picture" onchange="angular.element(this).scope().previewFile2(this)">
+                        <input id="picture" type="file" nv-file-select uploader="uploader2" ng-model="recruiter.picture" onchange="angular.element(this).scope().previewFile2(this)">
                         <img id="preview2" height="200" ng-src="{{picture}}" alt="Image preview2...">
                         <button ng-click="deletePicture()" class="btn btn-default btnW spacer">Supprimer cette image</button>
                     </div>
@@ -213,27 +213,27 @@
                 <fieldset class="form-group">
                     <div class="col-sm-4">
                         <label><i class="fa fa-desktop fa-form"></i> Site web :</label>
-                        <input type="text" class="form-control form-recruiter" placeholder="Site internet de l'entreprise" ng-model="website">
+                        <input type="text" class="form-control form-recruiter" placeholder="Site internet de l'entreprise" ng-model="recruiter.website">
                     </div>
                     <div class="col-sm-4">
                         <label><i class="fa fa-facebook-official fa-form"></i>Facebook :</label>
-                        <input type="text" class="form-control form-recruiter" placeholder="Lien facebook" ng-model="facebook">
+                        <input type="text" class="form-control form-recruiter" placeholder="Lien facebook" ng-model="recruiter.facebook">
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
                     <div class="col-sm-4">
                         <label><i class="fa fa-twitter fa-form"></i> Twitter :</label>
-                        <input type="text" class="form-control form-recruiter" placeholder="Lien twitter" ng-model="twitter">
+                        <input type="text" class="form-control form-recruiter" placeholder="Lien twitter" ng-model="recruiter.twitter">
                     </div>
                     <div class="col-sm-4">
                         <label><i class="fa fa-linkedin fa-form"></i> Linkedin :</label>
-                        <input type="text" class="form-control form-recruiter" placeholder="Lien linkedin" ng-model="linkedin">
+                        <input type="text" class="form-control form-recruiter" placeholder="Lien linkedin" ng-model="recruiter.linkedin">
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
                     <div class="col-sm-4">
                         <label><i class="fa fa-instagram fa-form"></i> Intagram :</label>
-                        <input type="text" class="form-control form-recruiter" placeholder="Lien instagram" ng-model="instagram">
+                        <input type="text" class="form-control form-recruiter" placeholder="Lien instagram" ng-model="recruiter.instagram">
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
@@ -245,6 +245,13 @@
                 </fieldset>
             </div>
         </div>
+        <fieldset class="form-group">
+            <div class="col-sm-offset-8 col-sm-3">
+                <form>
+                    <button class="btnWDelete" ng-click="deleteRecruiter()">Supprimer ce compte</button>
+                </form>
+            </div>
+        </fieldset>
     </div>
 
     <div class="col-md-3 col-lg-3 col-sm-3">

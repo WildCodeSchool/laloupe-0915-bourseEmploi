@@ -35,12 +35,12 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         var data = {};
         data.logo = "";
         studentService.update($routeParams.id, data).then(function (res) {
-            alert('ok');
+            alert('image éffacée');
         });
     }
 
     function loadSkill() {
-        studentService.getUserbyId($rootScope.user._id).then(function (res) {
+        studentService.getUserbyId($routeParams.id).then(function (res) {
             $scope.skillStudent = res.data.skills;
             $scope.idStudent = res.data._id;
 
@@ -108,9 +108,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.logo = $scope.logo;
         studentService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -120,9 +120,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.teaser = $scope.student.teaser;
         studentService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -140,9 +140,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.region = $scope.student.region;
         studentService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -156,9 +156,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.languages = $scope.student.languages;
         studentService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -169,9 +169,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.wildSide = $scope.student.wildSide;
         studentService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -196,9 +196,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         }
         studentService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -221,9 +221,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.companyDescription = exp.experience.companyDescription;
         studentService.updateExperience(exp.experience._id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -243,9 +243,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.graduate = form.formation.graduate;
         studentService.updateFormation(form.formation._id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -255,9 +255,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.hobbies = $scope.student.hobbies;
         studentService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -267,9 +267,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.password = $scope.user.newPassword;
         studentService.update($routeParams.id, data).then(function (res) {
             if ($scope.user.actualPassword != res.data.password || $scope.user.newPassword != $scope.user.passwordConfirm || $scope.user.passwordConfirm == '') {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -291,9 +291,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.companyDescription = $scope.companyDescription;
         studentService.newExperience(data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la création');
             } else {
-                alert('ok');
+                alert('création éffectuée');
             }
         })
     }
@@ -313,9 +313,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.graduate = $scope.graduate;
         studentService.newFormation(data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la création');
             } else {
-                alert('ok');
+                alert('création éffectuée');
             }
         })
     }

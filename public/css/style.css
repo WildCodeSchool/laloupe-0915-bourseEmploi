@@ -205,6 +205,42 @@ ul {
     color: white;
 }
 
+.btnWDelete {
+    height: 40px;
+    padding: 0px 20px 0px 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: red;
+    color: red;
+    background-size: 100% 200%;
+    background-color: transparent;
+    background-image: linear-gradient(to top, red 50%, transparent 50%);
+    -webkit-transition: background-position 1s;
+    -moz-transition: background-position 1s;
+    transition: background-position 1s;
+}
+
+.btnWDelete:hover {
+    background-position: 0 100%;
+    background-color: transparent;
+    border-color: red;
+    color: white;
+}
+
+.btnWDelete:focus {
+    outline: none;
+    border-radius: 10px;
+    border-color: red;
+    color: red;
+    background-color: transparent;
+}
+
+.btnWDelete:focus:hover {
+    background-position: 0 100%;
+    background-color: transparent;
+    color: white;
+}
+
 .btnW-sm {
     height: 30px;
     padding: 0px 7px 0px 7px;

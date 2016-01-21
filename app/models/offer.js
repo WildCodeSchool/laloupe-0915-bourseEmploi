@@ -6,9 +6,10 @@ var mongoose = require('mongoose');
 var moment = require('moment');
 moment.locale('fr');
 var nodemailer = require('nodemailer');
-var Student = require('./student.js');
+
 
 var transporter = nodemailer.createTransport('smtps://wildfinder.wcs%40gmail.com:jecode4laloupe@smtp.gmail.com');
+
 
 var offerSchema = new mongoose.Schema({
     skills: [{
@@ -288,6 +289,8 @@ var Offer = {
 
     deleteById: function (id) {
         Offer.model.findByIdAndRemove(id, function () {
+            //Bizarre ?
+            var Student = require('./student.js');
             Student.model.find({
                 'likes': id
             }).exec(function (err, students) {
@@ -295,7 +298,7 @@ var Offer = {
                     var newLikes = [];
                     for (var i = 0; i < student.likes.length; i++) {
                         if (student.likes[i] != id) {
-                            newSkills.push(student.likes[i]);
+                            newLikes.push(student.likes[i]);
                         }
                     }
                     Student.model.findByIdAndUpdate(student._id, {
