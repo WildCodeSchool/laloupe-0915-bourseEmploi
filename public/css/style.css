@@ -147,7 +147,7 @@ ul {
     height: 40px;
     padding: 0px 20px 0px 20px;
     border: 2px solid;
-    border-radius: 10px;
+    border-radius: 0px;
     border-color: #009587;
     color: white;
     background-size: 100% 200%;
@@ -173,7 +173,7 @@ ul {
     height: 40px;
     padding: 0px 20px 0px 20px;
     border: 2px solid;
-    border-radius: 10px;
+    border-radius: 0px;
     border-color: #009587;
     color: #009587;
     background-size: 100% 200%;
@@ -209,7 +209,7 @@ ul {
     height: 30px;
     padding: 0px 7px 0px 7px;
     border: 2px solid;
-    border-radius: 10px;
+    border-radius: 0px;
     border-color: #009587;
     color: #009587;
     background-size: 100% 200%;
@@ -234,7 +234,7 @@ ul {
     height: 40px;
     padding: 0px 20px 0px 20px;
     border: 2px solid;
-    border-radius: 10px;
+    border-radius: 0px;
     border-color: white;
     color: white;
     background-size: 100% 200%;
@@ -464,13 +464,23 @@ ul {
 .wildpanel {
     margin: 15px 0px 15px 0px;
     padding: 0 auto;
-    border-color: #b6b6b6
+    border-color: rgb(221, 221, 221);
+    box-shadow: 0 0 10px #dddddd;
+}
+
+.panel {
+    border-radius: 0px;
+}
+
+.form-control {
+    border-radius: 0px;
 }
 
 .wildpanel-promo {
     margin: 0px 0px 15px 0px;
     padding: 0 auto;
-    border-color: #b6b6b6
+    border-color: rgb(221, 221, 221);
+    box-shadow: 0 0 10px #dddddd;
 }
 
 .wildpanelheader {
@@ -546,14 +556,14 @@ ul {
 .wildpanelbodys {
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
-    border-top-color: #B6B6B6;
+    border-top-color: rgb(221, 221, 221);
     border-radius: 0px;
 }
 
 .wildpanelbodys-menu {
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
-    border-top-color: #B6B6B6;
+    border-top-color: rgb(221, 221, 221);
     border-radius: 0px;
     background-color: #F5FAF9;
 }
@@ -561,7 +571,7 @@ ul {
 .wildpanelheart {
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
-    border-top-color: #B6B6B6;
+    border-top-color: rgb(221, 221, 221);
     border-radius: 0px;
     min-height: 101px;
 }
@@ -569,7 +579,7 @@ ul {
 .wildpanelbook {
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
-    border-top-color: #B6B6B6;
+    border-top-color: rgb(221, 221, 221);
     border-radius: 0px;
     min-height: 112px;
 }
@@ -580,7 +590,7 @@ ul {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     padding: 5px 10px 5px 10px;
-    border-top-color: #B6B6B6;
+    border-top-color: rgb(221, 221, 221);
     text-align: center;
 }
 
@@ -590,7 +600,7 @@ ul {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     padding: 5px 10px 5px 10px;
-    border-top-color: #B6B6B6;
+    border-top-color: rgb(221, 221, 221);
 }
 
 .paragraphWPF {
