@@ -464,15 +464,8 @@
                     <div class="col-sm-5">
                         <label class="control-label">Modifier les loisirs :</label>
                         <ul>
-                            <li ng-repeat="hobbie in student.hobbies" input type="text" class="form-control" id="" ng-model="hobbies">{{hobbie}}</li>
+                            <li class="li-block" ng-repeat="hobbie in hobbies"> <input type="text" class="form-control" id="" ng-model="hobbie" disabled><i ng-click="deleteHobbie(hobbie)" class="fa fa-trash fa-lg trash2"></i></li>
                         </ul>
-                    </div>
-                </fieldset>
-                <fieldset class="form-group">
-                    <div class="col-sm-offset-8 col-sm-3">
-                        <form>
-                            <button class="btnW" ng-click="update7()">Mettre a jour</button>
-                        </form>
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
@@ -493,47 +486,39 @@
             </fieldset>
         </div>
 
-        <div class="row" id="anchor8">
+
+            <div class="row" id="anchor8">
                 <div class="page-header">
-                    <h2>Langue(s) :</h2>
+                    <h2>Langues :</h2>
                 </div>
                 <fieldset class="form-group">
                     <div class="col-sm-5">
-                        <label class="control-label">Langues :</label>
-                            <select class="form-control" ng-model="languages">
-                                <option type="text" class="form-control" value="" disabled></option>
-                                <option type="text" class="form-control">Allemand</option>
-                                <option type="text" class="form-control">Anglais</option>
-                                <option type="text" class="form-control">Arabe</option>
-                                <option type="text" class="form-control">Basque</option>
-                                <option type="text" class="form-control">Bengali</option>
-                                <option type="text" class="form-control">Biélorusse</option>
-                                <option type="text" class="form-control">Coréen</option>
-                                <option type="text" class="form-control">Espagnol</option>
-                                <option type="text" class="form-control">Français</option>
-                                <option type="text" class="form-control">Grec</option>
-                                <option type="text" class="form-control">Hindi</option>
-                                <option type="text" class="form-control">Italien</option>
-                                <option type="text" class="form-control">Japonais</option>
-                                <option type="text" class="form-control">Mandarin</option>
-                                <option type="text" class="form-control">Polonais</option>
-                                <option type="text" class="form-control">Portugais</option>
-                                <option type="text" class="form-control">Russe</option>
-                                <option type="text" class="form-control">Autre</option>
+                        <label class="control-label">Modifier le niveau de langue :</label>
+                        <ul>
+                            <li class="li-block" ng-repeat="language in student.languages"> <input type="text" class="form-control" id="" ng-model="language.name" disabled><i ng-click="deleteLanguage(language)" class="fa fa-trash fa-lg trash2"></i>
+                            <select class="form-control" ng-model="language.level">
+                                <option type="text" class="form-control" value=""></option>
+                                <option type="text" class="form-control">Débutant</option>
+                                <option type="text" class="form-control">Intermédiaire</option>
+                                <option type="text" class="form-control">Expert</option>
+                                <option type="text" class="form-control">Langue natale</option>
                             </select>
+                            </li>
+                        </ul>
                     </div>
                 </fieldset>
                 <fieldset class="form-group">
                     <div class="col-sm-offset-8 col-sm-3">
                         <form>
-                            <button class="btnW" ng-click="update2()">Mettre a jour</button>
+                            <button class="btnW" ng-click="update9()">Mettre a jour</button>
                         </form>
                     </div>
                 </fieldset>
+             
                 <fieldset class="form-group">
-                    <div class="col-sm-5">
+                    <div class="col-sm-3">
                         <label class="control-label">Ajouter une langue :</label>
-                            <select class="form-control" ng-model="languagesQuery">
+                            <select class="form-control" ng-model="newLanguage.name">
                                 <option type="text" class="form-control" value="" disabled></option>
                                 <option type="text" class="form-control">Allemand</option>
                                 <option type="text" class="form-control">Anglais</option>
@@ -554,7 +539,18 @@
                                 <option type="text" class="form-control">Russe</option>
                                 <option type="text" class="form-control">Autre</option>
                             </select>
-                    <div>
+                            </div>
+                    <div class="col-sm-3">
+                        <label class="control-label">Niveau :</label>
+                            <select class="form-control" ng-model="newLanguage.level">
+                                <option type="text" class="form-control" value=""></option>
+                                <option type="text" class="form-control">Débutant</option>
+                                <option type="text" class="form-control">Intermédiaire</option>
+                                <option type="text" class="form-control">Expert</option>
+                                <option type="text" class="form-control">Langue natale</option>
+                            </select>
+
+                    </div>
                 </fieldset>
             </div>
             <fieldset class="form-group">

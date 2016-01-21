@@ -64,9 +64,18 @@ function studentService($http, $cookies) {
                 }
             });
         },
-
+        
         updateHobbie: function (id, data) {
-            return $http.put('/api/students/hobbies/' + id, data, {
+            return $http.put('/api/students/add_hobbies/' + id, data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
+
+        deleteHobbie: function (id, data) {
+            return $http.put('/api/students/delete_hobbies/' + id, data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -75,6 +84,15 @@ function studentService($http, $cookies) {
 
         updateLanguage: function (id, data) {
             return $http.put('/api/students/languages/' + id, data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
+
+        deleteLanguage: function (id, data) {
+            return $http.put('/api/students/delete_languages/' + id, data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }

@@ -46,16 +46,10 @@ var StudentSchema = User.model.schema.extend({
         type: Array,
         "default": []
     },
-    languages: {
-            type: Array,
-            "default": []
-    },
-    /*languages: [{
-        language: {
-            name : String,
+    languages: [{
+            name: String,
             level: String
-        }
-    }],*/
+    }],
     likes: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Offer'
@@ -219,7 +213,20 @@ var Student = {
 
     addHobbie: function (req, res) {
         Student.model.findById(req.params.id, function (err, student) {
+            debugger
             student.hobbies.push(req.body.hobbies);
+            student.save();
+            if (err)
+                console.log(err);
+            res.json(student);
+        });
+    },
+
+    deleteHobbie: function (req, res) {
+        Student.model.findById(req.params.id, function (err, student) {
+            debugger
+            var index = student.hobbies.indexOf(req.body.hobbie);
+            student.hobbies.splice(index, 1);
             student.save();
             if (err)
                 console.log(err);
@@ -230,6 +237,17 @@ var Student = {
     addLanguage: function (req, res) {
         Student.model.findById(req.params.id, function (err, student) {
             student.languages.push(req.body.languages);
+            student.save();
+            if (err)
+                console.log(err);
+            res.json(student);
+        });
+    },
+
+    deleteLanguage: function (req, res) {
+        Student.model.findById(req.params.id, function (err, student) {
+            var index = student.languages.map(function(element) { return element.name; }).indexOf(req.body.name);
+            student.languages.splice(index, 1);
             student.save();
             if (err)
                 console.log(err);

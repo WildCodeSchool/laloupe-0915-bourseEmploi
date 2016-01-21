@@ -129,7 +129,6 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         data.situation = $scope.situation;
         data.status = $scope.status;
         data.mobility = $scope.mobility;
-        data.languages = $scope.languages;
         studentService.update($rootScope.user._id, data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
@@ -220,15 +219,18 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
     }
 
     $scope.update7 = function () {
+        studentService.update($rootScope.user._id, $scope.hobbies).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
+            }
+        })
+    }
+
+    $scope.update9 = function () {
         var data = {};
-        data.hobbies = [];
-        var hobbies = $scope.hobbies.split(',');
-        hobbies.forEach(function(hobby){
-            data.hobbies.push(hobby);    
-        });
-        
-        debugger
-        //data.hobbies = $scope.hobbies;
+        data.languages = $scope.student.languages;
         studentService.update($rootScope.user._id, data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
@@ -290,11 +292,32 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
         })
     }
 
+
+    $scope.deleteHobbie = function (hobbie) {
+        studentService.deleteHobbie($scope.student._id, {hobbie: hobbie}).then(function (res) {
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
+            }
+        })
+    }
+
     $scope.createLanguages = function () {
         var data = {};
-        data.languages = $scope.languagesQuery;
+        data.languages = {name: $scope.newLanguage.name, level: $scope.newLanguage.level}; //$scope.newLanguage
         studentService.updateLanguage($rootScope.user._id, data).then(function (res) {
             console.log(data);
+            if (!res.data) {
+                alert('pas ok');
+            } else {
+                alert('ok');
+            }
+        })
+    }
+
+    $scope.deleteLanguage = function (language) {
+        studentService.deleteLanguage($scope.student._id, {name: language.name}).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {

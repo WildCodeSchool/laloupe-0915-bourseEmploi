@@ -27,9 +27,13 @@ module.exports = function (app, passport) {
 
     app.put('/api/unlike/students/:id', Auth.user.hasAuthorization, Student.unlike);
 
-    app.put('/api/students/hobbies/:id', Auth.user.hasAuthorization, Student.addHobbie);
+    app.put('/api/students/add_hobbies/:id', Auth.user.hasAuthorization, Student.addHobbie);
+
+    app.put('/api/students/delete_hobbies/:id', Auth.user.hasAuthorization, Student.deleteHobbie);
 
     app.put('/api/students/languages/:id', Auth.user.hasAuthorization, Student.addLanguage);
+
+    app.put('/api/students/delete_languages/:id', Auth.user.hasAuthorization, Student.deleteLanguage);
 
     app.delete('/api/students/:id', Auth.user.isAdministrator, Student.delete);
 

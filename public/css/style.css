@@ -1240,3 +1240,10 @@ li.active {
     background-color: #F5FAF9;
 }
 
+.levelName {
+    float: right;
+}
+
+.trash2 {
+    float: right;
+}
