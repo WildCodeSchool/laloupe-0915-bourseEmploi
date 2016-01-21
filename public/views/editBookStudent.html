@@ -757,133 +757,138 @@
             </div>
         </div>
 
-            <div class="row" id="anchor7">
-                <div class="page-header">
-                    <h2>Loisir(s) :</h2>
-                </div>
-                <fieldset class="form-group">
-                    <div class="col-sm-5">
-                        <label class="control-label">Modifier les loisirs :</label>
-                        <ul>
-                            <li class="li-block" ng-repeat="hobbie in hobbies"> <input type="text" class="form-control" id="" ng-model="hobbie" disabled><i ng-click="deleteHobbie(hobbie)" class="fa fa-trash fa-lg trash2"></i></li>
-                        </ul>
-                    </div>
-                </fieldset>
-                <fieldset class="form-group">
-                    <div class="col-sm-5">
-                        <label class="control-label">Ajouter un loisir :</label>
-                        <div>
-                            <input type="text" class="form-control" id="" ng-model="hobbiesQuery">
-                        </div>
-                    </div>
-                </fieldset>
-            </div>
-            <fieldset class="form-group">
-                <div class="col-sm-offset-8 col-sm-3">
-                    <form>
-                        <button class="btnW" ng-click="createHobbies()">Ajouter</button>
-                    </form>
-                </div>
-            </fieldset>
-        </div>
-
-
-            <div class="row" id="anchor8">
-                <div class="page-header">
-                    <h2>Langues :</h2>
-                </div>
-                <fieldset class="form-group">
-                    <div class="col-sm-5">
-                        <label class="control-label">Modifier le niveau de langue :</label>
-                        <ul>
-                            <li class="li-block" ng-repeat="language in student.languages"> <input type="text" class="form-control" id="" ng-model="language.name" disabled><i ng-click="deleteLanguage(language)" class="fa fa-trash fa-lg trash2"></i>
-                            <select class="form-control" ng-model="language.level">
-                                <option type="text" class="form-control" value=""></option>
-                                <option type="text" class="form-control">Débutant</option>
-                                <option type="text" class="form-control">Intermédiaire</option>
-                                <option type="text" class="form-control">Expert</option>
-                                <option type="text" class="form-control">Langue natale</option>
-                            </select>
-                            </li>
-                        </ul>
-                    </div>
-                </fieldset>
-                <fieldset class="form-group">
-                    <div class="col-sm-offset-8 col-sm-3">
-                        <form>
-                            <button class="btnW" ng-click="update9()">Mettre a jour</button>
-                        </form>
-                    </div>
-                </fieldset>
-             
-                <fieldset class="form-group">
-                    <div class="col-sm-3">
-                        <label class="control-label">Ajouter une langue :</label>
-                            <select class="form-control" ng-model="newLanguage.name">
-                                <option type="text" class="form-control" value="" disabled></option>
-                                <option type="text" class="form-control">Allemand</option>
-                                <option type="text" class="form-control">Anglais</option>
-                                <option type="text" class="form-control">Arabe</option>
-                                <option type="text" class="form-control">Basque</option>
-                                <option type="text" class="form-control">Bengali</option>
-                                <option type="text" class="form-control">Biélorusse</option>
-                                <option type="text" class="form-control">Coréen</option>
-                                <option type="text" class="form-control">Espagnol</option>
-                                <option type="text" class="form-control">Français</option>
-                                <option type="text" class="form-control">Grec</option>
-                                <option type="text" class="form-control">Hindi</option>
-                                <option type="text" class="form-control">Italien</option>
-                                <option type="text" class="form-control">Japonais</option>
-                                <option type="text" class="form-control">Mandarin</option>
-                                <option type="text" class="form-control">Polonais</option>
-                                <option type="text" class="form-control">Portugais</option>
-                                <option type="text" class="form-control">Russe</option>
-                                <option type="text" class="form-control">Autre</option>
-                            </select>
-                            </div>
-                    <div class="col-sm-3">
-                        <label class="control-label">Niveau :</label>
-                            <select class="form-control" ng-model="newLanguage.level">
-                                <option type="text" class="form-control" value=""></option>
-                                <option type="text" class="form-control">Débutant</option>
-                                <option type="text" class="form-control">Intermédiaire</option>
-                                <option type="text" class="form-control">Expert</option>
-                                <option type="text" class="form-control">Langue natale</option>
-                            </select>
-
-                    </div>
-                </fieldset>
-            </div>
-            <fieldset class="form-group">
-                <div class="col-sm-offset-8 col-sm-3">
-                    <form>
-                        <button class="btnW" ng-click="createLanguages()">Ajouter</button>
-                    </form>
-                </div>
-            </fieldset>
-        </div>
-    </div>
-
-    <div class="col-md-3 col-lg-3 col-sm-3">
-        <nav class="hidden-xs affix">
+        <div class="row" id="anchor7">
             <div class="wildpanel panel paneldefault">
                 <div class="wildpanelbody panel paneldefault">
+                    <h2>Loisir(s) :</h2>
                     <div class="wildpanelbody panel paneldefault">
-                        <ul class="nav nav-pills nav-stacked">
-                            <li ng-class="{active: activesubmenu=='#anchor01'}"><a ng-click="scrollTo('anchor01')">Photo de profil</a></li>
-                            <li ng-class="{active: activesubmenu=='#anchor0'}"><a ng-click="scrollTo('anchor0')">Titre du profil</a></li>
-                            <li ng-class="{active: activesubmenu=='#anchor1'}"><a ng-click="scrollTo('anchor1')">Infos personnelles</a></li>
-                            <li ng-class="{active: activesubmenu=='#anchor2'}"><a ng-click="scrollTo('anchor2')">Situation</a></li>
-                            <li ng-class="{active: activesubmenu=='#anchor3'}"><a ng-click="scrollTo('anchor3')">Coté wild</a></li>
-                            <li ng-class="{active: activesubmenu=='#anchor4'}"><a ng-click="scrollTo('anchor4')">Compétences</a></li>
-                            <li ng-class="{active: activesubmenu=='#anchor5'}"><a ng-click="scrollTo('anchor5')">Expérience</a></li>
-                            <li ng-class="{active: activesubmenu=='#anchor6'}"><a ng-click="scrollTo('anchor6')">Formation</a></li>
-                            <li ng-class="{active: activesubmenu=='#anchor7'}"><a ng-click="scrollTo('anchor7')">Loisir</a></li>
-                            <li ng-class="{active: activesubmenu=='#anchor8'}"><a ng-click="scrollTo('anchor8')">Langues</a></li>
-                        </ul>
+                        <fieldset class="form-group">
+                            <div class="col-sm-5">
+                                <label class="control-label">Modifier les loisirs :</label>
+                                <ul>
+                                    <li class="li-block" ng-repeat="hobbie in student.hobbies">
+                                        <input type="text" class="form-control" id="" ng-model="hobbie" disabled><i ng-click="deleteHobbie(hobbie)" class="fa fa-trash fa-lg trash2"></i></li>
+                                </ul>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="col-sm-5">
+                                <label class="control-label">Ajouter un loisir :</label>
+                                <div>
+                                    <input type="text" class="form-control" id="" ng-model="hobbiesQuery">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="col-sm-offset-8 col-sm-3">
+                                <form>
+                                    <button class="btnW" ng-click="createHobbies()">Ajouter</button>
+                                </form>
+                            </div>
+                        </fieldset>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
+
+        <div class="row" id="anchor8">
+            <div class="wildpanel panel paneldefault">
+                <div class="wildpanelbody panel paneldefault">
+                    <h2>Langues :</h2>
+                    <div class="wildpanelbody panel paneldefault">
+                        <fieldset class="form-group">
+                            <div class="col-sm-5">
+                                <label class="control-label">Modifier le niveau de langue :</label>
+                                <ul>
+                                    <li class="li-block" ng-repeat="language in student.languages">
+                                        <input type="text" class="form-control" id="" ng-model="language.name" disabled><i ng-click="deleteLanguage(language)" class="fa fa-trash fa-lg trash2"></i>
+                                        <select class="form-control" ng-model="language.level">
+                                            <option type="text" class="form-control" value=""></option>
+                                            <option type="text" class="form-control">Débutant</option>
+                                            <option type="text" class="form-control">Intermédiaire</option>
+                                            <option type="text" class="form-control">Expert</option>
+                                            <option type="text" class="form-control">Langue natale</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="col-sm-offset-8 col-sm-3">
+                                <form>
+                                    <button class="btnW" ng-click="update9()">Mettre a jour</button>
+                                </form>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="form-group">
+                            <div class="col-sm-3">
+                                <label class="control-label">Ajouter une langue :</label>
+                                <select class="form-control" ng-model="newLanguage.name">
+                                    <option type="text" class="form-control" value="" disabled></option>
+                                    <option type="text" class="form-control">Allemand</option>
+                                    <option type="text" class="form-control">Anglais</option>
+                                    <option type="text" class="form-control">Arabe</option>
+                                    <option type="text" class="form-control">Basque</option>
+                                    <option type="text" class="form-control">Bengali</option>
+                                    <option type="text" class="form-control">Biélorusse</option>
+                                    <option type="text" class="form-control">Coréen</option>
+                                    <option type="text" class="form-control">Espagnol</option>
+                                    <option type="text" class="form-control">Français</option>
+                                    <option type="text" class="form-control">Grec</option>
+                                    <option type="text" class="form-control">Hindi</option>
+                                    <option type="text" class="form-control">Italien</option>
+                                    <option type="text" class="form-control">Japonais</option>
+                                    <option type="text" class="form-control">Mandarin</option>
+                                    <option type="text" class="form-control">Polonais</option>
+                                    <option type="text" class="form-control">Portugais</option>
+                                    <option type="text" class="form-control">Russe</option>
+                                    <option type="text" class="form-control">Autre</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="control-label">Niveau :</label>
+                                <select class="form-control" ng-model="newLanguage.level">
+                                    <option type="text" class="form-control" value=""></option>
+                                    <option type="text" class="form-control">Débutant</option>
+                                    <option type="text" class="form-control">Intermédiaire</option>
+                                    <option type="text" class="form-control">Expert</option>
+                                    <option type="text" class="form-control">Langue natale</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <div class="col-sm-offset-8 col-sm-3">
+                                <form>
+                                    <button class="btnW" ng-click="createLanguages()">Ajouter</button>
+                                </form>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-lg-3 col-sm-3">
+            <nav class="hidden-xs affix">
+                <div class="wildpanel panel paneldefault">
+                    <div class="wildpanelbody panel paneldefault">
+                        <div class="wildpanelbody panel paneldefault">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li ng-class="{active: activesubmenu=='#anchor01'}"><a ng-click="scrollTo('anchor01')">Photo de profil</a></li>
+                                <li ng-class="{active: activesubmenu=='#anchor0'}"><a ng-click="scrollTo('anchor0')">Titre du profil</a></li>
+                                <li ng-class="{active: activesubmenu=='#anchor1'}"><a ng-click="scrollTo('anchor1')">Infos personnelles</a></li>
+                                <li ng-class="{active: activesubmenu=='#anchor2'}"><a ng-click="scrollTo('anchor2')">Situation</a></li>
+                                <li ng-class="{active: activesubmenu=='#anchor3'}"><a ng-click="scrollTo('anchor3')">Coté wild</a></li>
+                                <li ng-class="{active: activesubmenu=='#anchor4'}"><a ng-click="scrollTo('anchor4')">Compétences</a></li>
+                                <li ng-class="{active: activesubmenu=='#anchor5'}"><a ng-click="scrollTo('anchor5')">Expérience</a></li>
+                                <li ng-class="{active: activesubmenu=='#anchor6'}"><a ng-click="scrollTo('anchor6')">Formation</a></li>
+                                <li ng-class="{active: activesubmenu=='#anchor7'}"><a ng-click="scrollTo('anchor7')">Loisir</a></li>
+                                <li ng-class="{active: activesubmenu=='#anchor8'}"><a ng-click="scrollTo('anchor8')">Langues</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
     </div>
-</div>
