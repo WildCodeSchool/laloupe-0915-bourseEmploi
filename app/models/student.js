@@ -31,7 +31,6 @@ var StudentSchema = User.model.schema.extend({
     region: String,
     city: String,
     gender: String,
-    picture: String,
     birthDate: Date,
     studentPhone: String,
     description: String,
@@ -231,6 +230,14 @@ var Student = {
             offer.save();
             console.log(err)
             res.json(offer);
+        });
+    },
+
+    howManyLiked: function (req, res) {
+        Student.model.find({
+            'likes': req.params.id
+        }).exec(function (err, students) {
+            res.json(students.length);
         });
     },
 

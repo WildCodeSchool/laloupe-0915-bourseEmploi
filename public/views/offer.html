@@ -57,14 +57,10 @@
                 <ul>
                     <li class="headeradvert">
                         <h2 class="headeradvert titleadvert">{{offer.title}}</h2></li>
-                    <li class="headeradvert">
-                        <p class="headeradvert smalltexadvert" ng-show="titleExpired">Postée {{startOffer}}.</p>
-                        <p class="headeradvert smalltexadvert">
-                            <span ng-show="titleExpired">Expire</span>
-                            <span ng-show="titleArchiv">Archivée </span><span>{{endOffer}}</span>
-                    </li>
                     <li ng-if="showStudent" ng-click="likeClick(offer)" class="headeradvert"><i class="fa fa-heart fa-lg" ng-class="{ 'heartnotactive': offer.isLiked===false, 'heartactive': offer.isLiked===true}" uib-tooltip="{{offer.isLiked ? 'Ne plus aimer' : 'aimer cette offre'}}" tooltip-placement="bottom"></i></li>
-                    <li ng-if="showStudent" class="headeradvert"><i class="fa fa-share-alt fa-lg" uib-tooltip="Partager" tooltip-placement="bottom"></i></li>
+                    <li ng-if="showStudent" class="headeradvert">
+                        <p class="headeradvert smalltexadvert">{{offer.numberLiked}}</p>
+                    </li>
                 </ul>
                 <ul>
                     <li class="headeradvert">
@@ -72,6 +68,12 @@
                     </li>
                     <li class="headeradvert">
                         <p class="headeradvert companytexadvert">{{company.name}}</p>
+                    </li>
+                    <li class="headeradvert">
+                        <p class="headeradvert smalltexadvert" ng-show="titleExpired">Postée {{startOffer}}.</p>
+                        <p class="headeradvert smalltexadvert">
+                            <span ng-show="titleExpired">Expire</span>
+                            <span ng-show="titleArchiv">Archivée </span><span>{{endOffer}}</span>
                     </li>
                 </ul>
 

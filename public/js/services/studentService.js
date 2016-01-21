@@ -81,6 +81,14 @@ function studentService($http, $cookies) {
             });
         },
 
+        howmanyliked: function (id) {
+            return $http.get('/api/howmanyliked/' + id, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         delete: function (id) {
             return $http.delete('/api/students/' + id, {
                 headers: {

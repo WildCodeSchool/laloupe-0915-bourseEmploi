@@ -193,7 +193,7 @@ ul {
 
 .btnW:focus {
     outline: none;
-    border-radius: 10px;
+    border-radius: 0px;
     border-color: #009587;
     color: #009587;
     background-color: transparent;
@@ -646,10 +646,9 @@ ul {
 
 .imgprofilstudent {
     float: left;
-    height: 130px;
+    min-height: 130px;
     width: 130px;
-    border: 5px solid white;
-    border-radius: 15px;
+    border: 2px solid white;
     margin-top: -30px;
     margin-right: 3px;
     margin-bottom: 5px;
@@ -1063,11 +1062,9 @@ li.active {
 }
 
 .navbarr-avatar {
-    height: 26px;
+    height: 40px;
     margin: -20px 5px -17px -5px;
-    border-image: 3px;
     border-color: white;
-    border-radius: 3px;
 }
 
 .btn:focus {

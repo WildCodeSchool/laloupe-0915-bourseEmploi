@@ -1,4 +1,6 @@
 function editSchoolController($scope, schoolPromoService, studentService) {
+    moment.locale('fr');
+
     //TOOLTIP    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
