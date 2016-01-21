@@ -17,6 +17,8 @@ module.exports = function (app, passport) {
 
     app.get('/api/students_promo', Auth.user.isAdministrator, Student.findByPromo);
 
+    app.get('/api/howmanyliked/:id', Auth.user.isAdministrator, Student.howManyLiked);
+
     app.post('/api/students', Auth.user.isAdministrator, Student.create);
 
     app.post('/api/students/filter', /*Auth.user.isAdministrator,*/ Student.findFiltered);

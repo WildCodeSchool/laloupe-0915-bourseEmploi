@@ -7,6 +7,13 @@ function searchOfferController($scope, offerService, skillService, studentServic
     }
     loadSkill();
 
+    //NUMBER LIKED
+    function numberLiked(offer) {
+        studentService.howmanyliked(offer._id).then(function (res) {
+            offer.numberLiked = res.data
+        });
+    }
+
     $scope.searchOffers = function () {
         var data = {};
         data.region = $scope.region;
@@ -19,9 +26,11 @@ function searchOfferController($scope, offerService, skillService, studentServic
             //CHECK IS lIKED
             $scope.offers.forEach(function (offer) {
                 offer.isLiked = ($rootScope.user.likes.indexOf(offer._id) > -1);
+                numberLiked(offer);
             }.bind($scope));
         });
     }
+    $scope.searchOffers();
 
     $scope.showMap = true;
 
@@ -46,7 +55,7 @@ function searchOfferController($scope, offerService, skillService, studentServic
 
     function loadOffer() {
         offerService.getAllCurrent().then(function (res) {
-            $scope.offers = res.data;
+            var offers = res.data;
             $scope.today = new Date();
             $scope.after = function (dates) {
                 return moment($scope.today).isAfter(dates);
@@ -68,7 +77,7 @@ function searchOfferController($scope, offerService, skillService, studentServic
             //MARKERS
             var markers = new L.MarkerClusterGroup();
             var markers2 = new L.MarkerClusterGroup();
-            $scope.offers.forEach(function (offer) {
+            offers.forEach(function (offer) {
                 var address = offer.address + ", " + offer.zipCode + " " + offer.city + ", " + offer.country;
 
                 geocoderService.CoordinateByAdress(address).then(function (res) {
@@ -94,11 +103,6 @@ function searchOfferController($scope, offerService, skillService, studentServic
 
             map.addLayer(markers);
             map2.addLayer(markers2);
-
-            //CHECK IS lIKED
-            $scope.offers.forEach(function (offer) {
-                offer.isLiked = ($rootScope.user.likes.indexOf(offer._id) > -1);
-            }.bind($scope));
         });
     }
     loadOffer();
@@ -123,7 +127,7 @@ function searchOfferController($scope, offerService, skillService, studentServic
         studentService.like($rootScope.user._id, data).then(function (res) {
             $rootScope.user.likes.push(offer._id);
             offer.isLiked = true;
-            //$route.reload()
+            numberLiked(offer);
         });
     };
     //UNLIKE
@@ -133,7 +137,7 @@ function searchOfferController($scope, offerService, skillService, studentServic
         studentService.unlike($rootScope.user._id, data).then(function (res) {
             $rootScope.user.likes.splice($rootScope.user.likes.indexOf(offer._id), 1);
             offer.isLiked = false;
-            //$route.reload()
+            numberLiked(offer);
         });
     };
     //LIKE OR UNLIKE

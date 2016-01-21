@@ -14,6 +14,13 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
         return moment($scope.today).isBefore(dates);
     }
 
+    //NUMBER LIKED
+    function numberLiked(offer) {
+        studentService.howmanyliked(offer._id).then(function (res) {
+            offer.numberLiked = res.data
+        });
+    }
+
     function loadSkill() {
         //LOAD STUDENT
         studentService.getUserbyId($rootScope.user._id).then(function (res) {
@@ -124,11 +131,10 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
                     };
                     $scope.numberMatchOffer = i
                 });
-
             });
-
-
-
+            $scope.likedOffers.forEach(function (offer) {
+                numberLiked(offer);
+            }.bind($scope));
         });
     }
     loadSkill();
@@ -172,18 +178,6 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
         return d.fromNow();
     }
 
-    function arrayUnique(array) {
-        var a = array.concat();
-        for (var i = 0; i < a.length; ++i) {
-            for (var j = i + 1; j < a.length; ++j) {
-                if (a[i] === a[j])
-                    a.splice(j--, 1);
-            }
-        }
-
-        return a;
-    }
-
     //LINK TO OFFER PAGE 
     $scope.goToOffer = function (offer) {
         $location.path('/offer/' + offer._id);
@@ -209,16 +203,26 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
                         }
                     });
                     offerService.getOfferBySkill(data).then(function (res) {
-                        matchOffer = arrayUnique(res.data.concat(matchOffer));
-                        $scope.matchingOffers = matchOffer;
-
+                        res.data.forEach(function (o) {
+                            if (matchOffer.length == 0)
+                                matchOffer.push(o);
+                            else {
+                                for (var i = 0; i < matchOffer.length; i++) {
+                                    if (matchOffer[i]._id != o._id)
+                                        matchOffer.push(o);
+                                }
+                            }
+                        });
                         //CHECK IS lIKED
-                        $scope.matchingOffers.forEach(function (offer) {
+                        matchOffer.forEach(function (offer) {
                             offer.isLiked = ($rootScope.user.likes.indexOf(offer._id) > -1);
+                            numberLiked(offer);
+
                         }.bind($scope));
                     });
                 }
             });
+            $scope.matchingOffers = matchOffer;
         });
     };
     loadMatchOffer();
@@ -228,6 +232,7 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
         data.like = offer._id
         studentService.like($rootScope.user._id, data).then(function (res) {
             $rootScope.user.likes.push(offer._id);
+            numberLiked(offer);
             offer.isLiked = true;
             loadSkill();
         });
@@ -238,6 +243,7 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
         data.unlike = offer._id
         studentService.unlike($rootScope.user._id, data).then(function (res) {
             $rootScope.user.likes.splice($rootScope.user.likes.indexOf(offer._id), 1);
+            numberLiked(offer);
             offer.isLiked = false;
             loadSkill();
             loadMatchOffer();
@@ -245,14 +251,13 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
     };
     //LIKE OR UNLIKE
     $scope.likeClick = function (offer) {
-        if ($rootScope.user.likes.indexOf(offer._id) > -1) {
-            unlike(offer);
-        } else {
-            like(offer);
+            if ($rootScope.user.likes.indexOf(offer._id) > -1) {
+                unlike(offer);
+            } else {
+                like(offer);
+            }
         }
-    }
-
-    //STUDENT BOOK INFO
+        //STUDENT BOOK INFO
     studentService.getInfo().then(function (res) {
         $scope.bookInfo = res.data;
     })

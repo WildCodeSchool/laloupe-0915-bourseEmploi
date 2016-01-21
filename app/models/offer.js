@@ -206,12 +206,12 @@ var Offer = {
             })
             .populate("skills.skill")
             .populate("referentId", "-password")
-            .exec(function (err, offer) {
+            .exec(function (err, offers) {
                 if (err) {
                     res.status(400);
                     console.log(err);
-                } else
-                    res.json(offer);
+                }
+                res.json(offers);
             });
     },
 
@@ -252,15 +252,18 @@ var Offer = {
 
     create: function (req, res) {
         Offer.model.create(req.body, function (err, offer) {
-            if (err)
+            if (err) {
                 console.log(err);
-            res.json(offer);
-            transporter.sendMail(require('../mails/Mail.js').newOfferMail(offer.referentEmail, offer.title), function (error, info) {
-                if (error) {
-                    return console.log(error);
-                }
-                console.log('Message sent: ' + info.response);
-            });
+                res.sendStatus(400);
+            } else {
+                res.json(offer);
+                transporter.sendMail(require('../mails/Mail.js').newOfferMail(offer.referentEmail, offer.title), function (error, info) {
+                    if (error) {
+                        return console.log(error);
+                    }
+                    console.log('Message sent: ' + info.response);
+                });
+            }
         });
     },
 

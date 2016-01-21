@@ -87,9 +87,11 @@
                 <div class="offerdelete">
                    <ul>
                     <li class="headeradvert">
-                        <i ng-click="likeClick(matchingOffer)" class="fa fa-heart fa-lg" ng-class="{'heartnotactive': matchingOffer.isLiked===false,'heartactive': matchingOffer.isLiked===true}" uib-tooltip="{{matchingOffer.isLiked ? 'Ne plus aimer' : 'aimer cette offre'}}" tooltip-placement="top"></i>
+                        <i ng-click="likeClick(matchingOffer)" class="fa fa-heart fa-lg" ng-class="{'heartnotactive': matchingOffer.isLiked===false,'heartactive': matchingOffer.isLiked===true}" uib-tooltip="{{matchingOffer.isLiked ? 'Ne plus aimer' : 'aimer cette offre'}}" tooltip-placement="left"></i>
                     </li>
-                    <li class="headeradvert"><i class="fa fa-share-alt fa-lg" uib-tooltip="Partager" tooltip-placement="top"></i></li>
+                    <li class="headeradvert">
+                        <p class="headeradvert smalltexadvert">{{matchingOffer.numberLiked}}</p>
+                    </li>
                     </ul>
                 </div>
                 <ul>
@@ -148,13 +150,16 @@
                     <!--OFFER-->
                     <div ng-repeat="likedOffer in likedOffers" ng-show="after(likedOffer.startDate) && before(likedOffer.endDate)" class="wildpanelbodys panel paneldefault">
                         <div class="offerdelete">
-                            <i ng-click="likeClick(likedOffer)" class="fa fa-times fa-lg" ng-click="" uib-tooltip="Ne plus liker" tooltip-placement="bottom"></i>
+                          <ul>
+                            <li class="headeradvert">
+                                <i ng-click="likeClick(likedOffer)" class="fa fa-times fa-lg" uib-tooltip="Ne plus liker" tooltip-placement="bottom"></i>
+                            </li>
+                            </ul>
                         </div>
 
                         <ul>
                             <li class="headeradvert" ng-click="goToOffer(likedOffer)">
                                 <h2 class="headeradvert titleadvert-sm">{{likedOffer.title}}</h2></li>
-                            <li class="headeradvert"><i class="fa fa-share-alt fa-lg" uib-tooltip="Partager" tooltip-placement="top"></i></li>
                         </ul>
                         <ul>
                             <li class="headeradvert">

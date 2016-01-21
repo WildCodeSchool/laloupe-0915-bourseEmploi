@@ -17,6 +17,13 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
 
     $scope.showPublishButton = false;
 
+    //NUMBER LIKED
+    function numberLiked(id) {
+        studentService.howmanyliked(id).then(function (res) {
+            $scope.offer.numberLiked = res.data
+        });
+    }
+
     //LOAD OFFER
     function loadOffer() {
         offerService.getOfferbyId(selectOffer).then(function (res) {
@@ -74,12 +81,19 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
                 var map = L.mapbox.map('map', 'mapbox.streets')
                     .setView([lat, lng], 15);
 
-                var marker = L.marker([lat, lng]).addTo(map);
-
+                var marker = L.marker(new L.LatLng([lat], [lng]), {
+                    icon: L.mapbox.marker.icon({
+                        'marker-color': '009587'
+                    })
+                });
+                map.addLayer(marker)
             });
 
             //CHECK IS lIKED
             $scope.offer.isLiked = ($rootScope.user.likes.indexOf($scope.offer._id) > -1);
+
+
+            numberLiked($scope.offer._id);
         });
     }
     loadOffer();
@@ -167,7 +181,7 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
         studentService.like($rootScope.user._id, data).then(function (res) {
             $rootScope.user.likes.push(offer._id);
             $scope.offer.isLiked = true;
-            //$route.reload()
+            numberLiked(offer._id);
         });
     };
     //UNLIKE
@@ -177,7 +191,7 @@ function offerController($scope, $rootScope, $http, $location, $routeParams, off
         studentService.unlike($rootScope.user._id, data).then(function (res) {
             $rootScope.user.likes.splice($rootScope.user.likes.indexOf(offer._id), 1);
             $scope.offer.isLiked = false;
-            //$route.reload()
+            numberLiked(offer._id);
         });
     };
     //LIKE OR UNLIKE

@@ -92,7 +92,9 @@
                     <div class="offerdelete">
                         <ul>
                             <li class="headeradvert"><i ng-click="likeClick(offer)" class="fa fa-heart fa-lg" ng-class="{'heartnotactive': offer.isLiked===false,'heartactive': offer.isLiked===true}" uib-tooltip="{{offer.isLiked ? 'Ne plus aimer' : 'aimer cette offre'}}" tooltip-placement="top"></i></li>
-                            <li class="headeradvert"><i class="fa fa-share-alt fa-lg" uib-tooltip="Partager" tooltip-placement="top"></i></li>
+                            <li class="headeradvert">
+                                <p class="headeradvert smalltexadvert">{{offer.numberLiked}}</p>
+                            </li>
                         </ul>
                     </div>
                     <ul>
