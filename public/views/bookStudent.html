@@ -8,11 +8,11 @@
             <div class="wildpanelheader panel panel-default"></div>
             <div class="wildpanelbody panel paneldefault" id="studentCVmin">
                 <img class="imgprofilstudent" ng-src="{{student.logo}}">
-                <p>{{born}} ans</p>
+                <p ng-if="student.birthDate">{{born}} ans</p>
                 <p>{{student.gender}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault" id="studentCVmin">
-                <p class="headeradvert smalltexadvert">{{student.city}} - {{student.region}}</p>
+                <span class="headeradvert margin-top">{{student.city}} - {{student.region}}</span>
                 <h5>contact</h5>
                 <ul>
                     <li class="li-block" ng-if="student.email != undefined"><i class="fa fa-paper-plane-o fa-lg"></i>{{student.email}}</li>

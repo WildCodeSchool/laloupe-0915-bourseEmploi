@@ -10,12 +10,13 @@
                     <div class="wildpanelheader panel paneldefault">
                     </div>
                     <div class="wildpanelbody panel paneldefault" id="studentCVmin">
-                        <img class="imgprofilstudent" ng-src="{{student.logo}}">
-                        <h1 class="studentname"><a href="/#/book/{{user._id}}">{{student.firstName}} {{student.name}}</a><h1>
+                        <img ng-if="student.logo" class="imgprofilstudent" ng-src="{{student.logo}}">
+                        <img ng-if="!student.logo" class="imgprofilstudent" ng-src="{{student.logo}}">
+                        <h1 class="studentname"><a href="/#/book/{{user._id}}">{{student.firstName}} {{student.name}}</a></h1>
                         <h3 class="studentteaser">"{{student.teaser}}"</h3>
-                        <p class="headeradvert smalltexadvert">{{student.city}} - {{student.region}}</p>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
+                        <p class="headeradvert smalltexadvert">{{student.city}} {{student.region}}</p>
                         <h5>Mes compétences</h5>
                         <ul class="skill-ul" ng-show="showSkill">
                             <li class="headeradvert skill-li" ng-repeat="skill in listSkills"><span class="wildSkill">{{skill}}<i class="fa fa-times cross times-skill" ng-click="deleteSkill(skill)"></i></span></li>
@@ -82,52 +83,52 @@
                 <h4>{{matchingOffers.length}} {{matchingOffers.length > 1 ? 'Annonces' : 'Annonce'}} qui {{matchingOffers.length > 1 ? 'pourraient' : 'pourrait'}} m'interresser</h4>
             </div>
             <div class="panelmatchoffer no-marge">
-            <!--OFFER-->
-            <div ng-repeat="matchingOffer in matchingOffers" class="wildpanelbodys panel paneldefault">
-                <div class="offerdelete">
-                   <ul>
-                    <li class="headeradvert">
-                        <i ng-click="likeClick(matchingOffer)" class="fa fa-heart fa-lg" ng-class="{'heartnotactive': matchingOffer.isLiked===false,'heartactive': matchingOffer.isLiked===true}" uib-tooltip="{{matchingOffer.isLiked ? 'Ne plus aimer' : 'aimer cette offre'}}" tooltip-placement="left"></i>
-                    </li>
-                    <li class="headeradvert">
-                        <p class="headeradvert smalltexadvert">{{matchingOffer.numberLiked}}</p>
-                    </li>
+                <!--OFFER-->
+                <div ng-repeat="matchingOffer in matchingOffers" class="wildpanelbodys panel paneldefault">
+                    <div class="offerdelete">
+                        <ul>
+                            <li class="headeradvert">
+                                <i ng-click="likeClick(matchingOffer)" class="fa fa-heart fa-lg" ng-class="{'heartnotactive': matchingOffer.isLiked===false,'heartactive': matchingOffer.isLiked===true}" uib-tooltip="{{matchingOffer.isLiked ? 'Ne plus aimer' : 'aimer cette offre'}}" tooltip-placement="left"></i>
+                            </li>
+                            <li class="headeradvert">
+                                <p class="headeradvert smalltexadvert">{{matchingOffer.numberLiked}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul>
+                        <li class="headeradvert" ng-click="goToOffer(matchingOffer)">
+                            <h2 class="headeradvert titleadvert">{{matchingOffer.title}}</h2></li>
+
+                    </ul>
+                    <ul>
+                        <li class="headeradvert">
+                            <p class="headeradvert smalltexadvert">chez</p>
+                        </li>
+                        <li class="headeradvert">
+                            <p class="headeradvert companytexadvert">{{matchingOffer.referentId.name}}</p>
+                        </li>
+                        <li class="headeradvert">
+                            <p class="headeradvert smalltexadvert">Posté {{startOffer(matchingOffer.startDate)}}</p>
+                        </li>
+                    </ul>
+                    <ul class="skill-ul">
+                        <li class="headeradvert skill-li" ng-repeat="skill in matchingOffer.skills"><span class="wildSkill">{{skill.skill.title}}</span>
+                    </ul>
+                    <ul>
+                        <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
+                            <p class="headeradvert smalltexadvert1">{{matchingOffer.contract}}</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
+                            <p class="headeradvert smalltexadvert1">{{matchingOffer.salary}}</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
+                            <p class="headeradvert smalltexadvert1">{{matchingOffer.experience}}</p>
+                        </li>
+                        <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
+                            <p class="headeradvert smalltexadvert1">{{matchingOffer.city}} ({{matchingOffer.country}})</p>
+                        </li>
                     </ul>
                 </div>
-                <ul>
-                    <li class="headeradvert" ng-click="goToOffer(matchingOffer)">
-                        <h2 class="headeradvert titleadvert">{{matchingOffer.title}}</h2></li>
-                    
-                </ul>
-                <ul>
-                    <li class="headeradvert">
-                        <p class="headeradvert smalltexadvert">chez</p>
-                    </li>
-                    <li class="headeradvert">
-                        <p class="headeradvert companytexadvert">{{matchingOffer.referentId.name}}</p>
-                    </li>
-                    <li class="headeradvert">
-                        <p class="headeradvert smalltexadvert">Posté {{startOffer(matchingOffer.startDate)}}</p>
-                    </li>
-                </ul>
-                <ul class="skill-ul">
-                    <li class="headeradvert skill-li" ng-repeat="skill in matchingOffer.skills"><span class="wildSkill">{{skill.skill.title}}</span>
-                </ul>
-                <ul>
-                    <li class="headeradvert"><i class="fa fa-file-text-o fa-lg"></i>
-                        <p class="headeradvert smalltexadvert1">{{matchingOffer.contract}}</p>
-                    </li>
-                    <li class="headeradvert"><i class="fa fa-eur fa-lg"></i>
-                        <p class="headeradvert smalltexadvert1">{{matchingOffer.salary}}</p>
-                    </li>
-                    <li class="headeradvert"><i class="fa fa-briefcase fa-lg"></i>
-                        <p class="headeradvert smalltexadvert1">{{matchingOffer.experience}}</p>
-                    </li>
-                    <li class="headeradvert"><i class="fa fa-map-marker fa-lg"></i>
-                        <p class="headeradvert smalltexadvert1">{{matchingOffer.city}} ({{matchingOffer.country}})</p>
-                    </li>
-                </ul>
-            </div>
             </div>
 
             <div class="wildpanelfooter panel paneldefault">
@@ -147,49 +148,49 @@
                         <h4>Mes annonces favorites</h4>
                     </div>
                     <div class="panelfavouritesoffer no-marge">
-                    <!--OFFER-->
-                    <div ng-repeat="likedOffer in likedOffers" ng-show="after(likedOffer.startDate) && before(likedOffer.endDate)" class="wildpanelbodys panel paneldefault">
-                        <div class="offerdelete">
-                          <ul>
-                            <li class="headeradvert">
-                                <i ng-click="likeClick(likedOffer)" class="fa fa-times fa-lg" uib-tooltip="Ne plus liker" tooltip-placement="bottom"></i>
-                            </li>
+                        <!--OFFER-->
+                        <div ng-repeat="likedOffer in likedOffers" ng-show="after(likedOffer.startDate) && before(likedOffer.endDate)" class="wildpanelbodys panel paneldefault">
+                            <div class="offerdelete">
+                                <ul>
+                                    <li class="headeradvert">
+                                        <i ng-click="likeClick(likedOffer)" class="fa fa-times fa-lg" uib-tooltip="Ne plus liker" tooltip-placement="bottom"></i>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <ul>
+                                <li class="headeradvert" ng-click="goToOffer(likedOffer)">
+                                    <h2 class="headeradvert titleadvert-sm">{{likedOffer.title}}</h2></li>
+                            </ul>
+                            <ul>
+                                <li class="headeradvert">
+                                    <p class="headeradvert smalltexadvert-sm">chez</p>
+                                </li>
+                                <li class="headeradvert">
+                                    <p class="headeradvert companytexadvert-sm">{{likedOffer.referentId.name}}</p>
+                                </li>
+                                <li class="headeradvert">
+                                    <p class="headeradvert smalltexadvert-sm">Posté {{startOffer(likedOffer.startDate)}}</p>
+                                </li>
+                            </ul>
+                            <ul class="skill-ul-mini">
+                                <li class="headeradvert skill-li-mini" ng-repeat="skill in likedOffer.skills"><span class="wildSkill-mini">{{skill.skill.title}}</span>
+                            </ul>
+                            <ul>
+                                <li class="headeradvert"><i class="fa fa-file-text-o fa-lg mini"></i>
+                                    <p class="headeradvert smalltexadvert1-sm">{{likedOffer.contract}}</p>
+                                </li>
+                                <li class="headeradvert"><i class="fa fa-eur fa-lg mini"></i>
+                                    <p class="headeradvert smalltexadvert1-sm">{{likedOffer.salary}}</p>
+                                </li>
+                                <li class="headeradvert"><i class="fa fa-briefcase fa-lg mini"></i>
+                                    <p class="headeradvert smalltexadvert1-sm">{{likedOffer.experience}}</p>
+                                </li>
+                                <li class="headeradvert"><i class="fa fa-map-marker fa-lg mini"></i>
+                                    <p class="headeradvert smalltexadvert1-sm">{{likedOffer.city}} ({{likedOffer.country}})</p>
+                                </li>
                             </ul>
                         </div>
-
-                        <ul>
-                            <li class="headeradvert" ng-click="goToOffer(likedOffer)">
-                                <h2 class="headeradvert titleadvert-sm">{{likedOffer.title}}</h2></li>
-                        </ul>
-                        <ul>
-                            <li class="headeradvert">
-                                <p class="headeradvert smalltexadvert-sm">chez</p>
-                            </li>
-                            <li class="headeradvert">
-                                <p class="headeradvert companytexadvert-sm">{{likedOffer.referentId.name}}</p>
-                            </li>
-                            <li class="headeradvert">
-                                <p class="headeradvert smalltexadvert-sm">Posté {{startOffer(likedOffer.startDate)}}</p>
-                            </li>
-                        </ul>
-                        <ul class="skill-ul-mini">
-                            <li class="headeradvert skill-li-mini" ng-repeat="skill in likedOffer.skills"><span class="wildSkill-mini">{{skill.skill.title}}</span>
-                        </ul>
-                        <ul>
-                            <li class="headeradvert"><i class="fa fa-file-text-o fa-lg mini"></i>
-                                <p class="headeradvert smalltexadvert1-sm">{{likedOffer.contract}}</p>
-                            </li>
-                            <li class="headeradvert"><i class="fa fa-eur fa-lg mini"></i>
-                                <p class="headeradvert smalltexadvert1-sm">{{likedOffer.salary}}</p>
-                            </li>
-                            <li class="headeradvert"><i class="fa fa-briefcase fa-lg mini"></i>
-                                <p class="headeradvert smalltexadvert1-sm">{{likedOffer.experience}}</p>
-                            </li>
-                            <li class="headeradvert"><i class="fa fa-map-marker fa-lg mini"></i>
-                                <p class="headeradvert smalltexadvert1-sm">{{likedOffer.city}} ({{likedOffer.country}})</p>
-                            </li>
-                        </ul>
-                    </div>
                     </div>
                     <div class="wildpanelfooter panel paneldefault">
                         <p class="paragraphWPF">{{numberMatchOffer}} {{numberMatchOffer > 1 ? 'annonces' : 'annonce'}} dans vos favoris</p>
