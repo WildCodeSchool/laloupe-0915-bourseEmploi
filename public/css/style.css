@@ -585,7 +585,7 @@ ul {
     padding: 5px 10px 5px 10px;
     border-top-color: rgb(221, 221, 221);
     border-radius: 0px;
-    min-height: 112px;
+    min-height: 88px;
 }
 
 .wildpanelfooter {
@@ -640,14 +640,25 @@ ul {
 
 .studentteaser {
     margin-top: 2px;
-    font-size: 18px;
-    color: #696969;
+    font-size: 22px;
+}
+
+.studentteaser:hover {
+    cursor: pointer;
 }
 
 .imgprofilstudent {
     float: left;
-    min-height: 130px;
     width: 130px;
+    border: 2px solid white;
+    margin-top: -30px;
+    margin-right: 3px;
+    background-color: #B6B6B6;
+}
+
+.imgsearchbook {
+    float: left;
+    width: 100px;
     border: 2px solid white;
     margin-top: -30px;
     margin-right: 3px;
@@ -1238,4 +1249,15 @@ li.active {
 
 .list-clicked {
     background-color: #F5FAF9;
+}
+.bookTitle {
+    margin-left: 110px;
+}
+
+.bookTitle:hover {
+    cursor: pointer;
+}
+
+.margin-top {
+    margin-top: 10px;
 }
