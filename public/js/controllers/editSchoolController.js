@@ -45,6 +45,7 @@ function editSchoolController($scope, schoolPromoService, studentService) {
     function loadSchool() {
         schoolPromoService.getSchool().then(function (res) {
             $scope.listSchools = res.data
+            $scope.displayClass = false;
         });
     }
     loadSchool();
@@ -84,6 +85,7 @@ function editSchoolController($scope, schoolPromoService, studentService) {
         schoolPromoService.getPromoBySchoolId(school).then(function (res) {
             $scope.listPromos = res.data
             $scope.nbPromos = res.data.length;
+            $scope.displayStudent = false;
         });
     }
 
@@ -119,9 +121,8 @@ function editSchoolController($scope, schoolPromoService, studentService) {
         var message = "Voulez vraiment supprimer cette promo ? Attention toutes les élèves qui sont reliés à la promo serront également supprimés"
         var resultat = window.confirm(message);
         if (resultat) {
-            schoolPromoService.deletePromo(promo._id).then(function (res) {
-                loadPromos(promo.schoolId);
-            });
+            schoolPromoService.deletePromo(promo._id).then(function (res) {});
+            loadPromos(promo.schoolId);
         }
     }
 
@@ -141,27 +142,26 @@ function editSchoolController($scope, schoolPromoService, studentService) {
     $scope.PromoToStudents = function (promo) {
         $scope.selectedPromo = promo._id;
         $scope.displayStudent = true;
-        $scope.whatPromo = promo.title;
+        $scope.whatPromo = promo.title
         loadStudents(promo._id);
         //CREATE STUDENT
         $scope.newStudent = {};
-        $scope.newStudent.promos = promo._id;
         $scope.createStudent = function () {
+            $scope.newStudent.promos = promo._id;
             studentService.create($scope.newStudent).then(function (res) {
                 loadStudents(promo._id);
-                $scope.newStudent = undefined;
+                $scope.newStudent = {};
             })
         }
     }
 
-    //DELETE CLASS
+    //DELETE STUDENT
     $scope.deleteStudent = function (student) {
         var message = "Voulez vraiment supprimer cette élève ?"
         var resultat = window.confirm(message);
         if (resultat) {
-            studentService.delete(student._id).then(function (res) {
-                loadStudents(student.promos);
-            });
+            studentService.delete(student._id).then(function (res) {});
+            loadStudents(student.promos);
         }
     }
 

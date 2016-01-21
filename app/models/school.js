@@ -7,6 +7,8 @@ var mongoose = require('mongoose');
 
 var School = require('./school.js');
 
+var Promo = require('./promo.js');
+
 var SchoolSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -58,6 +60,13 @@ var School = {
 
     delete: function (req, res) {
         School.model.findByIdAndRemove(req.params.id, function () {
+            Promo.model.find({
+                'schoolId': req.params.id
+            }).exec(function (err, promos) {
+                promos.forEach(function (promo) {
+                    Promo.deleteById(promo._id)
+                });
+            })
             res.sendStatus(200);
         })
     }

@@ -282,14 +282,19 @@ var Offer = {
     },
 
     delete: function (req, res) {
-        Offer.model.findByIdAndRemove(req.params.id, function () {
+        Offer.deleteById(req.params.id);
+        res.status(200)
+    },
+
+    deleteById: function (id) {
+        Offer.model.findByIdAndRemove(id, function () {
             Student.model.find({
-                'likes': req.params.id
+                'likes': id
             }).exec(function (err, students) {
                 students.forEach(function (student) {
                     var newLikes = [];
                     for (var i = 0; i < student.likes.length; i++) {
-                        if (student.likes[i] != req.params.id) {
+                        if (student.likes[i] != id) {
                             newSkills.push(student.likes[i]);
                         }
                     }
@@ -298,7 +303,6 @@ var Offer = {
                     }).exec();
                 });
             });
-            res.sendStatus(200);
         })
     }
 }

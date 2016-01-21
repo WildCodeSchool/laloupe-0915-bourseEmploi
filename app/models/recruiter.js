@@ -2,6 +2,7 @@ var mongoose = require('mongoose'),
     extend = require('mongoose-schema-extend');
 
 var User = require('./user.js');
+var Offer = require('./offer.js');
 
 var RecruiterSchema = User.model.schema.extend({
     admin: {
@@ -139,7 +140,14 @@ var Recruiter = {
 
     delete: function (req, res) {
         Recruiter.model.findByIdAndRemove(req.params.id, function () {
-            res.sendStatus(200);
+            Offer.model.find({
+                'referentId': req.params.id
+            }).exec(function (err, offers) {
+                offers.forEach(function (offer) {
+                    Offer.deleteById(offer._id)
+                });
+                res.sendStatus(200);
+            })
         })
     }
 }
