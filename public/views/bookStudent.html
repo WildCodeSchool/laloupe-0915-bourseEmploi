@@ -7,8 +7,8 @@
         <div class="wildpanel panel panel-default row">
             <div class="wildpanelheader panel panel-default"></div>
             <div class="wildpanelbody panel paneldefault" id="studentCVmin">
-                <img class="imgprofilstudent" src="">
-                <p>{{born}} ans</p>
+                <img class="imgprofilstudent" ng-src="{{student.logo}}">
+                <p ng-if="student.birthDate">{{born}} ans</p>
                 <p>{{student.gender}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault" id="studentCVmin">
@@ -83,7 +83,7 @@
                         </div>
                         <h2 class="titleadvert" data-toggle="modal" data-target="#{{exp.experience._id}}">{{exp.experience.job}}</h2>
                         <p class="smalltexadvert">{{exp.experience.company}} - {{exp.experience.contract}} - {{exp.experience.city}} ({{exp.experience.country}})</p>
-                        <p class="smalltexadvert-sm">De {{calculDate(exp.experience.startDate)}} - A {{calculDate(exp.experience.endDate)}}</p>
+                        <p class="smalltexadvert-sm">De {{calculDate(exp.experience.YearStart)}} - A {{calculDate(exp.experience.YearEnd)}}</p>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
                         <p class="white-space-pre-line">{{exp.experience.detailsExp}}</p>
@@ -97,7 +97,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h2 class="titlemodal" id="myModalLabel">{{exp.experience.job}}</h2>
                                     <p class="smalltexadvert">{{exp.experience.company}} - {{exp.experience.contract}} - {{exp.experience.city}} ({{exp.experience.country}})</p>
-                                    <p class="smalltexadvert-sm">De {{calculDate(exp.experience.startDate)}} - A {{calculDate(exp.experience.endDate)}}</p>
+                                    <p class="smalltexadvert-sm">De {{calculDate(exp.experience.yearStart)}} - A {{calculDate(exp.experience.yearEnd)}}</p>
                                 </div>
                                 <div class="modal-body">
                                     <h5>Missions :</h5>
@@ -147,7 +147,7 @@
                         </div>
                         <h2 class="titleadvert" data-toggle="modal" data-target="#{{for.formation._id}}">{{for.formation.title}}</h2>
                         <p class="smalltexadvert">{{for.formation.school}} - {{for.formation.city}} ({{for.formation.country}})</p>
-                        <p class="smalltexadvert-sm">De {{calculDate(for.formation.startDate)}} - A {{calculDate(for.formation.endDate)}}</p>
+                        <p class="smalltexadvert-sm">De {{calculDate(for.formation.yearStart)}} - A {{calculDate(for.formation.yearEnd)}}</p>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
                         <p class="white-space-pre-line">{{for.formation.description}}
@@ -162,7 +162,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h2 class="titlemodal" id="myModalLabel1">{{for.formation.title}}</h2>
                                     <p class="smalltexadvert">{{for.formation.school}} - {{for.formation.city}} ({{for.formation.country}})</p>
-                                    <p class="smalltexadvert-sm">De {{calculDate(for.formation.startDate)}} - A {{calculDate(for.formation.endDate)}}</p>
+                                    <p class="smalltexadvert-sm">De {{calculDate(for.formation.yearStart)}} - A {{calculDate(for.formation.yearEnd)}}</p>
                                 </div>
                                 <div class="modal-body">
                                     <h5>Descriptions de la formation :</h5>

@@ -12,8 +12,9 @@ function homeRctrController($http, $scope, $rootScope, $location, $routeParams, 
         $scope.likedStudents = [];
         recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {
             var recruiter = res.data;
+            $rootScope.user.likes = recruiter.likes;
             $scope.numberStudentLiked = recruiter.likes.length
-                //LOAD LIKED OFFER
+                //LOAD LIKED STUDENT
             recruiter.likes.forEach(function (like) {
                 studentService.getUserbyId(like).then(function (res) {
                     $scope.likedStudents.push(res.data);

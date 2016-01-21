@@ -3,6 +3,8 @@
 \* ------------------------------------------------------------------------- */
 
 var mongoose = require('mongoose');
+var Student = require('./student');
+
 
 var FormationSchema = new mongoose.Schema({
     studentId: {
@@ -16,8 +18,10 @@ var FormationSchema = new mongoose.Schema({
     },
     school: String,
     description: String,
-    startDate: Date,
-    endDate: Date,
+    monthStart: String,
+    yearStart: String,
+    monthEnd: String,
+    yearEnd: String,
     country: String,
     city: String,
     website: String,
@@ -45,6 +49,14 @@ var Formation = {
         Formation.model.create(req.body, function (err, formation) {
             if (err)
                 console.log(err);
+
+            //Update Student
+            Student.model.findById(req.body.studentId, function (err, student) {
+                student.formations.push({
+                    formation: formation._id
+                });
+                student.save();
+            })
             res.json(formation);
         });
     },

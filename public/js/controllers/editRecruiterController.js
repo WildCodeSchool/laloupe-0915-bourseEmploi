@@ -1,5 +1,5 @@
 //EDIT RECRUTEUR CONTROLLER
-function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll, recruiterService) {
+function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll, $location, recruiterService) {
     //JS pour les popups d'aides
     $(function () {
         $('[data-toggle="popover"]').popover()
@@ -13,28 +13,8 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
     }
 
     function loadRecruiter() {
-        recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {
-            console.log(res.data);
-            $scope.name = res.data.name;
-            $scope.email = res.data.email;
-            $scope.phone = res.data.phone;
-            $scope.country = res.data.country;
-            $scope.region = res.data.region;
-            $scope.city = res.data.city;
-            $scope.zipCode = res.data.zipCode;
-            $scope.address = res.data.address;
-            $scope.businessSector = res.data.businessSector;
-            $scope.size = res.data.size;
-            $scope.description = res.data.description;
-            $scope.responsability = res.data.responsability;
-            $scope.wildSide = res.data.wildSide;
-            $scope.twitter = res.data.twitter;
-            $scope.linkedin = res.data.linkedin;
-            $scope.instagram = res.data.instagram;
-            $scope.website = res.data.website;
-            $scope.facebook = res.data.facebook;
-            $scope.logo = res.data.logo;
-            $scope.picture = res.data.picture;
+        recruiterService.getRecruiterById($routeParams.id).then(function (res) {
+            $scope.recruiter = res.data;
         });
     }
     loadRecruiter();
@@ -86,9 +66,9 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         recruiterService.update($rootScope.user._id, data).then(function (res) {
             console.log(data);
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -103,9 +83,9 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         data.address = $scope.address;
         recruiterService.update($rootScope.user._id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -117,9 +97,9 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         data.businessSector = $scope.businessSector;
         recruiterService.update($rootScope.user._id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -129,7 +109,7 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         var data = {};
         data.logo = "";
         recruiterService.update($rootScope.user._id, data).then(function (res) {
-            alert('ok');
+            alert('image éffacée');
         });
         loadRecruiter();
     }
@@ -139,7 +119,7 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         var data = {};
         data.picture = "";
         recruiterService.update($rootScope.user._id, data).then(function (res) {
-            alert('ok');
+            alert('image éffacée');
         });
         loadRecruiter();
     }
@@ -151,9 +131,9 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         data.wildSide = $scope.wildSide;
         recruiterService.update($rootScope.user._id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -165,9 +145,9 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         data.picture = $scope.picture;
         recruiterService.update($rootScope.user._id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
     }
@@ -182,11 +162,22 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         data.instagram = $scope.instagram;
         recruiterService.update($rootScope.user._id, data).then(function (res) {
             if (!res.data) {
-                alert('pas ok');
+                alert('erreur lors de la mise a jour');
             } else {
-                alert('ok');
+                alert('mise a jour éffectuée');
             }
         })
+    }
+
+    //DELETE STUDENT
+    $scope.deleteRecruiter = function () {
+        var message = "Voulez vraiment supprimer ce compte ?"
+        var resultat = window.confirm(message);
+        if (resultat) {
+            recruiterService.delete($rootScope.user._id).then(function (res) {
+                $location.path('/login')
+            });
+        }
     }
 
 }

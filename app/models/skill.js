@@ -3,7 +3,8 @@
 \* ------------------------------------------------------------------------- */
 
 var mongoose = require('mongoose');
-
+var Student = require('./student.js');
+var Offer = require('./offer.js');
 
 var SkillSchema = new mongoose.Schema({
     title: {
@@ -61,13 +62,41 @@ var Skill = {
 
     delete: function (req, res) {
         Skill.model.findByIdAndRemove(req.params.id, function () {
+            Student.model.find({
+                'skills.skill': req.params.id
+            }).exec(function (err, students) {
+                students.forEach(function (student) {
+                    var newSkills = [];
+                    for (var i = 0; i < student.skills.length; i++) {
+                        if (student.skills[i].skill != req.params.id) {
+                            newSkills.push(student.skills[i]);
+                        }
+                    }
+                    Student.model.findByIdAndUpdate(student._id, {
+                        skills: newSkills
+                    }).exec();
+                });
+            });
+            Offer.model.find({
+                'skills.skill': req.params.id
+            }).exec(function (err, offers) {
+                if (offers.length > 0) {
+                    offers.forEach(function (offer) {
+                        var newSkills = [];
+                        for (var i = 0; i < offer.skills.length; i++) {
+                            if (offer.skills[i].skill != req.params.id) {
+                                newSkills.skills.push(offer.skills[i]);
+                            }
+                        }
+                        Offer.model.findByIdAndUpdate(offer._id, {
+                            skills: newSkills
+                        }).exec();
+                    });
+                };
+            });
             res.sendStatus(200);
-        })
+        });
     }
-
-
-
-
 }
 
 module.exports = Skill;

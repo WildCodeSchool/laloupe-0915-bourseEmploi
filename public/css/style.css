@@ -57,6 +57,7 @@ body {
 p {
     color: #202020;
     font-size: 16px;
+    word-wrap: break-word;
 }
 
 h1 {
@@ -146,7 +147,7 @@ ul {
     height: 40px;
     padding: 0px 20px 0px 20px;
     border: 2px solid;
-    border-radius: 10px;
+    border-radius: 0px;
     border-color: #009587;
     color: white;
     background-size: 100% 200%;
@@ -172,7 +173,7 @@ ul {
     height: 40px;
     padding: 0px 20px 0px 20px;
     border: 2px solid;
-    border-radius: 10px;
+    border-radius: 0px;
     border-color: #009587;
     color: #009587;
     background-size: 100% 200%;
@@ -192,7 +193,7 @@ ul {
 
 .btnW:focus {
     outline: none;
-    border-radius: 10px;
+    border-radius: 0px;
     border-color: #009587;
     color: #009587;
     background-color: transparent;
@@ -204,11 +205,47 @@ ul {
     color: white;
 }
 
+.btnWDelete {
+    height: 40px;
+    padding: 0px 20px 0px 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: red;
+    color: red;
+    background-size: 100% 200%;
+    background-color: transparent;
+    background-image: linear-gradient(to top, red 50%, transparent 50%);
+    -webkit-transition: background-position 1s;
+    -moz-transition: background-position 1s;
+    transition: background-position 1s;
+}
+
+.btnWDelete:hover {
+    background-position: 0 100%;
+    background-color: transparent;
+    border-color: red;
+    color: white;
+}
+
+.btnWDelete:focus {
+    outline: none;
+    border-radius: 10px;
+    border-color: red;
+    color: red;
+    background-color: transparent;
+}
+
+.btnWDelete:focus:hover {
+    background-position: 0 100%;
+    background-color: transparent;
+    color: white;
+}
+
 .btnW-sm {
     height: 30px;
     padding: 0px 7px 0px 7px;
     border: 2px solid;
-    border-radius: 10px;
+    border-radius: 0px;
     border-color: #009587;
     color: #009587;
     background-size: 100% 200%;
@@ -233,7 +270,7 @@ ul {
     height: 40px;
     padding: 0px 20px 0px 20px;
     border: 2px solid;
-    border-radius: 10px;
+    border-radius: 0px;
     border-color: white;
     color: white;
     background-size: 100% 200%;
@@ -463,13 +500,27 @@ ul {
 .wildpanel {
     margin: 15px 0px 15px 0px;
     padding: 0 auto;
-    border-color: #b6b6b6
+    border-color: rgb(221, 221, 221);
+    box-shadow: 0 0 10px #dddddd;
+}
+
+.navbar-inverse {
+    box-shadow: 0 5px 10px #dddddd;
+}
+
+.panel {
+    border-radius: 0px;
+}
+
+.form-control {
+    border-radius: 0px;
 }
 
 .wildpanel-promo {
     margin: 0px 0px 15px 0px;
     padding: 0 auto;
-    border-color: #b6b6b6
+    border-color: rgb(221, 221, 221);
+    box-shadow: 0 0 10px #dddddd;
 }
 
 .wildpanelheader {
@@ -545,14 +596,14 @@ ul {
 .wildpanelbodys {
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
-    border-top-color: #B6B6B6;
+    border-top-color: rgb(221, 221, 221);
     border-radius: 0px;
 }
 
 .wildpanelbodys-menu {
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
-    border-top-color: #B6B6B6;
+    border-top-color: rgb(221, 221, 221);
     border-radius: 0px;
     background-color: #F5FAF9;
 }
@@ -560,7 +611,7 @@ ul {
 .wildpanelheart {
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
-    border-top-color: #B6B6B6;
+    border-top-color: rgb(221, 221, 221);
     border-radius: 0px;
     min-height: 101px;
 }
@@ -568,9 +619,9 @@ ul {
 .wildpanelbook {
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
-    border-top-color: #B6B6B6;
+    border-top-color: rgb(221, 221, 221);
     border-radius: 0px;
-    min-height: 112px;
+    min-height: 88px;
 }
 
 .wildpanelfooter {
@@ -579,7 +630,7 @@ ul {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     padding: 5px 10px 5px 10px;
-    border-top-color: #B6B6B6;
+    border-top-color: rgb(221, 221, 221);
     text-align: center;
 }
 
@@ -589,7 +640,7 @@ ul {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     padding: 5px 10px 5px 10px;
-    border-top-color: #B6B6B6;
+    border-top-color: rgb(221, 221, 221);
 }
 
 .paragraphWPF {
@@ -625,16 +676,26 @@ ul {
 
 .studentteaser {
     margin-top: 2px;
-    font-size: 18px;
-    color: #696969;
+    font-size: 22px;
+}
+
+.studentteaser:hover {
+    cursor: pointer;
 }
 
 .imgprofilstudent {
     float: left;
-    height: 130px;
     width: 130px;
-    border: 5px solid white;
-    border-radius: 15px;
+    border: 2px solid white;
+    margin-top: -30px;
+    margin-right: 3px;
+    background-color: #B6B6B6;
+}
+
+.imgsearchbook {
+    float: left;
+    width: 100px;
+    border: 2px solid white;
     margin-top: -30px;
     margin-right: 3px;
     margin-bottom: 5px;
@@ -1048,11 +1109,9 @@ li.active {
 }
 
 .navbarr-avatar {
-    height: 26px;
+    height: 40px;
     margin: -20px 5px -17px -5px;
-    border-image: 3px;
     border-color: white;
-    border-radius: 3px;
 }
 
 .btn:focus {
@@ -1247,3 +1306,16 @@ li.active {
 .trash2 {
     float: right;
 }
+
+.bookTitle {
+    margin-left: 110px;
+}
+
+.bookTitle:hover {
+    cursor: pointer;
+}
+
+.margin-top {
+    margin-top: 10px;
+}
+

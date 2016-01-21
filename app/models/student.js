@@ -12,6 +12,7 @@ var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport('smtps://wildfinder.wcs%40gmail.com:jecode4laloupe@smtp.gmail.com');
 
 var User = require('./user.js');
+var Recruiter = require('./recruiter.js');
 
 var StudentSchema = User.model.schema.extend({
     name: {
@@ -26,10 +27,10 @@ var StudentSchema = User.model.schema.extend({
         type: Boolean,
         default: true
     },
+    logo: String,
     region: String,
     city: String,
     gender: String,
-    picture: String,
     birthDate: Date,
     studentPhone: String,
     description: String,
@@ -275,9 +276,36 @@ var Student = {
         });
     },
 
+    howManyLiked: function (req, res) {
+        Student.model.find({
+            'likes': req.params.id
+        }).exec(function (err, students) {
+            res.json(students.length);
+        });
+    },
+
     delete: function (req, res) {
-        Student.model.findByIdAndRemove(req.params.id, function () {
-            res.sendStatus(200);
+        Student.deleteById(req.params.id);
+        res.status(200)
+    },
+
+    deleteById: function (id) {
+        Student.model.findByIdAndRemove(id, function () {
+            Recruiter.model.find({
+                'likes': id
+            }).exec(function (err, recruiters) {
+                recruiters.forEach(function (recruiter) {
+                    var newLikes = [];
+                    for (var i = 0; i < recruiter.likes.length; i++) {
+                        if (recruiter.likes[i] != id) {
+                            newLikes.push(recruiter.likes[i]);
+                        }
+                    }
+                    Recruiter.model.findByIdAndUpdate(recruiter._id, {
+                        likes: newLikes
+                    }).exec();
+                });
+            });
         })
     }
 }

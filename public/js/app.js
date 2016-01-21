@@ -32,7 +32,7 @@ function config($routeProvider) {
                 connected: checkIsConnected
             }
         })
-        .when('/editRecruiter', {
+        .when('/editRecruiter/:id', {
             templateUrl: 'views/editRecruiter.html',
             controller: 'editRecruiterController',
             resolve: {
@@ -72,10 +72,7 @@ function config($routeProvider) {
         })
         .when('/formRecruiter', {
             templateUrl: 'views/formRecruiter.html',
-            controller: 'formRecruiterController',
-            resolve: {
-                connected: checkIsConnected
-            }
+            controller: 'formRecruiterController'
         })
         .when('/skills', {
             templateUrl: 'views/skills.html',

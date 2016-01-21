@@ -108,23 +108,44 @@
         <!--STUDENT-->
         <div class="col-xs-12 ">
             <div ng-repeat="student in students | filter: {name: queryName} | orderBy: 'name' " class="wildpanel panel panel-default ">
-                <div class="bookLike ">
+                <div class="wildpanelheader panel panel-default">
+                    <ul>
+                        <li class="headerasvert">
+                            <h4 class="bookTitle" ng-click="goToStudent(student)">{{student.firstName}} {{student.name}}</h4>
+                        </li>
+                        <li class="headerasvert">
+                            <p ng-if="student.city && student.region" class="white">({{student.city}} - {{student.region}})</p>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="bookLike">
                     <li ng-if="showRcrt " ng-click="likeClick(student) " class="headeradvert ">
                         <i class="fa fa-heart fa-lg " ng-class="{ 'heartnotactive': student.isLiked===false, 'heartactive': student.isLiked===true} " uib-tooltip="{{student.isLiked ? 'Retirer des favoris' : 'Ajouter aux favoris'}} " tooltip-placement="left "></i>
                     </li>
                 </div>
                 <div class="wildpanelbook panel panel-default ">
-                    <img class="profilimg-book " src="../img/darkvador.jpg " alt="photo de profil de ... ">
+                    <img ng-if="student.logo" ng-click="goToStudent(student)" class="imgsearchbook" ng-src="{{student.logo}}">
+                    <img ng-if="!student.logo" ng-click="goToStudent(student)" class="imgsearchbook" src="../img/default-profil.jpg">
+                    <h3 ng-if="student.teaser" ng-click="goToStudent(student)" class="headeradvert no-marge studentteaser ">"{{student.teaser}}"</h3>
                     <ul>
-                        <li class="headeradvert " ng-click="goToStudent(student) ">
-                            <h2 class="headeradvert studentname no-marge ">{{student.firstName}} {{student.name}}</h2>
+                        <li class="headerasvert">
+                            <p ng-if="student.situation" class="bookstattitle">Situation: </p>
                         </li>
-
-                    </ul>
-                    <h3 class="headeradvert no-marge studentteaser ">"{{student.teaser}} "</h3>
-                    <ul>
                         <li class="headerasvert ">
-                            <p class="no-marge ">{{student.status}}</p>
+                            <p class="headeradvert smalltexadvert1-sm">{{student.situation}}</p>
+                        </li>
+                        <li class="headerasvert">
+                            <p ng-if="student.status" class="bookstattitle">status: </p>
+                        </li>
+                        <li class="headerasvert ">
+                            <p class="headeradvert smalltexadvert1-sm">{{student.status}}</p>
+                        </li>
+                        <li class="headerasvert">
+                            <p ng-if="student.mobility" class="bookstattitle">Mobilité: </p>
+                        </li>
+                        <li class="headerasvert ">
+                            <p class="headeradvert smalltexadvert1-sm">{{student.mobility}}</p>
                         </li>
                     </ul>
                     <ul class="skill-ul ">
