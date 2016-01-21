@@ -468,6 +468,10 @@ ul {
     box-shadow: 0 0 10px #dddddd;
 }
 
+.navbar-inverse {
+    box-shadow: 0 5px 10px #dddddd;
+}
+
 .panel {
     border-radius: 0px;
 }
