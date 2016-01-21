@@ -3,10 +3,10 @@
 <div class="row">
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 
-        <div class="row" id="">
+        <div class="row" id="anchor01">
             <div class="wildpanel panel paneldefault">
                 <div class="wildpanelbody panel paneldefault">
-                    <h3>Logo et photo :</h3>
+                    <h3>Photo du profil :</h3>
                     <div class="wildpanelbody panel paneldefault">
                         <fieldset class="form-group">
                             <div class="col-sm-5">
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="row" id="">
+        <div class="row" id="anchor0">
             <div class="wildpanel panel paneldefault">
                 <div class="wildpanelbody panel paneldefault">
                     <h3>Titre du profil :</h3>
@@ -781,15 +781,23 @@
 
     <div class="col-md-3 col-lg-3 col-sm-3">
         <nav class="hidden-xs affix">
-            <ul class="nav nav-pills nav-stacked">
-                <li ng-class="{active: activesubmenu=='#anchor1'}"><a ng-click="scrollTo('anchor1')">Infos personnelles</a></li>
-                <li ng-class="{active: activesubmenu=='#anchor2'}"><a ng-click="scrollTo('anchor2')">Situation</a></li>
-                <li ng-class="{active: activesubmenu=='#anchor3'}"><a ng-click="scrollTo('anchor3')">Coté wild</a></li>
-                <li ng-class="{active: activesubmenu=='#anchor4'}"><a ng-click="scrollTo('anchor4')">Compétences</a></li>
-                <li ng-class="{active: activesubmenu=='#anchor5'}"><a ng-click="scrollTo('anchor5')">Expérience</a></li>
-                <li ng-class="{active: activesubmenu=='#anchor6'}"><a ng-click="scrollTo('anchor6')">Formation</a></li>
-                <li ng-class="{active: activesubmenu=='#anchor7'}"><a ng-click="scrollTo('anchor7')">Loisir</a></li>
-            </ul>
+            <div class="wildpanel panel paneldefault">
+                <div class="wildpanelbody panel paneldefault">
+                    <div class="wildpanelbody panel paneldefault">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li ng-class="{active: activesubmenu=='#anchor01'}"><a ng-click="scrollTo('anchor01')">Photo de profil</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor0'}"><a ng-click="scrollTo('anchor0')">Titre du profil</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor1'}"><a ng-click="scrollTo('anchor1')">Infos personnelles</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor2'}"><a ng-click="scrollTo('anchor2')">Situation</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor3'}"><a ng-click="scrollTo('anchor3')">Coté wild</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor4'}"><a ng-click="scrollTo('anchor4')">Compétences</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor5'}"><a ng-click="scrollTo('anchor5')">Expérience</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor6'}"><a ng-click="scrollTo('anchor6')">Formation</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor7'}"><a ng-click="scrollTo('anchor7')">Loisir</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </nav>
     </div>
 </div>
