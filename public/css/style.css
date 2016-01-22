@@ -460,6 +460,12 @@ ul {
 
 /*WILD PANEL*/
 
+.wildBoard {
+    margin: 15px 15px 15px 15px;
+    padding: 0 auto;
+    border-color: #b6b6b6
+}
+
 .wildpanel {
     margin: 15px 0px 15px 0px;
     padding: 0 auto;
@@ -1226,4 +1232,18 @@ li.active {
 
 .list-clicked {
     background-color: #F5FAF9;
+}
+
+.tableH {
+    overflow: auto;
+    max-height: 80px;
+    width: 300px;
+}
+
+.board {
+    line-height: 20px;
+    margin: 15px 0 5px 0;
+    padding-bottom: 15px;
+    overflow: hidden;
+    border-bottom: 1px solid #b6b6b6;
 }

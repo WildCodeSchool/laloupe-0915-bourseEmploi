@@ -1,5 +1,14 @@
 function studentService($http, $cookies) {
     return {
+        //USER'S ROUTES
+        getAllUsers: function () {
+            return $http.get('/api/users/allUsers', {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         //STUDENT'S ROUTES   /!\ 
         getAll: function () {
             return $http.get('/api/users/students', {
@@ -25,6 +34,23 @@ function studentService($http, $cookies) {
                 }
             });
         },
+
+        getAlumnis: function () {
+            return $http.get('/api/alumnis', {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
+        getStatLang: function (skill) {
+            return $http.post('/api/statLang', skill, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         getInfo: function () {
             return $http.get('/api/infos/students', {
                 headers: {

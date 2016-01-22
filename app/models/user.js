@@ -11,6 +11,10 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    createdAt: {
+        type: Date,
+        required: true
+    },
     phone: String,
     website: String,
     twitter: String,
@@ -31,6 +35,13 @@ var User = {
             email: email,
             password: password
         }, callback);
+    },
+    findAll: function (req, res) {
+        User.model.find({}, function (err, users) {
+            if (err)
+                console.log(err);
+            res.json(users);
+        });
     }
 
 }

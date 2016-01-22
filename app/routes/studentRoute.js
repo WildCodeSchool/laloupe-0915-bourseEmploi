@@ -3,9 +3,12 @@
 \* ------------------------------------------------------------------------- */
 
 var Student = require('../models/student.js');
+var User = require('../models/user.js');
 var Auth = require('../middlewares/authorization.js');
 
 module.exports = function (app, passport) {
+
+    app.get('/api/users/allUsers', Auth.user.isAdministrator, User.findAll); //find all users ( recruiters include)
 
     app.get('/api/users/students', Auth.user.hasAuthorization, Student.findByType);
 
@@ -15,7 +18,11 @@ module.exports = function (app, passport) {
 
     app.get('/api/students_promo', Auth.user.isAdministrator, Student.findByPromo);
 
+    app.get('/api/alumnis', Auth.user.isAdministrator, Student.findAlumnis);
+
     app.post('/api/students', Auth.user.isAdministrator, Student.create);
+
+    app.post('/api/statLang', Auth.user.isAdministrator, Student.findBySkill);
 
     app.post('/api/students/filter', /*Auth.user.isAdministrator,*/ Student.findFiltered);
 

@@ -36,11 +36,14 @@
     <script src="js/libs/angular-route.min.js"></script>
     <script src="js/libs/angular-sanitize.min.js"></script>
     <script src="js/libs/moment.js"></script>
+    <script src="js/libs/Chart.js"></script>
+    <script type="text/javascript" src="js/libs/excellentexport.min.js"></script>
     <script src="js/libs/bower_components/angular-cookies.js"></script>
     <script src="js/libs/bower_components/angular/ui-bootstrap-tpls-0.14.3.min.js"></script>
 
     <script src="js/controllers/connectController.js"></script>
     <script src="js/controllers/adminStatsController.js"></script>
+    <script src="js/controllers/adminBoardController.js"></script>
     <script src="js/controllers/formRecruiterController.js"></script>
     <script src="js/controllers/formOfferController.js"></script>
     <script src="js/controllers/offerController.js"></script>
@@ -100,7 +103,7 @@
                     <!--OFFERS-->
                     <li ng-class="{active: activetab=='/formOffer'}" class="dropdown li-nav">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bullhorn fa-nav"></i> Créer un annonces
+                            <i class="fa fa-bullhorn fa-nav"></i> Créer une annonce
                         </a>
                     </li>
                     <!--BOOK-->
@@ -129,7 +132,8 @@
                             <i class="fa fa-area-chart"></i> Statistiques <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="li-nav"><a href="/#/adminStats">Statistique</a></li>
+                            <li class="li-nav"><a href="/#/adminStats">Statistiques</a></li>
+                            <li class="li-nav"><a href="/#/adminBoards">Tableaux</a></li>
                         </ul>
                     </li>
                     <!--SKILLS-->
@@ -209,7 +213,7 @@
 
     <div id="container">
 
-        <div id="body" ng-class="{'container-fluid': activetab=='/login' || activetab=='/editSchool', 'container': activetab!=='/login' && activetab!=='/editSchool'}">
+        <div id="body" ng-class="{'container-fluid': activetab=='/login' || activetab=='/editSchool' || activetab=='/adminBoards', 'container': activetab!=='/login' && activetab!=='/editSchool' && activetab!=='/adminBoards'}">
             <ng-view></ng-view>
         </div>
 

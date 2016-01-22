@@ -106,6 +106,14 @@ function config($routeProvider) {
                 connected: checkIsConnected
             }
         })
+        .when('/adminBoards', {
+            templateUrl: 'views/adminBoard.html',
+            controller: 'adminBoardController',
+            resolve: {
+                administrator: checkIsAdmin,
+                connected: checkIsConnected
+            }
+        })
         .when('/editOffer/:id', {
             templateUrl: 'views/editOffer.html',
             controller: 'editOfferController',
@@ -201,6 +209,7 @@ angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies', 'ui.bootstrap'])
     .controller('moderateOfferController', moderateOfferController)
     .controller('editSchoolController', editSchoolController)
     .controller('adminStatsController', adminStatsController)
+    .controller('adminBoardController', adminBoardController)
     .service('connectService', connectService)
     .service('offerService', offerService)
     .service('skillService', skillService)
