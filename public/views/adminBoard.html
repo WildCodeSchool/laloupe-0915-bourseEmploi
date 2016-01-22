@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="wildBoard">
+        <a download="wildFinder_stats.xls" onclick="return ExcellentExport.excel(this, 'datatable', 'Sheet Name Here');">
+            <button class="btnW btn-default btn"><strong>Exporter sous Excel</strong></button>
+        </a>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="panel wildpanel paneldefault">
+            <div class="wildpanelheader panel paneldefault">
+                <h4>Les recruteurs :</h4>
+            </div>
+            <div class="board">
+                <div class="form-inline">
+                    <div class="form-group col-sm-4">
+                        <label class="col-sm-2 control-label">Nom :</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" ng-model="queryName">
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label class="col-sm-2 control-label">Ville :</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" ng-model="queryCity">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="wildpanelbody panel paneldefault">
+                <table id="datatable" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nbre</th>
+                            <th>Nom</th>
+                            <th>Logo</th>
+                            <th>Adresse</th>
+                            <th>Code postal</th>
+                            <th>Ville</th>
+                            <th>Région</th>
+                            <th>Pays</th>
+                            <th>Taille</th>
+                            <th>Secteur</th>
+                            <th>Description</th>
+                            <th>Site Web</th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="r in recruiters | filter: {name: queryName, city: queryCity} | orderBy: '-name'">
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{r.name}}</td>
+                        <td><img height="50" ng-src="{{r.logo}}" alt="Image preview..."></td>
+                        <td>{{r.address}}</td>
+                        <td>{{r.zipCode}}</td>
+                        <td>{{r.city}}</td>
+                        <td>{{r.region}}</td>
+                        <td>{{r.country}}</td>
+                        <td>{{r.size}}</td>
+                        <td>{{r.businessSector}}</td>
+                        <td>
+                            <div class="tableH">{{r.description}}</div>
+                        </td>
+                        <td>{{r.website}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

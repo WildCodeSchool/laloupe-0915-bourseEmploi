@@ -13,6 +13,7 @@ var transporter = nodemailer.createTransport('smtps://wildfinder.wcs%40gmail.com
 
 var User = require('./user.js');
 var Recruiter = require('./recruiter.js');
+var Promos = require('./promo.js');
 
 var StudentSchema = User.model.schema.extend({
     name: {
@@ -48,8 +49,8 @@ var StudentSchema = User.model.schema.extend({
         "default": []
     },
     languages: [{
-            name: String,
-            level: String
+        name: String,
+        level: String
     }],
     likes: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -128,6 +129,32 @@ var Student = {
         });
     },
 
+    findBySkill: function (req, res) {
+        Student.model.find({
+                'skills.skill': {
+                    $in: req.body.ids
+                },
+                _type: 'Student'
+            })
+            .populate('skills.skill')
+            .exec(function (err, students) {
+                var result = {};
+                students.forEach(function (student) {
+                    student.skills.forEach(function (s) {
+                        if (req.body.ids.indexOf(s.skill._id.toString()) > -1) {
+                            if (result.hasOwnProperty(s.skill.title))
+                                result[s.skill.title] += 1;
+                            else
+                                result[s.skill.title] = 1;
+                        }
+                    })
+                })
+                console.log(result);
+                res.json(result)
+
+            })
+    },
+
     findInfo: function (req, res) {
         Student.model.find({
             _type: 'Student'
@@ -155,6 +182,26 @@ var Student = {
             });
         });
     },
+
+    findAlumnis: function (req, res) {
+        Promos.model.find({
+                'endDate': {
+                    $lt: new Date()
+                }
+            })
+            .exec(function (err, promos) {
+                Student.model.find({
+                        'promos': {
+                            $in: promos
+                        }
+                    })
+                    .exec(function (err, alumnis) {
+                        res.json(alumnis);
+                    })
+
+            })
+    },
+
 
     findFiltered: function (req, res) {
         var status = req.body.status;
@@ -247,7 +294,9 @@ var Student = {
 
     deleteLanguage: function (req, res) {
         Student.model.findById(req.params.id, function (err, student) {
-            var index = student.languages.map(function(element) { return element.name; }).indexOf(req.body.name);
+            var index = student.languages.map(function (element) {
+                return element.name;
+            }).indexOf(req.body.name);
             student.languages.splice(index, 1);
             student.save();
             if (err)

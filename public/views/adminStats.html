@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Mes statistiques générales :</h3>
+        <div class="row wildpanel panel paneldefault">
+            <div class="col-sm-4 text-center">
+                <h4>Répartition élèves / recruteurs :</h4>
+                <canvas id="stuRec" width="200" height="200"></canvas>
+                <div>
+                    <p>{{students.length}} élèves / {{recruiters.length}} recruteurs</p>
+                </div>
+            </div>
+            <div class="col-sm-4 text-center">
+                <h4>Répartition élèves en formation / alumnis :</h4>
+                <canvas id="stuAlu" width="200" height="200"></canvas>
+                <div>
+                    <p>{{studentFor}} en formation / {{alumnis.length}} alumnis</p>
+                </div>
+            </div>
+            <div class="col-sm-4 text-center">
+                <div>
+                    <h4>Répartition élèves / langages :</h4>
+                    <canvas id="lang" width="200" height="200"></canvas>
+                </div>
+                <div>
+                    <p>{{mainSkills.length}} langages principaux</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-12">
+        <h3>Les statistiques entreprises :</h3>
+        <div class="row wildpanel panel paneldefault">
+            <div class="col-sm-6 text-center">
+                <h4>Répartition par taille d'entreprises :</h4>
+                <canvas id="rectrSize" width="200" height="200"></canvas>
+                <div>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6 text-center">
+                <h4>Répartition par régions :</h4>
+                <canvas id="rectrArea" width="200" height="200"></canvas>
+                <div>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
