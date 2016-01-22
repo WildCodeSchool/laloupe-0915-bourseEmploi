@@ -29,7 +29,7 @@
             </div>
             <div class="wildpanelbody panel paneldefault"></div>
             <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" class="text-right" href="/#/editBook/{{user._id}}">Modifier</a>
+                <a ng-show="ifStudent" class="text-right" ng-click="modification()">Modifier</a>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
                 <p>{{student.mobility}}</p>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" class="text-right">Modifier</a>
+                <a ng-show="ifStudent" class="text-right" ng-click="modification()">Modifier</a>
             </div>
         </div>
 
@@ -57,7 +57,7 @@
                 <p>{{student.wildSide}}</p>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" class="text-right" href="/#/editBook/{{user._id}}">Modifier</a>
+                <a ng-show="ifStudent" class="text-right" ng-click="modification()">Modifier</a>
             </div>
         </div>
     </div>
@@ -125,7 +125,7 @@
                 </div>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Ajouter ou modifier une expérience</a>
+                <a ng-show="ifStudent" ng-click="modification()">Ajouter ou modifier une expérience</a>
             </div>
         </div>
 
@@ -184,7 +184,7 @@
                 </div>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Ajouter ou modifier une formation</a>
+                <a ng-show="ifStudent" ng-click="modification()">Ajouter ou modifier une formation</a>
             </div>
         </div>
     </div>
@@ -231,7 +231,7 @@
                 </ul>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Ajouter ou modifier</a>
+                <a ng-show="ifStudent" ng-click="modification()">Ajouter ou modifier</a>
             </div>
         </div>
 
@@ -249,7 +249,7 @@
                 </ul>
             </div>
             <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" href="/#/editBook/{{user._id}}">Ajouter ou modifier</a>
+                <a ng-show="ifStudent" ng-click="modification()">Ajouter ou modifier</a>
             </div>
         </div>
     </div>
