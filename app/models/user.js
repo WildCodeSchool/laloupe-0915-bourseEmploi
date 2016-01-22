@@ -13,7 +13,8 @@ var UserSchema = new mongoose.Schema({
     },
     createdAt: {
         type: Date,
-        required: true
+        required: true,
+        default: Date.now
     },
     phone: String,
     website: String,

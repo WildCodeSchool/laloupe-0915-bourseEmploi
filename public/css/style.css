@@ -124,7 +124,7 @@ ul {
 .caseAccueil {
     padding-top: 15px;
     padding-bottom: 15px;
-    margin-top: 180px;
+    margin-top: 170px;
     padding: 10px;
 }
 
@@ -1354,4 +1354,9 @@ li.active {
 .accroche {
     font-size: 17px;
     padding: 0;
+}
+.moniteur {
+    width: 50%;
+    margin-top: 100px;
+    margin-left: 180px;
 }
