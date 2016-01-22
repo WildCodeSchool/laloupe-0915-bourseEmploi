@@ -21,13 +21,13 @@ body {
 }
 
 .bg {
-    background: url('../img/background.jpg') no-repeat center center fixed;
+    background: url('../img/background2.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-color: black;
-    padding-top: 20px;
+    background-color: #F5FAF9;
+    padding-top: 8px;
 }
 
 #container {
@@ -124,10 +124,20 @@ ul {
 .caseAccueil {
     padding-top: 15px;
     padding-bottom: 15px;
-    background-color: rgba(255, 255, 255, .6);
-    border-color: #b6b6b6;
-    margin-top: 130px;
+    margin-top: 180px;
     padding: 10px;
+}
+
+.case2Accueil {
+    margin-top: 45px;
+}
+
+.case3Accueil {
+    margin-bottom: 45px;
+}
+
+.case3in {
+    padding: 0;
 }
 
 .wild {
@@ -275,18 +285,19 @@ ul {
     color: white;
     background-size: 100% 200%;
     background-color: transparent;
-    background-image: linear-gradient(to top, #009587 50%, transparent 50%);
+    background-image: linear-gradient(to top, white 50%, transparent 50%);
     -webkit-transition: background-position 1s;
     -moz-transition: background-position 1s;
     transition: background-position 1s;
     margin-right: 15px;
+    margin-top: 7px;
 }
 
 .btnWA:hover {
     background-position: 0 100%;
     background-color: transparent;
-    color: white;
-    border-color: #009587;
+    color: #009587;
+    border-color: white;
 }
 
 .btnWA:focus {
@@ -1097,10 +1108,6 @@ a.a-white {
     color: #202020;
 }
 
-.headerAcc {
-    margin-bottom: 30px;
-}
-
 .marge-top {
     margin-top: 40px;
 }
@@ -1117,6 +1124,7 @@ li.active {
 .navbarr-avatar {
     height: 40px;
     margin: -20px 5px -17px -5px;
+    border-radius: 3px;
     border-color: white;
 }
 
@@ -1337,4 +1345,13 @@ li.active {
     padding-bottom: 15px;
     overflow: hidden;
     border-bottom: 1px solid #b6b6b6;
+}
+
+.capitalize {
+    text-transform: uppercase;
+}
+
+.accroche {
+    font-size: 17px;
+    padding: 0;
 }
