@@ -122,10 +122,8 @@ ul {
 }
 
 .caseAccueil {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    margin-top: 170px;
-    padding: 10px;
+    padding: 0;
+    margin-top: 55px;
 }
 
 .case2Accueil {
@@ -133,7 +131,7 @@ ul {
 }
 
 .case3Accueil {
-    margin-bottom: 45px;
+    margin-bottom: 30px;
 }
 
 .case3in {
@@ -1352,11 +1350,44 @@ li.active {
 }
 
 .accroche {
-    font-size: 17px;
-    padding: 0;
-}
-.moniteur {
-    width: 50%;
+    margin-left: 5%;
     margin-top: 100px;
-    margin-left: 180px;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #009788;
+}
+
+@media screen and (max-width: 950px) {
+    .moniteur {
+        width: 80%;
+        margin-top: -30px;
+        margin-left: 5%;
+    }
+}
+
+@media screen and (min-width: 950px) and (max-width: 1280px) {
+    .moniteur {
+        width: 70%;
+        margin-top: -30px;
+        margin-left: 15%;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .moniteur {
+        width: 60%;
+        margin-top: -30px;
+        margin-left: 20%;
+    }
+}
+.accrocheCorp {
+    font-size: 18px;
+    padding: 0 5px 0 10px;
+    margin-bottom: 20px;
+}
+
+.accrocheCorp2 {
+    font-size: 20px;
+    padding: 0;
+    margin-bottom: 20px;
 }
