@@ -3,34 +3,38 @@
 \* ------------------------------------------------------------------------- */
 
 var mongoose = require('mongoose');
+var Student = require('./student');
+
 
 var FormationSchema = new mongoose.Schema({
-		studentId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Student',
-            required: true
-    	},
-		title: {
-			type: String,
-			required: true
-       	},
-        school: String,
-        description: String,
-        startDate: String,
-        endDate: String,
-        country: String,
-        city: String,
-        website: String,
-        graduate: String
+    studentId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Student',
+        required: true
+    },
+    title: {
+        type: String,
+        required: true
+    },
+    school: String,
+    description: String,
+    monthStart: String,
+    yearStart: String,
+    monthEnd: String,
+    yearEnd: String,
+    country: String,
+    city: String,
+    website: String,
+    graduate: String
 })
 
 var Formation = {
     model: mongoose.model('Formation', FormationSchema),
 
- findByStudent: function (req, res) {
+    findByStudent: function (req, res) {
         Formation.model.find({
-          studentId: req.params.studentId
-        }, function(err, formation){
+            studentId: req.params.studentId
+        }, function (err, formation) {
             res.json(formation);
         });
     },
@@ -43,20 +47,30 @@ var Formation = {
 
     create: function (req, res) {
         Formation.model.create(req.body, function (err, formation) {
+            if (err)
+                console.log(err);
+
+            //Update Student
+            Student.model.findById(req.body.studentId, function (err, student) {
+                student.formations.push({
+                    formation: formation._id
+                });
+                student.save();
+            })
             res.json(formation);
-            console.log(err);
         });
     },
 
     update: function (req, res) {
         Formation.model.findByIdAndUpdate(req.params.id, req.body, function (err, formation) {
+            if (err)
+                console.log(err);
             res.json(formation);
-            console.log(err);
         });
     },
 
     delete: function (req, res) {
-        Student.model.findByIdAndRemove(req.params.id, function () {
+        Formation.model.findByIdAndRemove(req.params.id, function () {
             res.sendStatus(200);
         })
     }

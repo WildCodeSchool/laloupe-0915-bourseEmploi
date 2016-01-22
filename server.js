@@ -10,6 +10,8 @@ var methodOverride = require('method-override');
 var passport = require('passport');
 var moment = require('moment');
 var expressJwt = require('express-jwt');
+var generatePassword = require('password-generator');
+var nodemailer = require('nodemailer');
 
 // Mongoose ====================================================================
 require('./config/database');
@@ -41,7 +43,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Cross Domain
-app.use(function(request, response, next) {
+app.use(function (request, response, next) {
     response.header('Access-Control-Allow-Credentials', true);
     response.header('Access-Control-Allow-Origin', request.headers.origin);
     response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');

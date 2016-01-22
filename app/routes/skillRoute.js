@@ -7,14 +7,16 @@ var Auth = require('../middlewares/authorization.js');
 
 module.exports = function (app, passport) {
 
-    app.get('/skills', Auth.user.hasAuthorization, Skill.findAll);
+    app.get('/api/skills', Auth.user.hasAuthorization, Skill.findAll);
 
-    app.get('/skills/:id', Auth.user.hasAuthorization, Skill.findById);
+    app.get('/api/one/skills', Auth.user.hasAuthorization, Skill.findById);
 
-    app.post('/skills', Auth.user.hasAuthorization, Skill.create);
+    app.get('/api/checkskill', Auth.user.hasAuthorization, Skill.checkSkill);
 
-    app.put('/skills/:id', Auth.user.hasAuthorization, Skill.update);
+    app.post('/api/skills', Auth.user.hasAuthorization, Skill.create);
 
-    app.delete('/skills/:id', Auth.user.hasAuthorization, Skill.delete);
+    app.put('/api/skills/:id', Auth.user.hasAuthorization, Skill.update);
+
+    app.delete('/api/skills/:id', Auth.user.hasAuthorization, Skill.delete);
 
 }

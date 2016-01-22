@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-sm-6">
+        <div class="wildpanel panel panel-default">
+            <div class="wildpanelheader panel panel-default">
+                <h4>Ajouter une nouvelle compétence</h4>
+            </div>
+            <div class="wildpanelbodyskill panel panel-default row">
+                <form>
+                    <div class="col-sm-12 form-group">
+                        <label class="col-sm-1 control-label" for="skillTitle">Titre</label>
+                        <div class="col-sm-11">
+                            <input type="text" class="form-control" id="skillTitle" placeholder="Titre de la compétence" ng-model="newSkill.title" capitalize>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <label class="col-sm-1 control-label" for="select-type">Type</label>
+                        <div class="col-sm-11">
+                            <select class="form-control" id="select-type" ng-model="language">
+                                <option disabled value="">Choisisez un type</option>
+                                <option value="false">Compétence</option>
+                                <option value="true">Language déterminant</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <div class="text-right">
+                            <button type="submit" ng-click="createSkill()" class="btnW">Créer</button>
+                        </div>
+                    </div>
+                    <div ng-if="displayError" class="col-sm-12 form-group">
+                        <p class="bg-warning">{{err}}</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div ng-show="displayEdit" class="wildpanel panel panel-default animated fadeInUp row">
+            <div class="wildpanelheader panel panel-default">
+                <h4>Edition de la compétence {{skillToEdit.title}}</h4>
+            </div>
+            <div class="wildpanelbodyskill panel panel-default row">
+                <form>
+                    <div class="col-sm-12 form-group">
+                        <label class="col-sm-1 control-label" for="skillTitle">Titre</label>
+                        <div class="col-sm-11">
+                            <input type="text" class="form-control" id="skillTitle" placeholder="" ng-model="skillEdit.title" capitalize>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <label class="col-sm-1 control-label" for="select-type">Type</label>
+                        <div class="col-sm-11">
+                            <select class="form-control" id="select-type" ng-model="skillEdit.language">
+                                <option>Compétence</option>
+                                <option>Language déterminant</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <div class="text-right">
+                            <button type="submit" ng-click="editSkill()" class="btnW">Editer</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <p class="bg-warning">{{err}}</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="wildpanel panel panel-default">
+            <div class="wildpanelheader panel panel-default">
+                <h4>Liste des compétences</h4>
+            </div>
+            <div class="no-marge skill-scrool">
+                <div ng-repeat="listSkill in skills | orderBy:'title'" class="wildpanelbody-skill panel panel-default">
+                    <div class="offerdelete">
+                        <ul>
+                            <li class="headeradvert skill-list">
+                                <i ng-click="showSkill(listSkill)" class="fa fa-pencil fa-lg"></i>
+                            </li>
+                            <li class="headeradvert skill-list">
+                                <i ng-click="deleteSkill(listSkill)" class="fa fa-trash fa-lg"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul>
+                        <li class="headeradvert ">
+                            <h3 class="headeradvert title-skill">{{listSkill.title}}</h3>
+                        </li>
+                        <li class="headeradvert skill-list">
+                            <p class="headeradvert"> - {{listSkill.language}}</p>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,12 @@
 
 var mongoose = require('mongoose');
 var moment = require('moment');
+moment.locale('fr');
+var nodemailer = require('nodemailer');
+
+
+var transporter = nodemailer.createTransport('smtps://wildfinder.wcs%40gmail.com:jecode4laloupe@smtp.gmail.com');
+
 
 var offerSchema = new mongoose.Schema({
     skills: [{
@@ -56,6 +62,14 @@ var offerSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    endOfPublish: {
+        type: Date,
+        required: true
+    },
+    published: {
+        type: Boolean,
+        required: true
+    },
     address: {
         type: String,
         required: true
@@ -69,6 +83,10 @@ var offerSchema = new mongoose.Schema({
         required: true
     },
     zipCode: {
+        type: String,
+        required: true
+    },
+    region: {
         type: String,
         required: true
     }
@@ -85,10 +103,50 @@ var Offer = {
         });
     },
 
+    findFiltered: function (req, res) {
+        var contract = req.body.contract;
+        var region = req.body.region;
+        var experience = req.body.experience;
+        var skill = {
+            'skills': {
+                $elemMatch: req.body.language
+            },
+            'skills.skill': {
+                $in: req.body.skills
+            }
+        };
+
+        var query = Offer.model.find({
+            'startDate': {
+                $lt: new Date()
+            },
+            'endDate': {
+                $gte: new Date()
+            }
+        });
+
+        if (contract)
+            query = query.where('contract').equals(contract);
+        if (region)
+            query = query.where('region').equals(region);
+        if (experience)
+            query = query.where('experience').equals(experience);
+        if (req.body.skill)
+            query = query.where('skills.skill').equals(req.body.skill);
+
+        query.populate("skills.skill").populate("referentId", "-password").exec(function (err, offer) {
+            if (err) {
+                res.status(400);
+                console.log(err);
+            } else
+                res.json(offer);
+        });
+    },
+
     findAll: function (req, res) {
         Offer.model.find({})
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offers) {
                 res.json(offers);
             });
@@ -104,8 +162,9 @@ var Offer = {
                 }
             })
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offers) {
+                console.log(err)
                 res.json(offers);
             });
     },
@@ -113,16 +172,18 @@ var Offer = {
     findById: function (req, res) {
         Offer.model.findById(req.params.id)
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offer) {
                 res.json(offer);
             });
     },
 
     findByUser: function (req, res) {
-        Offer.model.find(req.params.id)
+        Offer.model.find({
+                referentId: req.params.id
+            })
             .populate("skills.skill")
-            .populate("referentId")
+            .populate("referentId", "-password")
             .exec(function (err, offer) {
                 res.json(offer);
             });
@@ -144,23 +205,67 @@ var Offer = {
                 }
             })
             .populate("skills.skill")
-            .populate("referentId")
-            .exec(function (err, offer) {
+            .populate("referentId", "-password")
+            .exec(function (err, offers) {
+                if (err) {
+                    res.status(400);
+                    console.log(err);
+                }
+                res.json(offers);
+            });
+    },
+
+    findNotPublished: function (req, res) {
+        Offer.model.find({
+                published: false
+            })
+            .populate("skills.skill")
+            .populate("referentId", "-password")
+            .exec(function (err, offers) {
                 if (err) {
                     res.status(400);
                     console.log(err);
                 } else
-                    res.json(offer);
+                    res.json(offers);
+            });
+    },
+
+    findSoonEnded: function (req, res) {
+        Offer.model.find({
+                'endOfPublish': {
+                    $lt: new Date()
+                },
+                'endDate': {
+                    $gt: new Date()
+                }
+            })
+            .populate("skills.skill")
+            .populate("referentId", "-password")
+            .exec(function (err, offers) {
+                if (err) {
+                    res.status(400);
+                    console.log(err);
+                } else
+                    res.json(offers);
             });
     },
 
     create: function (req, res) {
         Offer.model.create(req.body, function (err, offer) {
-            res.json(offer);
-            console.log(err);
+            if (err) {
+                console.log(err);
+                res.sendStatus(400);
+            } else {
+                res.json(offer);
+                transporter.sendMail(require('../mails/Mail.js').newOfferMail(offer.referentEmail, offer.title), function (error, info) {
+                    if (error) {
+                        return console.log(error);
+                    }
+                    console.log('Message sent: ' + info.response);
+                });
+            }
         });
     },
-
 
     update: function (req, res) {
         Offer.model.findByIdAndUpdate(req.params.id, req.body, function (err, offer) {
@@ -168,49 +273,44 @@ var Offer = {
         });
     },
 
-
-    /*update: function (req, res) {
-        Offer.model.findByIdAndUpdate(req.params.id, {
-            title: req.body.title,
-            email: req.body.email,
-            referentName: req.body.referentName,
-            referentPhone: req.body.referentPhone || 0,
-            description: req.body.description,
-            contract: req.body.contract,
-            salary: req.body.salary || 0,
-            experience: req.body.experience,
-            responsability: req.body.responsability,
-            wildSide: req.body.wildSide,
-            startDate: req.body.startDate,
-
-            endDate: moment(req.body.enDate).add(90, 'days'),
-
-            address: req.body.address,
-            city: req.body.city,
-            country: req.body.country,
-            zipCode: req.body.zipCode
-
-        }, function (err, offer) {
-           // for (var i = 0; i < req.body.skills.length ; i++){
-           //          Offer.model.findByIdAndUpdate(offer.id,{ $push: {
-           //              skills: {
-           //                  skill: req.body.skills[i]
-           //              }
-           //          }}, function (err, oo) {
-           //              //nothing    
-           //          });
-                    
-           //      }
-                res.sendStatus(200);
-        });    
-    },*/
+    validate: function (req, res) {
+        Offer.model.findByIdAndUpdate(req.params.id, req.body, function (err, offer) {
+            res.json(offer);
+            transporter.sendMail(require('../mails/Mail.js').validateOfferMail(offer.referentEmail, offer.title, moment(offer.startDate).format('DD MMMM YYYY'), moment(offer.endDate).format('DD MMMM YYYY')), function (error, info) {
+                if (error) {
+                    return console.log(error);
+                }
+                console.log('Message sent: ' + info.response);
+            });
+        });
+    },
 
     delete: function (req, res) {
-        Offer.model.findByIdAndRemove(req.params.id, function () {
-            res.sendStatus(200);
+        Offer.deleteById(req.params.id);
+        res.status(200)
+    },
+
+    deleteById: function (id) {
+        Offer.model.findByIdAndRemove(id, function () {
+            //Bizarre ?
+            var Student = require('./student.js');
+            Student.model.find({
+                'likes': id
+            }).exec(function (err, students) {
+                students.forEach(function (student) {
+                    var newLikes = [];
+                    for (var i = 0; i < student.likes.length; i++) {
+                        if (student.likes[i] != id) {
+                            newLikes.push(student.likes[i]);
+                        }
+                    }
+                    Student.model.findByIdAndUpdate(student._id, {
+                        likes: newLikes
+                    }).exec();
+                });
+            });
         })
     }
 }
-
 
 module.exports = Offer;

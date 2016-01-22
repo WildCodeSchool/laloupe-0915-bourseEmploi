@@ -3,6 +3,7 @@
 \* ------------------------------------------------------------------------- */
 
 var mongoose = require('mongoose');
+var Student = require('./student');
 extend = require('mongoose-schema-extend');
 
 var ExperienceSchema = new mongoose.Schema({
@@ -18,8 +19,10 @@ var ExperienceSchema = new mongoose.Schema({
     company: String,
     companyDescription: String,
     contract: String,
-    startDate: String,
-    endDate: String,
+    monthStart: String,
+    yearStart: String,
+    monthEnd: String,
+    yearEnd: String,
     country: String,
     city: String,
     missions: String,
@@ -32,8 +35,10 @@ var Experience = {
 
     findByStudent: function (req, res) {
         Experience.model.find({
-            studentId: req.params.studentId
+            studentId: req.params.id
         }, function (err, experience) {
+            if (err)
+                console.log(err);
             res.json(experience);
         });
     },
@@ -46,15 +51,25 @@ var Experience = {
 
     create: function (req, res) {
         Experience.model.create(req.body, function (err, experience) {
+            if (err)
+                console.log(err);
+
+            //Update Student
+            Student.model.findById(req.body.studentId, function (err, student) {
+                student.experiences.push({
+                    experience: experience._id
+                });
+                student.save();
+            })
             res.json(experience);
-            console.log(err);
         });
     },
 
     update: function (req, res) {
         Experience.model.findByIdAndUpdate(req.params.id, req.body, function (err, experience) {
+            if (err)
+                console.log(err);
             res.json(experience);
-            console.log(err);
         });
     },
 

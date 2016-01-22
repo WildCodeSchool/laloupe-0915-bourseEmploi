@@ -11,13 +11,15 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/style.css">
 
     <!--OPENSTREET MAP-->
     <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
 
     <!-- JQ - boostrap -->
     <script src="js/libs/jquery-1.11.3.min.js"></script>
@@ -33,34 +35,41 @@
     <script src="js/libs/angular-route.min.js"></script>
     <script src="js/libs/angular-sanitize.min.js"></script>
     <script src="js/libs/moment.js"></script>
+    <script src="js/libs/Chart.js"></script>
+    <script type="text/javascript" src="js/libs/excellentexport.min.js"></script>
     <script src="js/libs/bower_components/angular-cookies.js"></script>
     <script src="js/libs/bower_components/angular/ui-bootstrap-tpls-0.14.3.min.js"></script>
 
     <script src="js/controllers/connectController.js"></script>
-    <script src="js/controllers/adminController.js"></script>
+    <script src="js/controllers/adminStatsController.js"></script>
+    <script src="js/controllers/adminBoardController.js"></script>
     <script src="js/controllers/formRecruiterController.js"></script>
     <script src="js/controllers/formOfferController.js"></script>
     <script src="js/controllers/offerController.js"></script>
     <script src="js/controllers/homeRctrController.js"></script>
+    <script src="js/controllers/editRecruiterController.js"></script>
     <script src="js/controllers/homeStudentController.js"></script>
     <script src="js/controllers/searchOfferController.js"></script>
     <script src="js/controllers/editOfferController.js"></script>
     <script src="js/controllers/bookController.js"></script>
     <script src="js/controllers/bookStudentController.js"></script>
     <script src="js/controllers/editBookStudentController.js"></script>
+    <script src="js/controllers/editSchoolController.js"></script>
+    <script src="js/controllers/skillsController.js"></script>
+    <script src="js/controllers/moderateOfferController.js"></script>
     <script src="js/services/connectService.js"></script>
     <script src="js/services/offerService.js"></script>
     <script src="js/services/skillService.js"></script>
     <script src="js/services/recruiterService.js"></script>
     <script src="js/services/geocoderService.js"></script>
     <script src="js/services/studentService.js"></script>
+    <script src="js/services/schoolPromoService.js"></script>
     <script src="js/app.js"></script>
 
 </head>
 
 <body ng-class="{'bg': activetab==='/login'}">
-
-    <!--NAVBARR-->
+    <!--NAVBAR-->
     <header ng-hide="activetab === '/login'" class="navbar navbar-inverse navbar-fixed-top navbar-border" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -88,39 +97,82 @@
                 </form>
 -->
 
-
                 <!--NAVBAR RECRUITER-->
-                <ul ng-if="user._type == 'Recruiter'" class="nav navbar-nav navbar-right">
+                <ul ng-if="user._type == 'Recruiter' && user.admin == false" class="nav navbar-nav navbar-right">
                     <!--OFFERS-->
-                    <li ng-class="{active: activetab=='/formOffer'}" class="dropdown li-nav">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bullhorn fa-nav"></i> Mes annonces <span class="caret"></span>
+                    <li>
+                        <a href="/#/formOffer" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bullhorn fa-nav"></i> Créer un annonces
                         </a>
-                        <ul class="dropdown-menu">
-                            <li class="li-nav"><a href="/#/formOffer">Créer une annonces</a></li>
-                            <li class="li-nav divider" role="separator"></li>
-                            <li class="li-nav"><a href="">Voir mes annonces</a></li>
-                            <li class="li-nav"><a href="">Editer mes annonces</a></li>
-                        </ul>
                     </li>
                     <!--BOOK-->
                     <li ng-class="{active: activetab=='/book'}" class="li-nav" data-toggle="tooltip" data-placement="bottom" title="Decouvrir les étudiants de la WCS">
                         <a href="/#/book"><i class="fa fa-search fa-nav"></i> Le Book </a>
                     </li>
-                    <!--FAVOURITES STUDENTS-->
-                    <li ng-class="{active: activetab=='/'}" class="li-nav" data-toggle="tooltip" data-placement="bottom" title="Vos coup de coeur">
-                        <a href="">
-                            <i class="fa fa-heart fa-lg fa-nav"></i>
-                        </a>
-                    </li>
                     <!--MY ACCOUNT-->
-                    <li ng-class="{active: activetab=='/homeRecruiter'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Votre compte">
+                    <li ng-class="{active: activetab=='/homeRecruiter'|| activetab=='/editRecruiter'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Votre compte">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             <img ng-src="{{user.logo}}" class="navbarr-avatar"> {{user.name}} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="li-nav"><a href="/#/homeRecruiter">Ma page d'accueil</a></li>
-                            <li class="li-nav"><a href="">Editer mon compte</a></li>
+                            <li class="li-nav"><a href="/#/editRecruiter/{{user._id}}">Editer mon compte</a></li>
+                            <li class="li-nav divider" role="separator"></li>
+                            <li class="li-nav"><a ng-click="logout()">Deconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!--NAVBAR ADMIN-->
+                <ul ng-if="user._type == 'Recruiter' && user.admin == true" class="nav navbar-nav navbar-right">
+                    <!--STAT-->
+                    <li ng-class="{active: activetab=='/adminStats'}" class="dropdown li-nav">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-area-chart"></i> Statistiques <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="li-nav"><a href="/#/adminStats">Statistiques</a></li>
+                            <li class="li-nav"><a href="/#/adminBoards">Tableaux</a></li>
+                        </ul>
+                    </li>
+                    <!--SKILLS-->
+                    <li ng-class="{active: activetab=='/skills'}" class="dropdown li-nav">
+                        <a href="/#/skills" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-cogs"></i> Compétences
+                        </a>
+                    </li>
+                    <!--CLASSES-->
+                    <li ng-class="{active: activetab=='/book' || activetab=='/editSchool'}" class="dropdown li-nav">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-graduation-cap"></i> Promos <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="li-nav"><a href="/#/editSchool">Gestion des promos</a></li>
+                            <li class="li-nav divider" role="separator"></li>
+                            <li class="li-nav"><a href="/#/book">Le Book des élèves</a></li>
+                        </ul>
+                    </li>
+                    <!--OFFERS-->
+                    <li ng-class="{active: activetab=='/formOffer' || activetab=='/moderateOffer' || activetab=='/searchOffer'}" class="dropdown li-nav">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-file-text"></i> Offres <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="li-nav"><a href="/#/formOffer">Créer une offre</a></li>
+                            <li class="li-nav"><a href="/#/homeRecruiter">Mes Offres</a></li>
+                            <li class="li-nav divider" role="separator"></li>
+                            <li class="li-nav"><a href="/#/moderateOffer">Modération des offres</a></li>
+                            <li class="li-nav"><a href="/#/searchOffer">Toutes les offres</a></li>
+                        </ul>
+                    </li>
+                    <!--MY ACCOUNT-->
+                    <li ng-class="{active: activetab=='/homeRecruiter' || activetab=='/editRecruiter'}" class="dropdown li-nav">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <img ng-src="{{user.logo}}" class="navbarr-avatar"> {{user.name}} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="li-nav"><a href="/#/homeRecruiter">Ma page d'accueil</a></li>
+                            <li class="li-nav"><a href="/#/editRecruiter/{{user._id}}">Editer mon compte</a></li>
                             <li class="li-nav divider" role="separator"></li>
                             <li class="li-nav"><a ng-click="logout()">Deconnexion</a></li>
                         </ul>
@@ -137,22 +189,18 @@
                     <li ng-class="{active: activetab=='/book'}" class="li-nav" data-toggle="tooltip" data-placement="bottom" title="Decouvrir les étudiants de la WCS">
                         <a href="/#/book"><i class="fa fa-search fa-nav"></i> Le Book</a>
                     </li>
-                    <!--FAVOURITES OFFERS-->
-                    <li ng-class="{active: activetab=='/'}" class="li-nav" data-toggle="tooltip" data-placement="bottom" title="Vos offres favorites">
-                        <a href=""><i class="fa fa-heart fa-lg fa-nav"></i></a>
-                    </li>
                     <!--CV-->
                     <li ng-class="{active: activetab=='/'}" class="li-nav">
                         <a href="/#/book/{{user._id}}"><i class="fa fa-file-text fa-nav"></i> Mon CV</a>
                     </li>
                     <!--STUDENT ACCOUNT-->
-                    <li ng-class="{active: activetab=='/homeStudent'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Votre compte">
+                    <li ng-class="{active: activetab=='/homeStudent'  || activetab=='/editBook'}" class="dropdown li-nav" data-toggle="tooltip" data-placement="right" title="Votre compte">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <img ng-src="{{user.picture}}" class="navbarr-avatar"> {{user.firstName}} {{user.name}} <span class="caret"></span>
+                            <img ng-src="{{user.logo}}" class="navbarr-avatar"> {{user.firstName}} {{user.name}} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="li-nav"><a href="/#/homeStudent">Ma page d'accueil</a></li>
-                            <li class="li-nav"><a href="">Editer mon compte</a></li>
+                            <li class="li-nav"><a href="/#/editBook/{{user._id}}">Editer mon compte</a></li>
                             <li class="li-nav divider" role="separator"></li>
                             <li class="li-nav"><a ng-click="logout()">Deconnexion</a></li>
                         </ul>
@@ -162,10 +210,24 @@
         </div>
     </header>
 
-    <div ng-class="{'container-fluid': activetab=='/login', 'container': activetab!=='/login'}">
-        <ng-view></ng-view>
-    </div>
+    <div id="container">
 
+        <div id="body" ng-class="{'container-fluid': activetab=='/login' || activetab=='/editSchool' || activetab=='/adminBoards', 'container': activetab!=='/login' && activetab!=='/editSchool' && activetab!=='/adminBoards'}">
+            <ng-view></ng-view>
+        </div>
+
+        <!--FOOTER-->
+
+        <div id="footer" class="text-center" ng-class="{'fixed': activetab=='/login'}">
+            <span class="white">Copyright ©</span>
+            <li><a href="http://innoveduc.fr/">Innoveduc</a></li>
+            <a href="http://wildcodeschool.fr/"> | Conception: Wild Code School</a>
+            <span class="white">| 09 72 52 63 94 |</span>
+            <a class="footercontact" href="mailto:pauline@innoveduc.fr">Nous contacter</a>
+            <a href="https://facebook.com/wildcodeschool" target="_blank"><i class="fa fa-facebook-official fa-lg footerclass"></i></a>
+            <a href="https://twitter.com/wildcodeschool" target="_blank"><i class="fa fa-twitter fa-lg footerclass"></i></a>
+        </div>
+    </div>
 </body>
 
 </html>

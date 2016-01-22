@@ -26,7 +26,6 @@ function connectController($scope, $rootScope, $location, $cookies, connectServi
             $rootScope.token = res.data.token;
             $rootScope.user = res.data.user;
 
-
             //cookies
             $cookies.put('wildFinder_token', $rootScope.token);
             if (res.data.user._type != "Recruiter")

@@ -1,11 +1,11 @@
-<h2>edition offre</h2>
+<h2>Edition d'une offre</h2>
 
 <div class="row">
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 
         <div class="row" id="anchor1">
             <div class="page-header">
-                <h3>infos personnelles</h3>
+                <h3>Informations personnelles :</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-5">
@@ -33,7 +33,7 @@
         <fieldset class="form-group">
             <div class="col-sm-offset-8 col-sm-3">
                 <form>
-                    <button class="btnW" ng-click="update1()">mettre a jour</button>
+                    <button class="btnW" ng-click="update1()">Mettre a jour</button>
                 </form>
             </div>
         </fieldset>
@@ -41,7 +41,7 @@
 
         <div class="row" id="anchor2">
             <div class="page-header">
-                <h3>Coordonnées</h3>
+                <h3>Coordonnées :</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-3">
@@ -51,9 +51,9 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <label class="control-label">ville :</label>
+                    <label class="control-label">Ville :</label>
                     <div>
-                        <input type="email" class="form-control" id="" ng-model="city">
+                        <input type="text" class="form-control" id="" ng-model="city">
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -75,7 +75,7 @@
         <fieldset class="form-group">
             <div class="col-sm-offset-8 col-sm-3">
                 <form>
-                    <button class="btnW" ng-click="update2()">mettre a jour</button>
+                    <button class="btnW" ng-click="update2()">Mettre a jour</button>
                 </form>
             </div>
         </fieldset>
@@ -83,7 +83,7 @@
 
         <div class="row" id="anchor3">
             <div class="page-header">
-                <h3>Détails de l'offre</h3>
+                <h3>Détails de l'offre :</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-10">
@@ -122,7 +122,7 @@
             <fieldset class="form-group">
                 <div class="col-sm-offset-8 col-sm-3">
                     <form>
-                        <button class="btnW" ng-click="update3()">mettre a jour</button>
+                        <button class="btnW" ng-click="update3()">Mettre a jour</button>
                     </form>
                 </div>
             </fieldset>
@@ -131,11 +131,11 @@
 
         <div class="row" id="anchor4">
             <div class="page-header">
-                <h3>Compétences</h3>
+                <h3>Compétences :</h3>
             </div>
             <fieldset class="form-group">
                 <div class=" col-sm-4">
-                    <label class="control-label">Compétences recherchées* :</label>
+                    <label class="control-label">Compétences recherchées*<i>(Veuillez insérer au minimum deux compétences)</i> :</label>
                     <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Ajoutez des compétences les unes à la suite des autres grâce au moteur de recherche."><i class="fa fa-question-circle"></i></a>
                     <div class="input-group">
                         <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage, de compétence" class="form-control" list="Languages" />
@@ -150,8 +150,8 @@
                 <!-- $MSG D'ERREURS DES COMPETENCES -->
                 <fieldset class="col-sm-5">
                     <div>
-                        <label class="wildWarning control-label" ng-show="errorChoice">Vous avez déjà choisi cette compétence !</label>
-                        <label class="wildWarning control-label" ng-show="errorTyping">Cette compétence n'éxiste pas !</label>
+                        <label class="wildWarning control-label" ng-show="errorChoice">Vous avez déjà choisi cette compétence</label>
+                        <label class="wildWarning control-label" ng-show="errorTyping">Cette compétence n'éxiste pas</label>
                     </div>
                 </fieldset>
             </fieldset>
@@ -169,7 +169,7 @@
             <fieldset class="form-group">
                 <div class="col-sm-offset-8  col-sm-3">
                     <form>
-                        <button class="btnW" ng-click="update4()">mettre a jour</button>
+                        <button class="btnW" ng-click="update4()">Mettre a jour</button>
                     </form>
                 </div>
             </fieldset>
@@ -177,30 +177,24 @@
 
         <div class="row" id="anchor5">
             <div class="page-header">
-                <h3>Descriptions</h3>
+                <h3>Descriptions :</h3>
             </div>
             <fieldset class="form-group">
                 <div class="col-sm-10">
-                    <label>Description du poste</label>
+                    <label>Description du poste :</label>
                     <textarea class="form-control" rows="6" ng-model="description" name="desc"></textarea>
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-10">
-                    <label>Responsabilités du candidat</label>
+                    <label>Responsabilités du candidat :</label>
                     <textarea class="form-control" rows="4" ng-model="responsability"></textarea>
-                </div>
-            </fieldset>
-            <fieldset class="form-group">
-                <div class="col-sm-10">
-                    <label>Quel est le côté Wild de votre entreprise ?</label>
-                    <textarea class="form-control" rows="3" ng-model="wildSide"></textarea>
                 </div>
             </fieldset>
             <fieldset class="form-group">
                 <div class="col-sm-offset-8 col-sm-3">
                     <form>
-                        <button class="btnW" ng-click="update5()">mettre a jour</button>
+                        <button class="btnW" ng-click="update5()">Mettre a jour</button>
                     </form>
                 </div>
             </fieldset>
@@ -210,7 +204,6 @@
     <div class="col-md-3 col-lg-3 col-sm-3">
         <nav class="hidden-xs affix">
             <ul class="nav nav-pills nav-stacked">
-                {{activesubmenu}}
                 <li ng-class="{active: activesubmenu=='#anchor1'}"><a ng-click="scrollTo('anchor1')">Infos personnelles</a></li>
                 <li ng-class="{active: activesubmenu=='#anchor2'}"><a ng-click="scrollTo('anchor2')">Coordonnées</a></li>
                 <li ng-class="{active: activesubmenu=='#anchor3'}"><a ng-click="scrollTo('anchor3')">Détails de l'offre</a></li>

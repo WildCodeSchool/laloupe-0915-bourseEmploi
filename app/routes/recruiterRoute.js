@@ -7,8 +7,7 @@ var Auth = require('../middlewares/authorization.js');
 
 module.exports = function (app, passport) {
 
-    // CETTE ROUTE EST COMMUNUNE ENTRE Recruteur et Student (a revoir peut être)
-    app.get('/api/users/:type', Auth.user.hasAuthorization, Recruiter.findByType);
+    app.get('/api/users/recruiters', Auth.user.hasAuthorization, Recruiter.findByType)
 
     app.get('/api/recruiters/email', Recruiter.findByEmail);
 
@@ -17,6 +16,10 @@ module.exports = function (app, passport) {
     app.post('/api/recruiters', Recruiter.create);
 
     app.put('/api/recruiters/:id', Auth.user.hasAuthorization, Recruiter.update);
+
+    app.put('/api/like/recruiters/:id', Auth.user.hasAuthorization, Recruiter.like);
+
+    app.put('/api/unlike/recruiters/:id', Auth.user.hasAuthorization, Recruiter.unlike);
 
     app.delete('/api/recruiters/:id', Auth.user.hasAuthorization, Recruiter.delete);
 

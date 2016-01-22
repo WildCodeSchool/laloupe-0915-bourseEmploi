@@ -7,19 +7,27 @@ var Auth = require('../middlewares/authorization.js');
 
 module.exports = function (app, passport) {
 
-    app.get('/offers', Auth.user.hasAuthorization, Offer.findAll);
+    app.get('/api/offers', Auth.user.hasAuthorization, Offer.findAll);
 
-    app.get('/offers/currents', Auth.user.hasAuthorization, Offer.findAllCurrent);
+    app.get('/api/offers/:id', Auth.user.hasAuthorization, Offer.findById);
 
-    app.get('/offers/:id', Auth.user.hasAuthorization, Offer.findById);
+    app.get('/api/currents', Auth.user.hasAuthorization, Offer.findAllCurrent);
 
-    app.get('/offers/users/:id', Auth.user.hasAuthorization, Offer.findByUser);
+    app.get('/offersUsers/:id', Auth.user.hasAuthorization, Offer.findByUser);
 
-    app.post('/offers', Auth.user.hasAuthorization, Offer.create);
+    app.get('/api/offersNotPublished', Auth.user.hasAuthorization, Offer.findNotPublished);
 
-    app.put('/offers/:id', Auth.user.hasAuthorization, Offer.update);
+    app.get('/api/offersSoonEnded', Auth.user.hasAuthorization, Offer.findSoonEnded);
 
-    app.delete('/offers/:id', Auth.user.hasAuthorization, Offer.delete);
+    app.post('/api/offers/search', Auth.user.hasAuthorization, Offer.findFiltered);
+
+    app.post('/api/offers', Auth.user.hasAuthorization, Offer.create);
+
+    app.put('/api/validate/:id', Auth.user.isAdministrator, Offer.validate);
+
+    app.put('/api/offers/:id', Auth.user.hasAuthorization, Offer.update);
+
+    app.delete('/api/offers/:id', Auth.user.hasAuthorization, Offer.delete);
 
     app.post('/api/offers/skills', Auth.user.hasAuthorization, Offer.findBySkill);
 

@@ -32,6 +32,13 @@ function config($routeProvider) {
                 connected: checkIsConnected
             }
         })
+        .when('/editRecruiter/:id', {
+            templateUrl: 'views/editRecruiter.html',
+            controller: 'editRecruiterController',
+            resolve: {
+                connected: checkIsConnected
+            }
+        })
         .when('/homeStudent', {
             templateUrl: 'views/homeStudent.html',
             controller: 'homeStudentController',
@@ -41,26 +48,64 @@ function config($routeProvider) {
         })
         .when('/book', {
             templateUrl: 'views/book.html',
-            controller: 'bookController'
+            controller: 'bookController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/book/:id', {
             templateUrl: 'views/bookStudent.html',
-            controller: 'bookStudentController'
+            controller: 'bookStudentController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/editBook/:id', {
             templateUrl: 'views/editBookStudent.html',
-            controller: 'editBookStudentController'
+            controller: 'editBookStudentController',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/connectRecruiter', {
-            templateUrl: 'views/connectRecruiter.html',
+            templateUrl: 'views/connectRecruiter.html'
         })
         .when('/formRecruiter', {
             templateUrl: 'views/formRecruiter.html',
             controller: 'formRecruiterController'
         })
-        .when('/admin', {
-            templateUrl: 'views/admin.html',
-            controller: 'adminController',
+        .when('/skills', {
+            templateUrl: 'views/skills.html',
+            controller: 'skillsController',
+            resolve: {
+                administrator: checkIsAdmin,
+                connected: checkIsConnected
+            }
+        }).when('/editSchool', {
+            templateUrl: 'views/editSchool.html',
+            controller: 'editSchoolController',
+            resolve: {
+                administrator: checkIsAdmin,
+                connected: checkIsConnected
+            }
+        }).when('/moderateOffer', {
+            templateUrl: 'views/moderateOffer.html',
+            controller: 'moderateOfferController',
+            resolve: {
+                administrator: checkIsAdmin,
+                connected: checkIsConnected
+            }
+        }).when('/adminStats', {
+            templateUrl: 'views/adminStats.html',
+            controller: 'adminStatsController',
+            resolve: {
+                administrator: checkIsAdmin,
+                connected: checkIsConnected
+            }
+        })
+        .when('/adminBoards', {
+            templateUrl: 'views/adminBoard.html',
+            controller: 'adminBoardController',
             resolve: {
                 administrator: checkIsAdmin,
                 connected: checkIsConnected
@@ -73,9 +118,13 @@ function config($routeProvider) {
                 connected: checkIsConnected
             }
         })
-        .otherwise({
-            redirectTo: '/login'
-        });
+        .when('/mentionsLegales', {
+            templateUrl: 'views/mentionsLegales.html'
+        })
+
+    .otherwise({
+        redirectTo: '/login'
+    });
 }
 
 function checkIsConnected($q, $http, $rootScope, $location) {
@@ -138,13 +187,13 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 
-angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies'])
+angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies', 'ui.bootstrap'])
     .config(config)
     .controller('connectController', connectController)
-    .controller('adminController', adminController)
     .controller('formRecruiterController', formRecruiterController)
     .controller('formOfferController', formOfferController)
     .controller('homeRctrController', homeRctrController)
+    .controller('editRecruiterController', editRecruiterController)
     .controller('homeStudentController', homeStudentController)
     .controller('offerController', offerController)
     .controller('searchOfferController', searchOfferController)
@@ -152,12 +201,37 @@ angular.module('app', ['ngRoute', 'ngSanitize', 'ngCookies'])
     .controller('bookController', bookController)
     .controller('bookStudentController', bookStudentController)
     .controller('editBookStudentController', editBookStudentController)
+    .controller('adminStatsController', adminStatsController)
+    .controller('skillsController', skillsController)
+    .controller('moderateOfferController', moderateOfferController)
+    .controller('editSchoolController', editSchoolController)
+    .controller('adminStatsController', adminStatsController)
+    .controller('adminBoardController', adminBoardController)
     .service('connectService', connectService)
     .service('offerService', offerService)
     .service('skillService', skillService)
     .service('recruiterService', recruiterService)
     .service('geocoderService', geocoderService)
     .service('studentService', studentService)
+    .service('schoolPromoService', schoolPromoService)
+    .directive('capitalize', function () {
+        return {
+            require: 'ngModel',
+            link: function (scope, element, attrs, modelCtrl) {
+                var capitalize = function (inputValue) {
+                    if (inputValue == undefined) inputValue = '';
+                    var capitalized = inputValue.toUpperCase();
+                    if (capitalized !== inputValue) {
+                        modelCtrl.$setViewValue(capitalized);
+                        modelCtrl.$render();
+                    }
+                    return capitalized;
+                }
+                modelCtrl.$parsers.push(capitalize);
+                capitalize(scope[attrs.ngModel]); // capitalize initial value
+            }
+        };
+    })
 
 /*.factory('', )*/
 .run(run);

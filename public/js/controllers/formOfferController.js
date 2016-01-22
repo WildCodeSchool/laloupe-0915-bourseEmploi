@@ -14,6 +14,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
             $scope.referentPhone = $rootScope.user.referentPhone;
             $scope.referentEmail = $rootScope.user.email;
             $scope.zipCode = $rootScope.user.zipCode;
+            $scope.region = $rootScope.user.region;
         } else {
             $scope.country = null;
             $scope.city = null;
@@ -21,6 +22,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
             $scope.referentPhone = null;
             $scope.referentEmail = null;
             $scope.zipCode = null;
+            $scope.region = null;
         }
     }
     referentInfo();
@@ -39,6 +41,7 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
             salary = 'Non précisé';
         } else {
             salary = $scope.salaryNumber + ' ' + $scope.salaryPeriod;
+            console.log($scope.salaryNumber);
         };
         console.log(salary)
     }
@@ -48,11 +51,6 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         $scope.noSalary = !$scope.noSalary
         $scope.checkSalary()
     }
-
-    var salary = '';
-
-
-
 
     /****   CREATION TAGS ******/
     //Import des compétences de shéma "skills"
@@ -105,21 +103,28 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
     //Envoi des données du formulaire
     $scope.startDate = new Date();
     $scope.send = function () {
+        $scope.checkSalary();
         var idSkill = [];
         var data = {};
         data = $scope.offer;
         data.zipCode = $scope.zipCode;
         data.country = $scope.country;
         data.city = $scope.city;
+        data.region = $scope.region;
         data.address = $scope.address;
         data.skills = idSkill;
         data.referentPhone = $scope.referentPhone;
         data.referentEmail = $scope.referentEmail;
         data.referentId = $rootScope.user._id;
+        data.region = $scope.region;
         data.salary = salary;
         console.log(data.referentId);
         data.endDate = moment($scope.startDate).add(90, 'days');
         data.startDate = moment($scope.startDate);
+        data.endOfPublish = moment(data.endDate).subtract(14, 'day');
+        data.published = false;
+        console.log(data);
+        console.log(data.endOfPublish);
 
         //Comparaison des skills choisi et existant( pour envoi Ids)
         for (var i = 0; i < $scope.offerSkills.length; i++) {

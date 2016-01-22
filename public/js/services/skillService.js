@@ -1,14 +1,30 @@
 function skillService($http, $cookies) {
     return {
         get: function () {
-            return $http.get('/skills', {
+            return $http.get('/api/skills', {
                 headers: {
-                 authorization: $cookies.get('wildFinder_token')
-             }
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+        getbyId: function (id) {
+            return $http.get('/api/one/skills', {
+                headers: {
+                    '_id': id,
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+        checkSkill: function (title) {
+            return $http.get('/api/checkskill', {
+                headers: {
+                    'title': title,
+                    authorization: $cookies.get('wildFinder_token')
+                }
             });
         },
         update: function (id, data) {
-            return $http.put('/skills/' + id, data, {
+            return $http.put('/api/skills/' + id, data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -16,7 +32,7 @@ function skillService($http, $cookies) {
         },
 
         create: function (data) {
-            return $http.post('/skills', data, {
+            return $http.post('/api/skills', data, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }
@@ -24,7 +40,7 @@ function skillService($http, $cookies) {
         },
 
         delete: function (id) {
-            return $http.delete('/skills/' + id, {
+            return $http.delete('/api/skills/' + id, {
                 headers: {
                     authorization: $cookies.get('wildFinder_token')
                 }

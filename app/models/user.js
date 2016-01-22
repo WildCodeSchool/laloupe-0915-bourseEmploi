@@ -11,22 +11,38 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now
+    },
     phone: String,
     website: String,
     twitter: String,
     facebook: String,
     linkedin: String,
-    instagram: String
-}, {collection: 'user', discriminatorKey : '_type' });
+    instagram: String,
+    github: String
+}, {
+    collection: 'user',
+    discriminatorKey: '_type'
+});
 
 var User = {
     model: mongoose.model('User', UserSchema),
 
-    find: function(email, password, callback){
+    find: function (email, password, callback) {
         User.model.findOne({
-          email: email,
-          password: password
+            email: email,
+            password: password
         }, callback);
+    },
+    findAll: function (req, res) {
+        User.model.find({}, function (err, users) {
+            if (err)
+                console.log(err);
+            res.json(users);
+        });
     }
 
 }
