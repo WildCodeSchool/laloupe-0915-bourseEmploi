@@ -100,9 +100,9 @@
                 <!--NAVBAR RECRUITER-->
                 <ul ng-if="user._type == 'Recruiter' && user.admin == false" class="nav navbar-nav navbar-right">
                     <!--OFFERS-->
-                    <li ng-class="{active: activetab=='/formOffer'}" class="dropdown li-nav">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bullhorn fa-nav"></i> Créer une annonce
+                    <li>
+                        <a href="/#/formOffer" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-bullhorn fa-nav"></i> Créer un annonces
                         </a>
                     </li>
                     <!--BOOK-->
@@ -220,11 +220,11 @@
 
         <div id="footer" class="text-center" ng-class="{'fixed': activetab=='/login'}">
             <span class="white">Copyright ©</span>
-            <li><a href="http://innoveduc.fr/">Innoveduc</a></li> 
-            <a href="http://wildcodeschool.fr/"> | Conception: Wild Code School</a> 
-            <span class="white">| 09 72 52 63 94 |</span> 
-            <a class="footercontact" href="mailto:pauline@innoveduc.fr">Nous contacter</a> 
-            <a href="https://facebook.com/wildcodeschool" target="_blank"><i class="fa fa-facebook-official fa-lg footerclass"></i></a> 
+            <li><a href="http://innoveduc.fr/">Innoveduc</a></li>
+            <a href="http://wildcodeschool.fr/"> | Conception: Wild Code School</a>
+            <span class="white">| 09 72 52 63 94 |</span>
+            <a class="footercontact" href="mailto:pauline@innoveduc.fr">Nous contacter</a>
+            <a href="https://facebook.com/wildcodeschool" target="_blank"><i class="fa fa-facebook-official fa-lg footerclass"></i></a>
             <a href="https://twitter.com/wildcodeschool" target="_blank"><i class="fa fa-twitter fa-lg footerclass"></i></a>
         </div>
     </div>
