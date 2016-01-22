@@ -119,7 +119,12 @@ function bookStudentController($scope, $rootScope, skillService, $routeParams, s
     $scope.goToEdit = function (d) {
         $("body").removeClass("modal-open");
         $(".modal-backdrop").hide();
-        $location.path('/editBook/' + $scope.student._id);
+        $location.path('/editBook/' + $routeParams.id);
     }
+
+    $scope.modification = function () {
+        $location.path("/editBook/" + $routeParams.id)
+    }
+
 
 };

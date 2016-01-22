@@ -43,6 +43,7 @@ function adminStatsController($scope, studentService, skillService, $rootScope, 
                     studentService.getStatLang(data).then(function (res) {
                         studentSkill.push(res.data);
                         console.log(data);
+                        console.log(res.data);
                         /*******  GRAPHS 3 *******/
                         var total = res.data.JAVASCRIPT + res.data.PHP + res.data.RUBY;
                         var data3 = [{

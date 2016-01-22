@@ -252,7 +252,7 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
     $scope.update9 = function () {
         var data = {};
         data.languages = $scope.student.languages;
-        studentService.update($rootScope.user._id, data).then(function (res) {
+        studentService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
                 alert('erreur lors de la mise a jour');
             } else {
@@ -322,7 +322,7 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
     $scope.createHobbies = function () {
         var data = {};
         data.hobbies = $scope.hobbiesQuery;
-        studentService.updateHobbie($rootScope.user._id, data).then(function (res) {
+        studentService.updateHobbie($routeParams.id, data).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {
@@ -333,7 +333,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
 
 
     $scope.deleteHobbie = function (hobbie) {
-        studentService.deleteHobbie($scope.student._id, {hobbie: hobbie}).then(function (res) {
+        studentService.deleteHobbie($scope.student._id, {
+            hobbie: hobbie
+        }).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {
@@ -344,8 +346,11 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
 
     $scope.createLanguages = function () {
         var data = {};
-        data.languages = {name: $scope.newLanguage.name, level: $scope.newLanguage.level}; //$scope.newLanguage
-        studentService.updateLanguage($rootScope.user._id, data).then(function (res) {
+        data.languages = {
+            name: $scope.newLanguage.name,
+            level: $scope.newLanguage.level
+        }; //$scope.newLanguage
+        studentService.updateLanguage($routeParams.id, data).then(function (res) {
             console.log(data);
             if (!res.data) {
                 alert('pas ok');
@@ -356,7 +361,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
     }
 
     $scope.deleteLanguage = function (language) {
-        studentService.deleteLanguage($scope.student._id, {name: language.name}).then(function (res) {
+        studentService.deleteLanguage($scope.student._id, {
+            name: language.name
+        }).then(function (res) {
             if (!res.data) {
                 alert('pas ok');
             } else {
