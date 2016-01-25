@@ -14,6 +14,8 @@ module.exports = function (app, passport) {
 
     app.get('/api/students/:id', Auth.user.hasAuthorization, Student.findById);
 
+    app.post('/api/notblockedstudents', Auth.user.hasAuthorization, Student.findByIdNotBlocked);
+
     app.get('/api/sendId/:id', Auth.user.hasAuthorization, Student.sendId);
 
     app.get('/api/infos/students', Auth.user.hasAuthorization, Student.findInfo);
