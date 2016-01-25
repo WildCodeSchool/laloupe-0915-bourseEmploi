@@ -1,6 +1,8 @@
 <!--BIG MAP-->
 <div class="row wildpanel panel panel-default" ng-hide="showMap">
-    <div class="wildpanelheader panel panel-default"></div>
+    <div class="wildpanelheader panel panel-default">
+        <h4>{{offers.length}} {{offers.length > 1 ? 'offres correspondent' : 'offre correspond'}} à votre recherche</h4>
+    </div>
     <div id="map" style="width:100%;height:500px;"></div>
     <div class="wildpanelfooter panel panel-default">
         <a class="text-right" ng-click="showMap=!showMap">Reduire la carte</a>
@@ -73,7 +75,9 @@
 
         <!--LITTLE MAP-->
         <div class="row wildpanel panel panel-default" ng-show="showMap">
-            <div class="wildpanelheader panel panel-default"></div>
+            <div class="wildpanelheader panel panel-default">
+                <h4>{{offers.length}} {{offers.length > 1 ? 'offres correspondent' : 'offre correspond'}} à votre recherche</h4>
+            </div>
             <div id="map2" style="width:100%;height:300px;"></div>
             <div class="wildpanelfooter panel panel-default">
                 <a class="text-right" ng-click="showMap=!showMap">Agrandir la carte</a>
