@@ -32,7 +32,7 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         reader.onloadend = function () {
             preview.style.display = 'block';
             preview.src = reader.result;
-            $scope.logo = reader.result;
+            $scope.recruiter.logo = reader.result;
         }
         if (file) {
             reader.readAsDataURL(file);
@@ -47,7 +47,7 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         reader2.onloadend = function () {
             preview2.style.display = 'block';
             preview2.src = reader2.result;
-            $scope.picture = reader2.result;
+            $scope.recruiter.picture = reader2.result;
         }
         if (file2) {
             reader2.readAsDataURL(file2);
@@ -60,10 +60,10 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
     //Mise a jour infos personnelles
     $scope.update1 = function () {
         var data = {};
-        data.name = $scope.name;
-        data.email = $scope.email;
-        data.phone = $scope.phone;
-        recruiterService.update($rootScope.user._id, data).then(function (res) {
+        data.name = $scope.recruiter.name;
+        data.email = $scope.recruiter.email;
+        data.phone = $scope.recruiter.phone;
+        recruiterService.update($routeParams.id, data).then(function (res) {
             console.log(data);
             if (!res.data) {
                 alert('erreur lors de la mise a jour');
@@ -76,12 +76,12 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
     //Mise a jour des coordonées
     $scope.update2 = function () {
         var data = {};
-        data.country = $scope.country;
-        data.region = $scope.region;
-        data.city = $scope.city;
-        data.zipCode = $scope.zipCode;
-        data.address = $scope.address;
-        recruiterService.update($rootScope.user._id, data).then(function (res) {
+        data.country = $scope.recruiter.country;
+        data.region = $scope.recruiter.region;
+        data.city = $scope.recruiter.city;
+        data.zipCode = $scope.recruiter.zipCode;
+        data.address = $scope.recruiter.address;
+        recruiterService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
                 alert('erreur lors de la mise a jour');
             } else {
@@ -93,9 +93,9 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
     //Mise a jour des visibilités
     $scope.update3 = function () {
         var data = {};
-        data.size = $scope.size;
-        data.businessSector = $scope.businessSector;
-        recruiterService.update($rootScope.user._id, data).then(function (res) {
+        data.size = $scope.recruiter.size;
+        data.businessSector = $scope.recruiter.businessSector;
+        recruiterService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
                 alert('erreur lors de la mise a jour');
             } else {
@@ -108,7 +108,7 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
     $scope.deleteLogo = function () {
         var data = {};
         data.logo = "";
-        recruiterService.update($rootScope.user._id, data).then(function (res) {
+        recruiterService.update($routeParams.id, data).then(function (res) {
             alert('image éffacée');
         });
         loadRecruiter();
@@ -118,7 +118,7 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
     $scope.deletePicture = function () {
         var data = {};
         data.picture = "";
-        recruiterService.update($rootScope.user._id, data).then(function (res) {
+        recruiterService.update($routeParams.id, data).then(function (res) {
             alert('image éffacée');
         });
         loadRecruiter();
@@ -127,9 +127,9 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
     //Mise a jour des descriptions
     $scope.update4 = function () {
         var data = {};
-        data.description = $scope.description;
-        data.wildSide = $scope.wildSide;
-        recruiterService.update($rootScope.user._id, data).then(function (res) {
+        data.description = $scope.recruiter.description;
+        data.wildSide = $scope.recruiter.wildSide;
+        recruiterService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
                 alert('erreur lors de la mise a jour');
             } else {
@@ -141,9 +141,9 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
     //Mise a jour des photos
     $scope.update5 = function () {
         var data = {};
-        data.logo = $scope.logo;
-        data.picture = $scope.picture;
-        recruiterService.update($rootScope.user._id, data).then(function (res) {
+        data.logo = $scope.recruiter.logo;
+        data.picture = $scope.recruiter.picture;
+        recruiterService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
                 alert('erreur lors de la mise a jour');
             } else {
@@ -155,12 +155,12 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
     //Mise a jour des liens sociaux
     $scope.update6 = function () {
         var data = {};
-        data.website = $scope.website;
-        data.facebook = $scope.facebook;
-        data.twitter = $scope.twitter;
-        data.linkedin = $scope.linkedin;
-        data.instagram = $scope.instagram;
-        recruiterService.update($rootScope.user._id, data).then(function (res) {
+        data.website = $scope.recruiter.website;
+        data.facebook = $scope.recruiter.facebook;
+        data.twitter = $scope.recruiter.twitter;
+        data.linkedin = $scope.recruiter.linkedin;
+        data.instagram = $scope.recruiter.instagram;
+        recruiterService.update($routeParams.id, data).then(function (res) {
             if (!res.data) {
                 alert('erreur lors de la mise a jour');
             } else {
@@ -174,7 +174,7 @@ function editRecruiterController($scope, $rootScope, $routeParams, $anchorScroll
         var message = "Voulez vraiment supprimer ce compte ?"
         var resultat = window.confirm(message);
         if (resultat) {
-            recruiterService.delete($rootScope.user._id).then(function (res) {
+            recruiterService.delete($routeParams.id).then(function (res) {
                 $location.path('/login')
             });
         }
