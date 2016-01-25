@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
 
     app.get('/api/students_promo', Auth.user.isAdministrator, Student.findByPromo);
 
-    app.get('/api/howmanyliked/:id', Auth.user.isAdministrator, Student.howManyLiked);
+    app.get('/api/howmanyliked/:id', Auth.user.hasAuthorization, Student.howManyLiked);
 
     app.get('/api/alumnis', Auth.user.isAdministrator, Student.findAlumnis);
 
