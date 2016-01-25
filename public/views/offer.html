@@ -55,8 +55,8 @@
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <ul>
-                    <li class="headeradvert">
-                        <h2 class="headeradvert titleadvert">{{offer.title}}</h2></li>
+                    <li class="headeradvert2">
+                        <h2 class="titleadvert">{{offer.title}}</h2></li>
                     <li ng-if="showStudent" ng-click="likeClick(offer)" class="headeradvert"><i class="fa fa-heart fa-lg" ng-class="{ 'heartnotactive': offer.isLiked===false, 'heartactive': offer.isLiked===true}" uib-tooltip="{{offer.isLiked ? 'Ne plus aimer' : 'aimer cette offre'}}" tooltip-placement="bottom"></i></li>
                     <li ng-if="showStudent" class="headeradvert">
                         <p class="headeradvert smalltexadvert">{{offer.numberLiked}}</p>

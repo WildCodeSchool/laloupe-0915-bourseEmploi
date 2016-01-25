@@ -7,7 +7,8 @@
         <div class="wildpanel panel panel-default row">
             <div class="wildpanelheader panel panel-default"></div>
             <div class="wildpanelbody panel paneldefault" id="studentCVmin">
-                <img class="imgprofilstudent" ng-src="{{student.logo}}">
+                <img ng-if="student.logo" ng-click="goToStudent(student)" class="imgprofilstudent" ng-src="{{student.logo}}">
+                <img ng-if="!student.logo" ng-click="goToStudent(student)" class="imgprofilstudent" src="../img/default-profil.jpg">
                 <p ng-if="student.birthDate">{{born}} ans</p>
                 <p>{{student.gender}}</p>
             </div>
@@ -27,9 +28,8 @@
                     <a ng-if="student.facebook != undefined" href="{{student.facebook}}"><i class="fa fa-facebook-official fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Facebook"></i></a>
                     <a ng-if="student.website != undefined" href="{{student.website}}"><i class="fa fa-desktop fa-lg contact-link" data-toggle="tooltip" data-placement="top" title="Website"></i></a></div>
             </div>
-            <div class="wildpanelbody panel paneldefault"></div>
-            <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" class="text-right" ng-click="modification()">Modifier</a>
+            <div ng-show="ifStudent" class="wildpanelfooter panel panel-default">
+                <a class="text-right" ng-click="modification()">Modifier</a>
             </div>
         </div>
 
@@ -43,8 +43,8 @@
                 <h5>Mobilité :</h5>
                 <p>{{student.mobility}}</p>
             </div>
-            <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" class="text-right" ng-click="modification()">Modifier</a>
+            <div ng-show="ifStudent" class="wildpanelfooter panel panel-default">
+                <a class="text-right" ng-click="modification()">Modifier</a>
             </div>
         </div>
 
@@ -56,8 +56,8 @@
             <div class="wildpanelbody panel paneldefault">
                 <p>{{student.wildSide}}</p>
             </div>
-            <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" class="text-right" ng-click="modification()">Modifier</a>
+            <div ng-show="ifStudent" class="wildpanelfooter panel panel-default">
+                <a class="text-right" ng-click="modification()">Modifier</a>
             </div>
         </div>
     </div>
@@ -124,8 +124,8 @@
 
                 </div>
             </div>
-            <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" ng-click="modification()">Ajouter ou modifier une expérience</a>
+            <div ng-show="ifStudent" class="wildpanelfooter panel panel-default">
+                <a ng-click="modification()">Ajouter ou modifier une expérience</a>
             </div>
         </div>
 
@@ -183,8 +183,8 @@
                     </div>
                 </div>
             </div>
-            <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" ng-click="modification()">Ajouter ou modifier une formation</a>
+            <div ng-show="ifStudent" class="wildpanelfooter panel panel-default">
+                <a ng-click="modification()">Ajouter ou modifier une formation</a>
             </div>
         </div>
     </div>
@@ -204,11 +204,11 @@
                 <p class="bg-warning" ng-show="errorChoice">Vous avez déjà renseigné cette compétence</p>
                 <p class="bg-danger" ng-show="errorTyping">Cette compétence n'existe pas</p>
             </div>
-            <div class="wildpanelfooterinput panel paneldefault form-inline row">
-                <div ng-show="ifStudent" class="inputwildpanelfooter input-group input-group-sm col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div ng-show="ifStudent" class="wildpanelfooterinput panel paneldefault form-inline row">
+                <div class="inputwildpanelfooter input-group input-group-sm col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage" class="form-control" list="Languages" />
                     <datalist id="Languages">
-                        <option ng-repeat="offerSkill in offerSkills | filter:$viewValue | limitTo:8" value="{{offerSkill.title}}">
+                        <option ng-repeat="offerSkill in offerSkills | filter:$viewValue" value="{{offerSkill.title}}">
                     </datalist>
                     <div class="input-group-btn">
                         <button class="btn btn-default btn-side" ng-click="add()" type="button">OK</button>
@@ -230,8 +230,8 @@
 
                 </ul>
             </div>
-            <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" ng-click="modification()">Ajouter ou modifier</a>
+            <div ng-show="ifStudent" class="wildpanelfooter panel panel-default">
+                <a ng-click="modification()">Ajouter ou modifier</a>
             </div>
         </div>
 
@@ -248,8 +248,8 @@
 
                 </ul>
             </div>
-            <div class="wildpanelfooter panel panel-default">
-                <a ng-show="ifStudent" ng-click="modification()">Ajouter ou modifier</a>
+            <div ng-show="ifStudent" class="wildpanelfooter panel panel-default">
+                <a ng-click="modification()">Ajouter ou modifier</a>
             </div>
         </div>
     </div>
