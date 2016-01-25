@@ -122,7 +122,6 @@ function formOfferController($scope, $location, $filter, $rootScope, offerServic
         data.endDate = moment($scope.startDate).add(90, 'days');
         data.startDate = moment($scope.startDate);
         data.endOfPublish = moment(data.endDate).subtract(14, 'day');
-        data.published = false;
         console.log(data);
         console.log(data.endOfPublish);
 

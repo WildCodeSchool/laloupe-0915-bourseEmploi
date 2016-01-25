@@ -68,7 +68,8 @@ var offerSchema = new mongoose.Schema({
     },
     published: {
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     },
     address: {
         type: String,
@@ -122,7 +123,8 @@ var Offer = {
             },
             'endDate': {
                 $gte: new Date()
-            }
+            },
+            'published': true
         });
 
         if (contract)
@@ -159,7 +161,8 @@ var Offer = {
                 },
                 'endDate': {
                     $gte: new Date()
-                }
+                },
+                'published': true
             })
             .populate("skills.skill")
             .populate("referentId", "-password")
@@ -202,7 +205,8 @@ var Offer = {
                 },
                 'endDate': {
                     $gte: new Date()
-                }
+                },
+                'published': true
             })
             .populate("skills.skill")
             .populate("referentId", "-password")
@@ -237,7 +241,8 @@ var Offer = {
                 },
                 'endDate': {
                     $gt: new Date()
-                }
+                },
+                'published': true
             })
             .populate("skills.skill")
             .populate("referentId", "-password")
