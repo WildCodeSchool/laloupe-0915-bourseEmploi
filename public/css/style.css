@@ -127,7 +127,7 @@ ul {
 }
 
 .case2Accueil {
-    margin-top: 45px;
+    margin-top: 75px;
 }
 
 .case3Accueil {
@@ -178,12 +178,15 @@ ul {
 }
 
 .btnW {
-    height: 40px;
+    min-height: 40px;
     padding: 0px 20px 0px 20px;
     border: 2px solid;
     border-radius: 0px;
     border-color: #009587;
     color: #009587;
+    font-size: 17px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     background-size: 100% 200%;
     background-color: transparent;
     background-image: linear-gradient(to top, #009587 50%, transparent 50%);
@@ -214,15 +217,18 @@ ul {
 }
 
 .btnWDelete {
-    height: 40px;
+    min-height: 40px;
     padding: 0px 20px 0px 20px;
     border: 2px solid;
-    border-radius: 10px;
-    border-color: red;
-    color: red;
+    border-radius: 0px;
+    border-color: #c0392b;
+    color: #c0392b;
+    font-size: 17px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     background-size: 100% 200%;
     background-color: transparent;
-    background-image: linear-gradient(to top, red 50%, transparent 50%);
+    background-image: linear-gradient(to top, #c0392b 50%, transparent 50%);
     -webkit-transition: background-position 1s;
     -moz-transition: background-position 1s;
     transition: background-position 1s;
@@ -231,15 +237,15 @@ ul {
 .btnWDelete:hover {
     background-position: 0 100%;
     background-color: transparent;
-    border-color: red;
+    border-color: #c0392b;
     color: white;
 }
 
 .btnWDelete:focus {
     outline: none;
-    border-radius: 10px;
-    border-color: red;
-    color: red;
+    border-radius: 0px;
+    border-color: #c0392b;
+    color: #c0392b;
     background-color: transparent;
 }
 
@@ -281,6 +287,9 @@ ul {
     border-radius: 0px;
     border-color: white;
     color: white;
+    font-size: 17px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     background-size: 100% 200%;
     background-color: transparent;
     background-image: linear-gradient(to top, white 50%, transparent 50%);
@@ -519,6 +528,21 @@ ul {
     box-shadow: 0 0 10px #dddddd;
 }
 
+.wildpanel-book {
+    margin: 15px 0px 15px 0px;
+    padding: 0 auto;
+    border-color: rgb(221, 221, 221);
+    box-shadow: 0 0 10px #dddddd;
+    overflow: hidden;
+}
+
+.wildpanel-fav {
+    margin: 0 auto;
+    padding: 0 auto;
+    border: none;
+    overflow: hidden;
+}
+
 .navbar-inverse {
     box-shadow: 0 5px 10px #dddddd;
 }
@@ -548,6 +572,17 @@ ul {
     border-bottom-right-radius: 0px;
     border-bottom-color: #B6B6B6;
     height: 41px;
+}
+
+.wildpanelheaderGrey {
+    margin: 0 auto;
+    background-color: #F5FAF9;
+    padding: 3px 10px 0 120px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: 0px;
+    border-color: white;
+    height: 30px;
 }
 
 .wildpanelnavbar {
@@ -625,18 +660,16 @@ ul {
 
 .wildpanelheart {
     margin: 0 auto;
-    padding: 5px 10px 5px 10px;
-    border-top-color: rgb(221, 221, 221);
+    padding: 0 10px 5px 10px;
+    border-bottom: rgb(221, 221, 221);
     border-radius: 0px;
-    min-height: 101px;
 }
 
 .wildpanelbook {
     margin: 0 auto;
     padding: 5px 10px 5px 10px;
-    border-top-color: rgb(221, 221, 221);
+    border: none;
     border-radius: 0px;
-    min-height: 88px;
 }
 
 .wildpanelfooter {
@@ -673,10 +706,10 @@ ul {
 }
 
 .studentname-mini {
-    color: #202020;
-    font-size: 25px;
+    font-size: 22px;
     margin-top: 0px;
     margin-bottom: 2px;
+    font-family: 'Raleway', sans-serif;
 }
 
 .studentname:hover {
@@ -691,6 +724,7 @@ ul {
 
 .studentteaser {
     margin-top: 2px;
+    margin-bottom: 2px;
     font-size: 22px;
 }
 
@@ -717,8 +751,25 @@ ul {
     background-color: #B6B6B6;
 }
 
+.imgsearchbook2 {
+    float: left;
+    width: 100px;
+    margin-top: -20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #B6B6B6;
+}
+
+.imgsearchbook2:hover {
+    cursor: pointer;
+}
+
 #studentCVmin {
     min-height: 105px;
+}
+
+.headeradvert2 {
+    display: -webkit-box;
 }
 
 .headeradvert {
@@ -1380,9 +1431,10 @@ li.active {
         margin-left: 20%;
     }
 }
+
 .accrocheCorp {
     font-size: 18px;
-    padding: 0 5px 0 10px;
+    padding: 0;
     margin-bottom: 20px;
 }
 
@@ -1390,4 +1442,8 @@ li.active {
     font-size: 20px;
     padding: 0;
     margin-bottom: 20px;
+}
+
+.no-border {
+    border: none;
 }

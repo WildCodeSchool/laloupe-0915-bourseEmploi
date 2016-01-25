@@ -107,7 +107,7 @@
         </div>
         <!--STUDENT-->
         <div class="col-xs-12 ">
-            <div ng-repeat="student in students | filter: {name: queryName} | orderBy: 'name' " class="wildpanel panel panel-default ">
+            <div ng-repeat="student in students | filter: {name: queryName} | orderBy: 'name' " class="wildpanel-book panel panel-default ">
                 <div class="wildpanelheader panel panel-default">
                     <ul>
                         <li class="headerasvert">
@@ -127,7 +127,7 @@
                 <div class="wildpanelbook panel panel-default ">
                     <img ng-if="student.logo" ng-click="goToStudent(student)" class="imgsearchbook" ng-src="{{student.logo}}">
                     <img ng-if="!student.logo" ng-click="goToStudent(student)" class="imgsearchbook" src="../img/default-profil.jpg">
-                    <h3 ng-if="student.teaser" ng-click="goToStudent(student)" class="headeradvert no-marge studentteaser ">"{{student.teaser}}"</h3>
+                    <h3 ng-if="student.teaser" ng-click="goToStudent(student)" class="headeradvert2 no-marge studentteaser ">"{{student.teaser}}"</h3>
                     <ul>
                         <li class="headerasvert">
                             <p ng-if="student.situation" class="bookstattitle">Situation: </p>
@@ -148,8 +148,8 @@
                             <p class="headeradvert smalltexadvert1-sm">{{student.mobility}}</p>
                         </li>
                     </ul>
-                    <ul class="skill-ul ">
-                        <li ng-repeat="skill in student.skills " class="headeradvert li-skill "><span class="wildSkill ">{{skill.skill.title}}</span>
+                    <ul class="skill-ul">
+                        <li ng-repeat="skill in student.skills " class="headeradvert li-skill"><span class="wildSkill ">{{skill.skill.title}}</span>
                     </ul>
                 </div>
             </div>

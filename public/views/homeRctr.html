@@ -33,7 +33,7 @@
                             <i class="fa fa-sign-in fa-lg" ng-click="archiv(offerList._id)" uib-tooltip="Archiver" tooltip-placement="bottom"></i>
                         </div>
                         <ul>
-                            <li class="headeradvert" ng-click="goToOffer(offerList)"><h2 class="headeradvert titleadvert">{{offerList.title}}</h2></li>
+                            <li class="headeradvert2" ng-click="goToOffer(offerList)"><h2 class="headeradvert titleadvert">{{offerList.title}}</h2></li>
                         </ul>
                         <ul>
                            <li class="headeradvert"><p class="headeradvert smalltexadvert">Posté {{startOffer(offerList.startDate)}} -</p></li>
@@ -184,22 +184,24 @@
             </div>
 
             <!--STUDENT-->
-            <div ng-repeat="student in likedStudents" class="wildpanelheart panel paneldefault">
-                <img class="profilimg-sm" src="../img/darkvador.jpg" alt="photo de profil de ...">
-                <div class="offerdelete">
-                    <i class="fa fa-times fa-lg" ng-click="likeClick(student)" uib-tooltip="Ne plus suivre" tooltip-placement="bottom"></i>
+            <div ng-repeat="student in likedStudents | orderBy:'name'" class="wildpanel-fav panel paneldefault">
+                <div class="wildpanelheaderGrey panel paneldefault">
+                    <div class="offerdelete">
+                        <i class="fa fa-times fa-lg" ng-click="likeClick(student)" uib-tooltip="Ne plus suivre" tooltip-placement="bottom"></i>
+                    </div>
+                    <h4 ng-click="goToStudent(student._id)" class="headeradvert studentname-mini">{{student.firstName}} {{student.name}}</h4>
                 </div>
-                <ul>
-                    <li class="headeradvert">
-                        <h2 ng-click="goToStudent(student._id)" class="headeradvert studentname-mini">{{student.firstName}} {{student.name}}</h2></li>
-                </ul>
-                <ul>
-                    <li class="headeradvert">
-                        <h3 class="headeradvert studentteaser">{{student.teaser}}</h3></li>
-                </ul>
-                <ul>
-                    <li ng-repeat="skill in student.skills" class="headeradvert"><span class="wildSkill">{{skill.skill.title}}</span>
-                </ul>
+                <div class="wildpanelheart panel paneldefault">
+                    <img ng-if="student.logo" ng-click="goToStudent(student._id)" class="imgsearchbook2" ng-src="{{student.logo}}">
+                    <img ng-if="!student.logo" ng-click="goToStudent(student._if)" class="imgsearchbook2" src="../img/default-profil.jpg">
+                    <ul>
+                        <li class="headeradvert2">
+                            <h3 class="studentteaser">{{student.teaser}}</h3></li>
+                    </ul>
+                    <ul class="skill-ul">
+                        <li ng-repeat="skill in student.skills" class="headeradvert li-skill"><span class="wildSkill">{{skill.skill.title}}</span>
+                    </ul>
+                </div>
             </div>
             <div class="wildpanelfooter panel paneldefault">
                 <p class="paragraphWPF">{{numberStudentLiked}} {{numberStudentLiked > 1 ? 'élèves' : 'élève'}} dans vos favoris</p>
