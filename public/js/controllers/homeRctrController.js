@@ -13,14 +13,14 @@ function homeRctrController($http, $scope, $rootScope, $location, $routeParams, 
         recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {
             var recruiter = res.data;
             $rootScope.user.likes = recruiter.likes;
-            $scope.numberStudentLiked = recruiter.likes.length
-                //LOAD LIKED STUDENT
-            recruiter.likes.forEach(function (like) {
-                studentService.getUserbyId(like).then(function (res) {
-                    $scope.likedStudents.push(res.data);
-                    console.log($scope.likedStudents)
-                });
-            }.bind($scope));
+            //LOAD LIKED STUDENT
+            var data = {};
+            data.students = recruiter.likes;
+            studentService.getStudentbyId(data).then(function (res) {
+                $scope.likedStudents = res.data;
+                $scope.numberStudentLiked = res.data.length
+            });
+
         });
     }
     isliked()

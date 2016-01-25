@@ -51,17 +51,6 @@ function bookController($scope, $location, studentService, $rootScope, skillServ
     }
     loadPromos();
 
-    $scope.$watch('$viewContentLoaded', function () {
-        studentService.getAll().then(function (res) {
-            $scope.students = res.data;
-            //CHECK IS lIKED
-            $scope.students.forEach(function (student) {
-                student.isLiked = ($rootScope.user.likes.indexOf(student._id) > -1);
-            }.bind($scope));
-            console.log(console.log($scope.students));
-        });
-    });
-
     //Bouton de filtre des students
     $scope.studentFiltered = function () {
         var data = {};
@@ -81,6 +70,7 @@ function bookController($scope, $location, studentService, $rootScope, skillServ
             }.bind($scope));
         });
     }
+    $scope.studentFiltered();
 
     //RECRUITER'S LIKE UPDATE IN ROOTSCOPE
     recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {

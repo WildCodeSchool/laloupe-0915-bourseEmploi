@@ -107,6 +107,25 @@ var Student = {
             });
     },
 
+    findByIdNotBlocked: function (req, res) {
+        Student.model.find({
+                '_id': {
+                    $in: req.body.students
+                },
+                'blocked': false
+            }, {
+                password: 0
+            })
+            .populate('promos')
+            .populate('skills.skill')
+            .populate('likes')
+            .populate('formations.formation')
+            .populate('experiences.experience')
+            .exec(function (err, student) {
+                res.json(student);
+            });
+    },
+
     sendId: function (req, res) {
         Student.model.findById(req.params.id)
             .exec(function (err, student) {
@@ -134,7 +153,8 @@ var Student = {
                 'skills.skill': {
                     $in: req.body.ids
                 },
-                _type: 'Student'
+                _type: 'Student',
+                'blocked': false
             })
             .populate('skills.skill')
             .exec(function (err, students) {
@@ -157,7 +177,8 @@ var Student = {
 
     findInfo: function (req, res) {
         Student.model.find({
-            _type: 'Student'
+            _type: 'Student',
+            'blocked': false
         }, {
             password: 0
         }, function (err, student) {
@@ -187,7 +208,8 @@ var Student = {
         Promos.model.find({
                 'endDate': {
                     $lt: new Date()
-                }
+                },
+                'blocked': false
             })
             .exec(function (err, promos) {
                 Student.model.find({
@@ -209,7 +231,8 @@ var Student = {
         var situation = req.body.situation;
         var promos = req.body.promos;
         var query = Student.model.find({
-            _type: 'Student'
+            _type: 'Student',
+            'blocked': false
         }, {
             password: 0
         });
