@@ -14,6 +14,8 @@ module.exports = function (app, passport) {
 
     app.get('/api/students/:id', Auth.user.hasAuthorization, Student.findById);
 
+    app.post('/api/notblockedstudents', Auth.user.hasAuthorization, Student.findByIdNotBlocked);
+
     app.get('/api/sendId/:id', Auth.user.hasAuthorization, Student.sendId);
 
     app.get('/api/infos/students', Auth.user.hasAuthorization, Student.findInfo);
@@ -28,9 +30,9 @@ module.exports = function (app, passport) {
 
     app.post('/api/statLang', Auth.user.isAdministrator, Student.findBySkill);
 
-    app.post('/api/students/filter', /*Auth.user.isAdministrator,*/ Student.findFiltered);
+    app.post('/api/students/filter', Auth.user.hasAuthorization, Student.findFiltered);
 
-    app.put('/api/students/:id', /*Auth.user.hasAuthorization,*/ Student.update);
+    app.put('/api/students/:id', Auth.user.hasAuthorization, Student.update);
 
     app.put('/api/like/students/:id', Auth.user.hasAuthorization, Student.like);
 

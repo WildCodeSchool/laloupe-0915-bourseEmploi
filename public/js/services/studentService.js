@@ -26,6 +26,14 @@ function studentService($http, $cookies) {
             });
         },
 
+        getStudentbyId: function (data) {
+            return $http.post('/api/notblockedstudents', data, {
+                headers: {
+                    authorization: $cookies.get('wildFinder_token')
+                }
+            });
+        },
+
         sendId: function (id) {
             return $http.get('/api/sendId/' + id, {
                 headers: {
@@ -90,7 +98,7 @@ function studentService($http, $cookies) {
                 }
             });
         },
-        
+
         updateHobbie: function (id, data) {
             return $http.put('/api/students/add_hobbies/' + id, data, {
                 headers: {
