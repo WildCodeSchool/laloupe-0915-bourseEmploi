@@ -14,6 +14,7 @@
     <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css/hover-min.css" media="all">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/style.css">
 
@@ -57,6 +58,7 @@
     <script src="js/controllers/editSchoolController.js"></script>
     <script src="js/controllers/skillsController.js"></script>
     <script src="js/controllers/moderateOfferController.js"></script>
+    <script src="js/controllers/popupController.js"></script>
     <script src="js/services/connectService.js"></script>
     <script src="js/services/offerService.js"></script>
     <script src="js/services/skillService.js"></script>
@@ -69,6 +71,62 @@
 </head>
 
 <body ng-class="{'bg': activetab==='/login'}">
+
+
+    <span ng-hide="activetab === '/login'" ng-controller="popupController">
+        <div ng-if="user._type == 'Recruiter' && user.firstConnect" id="hider" ng-if="user._type == 'Recruiter'" >
+        </div>
+        <div ng-if="user._type == 'Recruiter' && user.firstConnect" id="popup_box" ng-if="user._type == 'Recruiter'" class="text-center">
+            <h1 class="minify"><span class="white">Bienvenue sur </span>Wild<span class="grey">finder</span></h1>
+    <div>
+        <i style="margin-left:10px;margin-right:10px;" class="fa fa-circle white"></i>
+        <i style="margin-left:10px;margin-right:10px;" class="fa white" ng-class="{'fa-circle': step> 1, 'fa-circle-thin': step<=1}"></i>
+        <i style="margin-left:10px;margin-right:10px;" class="fa white" ng-class="{'fa-circle': step> 2, 'fa-circle-thin': step<=2}"></i>
+        <i style="margin-left:10px;margin-right:10px;" class="fa white" ng-class="{'fa-circle': step> 3, 'fa-circle-thin': step<=3}"></i>
+        <i style="margin-left:10px;margin-right:10px;" class="fa white" ng-class="{'fa-circle': step> 4, 'fa-circle-thin': step<=4}"></i>
+
+    </div>
+    <div ng-show="step==1" class="animated fadeIn">
+        <h3 style="font-size:20px;" class="white"> Déposez gratuitement vos offres d'emploi auprès des élèves et alumnis de la Wild Code School aux parcours et horizons variés</h3>
+        <img width="500px" style="margin-bottom: 30px;" src="./img/moniteur.png" alt="">
+    </div>
+    <div ng-show="step==2" class="animated fadeIn">
+        <h3 class="white" class="animated fadeIn">Trouvez le profil idéal en un clin d'œil </h3>
+        <img width="500px" style="margin-bottom: 30px;" src="./img/moniteur.png" alt="">
+    </div>
+    <div ng-show="step==3" class="animated fadeIn">
+        <h3 class="white">Profitez des facilités offertes par la recherche multicritères et notre solution de matching entre profils et offres</h3>
+        <img width="500px" style="margin-bottom: 30px;" src="./img/moniteur.png" alt="">
+    </div>
+    <div ng-show="step==4" class="animated fadeIn">
+        <h3 class="white">Gérez vos missions de recrutement depuis votre espace recruteur.</h3>
+        <img width="500px" style="margin-bottom: 30px;" src="./img/moniteur.png" alt="">
+    </div>
+    <div ng-show="step==5" class="animated fadeIn">
+        <h3 class="white" style="margin-top:80px;">Vous voulez valorisez votre image en devenant partenaire privilégié de la Wild Code School ?</h3>
+        <a href="mailto:pauline@innoveduc.fr?subject=Devenir partenaire de la Wild Code School">
+            <button style="width:500px;margin-top:80px;margin-bottom:80px;" class="btnW-big animated infinite pulse"><i class="fa fa-envelope-o"></i> Contactez-nous !
+            </button>
+        </a>
+        <h3 class="white" style="margin-bottom:100px;">Ou sinon continuer sur le site</h3>
+    </div>
+    <button ng-if="step>1" ng-click="before()" style="width:200px;margin:5px;" class="btnW"><i class="fa fa-chevron-left"></i> Précedent
+    </button>
+    <button ng-if="step<5" ng-click="after()" style="width:200px;margin:5px;" class="btnW">Suivant <i class="fa fa-chevron-right"></i>
+    </button>
+    <button ng-if="step==5" ng-click="Go()" style="width:200px;margin:5px;" class="btnW">Let's Go !</button>
+    <ul ng-if="step==5">
+        <li>
+            <i class="green fa fa-lg pointer" ng-click="checked()" ng-class="{'fa-square-o': ischecked===false,'fa-check-square-o': ischecked===true}"></i>
+        </li>
+        <li>
+            <p class="green">Ne plus voir ce message à ma prochaine connexion</p>
+        </li>
+    </ul>
+    </div>
+    </span>
+
+
     <!--NAVBAR-->
     <header ng-hide="activetab === '/login'" class="navbar navbar-inverse navbar-fixed-top navbar-border" role="navigation">
         <div class="container">

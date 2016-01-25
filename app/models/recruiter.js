@@ -58,7 +58,11 @@ var RecruiterSchema = User.model.schema.extend({
     likes: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }]
+    }],
+    firstConnect: {
+        type: Boolean,
+        default: true
+    }
 });
 
 var Recruiter = {
