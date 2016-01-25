@@ -30,7 +30,7 @@
                         <div class="inputwildpanelfooter input-group input-group-sm col-md-8 col-sm-10 col-xs-12">
                             <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage" class="form-control" list="Languages" />
                             <datalist id="Languages">
-                                <option ng-repeat="offerSkill in offerSkills | filter:$viewValue | limitTo:8" value="{{offerSkill.title}}">
+                                <option ng-repeat="offerSkill in offerSkills | filter:$viewValue" value="{{offerSkill.title}}">
                             </datalist>
                             <span class="input-group-btn">
                                 <button class="btn btn-default btn-side" ng-click="add()" type="button">OK</button>
@@ -62,7 +62,7 @@
             <div class="col-xs12 col-sm-6 col-md-12 col-lg-12">
                 <div class="wildpanel panel paneldefault">
                     <div class="wildpanelheader panel paneldefault">
-                        <h4>{{offers.length}} {{offers.length > 1 ? 'annonces' : 'annonce'}} sur Wildfinder</h4>
+                        <a class="title-link" href="/#/searchOffer"><h4>{{offers.length}} {{offers.length > 1 ? 'annonces' : 'annonce'}} sur Wildfinder</h4></a>
                     </div>
                     <div id="map" style="width:100%;height:300px;"></div>
                     <div class="wildpanelfooter panel paneldefault">
@@ -96,8 +96,8 @@
                         </ul>
                     </div>
                     <ul>
-                        <li class="headeradvert" ng-click="goToOffer(matchingOffer)">
-                            <h2 class="headeradvert titleadvert">{{matchingOffer.title}}</h2></li>
+                        <li class="headeradvert2" ng-click="goToOffer(matchingOffer)">
+                            <h2 class="titleadvert">{{matchingOffer.title}}</h2></li>
 
                     </ul>
                     <ul>
@@ -159,8 +159,8 @@
                             </div>
 
                             <ul>
-                                <li class="headeradvert" ng-click="goToOffer(likedOffer)">
-                                    <h2 class="headeradvert titleadvert-sm">{{likedOffer.title}}</h2></li>
+                                <li class="headeradvert2" ng-click="goToOffer(likedOffer)">
+                                    <h2 class="titleadvert-sm">{{likedOffer.title}}</h2></li>
                             </ul>
                             <ul>
                                 <li class="headeradvert">
