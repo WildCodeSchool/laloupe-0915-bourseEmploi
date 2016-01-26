@@ -7,6 +7,17 @@ function bookController($scope, $location, studentService, $rootScope, skillServ
         return promo.schoolId == $scope.school;
     }
 
+    //RECRUITER'S LIKE UPDATE IN ROOTSCOPE
+    recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {
+        $scope.recruiter = res.data
+        var studentliked = [];
+        $scope.recruiter.likes.forEach(function (like) {
+            studentliked.push(like);
+        }.bind($scope));
+        /*        console.log(studentliked);*/
+        $rootScope.user.likes = studentliked;
+    });
+
     //TOOLTIP    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
@@ -71,17 +82,6 @@ function bookController($scope, $location, studentService, $rootScope, skillServ
         });
     }
     $scope.studentFiltered();
-
-    //RECRUITER'S LIKE UPDATE IN ROOTSCOPE
-    recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {
-        $scope.recruiter = res.data
-        var studentliked = [];
-        $scope.recruiter.likes.forEach(function (like) {
-            studentliked.push(like);
-        }.bind($scope));
-        /*        console.log(studentliked);*/
-        $rootScope.user.likes = studentliked;
-    });
 
     //CHECK USER TYPE
     function pop() {

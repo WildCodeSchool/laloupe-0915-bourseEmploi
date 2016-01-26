@@ -7,6 +7,16 @@ function searchOfferController($scope, offerService, skillService, studentServic
     }
     loadSkill();
 
+    //STUDENTS'LIKE UPDATE IN ROOTSCOPE
+    studentService.getUserbyId($rootScope.user._id).then(function (res) {
+        $scope.student = res.data
+        var offerliked = [];
+        $scope.student.likes.forEach(function (like) {
+            offerliked.push(like._id);
+        }.bind($scope));
+        $rootScope.user.likes = offerliked;
+    });
+
     //NUMBER LIKED
     function numberLiked(offer) {
         studentService.howmanyliked(offer._id).then(function (res) {
@@ -35,39 +45,17 @@ function searchOfferController($scope, offerService, skillService, studentServic
         data.skill = $scope.querySkill;
         data.contract = $scope.contract;
         data.experience = $scope.experience;
-        console.log(data);
         offerService.getOffersFiltered(data).then(function (res) {
             $scope.offers = res.data;
             //CHECK IS lIKED
-            $scope.offers.forEach(function (offer) {
-                offer.isLiked = ($rootScope.user.likes.indexOf(offer._id) > -1);
-                numberLiked(offer);
-            }.bind($scope));
-            //MAP
-            var offers = res.data;
-
-            $scope.today = new Date();
-            $scope.after = function (dates) {
-                return moment($scope.today).isAfter(dates);
-            }
-            $scope.before = function (dates) {
-                return moment($scope.today).isBefore(dates);
-            }
-            $scope.startOffer = function (date) {
-                moment.locale('fr')
-                var d = moment(date);
-                return d.fromNow();
-            }
-            $scope.endOffer = function (date) {
-                moment.locale('fr')
-                var d = moment(date);
-                return d.fromNow();
-            }
-
-            offers.forEach(function (offer) {
-                var address = offer.address + ", " + offer.zipCode + " " + offer.city + ", " + offer.country;
-
+            for (var i = 0; i < $scope.offers.length; i++) {
+                $scope.offers[i].isLiked = ($rootScope.user.likes.indexOf($scope.offers[i]._id) > -1);
+                numberLiked($scope.offers[i]);
+                console.log($scope.offers[i])
+                    //MAP
+                var address = $scope.offers[i].address + ", " + $scope.offers[i].zipCode + " " + $scope.offers[i].city + ", " + $scope.offers[i].country;
                 geocoderService.CoordinateByAdress(address).then(function (res) {
+                    var offer = $scope.offers[i];
                     var lng = res.data.features[0].geometry.coordinates[0];
                     var lat = res.data.features[0].geometry.coordinates[1];
 
@@ -76,49 +64,42 @@ function searchOfferController($scope, offerService, skillService, studentServic
                             'marker-color': '009587'
                         })
                     });
-                    marker.bindPopup('<a href="/#/offer/' + offer._id + '"><b>' + offer.title + '</b></a><br>' + offer.city);
+                    var textpopup = '<a href="/#/offer/' + offer._id + '"><b>' + offer.title + '</b></a><br>' + offer.city;
+                    marker.bindPopup(textpopup);
                     markers.addLayer(marker);
                     var marker2 = L.marker(new L.LatLng([lat], [lng]), {
                         icon: L.mapbox.marker.icon({
                             'marker-color': '009587'
                         })
                     });
-                    marker2.bindPopup('<a href="/#/offer/' + offer._id + '"><b>' + offer.title + '</b></a><br>' + offer.city);
+                    marker2.bindPopup(textpopup);
                     markers2.addLayer(marker2);
                 });
-            }.bind($scope));
-
+            };
             map.addLayer(markers);
             map2.addLayer(markers2);
-
         });
     }
     $scope.searchOffers();
-
     $scope.showMap = true;
 
-    //STUDENTS'LIKE UPDATE IN ROOTSCOPE
-    studentService.getUserbyId($rootScope.user._id).then(function (res) {
-        $scope.student = res.data
-        var offerliked = [];
-        $scope.student.likes.forEach(function (like) {
-            offerliked.push(like._id);
-        }.bind($scope));
-        $rootScope.user.likes = offerliked;
-    });
-
-    $scope.showMap = true;
-
-    //STUDENTS'LIKE UPDATE IN ROOTSCOPE
-    studentService.getUserbyId($rootScope.user._id).then(function (res) {
-        $scope.student = res.data
-        var offerliked = [];
-        $scope.student.likes.forEach(function (like) {
-            offerliked.push(like._id);
-        }.bind($scope));
-        console.log(offerliked)
-        $rootScope.user.likes = offerliked;
-    });
+    $scope.today = new Date();
+    $scope.after = function (dates) {
+        return moment($scope.today).isAfter(dates);
+    }
+    $scope.before = function (dates) {
+        return moment($scope.today).isBefore(dates);
+    }
+    $scope.startOffer = function (date) {
+        moment.locale('fr')
+        var d = moment(date);
+        return d.fromNow();
+    }
+    $scope.endOffer = function (date) {
+        moment.locale('fr')
+        var d = moment(date);
+        return d.fromNow();
+    }
 
     //LIKE
     function like(offer) {
