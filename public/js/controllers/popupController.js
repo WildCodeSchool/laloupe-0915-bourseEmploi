@@ -1,6 +1,7 @@
 function popupController($scope, recruiterService, $rootScope) {
 
     $scope.step = 1;
+    $scope.help = false;
     console.log($scope.step);
     $scope.before = function () {
         $scope.step -= 1;
@@ -10,22 +11,19 @@ function popupController($scope, recruiterService, $rootScope) {
         console.log($scope.step);
     }
 
-    $scope.ischecked = false;
-    $scope.checked = function () {
-        $scope.ischecked = !$scope.ischecked;
-    };
-
     $scope.Go = function () {
-        if ($scope.ischecked == true) {
-            var data = {}
-            data.firstConnect = false
-            recruiterService.update($rootScope.user._id, data).then(function (res) {
-                $rootScope.user.firstConnect = false;
-                $scope.step = 1;
-            });
-        } else {
+        var data = {}
+        data.firstConnect = false
+        recruiterService.update($rootScope.user._id, data).then(function (res) {
             $rootScope.user.firstConnect = false;
             $scope.step = 1;
-        }
+            $scope.help = false;
+        });
+    };
+
+    $scope.replay = function () {
+        $scope.help = true;
+        console.log($scope.help)
     }
-};
+
+}

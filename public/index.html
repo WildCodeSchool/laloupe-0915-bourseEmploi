@@ -73,7 +73,7 @@
 <body ng-class="{'bg': activetab==='/login'}">
 
 
-    <span ng-hide="activetab==='/login'" ng-if="user._type == 'Recruiter' && user.firstConnect" ng-controller="popupController">
+    <span ng-hide="activetab==='/login'" ng-if="user._type == 'Recruiter' && user.firstConnect || help == true" ng-controller="popupController">
         
         <div id="hider">
         </div>
@@ -116,14 +116,6 @@
     <button ng-if="step<5" ng-click="after()" style="width:200px;margin:5px;" class="btnW">Suivant <i class="fa fa-chevron-right"></i>
     </button>
     <button ng-if="step==5" ng-click="Go()" style="width:200px;margin:5px;" class="btnW">Let's Go !</button>
-    <ul ng-if="step==5">
-        <li>
-            <i class="green fa fa-lg pointer" ng-click="checked()" ng-class="{'fa-square-o': ischecked===false,'fa-check-square-o': ischecked===true}"></i>
-        </li>
-        <li>
-            <p class="green">Ne plus voir ce message à ma prochaine connexion</p>
-        </li>
-    </ul>
     </div>
     </span>
 
@@ -176,6 +168,9 @@
                         <ul class="dropdown-menu">
                             <li class="li-nav"><a href="/#/homeRecruiter">Ma page d'accueil</a></li>
                             <li class="li-nav"><a href="/#/editRecruiter/{{user._id}}">Editer mon compte</a></li>
+                            <li class="li-nav divider" role="separator"></li>
+                            <li class="li-nav" ng-controller="popupController"><a ng-click="replay()">Aide</a></li>
+                            <li class="li-nav"><a href="mailto:pauline@innoveduc.fr">Contacter Wildfinder</a></li>
                             <li class="li-nav divider" role="separator"></li>
                             <li class="li-nav"><a ng-click="logout()">Deconnexion</a></li>
                         </ul>
