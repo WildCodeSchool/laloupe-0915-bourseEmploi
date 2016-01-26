@@ -1,5 +1,13 @@
-<h1 class="student-title">{{student.name}} {{student.firstName}}  <small>  "{{student.teaser}}"</small></h1>
-
+<div class="row no-marge">
+    <ul>
+        <div ng-if="user._type == 'Recruiter'" ng-click="likeClick(student)" class="bookLike2">
+            <i class="fa fa-heart fa-2x " ng-class="{ 'heartnotactive': student.isLiked===false, 'heartactive': student.isLiked===true} " uib-tooltip="{{student.isLiked ? 'Retirer des favoris' : 'Ajouter aux favoris'}} " tooltip-placement="right"></i>
+        </div>
+        <li class="headeradvert2">
+            <h1 class="student-title">{{student.name}} {{student.firstName}}  <small>  "{{student.teaser}}"</small></h1>
+        </li>
+    </ul>
+</div>
 <div class="row">
     <div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
 
@@ -17,7 +25,7 @@
                 <h5>Contact</h5>
                 <ul>
                     <li class="li-block" ng-if="student.email != undefined"><i class="fa fa-paper-plane-o fa-lg"></i>{{student.email}}</li>
-                    <li class="li-block" ng-show="phoneIf"><i class="fa fa-phone fa-lg"></i>{{student.phone}}</li>
+                    <li class="li-block" ng-if="student.phone"><i class="fa fa-phone fa-lg"></i>{{student.phone}}</li>
                 </ul>
                 <h5>Réseaux sociaux</h5>
                 <div class="text-center">

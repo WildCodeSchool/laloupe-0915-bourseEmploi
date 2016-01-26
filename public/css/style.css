@@ -1244,6 +1244,12 @@ li.active {
     padding: 10px 10px 0 0;
 }
 
+.bookLike2 {
+    float: right;
+    z-index: 9999;
+    padding: 20px 10px 0 0;
+}
+
 .nav-pills>li.active>a {
     background-color: #009587;
 }
@@ -1539,6 +1545,7 @@ li.active {
 .dropdown-menu {
     border-radius: 0px;
 }
+
 .pointer {
     cursor: pointer;
 }

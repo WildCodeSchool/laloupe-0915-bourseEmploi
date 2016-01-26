@@ -119,11 +119,6 @@
                     </ul>
 
                 </div>
-                <div class="bookLike">
-                    <li ng-if="showRcrt " ng-click="likeClick(student) " class="headeradvert ">
-                        <i class="fa fa-heart fa-lg " ng-class="{ 'heartnotactive': student.isLiked===false, 'heartactive': student.isLiked===true} " uib-tooltip="{{student.isLiked ? 'Retirer des favoris' : 'Ajouter aux favoris'}} " tooltip-placement="left "></i>
-                    </li>
-                </div>
                 <div class="wildpanelbook panel panel-default ">
                     <img ng-if="student.logo" ng-click="goToStudent(student)" class="imgsearchbook" ng-src="{{student.logo}}">
                     <img ng-if="!student.logo" ng-click="goToStudent(student)" class="imgsearchbook" src="../img/default-profil.jpg">

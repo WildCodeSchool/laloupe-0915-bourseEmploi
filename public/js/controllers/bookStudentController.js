@@ -1,4 +1,4 @@
-function bookStudentController($scope, $rootScope, skillService, $routeParams, studentService, $location) {
+function bookStudentController($scope, $rootScope, skillService, $routeParams, studentService, $location, recruiterService) {
 
     //TOOLTIP    
     $(function () {
@@ -8,12 +8,20 @@ function bookStudentController($scope, $rootScope, skillService, $routeParams, s
     var selectUser = $routeParams.id;
     $scope.ifStudent = false;
 
-    function loadStudent() {
+    //RECRUITER'S LIKE UPDATE IN ROOTSCOPE
+    recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {
+        $scope.recruiter = res.data
+        var studentliked = [];
+        $scope.recruiter.likes.forEach(function (like) {
+            studentliked.push(like);
+        }.bind($scope));
+        $rootScope.user.likes = studentliked;
         //LOAD STUDENT
         studentService.getUserbyId(selectUser).then(function (res) {
             $scope.student = res.data;
             $scope.studentSkill = res.data.skills;
-            console.log($scope.student.experiences);
+            //CHECK IS lIKED
+            $scope.student.isLiked = ($rootScope.user.likes.indexOf($scope.student._id) > -1);
 
             //Cacher les actions d'édition selon le type
             if ($rootScope.user._type === 'Student' && $rootScope.user._id === selectUser || $rootScope.user.admin === true)
@@ -113,8 +121,34 @@ function bookStudentController($scope, $rootScope, skillService, $routeParams, s
                 studentService.update($rootScope.user._id, data).then(function (res) {})
             }
         });
+    });
+
+    //LIKE
+    function like(student) {
+        var data = {}
+        data.like = student._id
+        recruiterService.like($rootScope.user._id, data).then(function (res) {
+            $rootScope.user.likes.push(student._id);
+            student.isLiked = true;
+        });
+    };
+    //UNLIKE
+    function unlike(student) {
+        var data = {}
+        data.unlike = student._id
+        recruiterService.unlike($rootScope.user._id, data).then(function (res) {
+            $rootScope.user.likes.splice($rootScope.user.likes.indexOf(student._id), 1);
+            student.isLiked = false;
+        });
+    };
+    //LIKE OR UNLIKE
+    $scope.likeClick = function (student) {
+        if ($rootScope.user.likes.indexOf(student._id) > -1) {
+            unlike(student);
+        } else {
+            like(student);
+        }
     }
-    loadStudent();
 
     $scope.goToEdit = function (d) {
         $("body").removeClass("modal-open");
