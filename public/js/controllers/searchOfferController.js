@@ -9,12 +9,21 @@ function searchOfferController($scope, offerService, skillService, studentServic
     }
     loadSkill();
 
+
     //NUMBER LIKED
     function numberLiked(offer) {
         studentService.howmanyliked(offer._id).then(function (res) {
             offer.numberLiked = res.data
         });
     }
+
+    L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
+    var map = L.mapbox.map('map', 'mapbox.streets')
+        .setView([46.84, 2.00], 5);
+
+    L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
+    var map2 = L.mapbox.map('map2', 'mapbox.streets')
+        .setView([46.84, 2.00], 5);
 
     //STUDENTS'LIKE UPDATE IN ROOTSCOPE
     studentService.getUserbyId($rootScope.user._id).then(function (res) {
@@ -25,13 +34,7 @@ function searchOfferController($scope, offerService, skillService, studentServic
         }.bind($scope));
         $rootScope.user.likes = offerliked;
         //MAP
-        L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
-        var map = L.mapbox.map('map', 'mapbox.streets')
-            .setView([46.84, 2.00], 5);
 
-        L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
-        var map2 = L.mapbox.map('map2', 'mapbox.streets')
-            .setView([46.84, 2.00], 5);
 
         //MARKERS
         var markers = new L.MarkerClusterGroup();

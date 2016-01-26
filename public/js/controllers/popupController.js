@@ -18,6 +18,7 @@ function popupController($scope, recruiterService, $rootScope) {
             $rootScope.user.firstConnect = false;
             $scope.step = 1;
             $scope.help = false;
+            console.log($scope.help)
         });
     };
 

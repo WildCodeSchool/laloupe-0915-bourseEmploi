@@ -73,7 +73,7 @@
 <body ng-class="{'bg': activetab==='/login'}">
 
 
-    <span ng-hide="activetab==='/login'" ng-if="user._type == 'Recruiter' && user.firstConnect || help == true" ng-controller="popupController">
+    <span ng-if="help == true || (user._type == 'Recruiter' && user.firstConnect)" ng-controller="popupController">
         
         <div id="hider">
         </div>
