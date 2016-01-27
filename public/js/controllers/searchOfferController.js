@@ -17,6 +17,7 @@ function searchOfferController($scope, offerService, skillService, studentServic
         });
     }
 
+    //MAP
     L.mapbox.accessToken = 'pk.eyJ1IjoianVsaWVucjExNCIsImEiOiJjaWhobXZ2eHYwMGFxdTJtNDhuNW5xMjBxIn0.KkUadZFGBKA1ENyPLDTxjg';
     var map = L.mapbox.map('map', 'mapbox.streets')
         .setView([46.84, 2.00], 5);
@@ -33,8 +34,6 @@ function searchOfferController($scope, offerService, skillService, studentServic
             offerliked.push(like._id);
         }.bind($scope));
         $rootScope.user.likes = offerliked;
-        //MAP
-
 
         //MARKERS
         var markers = new L.MarkerClusterGroup();
@@ -58,31 +57,27 @@ function searchOfferController($scope, offerService, skillService, studentServic
                     console.log($scope.offers[i])
                 };
                 //MAP
-                for (var i = 0; i < $scope.offers.length; i++) {
-                    var offer = $scope.offers[i];
+                $scope.offers.forEach(function (offer) {
                     var address = offer.address + ", " + offer.zipCode + " " + offer.city + ", " + offer.country;
                     geocoderService.CoordinateByAdress(address).then(function (res) {
                         var lng = res.data.features[0].geometry.coordinates[0];
                         var lat = res.data.features[0].geometry.coordinates[1];
-
                         var marker = L.marker(new L.LatLng([lat], [lng]), {
                             icon: L.mapbox.marker.icon({
                                 'marker-color': '009587'
                             })
                         });
-                        var textpopup = '<a href="/#/offer/' + offer._id + '"><b>' + offer.title + '</b></a><br>' + offer.city;
-                        marker.bindPopup(textpopup);
+                        marker.bindPopup('<a href="/#/offer/' + offer._id + '"><b>' + offer.title + '</b></a><br>' + offer.city);
                         markers.addLayer(marker);
                         var marker2 = L.marker(new L.LatLng([lat], [lng]), {
                             icon: L.mapbox.marker.icon({
                                 'marker-color': '009587'
                             })
                         });
-                        marker2.bindPopup(textpopup);
+                        marker2.bindPopup('<a href="/#/offer/' + offer._id + '"><b>' + offer.title + '</b></a><br>' + offer.city);
                         markers2.addLayer(marker2);
                     });
-                }
-
+                }.bind($scope));
                 map.addLayer(markers);
                 map2.addLayer(markers2);
             });
