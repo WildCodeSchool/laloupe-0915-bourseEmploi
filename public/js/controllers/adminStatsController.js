@@ -26,40 +26,37 @@ function adminStatsController($scope, studentService, skillService, $rootScope, 
             //Load old students
             studentService.getAlumnis().then(function (res) {
                 $scope.alumnis = res.data;
-                console.log($scope.alumnis);
 
                 //Load skills
                 skillService.get().then(function (res) {
                     res.data.forEach(function (skill) {
                         if (skill.language === true)
-                            skills.push(skill._id);
+                            skills.push(skill);
                     })
                     var data = {};
                     data.ids = [];
+                    data.skills = skills;
                     skills.forEach(function (skill) {
-                        data.ids.push(skill);
-                        console.log(skills);
+                        data.ids.push(skill._id);
                     })
                     studentService.getStatLang(data).then(function (res) {
                         studentSkill.push(res.data);
-                        console.log(data);
                         console.log(res.data);
+
                         /*******  GRAPHS 3 *******/
-                        var total = res.data.JAVASCRIPT + res.data.PHP + res.data.RUBY;
-                        var data3 = [{
-                                value: Math.round((res.data.JAVASCRIPT / total) * 100),
-                                color: "#f0db4f",
-                                label: "JS"
-                            }, {
-                                value: Math.round((res.data.PHP / total) * 100),
-                                color: "#6082bb",
-                                label: "PHP"
-                            }, {
-                                value: Math.round((res.data.RUBY / total) * 100),
-                                color: "#af1000",
-                                label: "RUBY"
-                            }
-                        ];
+                        console.log(res.data)
+                        var total = 0;
+                        res.data.forEach(function (lang) {
+                            total += lang.nb;
+                        })
+
+                        var data3 = [];
+                        res.data.forEach(function (lang) {
+                            var graph = {};
+                            graph.value = Math.round((lang.nb / total) * 100);
+                            graph.label = lang.title;
+                            data3.push(graph);
+                        })
 
                         var opts = {
                             tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %> %",
@@ -73,8 +70,6 @@ function adminStatsController($scope, studentService, skillService, $rootScope, 
 
                         //Variables for graph
                         var myDoughnutChart = new Chart(document.getElementById("lang").getContext("2d")).Doughnut(data3, opts);
-                        console.log(data3);
-                        console.log(skills);
                     })
                 })
 
@@ -134,10 +129,7 @@ function adminStatsController($scope, studentService, skillService, $rootScope, 
                 $scope.high = [];
                 $scope.big = [];
                 $scope.ex = [];
-                console.log(recruiter);
-                console.log();
                 recruiter.forEach(function (recrut) {
-                    console.log(recrut);
                     if (recrut.size === "de 1 a 9 salariés")
                         $scope.small.push(recrut);
                     else if (recrut.size === "de 10 a 49 salariés")
@@ -153,29 +145,29 @@ function adminStatsController($scope, studentService, skillService, $rootScope, 
                 var data4 = [
                     {
                         value: Math.round(($scope.small.length / recruiter.length) * 100),
-                        color: "#483d8b",
+                        color: "#08a23c",
                         highlight: "#675DA5",
-                        label: "Très petite"
+                        label: "TP"
                     }, {
                         value: Math.round(($scope.medium.length / recruiter.length) * 100),
-                        color: "#08a23c",
+                        color: "yellow",
                         highlight: "#26B556",
-                        label: "Petite"
+                        label: "P"
                       }, {
                         value: Math.round(($scope.high.length / recruiter.length) * 100),
-                        color: "red",
-                        highlight: "#675DA5",
-                        label: "Moyenne"
-                      }, {
-                        value: Math.round(($scope.big.length / recruiter.length) * 100),
                         color: "#FDB45C",
                         highlight: "#675DA5",
-                        label: "Grande"
+                        label: "M"
+                      }, {
+                        value: Math.round(($scope.big.length / recruiter.length) * 100),
+                        color: "red",
+                        highlight: "#675DA5",
+                        label: "G"
                       }, {
                         value: Math.round(($scope.ex.length / recruiter.length) * 100),
-                        color: "yellow",
+                        color: "#675DA5",
                         highlight: "#675DA5",
-                        label: "Très grande"
+                        label: "TG"
                       }
                         ];
 
@@ -187,18 +179,15 @@ function adminStatsController($scope, studentService, skillService, $rootScope, 
                 $scope.pdll = [];
                 $scope.idf = [];
                 $scope.cvdl = [];
-                console.log(recruiter);
-                console.log();
                 recruiter.forEach(function (recrut) {
-                    console.log(recrut);
                     if (recrut.region === "Autre")
-                        $scope.small.push(recrut);
+                        $scope.a.push(recrut);
                     else if (recrut.region === "Pays-De-la-Loire")
-                        $scope.medium.push(recrut);
+                        $scope.pdll.push(recrut);
                     else if (recrut.region === "Île-de-France")
-                        $scope.high.push(recrut);
+                        $scope.idf.push(recrut);
                     else if (recrut.region === "Centre-Val de Loire")
-                        $scope.big.push(recrut);
+                        $scope.cvdl.push(recrut);
                 })
 
                 var data5 = [
