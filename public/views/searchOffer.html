@@ -22,7 +22,7 @@
                     <h5>Région :</h5>
                     <div class="input-group input-group-sm">
                         <select type="text" class="form-control" ng-model="region">
-                            <option value="">Tous</option>
+                            <option value="">Toutes</option>
                             <option>Alsace-Champagne-Ardenne-Lorraine</option>
                             <option>Aquitaine-Limousin-Poitou-Charentes</option>
                             <option>Auvergne-Rhône-Alpes</option>
@@ -41,7 +41,7 @@
                     <h5>Compétences :</h5>
                     <div class="input-group input-group-sm">
                         <select class="form-control" type="button" ng-model="querySkill">
-                            <option value="">Tous</option>
+                            <option value="">Toutes</option>
                             <option ng-repeat="skill in skills" value="{{skill._id}}">{{skill.title}}</option>
                         </select>
                     </div>
@@ -60,7 +60,7 @@
                     <h5>Expérience :</h5>
                     <div class="input-group input-group-sm">
                         <select type="text" class="form-control" ng-model="experience">
-                            <option value="">Tous</option>
+                            <option value="">Toutes</option>
                             <option>Junior</option>
                             <option>Expérimenté</option>
                             <option>Senior</option>

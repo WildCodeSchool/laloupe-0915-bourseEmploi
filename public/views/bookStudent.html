@@ -21,7 +21,7 @@
                 <p>{{student.gender}}</p>
             </div>
             <div class="wildpanelbody panel paneldefault" id="studentCVmin">
-                <p class="headeradvert smalltexadvert">{{student.city}} - {{student.region}}</p>
+                <p class="headeradvert smalltexadvert">{{student.city}}, <i>{{student.region}}</i></p>
                 <h5>Contact</h5>
                 <ul>
                     <li class="li-block" ng-if="student.email != undefined"><i class="fa fa-paper-plane-o fa-lg"></i>{{student.email}}</li>
@@ -117,7 +117,7 @@
                                     <p class="white-space-pre-line">{{exp.experience.detailsExp}}</p>
                                 </div>
                                 <div class="modal-body">
-                                    <h5>Déscription de l'entreprise :</h5>
+                                    <h5>Description de l'entreprise :</h5>
                                     <p class="white-space-pre-line">{{exp.experience.companyDescription}}</p>
                                 </div>
                                 <div class="modal-body">
@@ -246,7 +246,7 @@
         <!--HOBBIES-->
         <div class="wildpanel panel panel-default col-xs-12 col-sm-6 col-md-12 col-lg-12 no-padding">
             <div class="wildpanelheader panel panel-default">
-                <h4><i class="fa fa-futbol-o i-header"></i> Loisir(s)</h4>
+                <h4><i class="fa fa-futbol-o i-header"></i> Loisirs</h4>
             </div>
             <div class="wildpanelbody panel paneldefault">
                 <ul>
