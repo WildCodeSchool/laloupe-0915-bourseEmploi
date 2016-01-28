@@ -186,7 +186,7 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
     function loadMatchOffer() {
         studentService.getUserbyId($rootScope.user._id).then(function (res) {
             var student = res.data;
-            var matchOffer = [];
+            $scope.matchingOffers = [];
             student.skills.forEach(function (o) {
                 var skill = o.skill;
                 var data = {};
@@ -203,26 +203,29 @@ function homeStudentController($scope, $rootScope, geocoderService, offerService
                         }
                     });
                     offerService.getOfferBySkill(data).then(function (res) {
-                        res.data.forEach(function (o) {
-                            if (matchOffer.length == 0)
-                                matchOffer.push(o);
-                            else {
-                                for (var i = 0; i < matchOffer.length; i++) {
-                                    if (matchOffer[i]._id != o._id)
-                                        matchOffer.push(o);
-                                }
-                            }
-                        });
+                        console.log(res.data)
+                        $scope.matchingOffers = res.data;
+                        //                        res.data.forEach(function (o) {
+                        //                            if ($scope.matchingOffers.length == 0)
+                        //                                $scope.matchingOffers.push(o);
+                        //                            else {
+                        //                                for (var i = 0; i < $scope.matchingOffers.length; i++) {
+                        //                                    console.log($scope.matchingOffers);
+                        //                                    if ($scope.matchingOffers[i]._id != o._id) {
+                        //                                        $scope.matchingOffers.push(o);
+                        //                                    }
+                        //                                }
+                        //                            }
+                        //                        });
                         //CHECK IS lIKED
-                        matchOffer.forEach(function (offer) {
+                        $scope.matchingOffers.forEach(function (offer) {
                             offer.isLiked = ($rootScope.user.likes.indexOf(offer._id) > -1);
                             numberLiked(offer);
-
-                        }.bind($scope));
+                        });
                     });
                 }
             });
-            $scope.matchingOffers = matchOffer;
+
         });
     };
     loadMatchOffer();

@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({
     'extended': 'true'
 })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json({
-    limit: '3mb'
+    limit: '5mb'
 })); // parse application/json
 app.use(bodyParser.json({
     type: 'application/vnd.api+json'

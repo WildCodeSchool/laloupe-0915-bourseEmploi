@@ -81,7 +81,7 @@
 
             <!--EXPERIENCE-->
             <div class="no-marge">
-                <div ng-repeat="exp in student.experiences | orderBy: '-experience.startDate'">
+                <div ng-repeat="exp in student.experiences | orderBy: '-experience.yearStart'">
 
                     <!--Teaser-->
                     <div class="wildpanelbodys panel paneldefault">
@@ -91,7 +91,7 @@
                         </div>
                         <h2 class="titleadvert" data-toggle="modal" data-target="#{{exp.experience._id}}">{{exp.experience.job}}</h2>
                         <p class="smalltexadvert">{{exp.experience.company}} - {{exp.experience.contract}} - {{exp.experience.city}} ({{exp.experience.country}})</p>
-                        <p class="smalltexadvert-sm">De {{calculDate(exp.experience.yearStart)}} - A {{calculDate(exp.experience.yearEnd)}}</p>
+                        <p class="smalltexadvert-sm">De {{exp.experience.monthStart}} {{exp.experience.yearStart}} - À {{exp.experience.monthEnd}} {{exp.experience.yearEnd}}</p>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
                         <p class="white-space-pre-line">{{exp.experience.detailsExp}}</p>
@@ -105,7 +105,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h2 class="titlemodal" id="myModalLabel">{{exp.experience.job}}</h2>
                                     <p class="smalltexadvert">{{exp.experience.company}} - {{exp.experience.contract}} - {{exp.experience.city}} ({{exp.experience.country}})</p>
-                                    <p class="smalltexadvert-sm">De {{calculDate(exp.experience.yearStart)}} - A {{calculDate(exp.experience.yearEnd)}}</p>
+                                    <p class="smalltexadvert-sm">De {{exp.experience.monthStart}} {{exp.experience.yearStart}} - À {{exp.experience.monthEnd}} {{exp.experience.yearEnd}}</p>
                                 </div>
                                 <div class="modal-body">
                                     <h5>Missions :</h5>
@@ -145,7 +145,7 @@
 
             <!--EDUCATION-->
             <div class="no-marge">
-                <div ng-repeat="for in student.formations | orderBy: '-formation.startDate'">
+                <div ng-repeat="for in student.formations | orderBy: '-formation.yearStart'">
 
                     <!--Teaser-->
                     <div class="wildpanelbodys panel paneldefault">
@@ -155,7 +155,7 @@
                         </div>
                         <h2 class="titleadvert" data-toggle="modal" data-target="#{{for.formation._id}}">{{for.formation.title}}</h2>
                         <p class="smalltexadvert">{{for.formation.school}} - {{for.formation.city}} ({{for.formation.country}})</p>
-                        <p class="smalltexadvert-sm">De {{calculDate(for.formation.yearStart)}} - A {{calculDate(for.formation.yearEnd)}}</p>
+                        <p class="smalltexadvert-sm">De {{for.formation.monthStart}} {{for.formation.yearStart}} - À {{for.formation.monthEnd}} {{for.formation.yearEnd}}</p>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
                         <p class="white-space-pre-line">{{for.formation.description}}
@@ -170,7 +170,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h2 class="titlemodal" id="myModalLabel1">{{for.formation.title}}</h2>
                                     <p class="smalltexadvert">{{for.formation.school}} - {{for.formation.city}} ({{for.formation.country}})</p>
-                                    <p class="smalltexadvert-sm">De {{calculDate(for.formation.yearStart)}} - A {{calculDate(for.formation.yearEnd)}}</p>
+                                    <p class="smalltexadvert-sm">De {{for.formation.monthStart}} {{for.formation.yearStart}} - À {{for.formation.monthEnd}} {{for.formation.yearEnd}}</p>
                                 </div>
                                 <div class="modal-body">
                                     <h5>Description de la formation :</h5>
@@ -181,7 +181,7 @@
                                     <p class="white-space-pre-line">{{for.formation.graduate}}</p>
                                 </div>
                                 <div class="modal-body">
-                                    <a href="{{exp.experience.website}}">{{for.formation.website}}</a>
+                                    <a href="{{exp.formation.website}}">{{for.formation.website}}</a>
                                 </div>
                                 <div class="modal-footer">
                                     <button ng-show="ifStudent" ng-click="goToEdit()" type="button" data-dismiss="modal" class="btnW">Editer</button>
