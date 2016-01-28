@@ -7,6 +7,36 @@ function bookController($scope, $location, studentService, $rootScope, skillServ
         return promo.schoolId == $scope.school;
     }
 
+    //RECRUITER'S LIKE UPDATE IN ROOTSCOPE
+    recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {
+        $scope.recruiter = res.data
+        var studentliked = [];
+        $scope.recruiter.likes.forEach(function (like) {
+            studentliked.push(like);
+        }.bind($scope));
+        $rootScope.user.likes = studentliked;
+        //Bouton de filtre des students
+        $scope.studentFiltered = function () {
+            var data = {};
+            data.school = $scope.school;
+            data.promos = $scope.promo;
+            data.region = $scope.region;
+            data.skill = $scope.querySkill;
+            data.status = $scope.status;
+            data.situation = $scope.situation;
+            console.log($scope.promo);
+            studentService.getStudentFiltered(data).then(function (res) {
+                console.log(res.data);
+                $scope.students = res.data;
+                //CHECK IS lIKED
+                $scope.students.forEach(function (student) {
+                    student.isLiked = ($rootScope.user.likes.indexOf(student._id) > -1);
+                }.bind($scope));
+            });
+        }
+        $scope.studentFiltered();
+    });
+
     //TOOLTIP    
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
@@ -50,38 +80,6 @@ function bookController($scope, $location, studentService, $rootScope, skillServ
         });
     }
     loadPromos();
-
-    //Bouton de filtre des students
-    $scope.studentFiltered = function () {
-        var data = {};
-        data.school = $scope.school;
-        data.promos = $scope.promo;
-        data.region = $scope.region;
-        data.skill = $scope.querySkill;
-        data.status = $scope.status;
-        data.situation = $scope.situation;
-        console.log($scope.promo);
-        studentService.getStudentFiltered(data).then(function (res) {
-            console.log(res.data);
-            $scope.students = res.data;
-            //CHECK IS lIKED
-            $scope.students.forEach(function (student) {
-                student.isLiked = ($rootScope.user.likes.indexOf(student._id) > -1);
-            }.bind($scope));
-        });
-    }
-    $scope.studentFiltered();
-
-    //RECRUITER'S LIKE UPDATE IN ROOTSCOPE
-    recruiterService.getRecruiterById($rootScope.user._id).then(function (res) {
-        $scope.recruiter = res.data
-        var studentliked = [];
-        $scope.recruiter.likes.forEach(function (like) {
-            studentliked.push(like);
-        }.bind($scope));
-        /*        console.log(studentliked);*/
-        $rootScope.user.likes = studentliked;
-    });
 
     //CHECK USER TYPE
     function pop() {

@@ -293,6 +293,19 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
                 alert('erreur lors de la création');
             } else {
                 alert('création éffectuée');
+                loadStudent();
+                $scope.job = null;
+                $scope.company = null;
+                $scope.contract = null;
+                $scope.city = null;
+                $scope.country = null;
+                $scope.monthStart = null;
+                $scope.yearStart = null;
+                $scope.monthEnd = null;
+                $scope.yearEnd = null;
+                $scope.detailsExp = null;
+                $scope.missions = null;
+                $scope.companyDescription = null;
             }
         })
     }
@@ -315,6 +328,17 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
                 alert('erreur lors de la création');
             } else {
                 alert('ok');
+                loadStudent();
+                $scope.title = null;
+                $scope.school = null;
+                $scope.city = null;
+                $scope.country = null;
+                $scope.monthStart = null;
+                $scope.yearStart = null;
+                $scope.monthEnd = null;
+                $scope.yearEnd = null;
+                $scope.description = null;
+                $scope.graduate = null;
             }
         })
     }
@@ -327,6 +351,8 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
                 alert('pas ok');
             } else {
                 alert('ok');
+                loadStudent();
+                $scope.hobbiesQuery = null;
             }
         })
     }
@@ -356,6 +382,9 @@ function editBookStudentController($scope, $location, $anchorScroll, $rootScope,
                 alert('pas ok');
             } else {
                 alert('ok');
+                loadStudent();
+                $scope.newLanguage.name = null;
+                $scope.newLanguage.level = null;
             }
         })
     }

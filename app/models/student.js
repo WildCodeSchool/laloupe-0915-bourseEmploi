@@ -158,20 +158,23 @@ var Student = {
             })
             .populate('skills.skill')
             .exec(function (err, students) {
-                var result = {};
-                students.forEach(function (student) {
-                    student.skills.forEach(function (s) {
-                        if (req.body.ids.indexOf(s.skill._id.toString()) > -1) {
-                            if (result.hasOwnProperty(s.skill.title))
-                                result[s.skill.title] += 1;
-                            else
-                                result[s.skill.title] = 1;
-                        }
+                var result = [];
+                req.body.skills.forEach(function (skill) {
+                    var lang = {};
+                    lang.title = skill.title;
+                    lang._id = skill._id;
+                    lang.nb = 0;
+                    result.push(lang);
+                });
+                result.forEach(function (skill) {
+                    students.forEach(function (student) {
+                        student.skills.forEach(function (s) {
+                            if (skill._id.indexOf(s.skill._id.toString()) > -1)
+                                skill.nb += 1;
+                        })
                     })
                 })
-                console.log(result);
-                res.json(result)
-
+                res.json(result);
             })
     },
 

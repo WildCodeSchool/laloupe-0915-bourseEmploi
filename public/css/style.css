@@ -8,7 +8,7 @@ body {
 }
 
 body {
-    padding-top: 70px;
+    padding-top: 51px;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: #F5FAF9;
     -webkit-background-size: cover;
@@ -142,6 +142,7 @@ ul {
     font-family: 'Raleway', sans-serif;
     color: #009587;
     font-size: 25px;
+    font-weight: 700;
 }
 
 .finder {
@@ -149,6 +150,11 @@ ul {
     color: #696969;
     font-size: 25px;
     line-height: 50px;
+    font-weight: 700;
+}
+
+.grey {
+    color: #696969;
 }
 
 .btnClassic {
@@ -185,6 +191,29 @@ ul {
     border-color: #009587;
     color: #009587;
     font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background-size: 100% 200%;
+    background-color: transparent;
+    background-image: linear-gradient(to top, #009587 50%, transparent 50%);
+    -webkit-transition: background-position 1s;
+    -moz-transition: background-position 1s;
+    transition: background-position 1s;
+}
+
+.title-btnW {
+    font-weight: 500;
+}
+
+.btnW-big {
+    min-height: 60px;
+    padding: 0px 20px 0px 20px;
+    border: 2px solid;
+    border-radius: 0px;
+    border-color: #009587;
+    color: #009587;
+    font-size: 25px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     background-size: 100% 200%;
@@ -202,6 +231,17 @@ ul {
     color: white;
 }
 
+.title-btnW:hover {
+    color: white;
+}
+
+.btnW-big:hover {
+    background-position: 0 100%;
+    background-color: transparent;
+    border-color: #009587;
+    color: white;
+}
+
 .btnW:focus {
     outline: none;
     border-radius: 0px;
@@ -210,7 +250,21 @@ ul {
     background-color: transparent;
 }
 
+.btnW-big:focus {
+    outline: none;
+    border-radius: 0px;
+    border-color: #009587;
+    color: #009587;
+    background-color: transparent;
+}
+
 .btnW:focus:hover {
+    background-position: 0 100%;
+    background-color: transparent;
+    color: white;
+}
+
+.btnW-big:focus:hover {
     background-position: 0 100%;
     background-color: transparent;
     color: white;
@@ -541,10 +595,6 @@ ul {
     padding: 0 auto;
     border: none;
     overflow: hidden;
-}
-
-.navbar-inverse {
-    box-shadow: 0 5px 10px #dddddd;
 }
 
 .panel {
@@ -1205,6 +1255,12 @@ li.active {
     padding: 10px 10px 0 0;
 }
 
+.bookLike2 {
+    float: right;
+    z-index: 9999;
+    padding: 20px 10px 0 0;
+}
+
 .nav-pills>li.active>a {
     background-color: #009587;
 }
@@ -1402,7 +1458,7 @@ li.active {
 
 .accroche {
     margin-top: 100px;
-    font-size: 28px;
+    font-size: 45px;
     margin-bottom: 75px;
     color: #009788;
 }
@@ -1430,17 +1486,83 @@ li.active {
 }
 
 .accrocheCorp {
-    font-size: 18px;
+    font-size: 25px;
     padding: 0;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
+}
+
+.accrocheCorp3 {
+    font-size: 25px;
+    padding: 0;
+    margin: 0 15px 75px 15px;
 }
 
 .accrocheCorp2 {
-    font-size: 20px;
+    font-size: 35px;
     padding: 0;
     margin-bottom: 20px;
 }
 
 .no-border {
     border: none;
+}
+
+.helper {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    float: center;
+    z-index: 9999;
+}
+
+#hider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    /*
+        z- index must be lower than pop up box
+       */
+    z-index: 99;
+    background-color: Black;
+    opacity: 0.9;
+}
+
+#hider2 {
+    z-index: 98;
+    opacity: 1;
+    position: relative;
+    margin-top: 40%
+}
+
+#popup_box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80em;
+    height: 50em;
+    margin-top: -25em;
+    /*set to a negative number 1/2 of your height*/
+    margin-left: -40em;
+    /*set to a negative number 1/2 of your width*/
+    z-index: 100;
+}
+
+.minify {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.green {
+    color: #009587;
+}
+
+.dropdown-menu {
+    border-radius: 0px;
+}
+
+.pointer {
+    cursor: pointer;
 }

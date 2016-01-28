@@ -276,14 +276,20 @@
 
     <div class="col-md-3 col-lg-3 col-sm-3">
         <nav class="hidden-xs affix">
-            <ul class="nav nav-pills nav-stacked">
-                <li ng-class="{active: activesubmenu=='#anchor1'}"><a ng-click="scrollTo('anchor1')">Informations concernant l'entreprise</a></li>
-                <li ng-class="{active: activesubmenu=='#anchor2'}"><a ng-click="scrollTo('anchor2')">Coordonnées</a></li>
-                <li ng-class="{active: activesubmenu=='#anchor3'}"><a ng-click="scrollTo('anchor3')">Visibilité</a></li>
-                <li ng-class="{active: activesubmenu=='#anchor4'}"><a ng-click="scrollTo('anchor4')">Descriptions</a></li>
-                <li ng-class="{active: activesubmenu=='#anchor5'}"><a ng-click="scrollTo('anchor5')">Logo et photo</a></li>
-                <li ng-class="{active: activesubmenu=='#anchor6'}"><a ng-click="scrollTo('anchor6')">Liens sociaux</a></li>
-            </ul>
+            <div class="wildpanel panel paneldefault">
+                <div class="wildpanelbody panel paneldefault">
+                    <div class="wildpanelbody panel paneldefault">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li ng-class="{active: activesubmenu=='#anchor1'}"><a ng-click="scrollTo('anchor1')">Informations concernant l'entreprise</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor2'}"><a ng-click="scrollTo('anchor2')">Coordonnées</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor3'}"><a ng-click="scrollTo('anchor3')">Visibilité</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor4'}"><a ng-click="scrollTo('anchor4')">Descriptions</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor5'}"><a ng-click="scrollTo('anchor5')">Logo et photo</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor6'}"><a ng-click="scrollTo('anchor6')">Liens sociaux</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </nav>
     </div>
 </div>

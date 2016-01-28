@@ -10,10 +10,10 @@
                     <div class="wildpanelbody panel paneldefault">
                         <fieldset class="form-group">
                             <div class="col-sm-5">
-                                <label><i class="fa fa-picture-o fa-form"></i> Ajouter un logo :</label>
+                                <label><i class="fa fa-picture-o fa-form"></i> Ajouter une photo :</label>
                                 <input id="logo" type="file" nv-file-select uploader="uploader" ng-model="student.logo" onchange="angular.element(this).scope().previewFile(this)">
                                 <img id="preview" height="200" ng-src="{{student.logo}}" alt="Image preview...">
-                                <button ng-click="deleteLogo()" class="btn btn-default btnW spacer">Supprimer ce logo</button>
+                                <button ng-click="deleteLogo()" class="btn btn-default btnW spacer">Supprimer cette photo</button>
                             </div>
                         </fieldset>
                         <fieldset class="form-group">
