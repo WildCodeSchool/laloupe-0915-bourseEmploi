@@ -142,6 +142,7 @@ ul {
     font-family: 'Raleway', sans-serif;
     color: #009587;
     font-size: 25px;
+    font-weight: 700;
 }
 
 .finder {
@@ -149,6 +150,7 @@ ul {
     color: #696969;
     font-size: 25px;
     line-height: 50px;
+    font-weight: 700;
 }
 
 .grey {
@@ -189,6 +191,7 @@ ul {
     border-color: #009587;
     color: #009587;
     font-size: 17px;
+    font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     background-size: 100% 200%;
@@ -200,12 +203,7 @@ ul {
 }
 
 .title-btnW {
-    color: #009587;
-    font-size: 17px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin: 0;
-    padding: 10px 0 10px 0;
+    font-weight: 500;
 }
 
 .btnW-big {
