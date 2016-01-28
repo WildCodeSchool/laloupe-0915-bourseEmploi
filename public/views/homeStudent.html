@@ -16,7 +16,7 @@
                         <h3 class="studentteaser">"{{student.teaser}}"</h3>
                     </div>
                     <div class="wildpanelbody panel paneldefault">
-                        <p class="headeradvert smalltexadvert">{{student.city}} {{student.region}}</p>
+                        <p class="headeradvert smalltexadvert">{{student.city}}, <i>{{student.region}}</i></p>
                         <h5>Mes compétences</h5>
                         <ul class="skill-ul" ng-show="showSkill">
                             <li class="headeradvert skill-li" ng-repeat="skill in listSkills"><span class="wildSkill">{{skill}}<i class="fa fa-times cross times-skill" ng-click="deleteSkill(skill)"></i></span></li>
@@ -80,7 +80,7 @@
         <!--MATCHING OFFERS-->
         <div class="row wildpanel panel paneldefault">
             <div class="wildpanelheader panel paneldefault">
-                <h4>{{matchingOffers.length}} {{matchingOffers.length > 1 ? 'Annonces' : 'Annonce'}} qui {{matchingOffers.length > 1 ? 'pourraient' : 'pourrait'}} m'interresser</h4>
+                <h4>{{matchingOffers.length}} {{matchingOffers.length > 1 ? 'Annonces' : 'Annonce'}} qui {{matchingOffers.length > 1 ? 'pourraient' : 'pourrait'}} m'intéresser</h4>
             </div>
             <div class="panelmatchoffer no-marge">
                 <!--OFFER-->

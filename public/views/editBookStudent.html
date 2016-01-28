@@ -35,7 +35,7 @@
                     <div class="wildpanelbody panel paneldefault">
                         <fieldset class="form-group">
                             <div class="col-sm-10">
-                                <label class="control-label">titre :</label>
+                                <label class="control-label">Titre :</label>
                                 <div>
                                     <input type="text" class="form-control" id="" ng-model="student.teaser" maxlength="70">
                                 </div>
@@ -93,7 +93,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-5">
-                                <label class="control-label">Telephone :</label>
+                                <label class="control-label">Téléphone :</label>
                                 <div>
                                     <input type="text" class="form-control" id="" ng-model="student.phone">
                                 </div>
@@ -123,7 +123,7 @@
                                     <option>Normandie</option>
                                     <option>Pays-De-la-Loire</option>
                                     <option>Provence-Alpes-Côte-d'Azur</option>
-                                    <option>autre</option>
+                                    <option>Autre</option>
                                 </select>
                             </div>
                         </fieldset>
@@ -195,13 +195,13 @@
                                     <option type="text" class="form-control">En fin de contrat</option>
                                     <option type="text" class="form-control">En recherche d'emploi</option>
                                     <option type="text" class="form-control">Freelance</option>
-                                    <option type="text" class="form-control">Consultant</option>
-                                    <option type="text" class="form-control">Entrepreneur</option>
-                                    <option type="text" class="form-control">Porteur de projet</option>
-                                    <option type="text" class="form-control">Etudiant</option>
+                                    <option type="text" class="form-control">Consultant(e)</option>
+                                    <option type="text" class="form-control">Entrepreneur(se)</option>
+                                    <option type="text" class="form-control">Porteur(se) de projet</option>
+                                    <option type="text" class="form-control">Etudiant(e)</option>
                                     <option type="text" class="form-control">En fin d'études</option>
                                     <option type="text" class="form-control">Stagiaire</option>
-                                    <option type="text" class="form-control">Apprenti</option>
+                                    <option type="text" class="form-control">Apprenti(e)</option>
                                     <option type="text" class="form-control">En alternance</option>
                                 </select>
                             </div>
@@ -211,7 +211,7 @@
                                     <option type="text" class="form-control" value="" disabled></option>
                                     <option type="text" class="form-control">En recherche active</option>
                                     <option type="text" class="form-control">En recherche de stage</option>
-                                    <option type="text" class="form-control">Ouvert aux opportunités</option>
+                                    <option type="text" class="form-control">Ouvert(e) aux opportunités</option>
                                     <option type="text" class="form-control">Indisponible</option>
                                 </select>
                             </div>
@@ -248,7 +248,7 @@
                     <div class="wildpanelbody panel paneldefault">
                         <fieldset class="form-group">
                             <div class="col-sm-10">
-                                <label>Son coté wild</label>
+                                <label>Mon coté wild</label>
                                 <textarea class="form-control" rows="4" ng-model="student.wildSide"></textarea>
                             </div>
                         </fieldset>
@@ -272,7 +272,7 @@
                     <div class="wildpanelbody panel paneldefault">
                         <fieldset class="form-group">
                             <div class=" col-sm-4">
-                                <label class="control-label">Compétences recherchées* :</label>
+                                <label class="control-label">Mes compétences* :</label>
                                 <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-content="Ajoutez des compétences les unes à la suite des autres grâce au moteur de recherche."><i class="fa fa-question-circle"></i></a>
                                 <div class="input-group">
                                     <input ng-model="chooseSkill" placeholder="Ajoutez un tag de langage, de compétence" class="form-control" list="Languages" />
@@ -310,7 +310,7 @@
                     <h2>Expérience</h2>
                     <div class="wildpanelbody panel paneldefault">
                         <div ng-repeat="exp in student.experiences">
-                            <h4>Modifier une experience :</h4>
+                            <h4>Modifier une expérience :</h4>
                             <fieldset class="form-group">
                                 <div class="col-sm-10">
                                     <label class="control-label">Intitulé du poste :</label>
@@ -407,7 +407,7 @@
                             </fieldset>
                             <fieldset class="form-group">
                                 <div class="col-sm-10">
-                                    <label>missions au sein de l'entreprise</label>
+                                    <label>Missions au sein de l'entreprise</label>
                                     <textarea class="form-control" rows="4" ng-model="exp.experience.missions" name="desc"></textarea>
                                 </div>
                             </fieldset>
@@ -432,7 +432,7 @@
             <div class="wildpanel panel paneldefault">
                 <div class="wildpanelbody panel paneldefault">
                     <div class="wildpanelbody panel paneldefault">
-                        <h4>Ajouter une experience</h4>
+                        <h4>Ajouter une expérience</h4>
                         <fieldset class="form-group">
                             <div class="col-sm-10">
                                 <label class="control-label">Intitulé du poste :</label>
@@ -529,7 +529,7 @@
                         </fieldset>
                         <fieldset class="form-group">
                             <div class="col-sm-10">
-                                <label>missions au sein de l'entreprise</label>
+                                <label>Missions au sein de l'entreprise</label>
                                 <textarea class="form-control" rows="4" ng-model="missions" name="desc"></textarea>
                             </div>
                         </fieldset>
@@ -554,7 +554,7 @@
         <div class="row" id="anchor6">
             <div class="wildpanel panel paneldefault">
                 <div class="wildpanelbody panel paneldefault">
-                    <h2>Formation</h2>
+                    <h2>Formation(s)</h2>
                     <div class="wildpanelbody panel paneldefault">
                         <div ng-repeat="form in student.formations">
                             <h4>Modifier une formation</h4>
@@ -570,13 +570,13 @@
                                     <input type="text" name="title" class="form-control" id="" ng-model="form.formation.school">
                                 </div>
                                 <div class="col-sm-5">
-                                    <label class="control-label">Diplome :</label>
+                                    <label class="control-label">Diplôme :</label>
                                     <input type="text" name="title" class="form-control" id="" ng-model="form.formation.graduate">
                                 </div>
                             </fieldset>
                             <fieldset class="form-group">
                                 <div class="col-sm-5">
-                                    <label class="control-label">ville :</label>
+                                    <label class="control-label">Ville :</label>
                                     <div>
                                         <input type="text" class="form-control" id="" ng-model="form.formation.city">
                                     </div>
@@ -672,13 +672,13 @@
                                 <input type="text" name="title" class="form-control" id="" ng-model="school">
                             </div>
                             <div class="col-sm-5">
-                                <label class="control-label">Diplome :</label>
+                                <label class="control-label">Diplôme :</label>
                                 <input type="text" name="title" class="form-control" id="" ng-model="graduate">
                             </div>
                         </fieldset>
                         <fieldset class="form-group">
                             <div class="col-sm-5">
-                                <label class="control-label">ville :</label>
+                                <label class="control-label">Ville :</label>
                                 <div>
                                     <input type="text" class="form-control" id="" ng-model="city">
                                 </div>
@@ -761,7 +761,7 @@
         <div class="row" id="anchor7">
             <div class="wildpanel panel paneldefault">
                 <div class="wildpanelbody panel paneldefault">
-                    <h2>Loisir(s) :</h2>
+                    <h2>Loisirs :</h2>
                     <div class="wildpanelbody panel paneldefault">
                         <fieldset class="form-group">
                             <div class="col-sm-5">
@@ -774,7 +774,7 @@
                         </fieldset>
                         <fieldset class="form-group">
                             <div class="col-sm-5">
-                                <label class="control-label">Ajouter un loisir :</label>
+                                <label class="control-label">Ajouter un loisirs :</label>
                                 <div>
                                     <input type="text" class="form-control" id="" ng-model="hobbiesQuery">
                                 </div>
@@ -808,7 +808,7 @@
                                             <option type="text" class="form-control">Débutant</option>
                                             <option type="text" class="form-control">Intermédiaire</option>
                                             <option type="text" class="form-control">Expert</option>
-                                            <option type="text" class="form-control">Langue natale</option>
+                                            <option type="text" class="form-control">Langue maternelle</option>
                                         </select>
                                     </li>
                                 </ul>
@@ -854,7 +854,7 @@
                                     <option type="text" class="form-control">Débutant</option>
                                     <option type="text" class="form-control">Intermédiaire</option>
                                     <option type="text" class="form-control">Expert</option>
-                                    <option type="text" class="form-control">Langue natale</option>
+                                    <option type="text" class="form-control">Langue maternelle</option>
                                 </select>
                             </div>
                         </fieldset>
@@ -885,7 +885,7 @@
                             <li ng-class="{active: activesubmenu=='#anchor4'}"><a ng-click="scrollTo('anchor4')">Compétences</a></li>
                             <li ng-class="{active: activesubmenu=='#anchor5'}"><a ng-click="scrollTo('anchor5')">Expérience</a></li>
                             <li ng-class="{active: activesubmenu=='#anchor6'}"><a ng-click="scrollTo('anchor6')">Formation</a></li>
-                            <li ng-class="{active: activesubmenu=='#anchor7'}"><a ng-click="scrollTo('anchor7')">Loisir</a></li>
+                            <li ng-class="{active: activesubmenu=='#anchor7'}"><a ng-click="scrollTo('anchor7')">Loisirs</a></li>
                             <li ng-class="{active: activesubmenu=='#anchor8'}"><a ng-click="scrollTo('anchor8')">Langues</a></li>
                         </ul>
                     </div>

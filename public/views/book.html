@@ -13,7 +13,7 @@
                     <h5>Compétences :</h5>
                     <div class="form-group">
                         <select class="form-control" type="button" ng-model="querySkill">
-                            <option value="">Tous</option>
+                            <option value="">Toutes</option>
                             <option ng-repeat="skill in skills" value="{{skill._id}}">{{skill.title}}</option>
                         </select>
                     </div>
@@ -22,7 +22,7 @@
                     <h5>Ecole :</h5>
                     <div class="form-group">
                         <select type="text" class="form-control" id="school" ng-model="school">
-                            <option value="">Tous</option>
+                            <option value="">Toutes</option>
                             <option value="{{school._id}}" ng-repeat="school in schools">{{school.title}}</option>
                         </select>
                     </div>
@@ -31,7 +31,7 @@
                     <h5>Promo :</h5>
                     <div class="form-group">
                         <select type="text" class="form-control" id="promo" ng-model="promo" ng-disabled="school == '' ">
-                            <option value="">Tous</option>
+                            <option value="">Toutes</option>
                             <option ng-repeat="promo in promos | filter:promosFilter" value="{{promo._id}}">{{shortDate(promo.startDate)}} - {{shortDate(promo.endDate)}}</option>
                         </select>
                     </div>
@@ -40,7 +40,7 @@
                     <h5>Disponibilté :</h5>
                     <div class="form-group">
                         <select type="text" class="form-control" ng-model="status">
-                            <option value="">Tous</option>
+                            <option value="">Toutes</option>
                             <option>En recherche active</option>
                             <option>En recherche de stage</option>
                             <option>Ouvert(e) aux opportunités</option>
@@ -52,7 +52,7 @@
                     <h5>Situation professionnelle :</h5>
                     <div class="form-group">
                         <select type="text" class="form-control" ng-model="situation">
-                            <option value="">Tous</option>
+                            <option value="">Toutes</option>
                             <option>En poste</option>
                             <option>En fin de contrat</option>
                             <option>En recherche d'emploi</option>
@@ -72,7 +72,7 @@
                     <h5>Région :</h5>
                     <div class="form-group">
                         <select type="text" class="form-control" ng-model="region">
-                            <option value="">Tous</option>
+                            <option value="">Toutes</option>
                             <option>Alsace-Champagne-Ardenne-Lorraine</option>
                             <option>Aquitaine-Limousin-Poitou-Charentes</option>
                             <option>Auvergne-Rhône-Alpes</option>
@@ -136,7 +136,7 @@
                             <p class="headeradvert smalltexadvert1-sm">{{student.situation}}</p>
                         </li>
                         <li class="headerasvert">
-                            <p ng-if="student.status" class="bookstattitle">status: </p>
+                            <p ng-if="student.status" class="bookstattitle">Status: </p>
                         </li>
                         <li class="headerasvert ">
                             <p class="headeradvert smalltexadvert1-sm">{{student.status}}</p>
